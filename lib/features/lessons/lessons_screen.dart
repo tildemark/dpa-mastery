@@ -160,6 +160,7 @@ class _LessonFlow extends ConsumerWidget {
             builder: (_) => LessonSummaryScreen(
               completedCount: state.completedExamIds.length,
               totalCount: state.uniqueExamItemIds.length,
+              mistakesCount: state.missedExamIds.length,
               difficultyLevel: difficultyLevel,
             ),
           ),

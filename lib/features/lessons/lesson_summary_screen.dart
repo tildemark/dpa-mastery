@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'lessons_screen.dart';
 
-/// Shown after a 5-item lesson batch is complete.
-/// Displays a summary and navigates back to home.
+/// Shown after a lesson batch is complete.
+/// Displays an exact breakdown of promoted cards (answered cleanly on 1st try)
+/// vs re-tested cards that had mistakes during the quiz exam.
 class LessonSummaryScreen extends StatelessWidget {
   const LessonSummaryScreen({
     super.key,
     required this.completedCount,
     required this.totalCount,
+    required this.mistakesCount,
     required this.difficultyLevel,
   });
 
   final int completedCount;
   final int totalCount;
+  final int mistakesCount;
   final int difficultyLevel;
 
   @override
@@ -20,7 +23,8 @@ class LessonSummaryScreen extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     final tt = Theme.of(context).textTheme;
     final accentColor = _levelColor(difficultyLevel);
-    final allCorrect = completedCount == totalCount;
+    final isCleanPass = mistakesCount == 0;
+    final cleanPromotedCount = (totalCount - mistakesCount).clamp(0, totalCount);
 
     return Scaffold(
       backgroundColor: cs.surface,
@@ -44,7 +48,7 @@ class LessonSummaryScreen extends StatelessWidget {
                     border: Border.all(color: accentColor, width: 2),
                   ),
                   child: Icon(
-                    allCorrect
+                    isCleanPass
                         ? Icons.emoji_events_rounded
                         : Icons.school_rounded,
                     size: 52,
@@ -56,7 +60,7 @@ class LessonSummaryScreen extends StatelessWidget {
 
               // ── Title ────────────────────────────────────────────────────────
               Text(
-                allCorrect ? 'Batch Complete! 🎉' : 'Lesson Done',
+                isCleanPass ? 'Batch Perfect! 🎉' : 'Batch Complete!',
                 textAlign: TextAlign.center,
                 style: tt.headlineMedium?.copyWith(
                   fontWeight: FontWeight.w800,
@@ -65,11 +69,13 @@ class LessonSummaryScreen extends StatelessWidget {
               const SizedBox(height: 12),
 
               Text(
-                'You promoted $completedCount of $totalCount items to Apprentice 1.\nThey\'ll be ready to review in 4 hours.',
+                isCleanPass
+                    ? 'All $totalCount items passed cleanly on the first try and are promoted to Apprentice 1.'
+                    : '$totalCount items mastered!\n($cleanPromotedCount passed cleanly on 1st try, $mistakesCount required re-testing and will be prioritized in reviews).',
                 textAlign: TextAlign.center,
                 style: tt.bodyMedium?.copyWith(
                   color: cs.onSurfaceVariant,
-                  height: 1.6,
+                  height: 1.5,
                 ),
               ),
               const SizedBox(height: 32),
@@ -77,25 +83,42 @@ class LessonSummaryScreen extends StatelessWidget {
               // ── Stats grid ───────────────────────────────────────────────────
               Row(
                 children: [
-                  _StatCard(
-                    label: 'Promoted',
-                    value: '$completedCount',
-                    icon: Icons.arrow_upward_rounded,
-                    color: const Color(0xFF4CAF50),
+                  Expanded(
+                    child: _StatCard(
+                      label: 'Promoted',
+                      value: '$totalCount',
+                      icon: Icons.arrow_upward_rounded,
+                      color: const Color(0xFF4CAF50),
+                    ),
                   ),
-                  const SizedBox(width: 12),
-                  _StatCard(
-                    label: 'Next Review',
-                    value: '4h',
-                    icon: Icons.schedule_rounded,
-                    color: accentColor,
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: _StatCard(
+                      label: '1st Try',
+                      value: '$cleanPromotedCount',
+                      icon: Icons.check_circle_outline_rounded,
+                      color: const Color(0xFF00ACC1),
+                    ),
                   ),
-                  const SizedBox(width: 12),
-                  _StatCard(
-                    label: 'Level',
-                    value: '$difficultyLevel',
-                    icon: Icons.bar_chart_rounded,
-                    color: const Color(0xFF9C27B0),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: _StatCard(
+                      label: 'Missed',
+                      value: '$mistakesCount',
+                      icon: Icons.error_outline_rounded,
+                      color: mistakesCount > 0
+                          ? const Color(0xFFEF5350)
+                          : const Color(0xFF64748B),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: _StatCard(
+                      label: 'Review in',
+                      value: '4h',
+                      icon: Icons.schedule_rounded,
+                      color: accentColor,
+                    ),
                   ),
                 ],
               ),
@@ -160,35 +183,36 @@ class _StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-        decoration: BoxDecoration(
-          color: cs.surfaceContainerHigh,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: color.withAlpha(60), width: 1.5),
-        ),
-        child: Column(
-          children: [
-            Icon(icon, color: color, size: 22),
-            const SizedBox(height: 8),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w800,
-                color: color,
-              ),
+    final tt = Theme.of(context).textTheme;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+      decoration: BoxDecoration(
+        color: cs.surfaceContainerHigh,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: color.withAlpha(50)),
+      ),
+      child: Column(
+        children: [
+          Icon(icon, color: color, size: 20),
+          const SizedBox(height: 6),
+          Text(
+            value,
+            style: tt.titleMedium?.copyWith(
+              fontWeight: FontWeight.w800,
+              color: color,
             ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: cs.onSurfaceVariant,
-                  ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            label,
+            style: tt.labelSmall?.copyWith(
+              color: cs.onSurfaceVariant,
+              fontSize: 10,
             ),
-          ],
-        ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
