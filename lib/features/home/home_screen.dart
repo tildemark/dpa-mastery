@@ -20,7 +20,15 @@ class HomeScreen extends ConsumerWidget {
     final gating = GatingService(db);
     final rankService = RankService(db);
     final reviewQueueAsync = ref.watch(reviewQueueProvider);
+    final srsCountsAsync = ref.watch(srsStageCountsStreamProvider);
+    final forecastAsync = ref.watch(reviewForecastStreamProvider);
+    final nextReviewAsync = ref.watch(nextReviewTimeStreamProvider);
     final cs = Theme.of(context).colorScheme;
+
+    final counts = srsCountsAsync.asData?.value ??
+        const SrsStageCounts(locked: 0, apprentice: 0, guru: 0, master: 0, burned: 0);
+    final fc = forecastAsync.asData?.value;
+    final nextTime = nextReviewAsync.asData?.value;
 
     return Scaffold(
       backgroundColor: cs.surface,
@@ -150,10 +158,8 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: FutureBuilder<DateTime?>(
-                    future: db.progressDao.getNextReviewTime(),
-                    builder: (context, snapshot) {
-                      final nextTime = snapshot.data;
+                  child: Builder(
+                    builder: (context) {
                       String subtitle;
                       if (reviewQueueAsync.asData != null && reviewQueueAsync.asData!.value.isNotEmpty) {
                         subtitle = '${reviewQueueAsync.asData!.value.length} due now';
@@ -237,59 +243,51 @@ class HomeScreen extends ConsumerWidget {
                   ),
             ),
             const SizedBox(height: 10),
-            FutureBuilder<SrsStageCounts>(
-              future: db.progressDao.getSrsStageCounts(),
-              builder: (context, snapshot) {
-                final counts = snapshot.data ??
-                    const SrsStageCounts(locked: 0, apprentice: 0, guru: 0, master: 0, burned: 0);
-
-                return Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: cs.surfaceContainerHigh,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: cs.surfaceContainerHigh,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          _SrsStageMetric(
-                            label: 'Locked',
-                            count: counts.locked,
-                            color: const Color(0xFF64748B),
-                            icon: Icons.lock_outline,
-                          ),
-                          _SrsStageMetric(
-                            label: 'Apprentice',
-                            count: counts.apprentice,
-                            color: const Color(0xFFEF5350),
-                            icon: Icons.local_fire_department,
-                          ),
-                          _SrsStageMetric(
-                            label: 'Guru',
-                            count: counts.guru,
-                            color: const Color(0xFF7C4DFF),
-                            icon: Icons.auto_awesome,
-                          ),
-                          _SrsStageMetric(
-                            label: 'Master',
-                            count: counts.master,
-                            color: const Color(0xFF1565C0),
-                            icon: Icons.workspace_premium,
-                          ),
-                          _SrsStageMetric(
-                            label: 'Burned',
-                            count: counts.burned,
-                            color: const Color(0xFFF59E0B),
-                            icon: Icons.whatshot,
-                          ),
-                        ],
+                      _SrsStageMetric(
+                        label: 'Locked',
+                        count: counts.locked,
+                        color: const Color(0xFF64748B),
+                        icon: Icons.lock_outline,
+                      ),
+                      _SrsStageMetric(
+                        label: 'Apprentice',
+                        count: counts.apprentice,
+                        color: const Color(0xFFEF5350),
+                        icon: Icons.local_fire_department,
+                      ),
+                      _SrsStageMetric(
+                        label: 'Guru',
+                        count: counts.guru,
+                        color: const Color(0xFF7C4DFF),
+                        icon: Icons.auto_awesome,
+                      ),
+                      _SrsStageMetric(
+                        label: 'Master',
+                        count: counts.master,
+                        color: const Color(0xFF1565C0),
+                        icon: Icons.workspace_premium,
+                      ),
+                      _SrsStageMetric(
+                        label: 'Burned',
+                        count: counts.burned,
+                        color: const Color(0xFFF59E0B),
+                        icon: Icons.whatshot,
                       ),
                     ],
                   ),
-                );
-              },
+                ],
+              ),
             ),
             const SizedBox(height: 24),
 
@@ -302,28 +300,22 @@ class HomeScreen extends ConsumerWidget {
                   ),
             ),
             const SizedBox(height: 10),
-            FutureBuilder<ReviewForecast>(
-              future: db.progressDao.getReviewForecast(),
-              builder: (context, snapshot) {
-                final fc = snapshot.data;
-                return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                  decoration: BoxDecoration(
-                    color: cs.surfaceContainerHigh,
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _ForecastSlot(label: '+1h', count: fc?.within1h ?? 0),
-                      _ForecastSlot(label: '+4h', count: fc?.within4h ?? 0),
-                      _ForecastSlot(label: '+24h', count: fc?.within24h ?? 0),
-                      _ForecastSlot(label: '+3d', count: fc?.within3d ?? 0),
-                      _ForecastSlot(label: '+7d', count: fc?.within7d ?? 0),
-                    ],
-                  ),
-                );
-              },
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              decoration: BoxDecoration(
+                color: cs.surfaceContainerHigh,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _ForecastSlot(label: '+1h', count: fc?.within1h ?? 0),
+                  _ForecastSlot(label: '+4h', count: fc?.within4h ?? 0),
+                  _ForecastSlot(label: '+24h', count: fc?.within24h ?? 0),
+                  _ForecastSlot(label: '+3d', count: fc?.within3d ?? 0),
+                  _ForecastSlot(label: '+7d', count: fc?.within7d ?? 0),
+                ],
+              ),
             ),
             const SizedBox(height: 24),
 

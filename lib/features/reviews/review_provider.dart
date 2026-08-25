@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../db/app_database.dart';
+import '../../db/daos/progress_dao.dart';
 import '../../engine/srs_engine.dart';
 import '../../main.dart';
 
@@ -169,3 +170,99 @@ final reviewControllerProvider = StateNotifierProvider.autoDispose<
     ReviewController, ReviewSessionState?>(
   (ref) => ReviewController(ref.read(dbProvider)),
 );
+
+/// Live stream provider for all 5 WaniKani SRS stage counts.
+final srsStageCountsStreamProvider = StreamProvider.autoDispose<SrsStageCounts>((ref) {
+  final db = ref.watch(dbProvider);
+  return db.select(db.userProgress).watch().map((all) {
+    int locked = 0;
+    int apprentice = 0;
+    int guru = 0;
+    int master = 0;
+    int burned = 0;
+
+    for (final p in all) {
+      switch (p.srsStage) {
+        case 0:
+          locked++;
+          break;
+        case 1 || 2 || 3 || 4:
+          apprentice++;
+          break;
+        case 5 || 6:
+          guru++;
+          break;
+        case 7:
+          master++;
+          break;
+        case 8:
+          burned++;
+          break;
+      }
+    }
+
+    return SrsStageCounts(
+      locked: locked,
+      apprentice: apprentice,
+      guru: guru,
+      master: master,
+      burned: burned,
+    );
+  });
+});
+
+/// Live stream provider for the upcoming review forecast slots.
+final reviewForecastStreamProvider = StreamProvider.autoDispose<ReviewForecast>((ref) {
+  final db = ref.watch(dbProvider);
+  return db.select(db.userProgress).watch().map((all) {
+    final now = DateTime.now();
+    final in1h = now.add(const Duration(hours: 1));
+    final in4h = now.add(const Duration(hours: 4));
+    final in24h = now.add(const Duration(hours: 24));
+    final in3d = now.add(const Duration(days: 3));
+    final in7d = now.add(const Duration(days: 7));
+
+    int count1h = 0;
+    int count4h = 0;
+    int count24h = 0;
+    int count3d = 0;
+    int count7d = 0;
+
+    for (final r in all) {
+      if (r.isLessonCompleted && r.nextReviewTime != null) {
+        final t = r.nextReviewTime!;
+        if (t.isBefore(in1h)) count1h++;
+        if (t.isBefore(in4h)) count4h++;
+        if (t.isBefore(in24h)) count24h++;
+        if (t.isBefore(in3d)) count3d++;
+        if (t.isBefore(in7d)) count7d++;
+      }
+    }
+
+    return ReviewForecast(
+      within1h: count1h,
+      within4h: count4h,
+      within24h: count24h,
+      within3d: count3d,
+      within7d: count7d,
+    );
+  });
+});
+
+/// Live stream provider for the closest upcoming review time.
+final nextReviewTimeStreamProvider = StreamProvider.autoDispose<DateTime?>((ref) {
+  final db = ref.watch(dbProvider);
+  return db.select(db.userProgress).watch().map((all) {
+    final now = DateTime.now();
+    DateTime? closest;
+
+    for (final r in all) {
+      if (r.isLessonCompleted && r.nextReviewTime != null && r.nextReviewTime!.isAfter(now)) {
+        if (closest == null || r.nextReviewTime!.isBefore(closest)) {
+          closest = r.nextReviewTime;
+        }
+      }
+    }
+    return closest;
+  });
+});
