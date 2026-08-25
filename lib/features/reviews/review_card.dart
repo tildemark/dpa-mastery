@@ -87,10 +87,11 @@ class ReviewCard extends StatelessWidget {
           ),
         ),
 
-        // ── Feedback (explanation + stage shift) ─────────────────────────────
+        // ── Feedback (concept recap on mistake + explanation + stage shift) ──
         if (_hasAnswered) ...[
           _ReviewFeedback(
             isCorrect: _isCorrect,
+            lessonConcept: item.question.lessonConcept,
             explanation: item.question.explanation,
             fromStage: item.progress.srsStage,
             toStage: newStage ?? item.progress.srsStage,
@@ -291,12 +292,14 @@ class _ReviewOptionTile extends StatelessWidget {
 class _ReviewFeedback extends StatelessWidget {
   const _ReviewFeedback({
     required this.isCorrect,
+    required this.lessonConcept,
     required this.explanation,
     required this.fromStage,
     required this.toStage,
   });
 
   final bool isCorrect;
+  final String lessonConcept;
   final String explanation;
   final int fromStage;
   final int toStage;
@@ -356,6 +359,48 @@ class _ReviewFeedback extends StatelessWidget {
               ],
             ),
           ),
+
+          // ── If missed: Present the Lesson Concept to Study ──
+          if (!isCorrect) ...[
+            Container(
+              margin: const EdgeInsets.fromLTRB(12, 12, 12, 4),
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color(0xFF263238).withAlpha(220),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: const Color(0xFF81D4FA).withAlpha(120)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(Icons.school_rounded, color: Color(0xFF81D4FA), size: 16),
+                      SizedBox(width: 6),
+                      Text(
+                        'Lesson Concept Review',
+                        style: TextStyle(
+                          color: Color(0xFF81D4FA),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    lessonConcept,
+                    style: tt.bodySmall?.copyWith(
+                      color: Colors.white,
+                      height: 1.45,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+
           // Explanation
           Padding(
             padding: const EdgeInsets.all(14),
