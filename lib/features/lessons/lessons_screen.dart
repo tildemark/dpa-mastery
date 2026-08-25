@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,9 +7,10 @@ import 'lesson_summary_screen.dart';
 
 /// Main entry point for the Lessons Mode experience.
 ///
-/// Fetches up to 5 unlearned questions for [difficultyLevel], then steps
-/// through: Concept Card → Question Card → Feedback → next item.
-/// On batch completion, pushes [LessonSummaryScreen].
+/// Steps through 2 phases:
+/// 1. Phase 1 (Concepts): sequential concept teaching cards for the batch.
+/// 2. Phase 2 (Quiz Exam): direct questions in randomized order with shuffled choices.
+/// Promotes items into SRS mastery upon batch completion.
 class LessonsScreen extends ConsumerStatefulWidget {
   const LessonsScreen({super.key, required this.difficultyLevel});
 
@@ -35,7 +34,7 @@ class _LessonsScreenState extends ConsumerState<LessonsScreen>
     super.initState();
     _animController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 250),
     );
     _fadeAnim = CurvedAnimation(
       parent: _animController,
@@ -73,9 +72,15 @@ class _LessonsScreenState extends ConsumerState<LessonsScreen>
           tooltip: 'Exit Lessons',
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(
-          'Lessons — Level ${widget.difficultyLevel}',
-          style: const TextStyle(fontWeight: FontWeight.w700),
+        title: batchAsync.when(
+          data: (batch) => Text(
+            batch?.phase == LessonPhase.exam
+                ? 'Lesson Exam Quiz'
+                : 'Lesson Concepts (Level ${widget.difficultyLevel})',
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          loading: () => const Text('Loading Lessons...'),
+          error: (e, st) => const Text('Lessons'),
         ),
         centerTitle: true,
       ),
@@ -85,22 +90,32 @@ class _LessonsScreenState extends ConsumerState<LessonsScreen>
         data: (batch) {
           if (batch == null) {
             return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.check_circle_outline_rounded,
-                      size: 64, color: cs.primary),
-                  const SizedBox(height: 16),
-                  Text(
-                    'All lessons at this level are complete!',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 24),
-                  FilledButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: const Text('Back to Home'),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.check_circle_outline_rounded,
+                        size: 64, color: cs.primary),
+                    const SizedBox(height: 16),
+                    Text(
+                      'All caught up for today!',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'You have completed your daily lesson commitment or finished all cards for this level.',
+                      style: TextStyle(color: cs.onSurfaceVariant),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 24),
+                    FilledButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('Back to Home'),
+                    ),
+                  ],
+                ),
               ),
             );
           }
@@ -140,12 +155,11 @@ class _LessonFlow extends ConsumerWidget {
     // Batch complete → push summary.
     if (state.isBatchComplete) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        final uniqueItemIds = state.items.map((i) => i.id).toSet();
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (_) => LessonSummaryScreen(
-              completedCount: state.completedIds.length,
-              totalCount: uniqueItemIds.length,
+              completedCount: state.completedExamIds.length,
+              totalCount: state.uniqueExamItemIds.length,
               difficultyLevel: difficultyLevel,
             ),
           ),
@@ -155,35 +169,32 @@ class _LessonFlow extends ConsumerWidget {
     }
 
     final item = state.currentItem;
-    final options = (jsonDecode(item.optionsJson) as List)
-        .map((e) => e as String)
-        .toList();
 
     return FadeTransition(
       opacity: fadeAnim,
-      child: switch (state.step) {
-        LessonStep.concept => ConceptCard(
-            conceptText: item.lessonConcept,
-            questionNumber: state.currentIndex + 1,
-            totalQuestions: state.items.length,
-            difficultyLevel: difficultyLevel,
-            onContinue: () =>
-                onTransition(() async => controller.proceedToQuestion()),
-          ),
-        LessonStep.question || LessonStep.feedback => QuestionCard(
-            questionText: item.questionText,
-            options: options,
-            questionNumber: state.currentIndex + 1,
-            totalQuestions: state.items.length,
-            difficultyLevel: difficultyLevel,
-            selectedAnswer: state.selectedAnswer,
-            correctAnswer:
-                state.step == LessonStep.feedback ? item.correctAnswer : null,
-            onOptionSelected: (ans) =>
-                onTransition(() async => controller.submitAnswer(ans)),
-            onNext: () => onTransition(() async => controller.advance()),
-          ),
-      },
+      child: state.phase == LessonPhase.learning
+          ? ConceptCard(
+              conceptText: item.lessonConcept,
+              questionNumber: state.currentIndex + 1,
+              totalQuestions: state.learningItems.length,
+              difficultyLevel: difficultyLevel,
+              onContinue: () =>
+                  onTransition(() async => controller.nextConcept()),
+            )
+          : QuestionCard(
+              questionText: item.questionText,
+              options: state.shuffledOptions ?? [],
+              questionNumber: state.currentIndex + 1,
+              totalQuestions: state.examItems.length,
+              difficultyLevel: difficultyLevel,
+              selectedAnswer: state.selectedAnswer,
+              correctAnswer:
+                  state.step == LessonStep.feedback ? item.correctAnswer : null,
+              onOptionSelected: (ans) =>
+                  onTransition(() async => controller.submitAnswer(ans)),
+              onNext: () =>
+                  onTransition(() async => controller.advanceExam()),
+            ),
     );
   }
 }

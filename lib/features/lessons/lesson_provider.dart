@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'package:drift/drift.dart' show Value;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,69 +6,99 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../db/app_database.dart';
 import '../../engine/srs_engine.dart';
 import '../../main.dart';
+import '../../services/settings_service.dart';
 
 // ─── Lesson flow state ────────────────────────────────────────────────────────
 
-enum LessonStep { concept, question, feedback }
+enum LessonPhase {
+  learning, // Phase 1: Walk through concepts
+  exam,     // Phase 2: Post-lesson exam quiz without concepts
+}
 
-/// Represents the current state of a single lesson batch.
+enum LessonStep {
+  concept,  // Showing concept teaching card
+  question, // Showing question during quiz/exam
+  feedback, // Showing answer feedback
+}
+
+/// Represents the current state of a single lesson batch with 2-phase learning.
 class LessonBatchState {
   const LessonBatchState({
-    required this.items,
+    required this.phase,
+    required this.learningItems,
+    required this.examItems,
     required this.currentIndex,
     required this.step,
     this.selectedAnswer,
-    this.completedIds = const [],
-    this.missedIds = const [],
+    this.shuffledOptions,
+    this.completedExamIds = const [],
+    this.missedExamIds = const [],
   });
 
-  final List<Question> items;
+  final LessonPhase phase;
+  final List<Question> learningItems;
+  final List<Question> examItems;
   final int currentIndex;
   final LessonStep step;
   final String? selectedAnswer;
-  final List<int> completedIds;
-  final List<int> missedIds;
+  final List<String>? shuffledOptions;
+  final List<int> completedExamIds;
+  final List<int> missedExamIds;
 
-  Question get currentItem => items[currentIndex];
-  Set<int> get uniqueItemIds => items.map((i) => i.id).toSet();
+  Question get currentItem =>
+      phase == LessonPhase.learning ? learningItems[currentIndex] : examItems[currentIndex];
+
+  Set<int> get uniqueExamItemIds => examItems.map((i) => i.id).toSet();
+
   bool get isBatchComplete =>
-      currentIndex >= items.length ||
-      uniqueItemIds.every((id) => completedIds.contains(id));
+      phase == LessonPhase.exam &&
+      (currentIndex >= examItems.length ||
+          uniqueExamItemIds.every((id) => completedExamIds.contains(id)));
+
   bool get isCorrect => selectedAnswer == currentItem.correctAnswer;
 
   LessonBatchState copyWith({
-    List<Question>? items,
+    LessonPhase? phase,
+    List<Question>? learningItems,
+    List<Question>? examItems,
     int? currentIndex,
     LessonStep? step,
     String? selectedAnswer,
-    List<int>? completedIds,
-    List<int>? missedIds,
+    List<String>? shuffledOptions,
+    List<int>? completedExamIds,
+    List<int>? missedExamIds,
     bool clearSelectedAnswer = false,
+    bool clearShuffledOptions = false,
   }) =>
       LessonBatchState(
-        items: items ?? this.items,
+        phase: phase ?? this.phase,
+        learningItems: learningItems ?? this.learningItems,
+        examItems: examItems ?? this.examItems,
         currentIndex: currentIndex ?? this.currentIndex,
         step: step ?? this.step,
         selectedAnswer:
             clearSelectedAnswer ? null : (selectedAnswer ?? this.selectedAnswer),
-        completedIds: completedIds ?? this.completedIds,
-        missedIds: missedIds ?? this.missedIds,
+        shuffledOptions:
+            clearShuffledOptions ? null : (shuffledOptions ?? this.shuffledOptions),
+        completedExamIds: completedExamIds ?? this.completedExamIds,
+        missedExamIds: missedExamIds ?? this.missedExamIds,
       );
 }
 
 // ─── Lesson controller ────────────────────────────────────────────────────────
 
-/// Manages in-session lesson flow mutations:
-/// 1. Concept Card → Question Card → Feedback.
-/// 2. If incorrect: marks question as missed (increments mistakeCount in DB),
-///    and appends the question to the end of the lesson queue until answered correctly.
-/// 3. If correct: marks as completed and promotes to Apprentice 1 (Stage 1).
+/// Manages WaniKani 2-Phase Lesson Flow:
+/// Phase 1 (Learning): Concepts presented sequentially.
+/// Phase 2 (Exam): Direct randomized questions with shuffled options and zero concepts.
+/// Items are only promoted to Apprentice Stage 1 upon passing the Phase 2 Exam.
 class LessonController extends StateNotifier<AsyncValue<LessonBatchState?>> {
-  LessonController(this._db, this._level) : super(const AsyncValue.loading()) {
+  LessonController(this._db, this._settings, this._level)
+      : super(const AsyncValue.loading()) {
     _initBatch();
   }
 
   final AppDatabase _db;
+  final SettingsService _settings;
   final int _level;
 
   Future<void> _initBatch() async {
@@ -75,40 +106,76 @@ class LessonController extends StateNotifier<AsyncValue<LessonBatchState?>> {
       final questions = await _db.questionDao.getUnlearnedQuestions(_level);
       if (questions.isEmpty) {
         state = const AsyncValue.data(null);
-      } else {
-        // Entropy-seeded random shuffle of unlearned questions at this level
-        final mutable = List<Question>.from(questions);
-        final random = Random(DateTime.now().microsecondsSinceEpoch);
-        mutable.shuffle(random);
-
-        final batch = mutable.take(5).toList();
-        state = AsyncValue.data(
-          LessonBatchState(
-            items: batch,
-            currentIndex: 0,
-            step: LessonStep.concept,
-          ),
-        );
+        return;
       }
+
+      // Check available daily lesson quota
+      final availableToday = _settings.getAvailableLessonsToday(questions.length);
+      if (availableToday <= 0) {
+        state = const AsyncValue.data(null);
+        return;
+      }
+
+      // Entropy-seeded random shuffle of unlearned questions
+      final mutable = List<Question>.from(questions);
+      final random = Random(DateTime.now().microsecondsSinceEpoch);
+      mutable.shuffle(random);
+
+      // Take batch size up to 5, bounded by available daily quota
+      final batchSize = min(5, availableToday);
+      final batch = mutable.take(batchSize).toList();
+
+      state = AsyncValue.data(
+        LessonBatchState(
+          phase: LessonPhase.learning,
+          learningItems: batch,
+          examItems: const [],
+          currentIndex: 0,
+          step: LessonStep.concept,
+        ),
+      );
     } catch (e, st) {
       state = AsyncValue.error(e, st);
     }
   }
 
-  /// Move from concept view to question view.
-  void proceedToQuestion() {
+  /// Advance to the next concept during Phase 1 (or start Phase 2 Exam).
+  void nextConcept() {
     state.whenData((s) {
-      if (s == null) return;
-      state = AsyncValue.data(
-        s.copyWith(
-          step: LessonStep.question,
-          clearSelectedAnswer: true,
-        ),
-      );
+      if (s == null || s.phase != LessonPhase.learning) return;
+
+      if (s.currentIndex < s.learningItems.length - 1) {
+        state = AsyncValue.data(
+          s.copyWith(
+            currentIndex: s.currentIndex + 1,
+            step: LessonStep.concept,
+          ),
+        );
+      } else {
+        // Phase 1 finished → Launch Phase 2: Post-Lesson Exam Quiz!
+        // Shuffled question order
+        final examQuestions = List<Question>.from(s.learningItems);
+        final random = Random(DateTime.now().microsecondsSinceEpoch);
+        examQuestions.shuffle(random);
+
+        final firstQ = examQuestions.first;
+        final options = _prepareOptions(firstQ);
+
+        state = AsyncValue.data(
+          s.copyWith(
+            phase: LessonPhase.exam,
+            examItems: examQuestions,
+            currentIndex: 0,
+            step: LessonStep.question,
+            shuffledOptions: options,
+            clearSelectedAnswer: true,
+          ),
+        );
+      }
     });
   }
 
-  /// Submit the user's answer. Transitions to feedback step.
+  /// Submit an answer during the Phase 2 Exam.
   void submitAnswer(String answer) {
     state.whenData((s) {
       if (s == null || s.step != LessonStep.question) return;
@@ -121,45 +188,56 @@ class LessonController extends StateNotifier<AsyncValue<LessonBatchState?>> {
     });
   }
 
-  /// Advance to the next item.
-  /// - If correct: promotes to Stage 1 (Apprentice 1), records completion.
-  /// - If incorrect: records mistake, re-queues question to the end of the batch.
-  Future<void> advance() async {
+  /// Advance during the Phase 2 Exam.
+  /// Correct answers promote to Stage 1; incorrect answers re-queue to the end of the exam.
+  Future<void> advanceExam() async {
     final currentVal = state.asData?.value;
-    if (currentVal == null) return;
+    if (currentVal == null || currentVal.phase != LessonPhase.exam) return;
 
     final currentItem = currentVal.currentItem;
     final isCorrect = currentVal.isCorrect;
 
     if (isCorrect) {
-      // Promote from Lesson (Stage 0 -> Stage 1)
+      // 1. Promote from Stage 0 (Locked) → Stage 1 (Apprentice 1) in database
       final companion = SrsEngine.promoteFromLesson(currentItem.id);
       await _db.progressDao.upsertProgress(companion);
 
-      final updatedCompleted = [...currentVal.completedIds, currentItem.id];
+      final updatedCompleted = [...currentVal.completedExamIds, currentItem.id];
 
-      // Check if all items in current batch are completed
-      if (currentVal.currentIndex >= currentVal.items.length - 1) {
+      // Check if all unique exam items are completed
+      if (currentVal.currentIndex >= currentVal.examItems.length - 1) {
+        // Record quota deduction in settings
+        final remainingUnlearned =
+            await _db.questionDao.getUnlearnedQuestions(_level);
+        await _settings.recordCompletedLessons(
+          currentVal.uniqueExamItemIds.length,
+          remainingUnlearned.length,
+        );
+
         state = AsyncValue.data(
           currentVal.copyWith(
-            completedIds: updatedCompleted,
-            step: LessonStep.concept,
+            completedExamIds: updatedCompleted,
           ),
         );
         return;
       }
 
+      final nextItem = currentVal.examItems[currentVal.currentIndex + 1];
+      final nextOptions = _prepareOptions(nextItem);
+
       state = AsyncValue.data(
         currentVal.copyWith(
           currentIndex: currentVal.currentIndex + 1,
-          step: LessonStep.concept,
+          step: LessonStep.question,
           clearSelectedAnswer: true,
-          completedIds: updatedCompleted,
+          shuffledOptions: nextOptions,
+          completedExamIds: updatedCompleted,
         ),
       );
     } else {
-      // Record mistake count in database for troubled cards drilling
-      final existingProgress = await _db.progressDao.getProgressForQuestion(currentItem.id);
+      // Record mistake in database for troubled cards drilling
+      final existingProgress =
+          await _db.progressDao.getProgressForQuestion(currentItem.id);
       final currentMistakes = existingProgress?.mistakeCount ?? 0;
       await _db.progressDao.upsertProgress(
         UserProgressCompanion(
@@ -171,27 +249,44 @@ class LessonController extends StateNotifier<AsyncValue<LessonBatchState?>> {
         ),
       );
 
-      // Re-queue the missed question at the end of the current batch (WaniKani style loop)
-      final updatedItems = List<Question>.from(currentVal.items)..add(currentItem);
-      final updatedMissed = currentVal.missedIds.contains(currentItem.id)
-          ? currentVal.missedIds
-          : [...currentVal.missedIds, currentItem.id];
+      // Re-queue missed question to the end of the exam
+      final updatedExamItems = List<Question>.from(currentVal.examItems)
+        ..add(currentItem);
+      final updatedMissed = currentVal.missedExamIds.contains(currentItem.id)
+          ? currentVal.missedExamIds
+          : [...currentVal.missedExamIds, currentItem.id];
+
+      final nextItem = currentVal.examItems[currentVal.currentIndex + 1];
+      final nextOptions = _prepareOptions(nextItem);
 
       state = AsyncValue.data(
         currentVal.copyWith(
-          items: updatedItems,
+          examItems: updatedExamItems,
           currentIndex: currentVal.currentIndex + 1,
-          step: LessonStep.concept,
+          step: LessonStep.question,
           clearSelectedAnswer: true,
-          missedIds: updatedMissed,
+          shuffledOptions: nextOptions,
+          missedExamIds: updatedMissed,
         ),
       );
     }
+  }
+
+  List<String> _prepareOptions(Question q) {
+    final rawOptions = (jsonDecode(q.optionsJson) as List).cast<String>();
+    if (_settings.shuffleOptions) {
+      final mutable = List<String>.from(rawOptions);
+      final random = Random(DateTime.now().microsecondsSinceEpoch);
+      mutable.shuffle(random);
+      return mutable;
+    }
+    return rawOptions;
   }
 }
 
 final lessonControllerProvider = StateNotifierProvider.autoDispose
     .family<LessonController, AsyncValue<LessonBatchState?>, int>((ref, level) {
   final db = ref.read(dbProvider);
-  return LessonController(db, level);
+  final settings = ref.read(settingsServiceProvider);
+  return LessonController(db, settings, level);
 });

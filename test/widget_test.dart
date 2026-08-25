@@ -5,15 +5,20 @@ import 'package:drift/native.dart';
 import 'package:dpa_mastery/main.dart';
 import 'package:dpa_mastery/db/app_database.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dpa_mastery/services/settings_service.dart';
+
 void main() {
   testWidgets('App root smoke test builds successfully', (WidgetTester tester) async {
-    // Instantiate test DB with in-memory SQLite (synchronous executor without driftDatabase background isolate)
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
     final inMemoryDb = AppDatabase(NativeDatabase.memory());
 
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           dbProvider.overrideWithValue(inMemoryDb),
+          sharedPrefsProvider.overrideWithValue(prefs),
         ],
         child: const DpaMasteryApp(),
       ),

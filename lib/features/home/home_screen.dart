@@ -11,12 +11,16 @@ import '../reviews/review_provider.dart';
 import '../drills/tag_drill_screen.dart';
 import '../cram/cram_screen.dart';
 
+import '../../services/settings_service.dart';
+import '../settings/settings_screen.dart';
+
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final db = ref.watch(dbProvider);
+    final settings = ref.watch(settingsServiceProvider);
     final gating = GatingService(db);
     final rankService = RankService(db);
     final reviewQueueAsync = ref.watch(reviewQueueProvider);
@@ -29,6 +33,7 @@ class HomeScreen extends ConsumerWidget {
         const SrsStageCounts(locked: 0, apprentice: 0, guru: 0, master: 0, burned: 0);
     final fc = forecastAsync.asData?.value;
     final nextTime = nextReviewAsync.asData?.value;
+    final availableLessons = settings.getAvailableLessonsToday(counts.locked);
 
     return Scaffold(
       backgroundColor: cs.surface,
@@ -38,12 +43,18 @@ class HomeScreen extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
+            icon: const Icon(Icons.settings_outlined),
+            tooltip: 'Study Settings',
+            onPressed: () => SettingsSheet.show(context),
+          ),
+          IconButton(
             icon: const Icon(Icons.info_outline),
+            tooltip: 'About',
             onPressed: () {
               showAboutDialog(
                 context: context,
                 applicationName: 'DPA Mastery',
-                applicationVersion: '1.1.0',
+                applicationVersion: '1.2.0',
                 applicationLegalese: 'WaniKani SRS Platform for Philippine NPC DPO Examination.',
               );
             },
@@ -144,9 +155,12 @@ class HomeScreen extends ConsumerWidget {
                 Expanded(
                   child: _ActionCard(
                     title: 'Lessons',
-                    subtitle: 'New cards to learn',
+                    subtitle: availableLessons > 0
+                        ? '$availableLessons available today'
+                        : 'Daily quota complete',
                     icon: Icons.school_rounded,
                     color: const Color(0xFF5E6AD2),
+                    badgeCount: availableLessons,
                     onTap: () async {
                       final unlocked = await gating.getUnlockedLevels();
                       final currentLevel = unlocked.isNotEmpty ? unlocked.last : 1;
