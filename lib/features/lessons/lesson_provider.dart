@@ -29,7 +29,10 @@ class LessonBatchState {
   final List<int> missedIds;
 
   Question get currentItem => items[currentIndex];
-  bool get isBatchComplete => completedIds.length == items.length;
+  Set<int> get uniqueItemIds => items.map((i) => i.id).toSet();
+  bool get isBatchComplete =>
+      currentIndex >= items.length ||
+      uniqueItemIds.every((id) => completedIds.contains(id));
   bool get isCorrect => selectedAnswer == currentItem.correctAnswer;
 
   LessonBatchState copyWith({
