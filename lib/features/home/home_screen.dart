@@ -49,13 +49,48 @@ class HomeScreen extends ConsumerWidget {
           ),
           IconButton(
             icon: const Icon(Icons.info_outline),
-            tooltip: 'About',
+            tooltip: 'About & Credits',
             onPressed: () {
               showAboutDialog(
                 context: context,
                 applicationName: 'DPA Mastery',
                 applicationVersion: '1.2.0',
-                applicationLegalese: 'WaniKani SRS Platform for Philippine NPC DPO Examination.',
+                applicationIcon: Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: cs.primaryContainer,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(Icons.verified_user_rounded, color: cs.primary, size: 28),
+                ),
+                applicationLegalese: '© 2026 Alfredo Sanchez Jr.\nAll rights reserved.',
+                children: [
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Developer',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  ),
+                  const Text('Alfredo Sanchez Jr\nhttps://sanchez.ph'),
+                  const SizedBox(height: 14),
+                  const Text(
+                    'Privacy Policy & Offline Guarantee',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  ),
+                  const Text(
+                    'DPA Mastery is 100% offline. Zero telemetry, zero user tracking, and zero personal data collection. All SRS progress, study history, and question records reside strictly in your local device SQLite database in full compliance with the Data Privacy Act of 2012 (RA 10173).',
+                    style: TextStyle(fontSize: 12, height: 1.4),
+                  ),
+                  const SizedBox(height: 14),
+                  const Text(
+                    'Certification Focus',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  ),
+                  const Text(
+                    'National Privacy Commission (NPC) Certified DPO (Data Protection Officer) Assessment & Compliance Framework.',
+                    style: TextStyle(fontSize: 12, height: 1.4),
+                  ),
+                ],
               );
             },
           ),

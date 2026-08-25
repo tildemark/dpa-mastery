@@ -166,6 +166,23 @@ If running `adb devices` shows an empty list or your device is hijacked by third
 
 ---
 
+## 👨‍💻 Developer & Credits
+
+- **Developer**: Alfredo Sanchez Jr
+- **Website**: [https://sanchez.ph](https://sanchez.ph)
+- **Project**: DPA Mastery — WaniKani SRS Study Platform for the Philippine NPC DPO Examination.
+
+---
+
+## 🛡️ Privacy Policy (100% Offline Guarantee)
+
+**DPA Mastery is strictly 100% offline.**
+- **Zero Personal Data Collection**: No telemetry, analytics, tracking, or device identifiers are collected.
+- **Local Storage Only**: All flashcard mastery progress, study statistics, and review timestamps reside exclusively on your device in a local SQLite database (`drift`).
+- **Privacy by Design**: Built in full compliance with the Data Privacy Act of 2012 (Republic Act No. 10173).
+
+---
+
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
