@@ -1,0 +1,64 @@
+{
+    "version": 1,
+    "release_date": "2026-08-25",
+    "module": "Module 5",
+    "items": [
+        {
+            "id": 501,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to be Informed",
+                "Right to Object"
+            ],
+            "lesson_concept": "The Right to be Informed & Right to Object\n\n1. Right to be Informed: The most basic right. Data subjects must be notified about the processing of their personal data, including the purpose, scope, method, and duration of processing, before entry into the processing system.\n\n2. Right to Object: The data subject has the right to object to the processing of their data, particularly if it is based on consent or legitimate interest. If a subject objects, the PIC must stop processing the data, unless the processing is pursuant to a legal obligation or needed for a legal claim.",
+            "question_text": "A user receives a marketing email from a clothing brand and clicks the 'Unsubscribe' button, exercising their right to object. What is the mandatory legal obligation of the Personal Information Controller (PIC)?",
+            "options": [
+                "Ignore the request if the user previously signed a contract.",
+                "Immediately cease processing the user's data for marketing purposes.",
+                "Wait 30 days before removing the user from the mailing list.",
+                "Delete all transaction history related to the user."
+            ],
+            "correct_answer": "Immediately cease processing the user's data for marketing purposes.",
+            "explanation": "When a data subject exercises their Right to Object to processing for direct marketing, the PIC must immediately stop processing their data for that specific purpose."
+        },
+        {
+            "id": 502,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Rectify",
+                "Right to Erasure"
+            ],
+            "lesson_concept": "Right to Rectify & Right to Erasure/Blocking\n\n1. Right to Rectify: The right to dispute inaccuracies or errors in personal data and have the PIC correct it immediately and accordingly, unless the request is vexatious.\n\n2. Right to Erasure or Blocking: The right to suspend, withdraw, or order the blocking, removal, or destruction of personal data from the PIC's filing system. This applies when the data is incomplete, outdated, false, unlawfully obtained, used for unauthorized purposes, or no longer necessary for the purposes it was collected.",
+            "question_text": "Under what condition is a data subject NOT allowed to exercise their Right to Erasure or Blocking?",
+            "options": [
+                "When the personal data is being used for an unauthorized purpose.",
+                "When the personal data is necessary to comply with a subpoena or legal obligation.",
+                "When the personal data is no longer necessary for the original purpose.",
+                "When the personal data was unlawfully obtained."
+            ],
+            "correct_answer": "When the personal data is necessary to comply with a subpoena or legal obligation.",
+            "explanation": "The Right to Erasure is not absolute. A PIC can refuse to delete personal data if its retention is required to comply with a legal obligation, such as a court order or tax retention laws."
+        },
+        {
+            "id": 503,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Data Portability",
+                "Right to Damages"
+            ],
+            "lesson_concept": "Right to Data Portability, File a Complaint & Damages\n\n1. Right to Data Portability: The right to obtain a copy of one's personal data in an electronic or structured format that allows for further use. This prevents vendor lock-in.\n2. Right to File a Complaint: If a data subject feels their rights were violated, they can complain to the National Privacy Commission.\n3. Right to Damages: The right to be indemnified for any damages sustained due to inaccurate, incomplete, outdated, false, unlawfully obtained, or unauthorized use of personal data.",
+            "question_text": "Which data subject right specifically empowers users to obtain a copy of their personal data in an electronic and structured format so they can transfer it to a different service provider?",
+            "options": [
+                "Right to Access",
+                "Right to Data Portability",
+                "Right to Rectify",
+                "Right to be Informed"
+            ],
+            "correct_answer": "Right to Data Portability",
+            "explanation": "The Right to Data Portability uniquely ensures that data subjects can obtain their electronically processed data in a structured, commonly used format to move it securely to another system."
+        }
+    ]
+}

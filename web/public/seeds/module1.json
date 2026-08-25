@@ -1,0 +1,64 @@
+{
+    "version": 1,
+    "release_date": "2026-08-25",
+    "module": "Module 1",
+    "items": [
+        {
+            "id": 101,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 1: Framework",
+                "Constitutional Right",
+                "Bill of Rights"
+            ],
+            "lesson_concept": "The Right to Privacy as a Constitutional Right\n\nPrivacy is a fundamental human right recognized in the 1987 Philippine Constitution. It is primarily protected under Article III (Bill of Rights).\n\n• Section 2 protects against unreasonable searches and seizures of a person's papers and effects.\n• Section 3 explicitly guarantees that the 'privacy of communication and correspondence shall be inviolable except upon lawful order of the court, or when public safety or order requires otherwise as prescribed by law.'\n\nLandmark Supreme Court cases (like Morfe v. Mutuc and Ople v. Torres) established the 'zones of privacy' that the state cannot intrude upon without a compelling state interest.",
+            "question_text": "Which specific section of the 1987 Philippine Constitution Bill of Rights explicitly declares the privacy of communication and correspondence as inviolable?",
+            "options": [
+                "Article III, Section 1",
+                "Article III, Section 2",
+                "Article III, Section 3",
+                "Article III, Section 4"
+            ],
+            "correct_answer": "Article III, Section 3",
+            "explanation": "Article III, Section 3 of the 1987 Philippine Constitution explicitly guarantees the inviolability of the privacy of communication and correspondence. Section 2 deals with unreasonable searches and seizures."
+        },
+        {
+            "id": 102,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "RA 10173",
+                "Extraterritoriality"
+            ],
+            "lesson_concept": "The Data Privacy Act of 2012 (RA 10173) & Its Scope\n\nRepublic Act No. 10173, or the Data Privacy Act of 2012 (DPA), is the comprehensive privacy law of the Philippines. It applies to the processing of all types of personal information and to any natural and juridical person involved in personal information processing.\n\nExtraterritorial Application:\nThe DPA applies even to entities NOT found in the Philippines if:\n1. They use equipment located in the Philippines.\n2. They maintain an office, branch, or agency in the Philippines.\n3. The processing relates to the personal information of Philippine citizens or residents.",
+            "question_text": "A tech company based entirely in Singapore with no physical offices in the Philippines collects and processes the personal data of Philippine residents. Is this company subject to the Philippine Data Privacy Act (RA 10173)?",
+            "options": [
+                "No, because the company is entirely based in Singapore.",
+                "Yes, because the law has extraterritorial application when processing data of Philippine citizens or residents.",
+                "No, the DPA only applies to government agencies operating within the Philippines.",
+                "Yes, but only if the data collected is classified as Sensitive Personal Information."
+            ],
+            "correct_answer": "Yes, because the law has extraterritorial application when processing data of Philippine citizens or residents.",
+            "explanation": "RA 10173 has extraterritorial application. It applies to an act done or practice engaged in and outside of the Philippines if it relates to personal information about a Philippine citizen or a resident."
+        },
+        {
+            "id": 103,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 1: Framework",
+                "Regulatory Framework",
+                "NPC"
+            ],
+            "lesson_concept": "The National Privacy Commission (NPC)\n\nUnder RA 10173, the National Privacy Commission (NPC) was created to administer and implement the provisions of the law. \n\nKey Functions of the NPC include:\n• Rule-Making: Issuing Implementing Rules and Regulations (IRR), Advisory opinions, and Circulars.\n• Advisory: Ensuring compliance of the country with international standards set for data protection.\n• Enforcement: Receiving complaints, instituting investigations, facilitating or compelling settlement, and issuing cease and desist orders for severe privacy violations.",
+            "question_text": "Which independent body is mandated to administer and implement the provisions of the Data Privacy Act of 2012?",
+            "options": [
+                "Department of Information and Communications Technology (DICT)",
+                "National Bureau of Investigation (NBI)",
+                "National Privacy Commission (NPC)",
+                "Cybercrime Investigation and Coordinating Center (CICC)"
+            ],
+            "correct_answer": "National Privacy Commission (NPC)",
+            "explanation": "The National Privacy Commission (NPC) is the primary regulatory and quasi-judicial body created under RA 10173 to enforce the Data Privacy Act in the Philippines."
+        }
+    ]
+}

@@ -1,0 +1,197 @@
+{
+    "version": 6,
+    "release_date": "2026-08-26",
+    "module": "Comprehensive Practice Quiz",
+    "items": [
+        {
+            "id": 1101,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "NPC Powers",
+                "Practice Quiz"
+            ],
+            "lesson_concept": "The National Privacy Commission (NPC) holds quasi-judicial and quasi-legislative powers to enforce Republic Act No. 10173.",
+            "question_text": "Which of the following falls under the quasi-judicial power of the National Privacy Commission?",
+            "options": [
+                "Drafting the Implementing Rules and Regulations (IRR).",
+                "Issuing Advisory Opinions to guide the public.",
+                "Issuing Cease and Desist Orders against unauthorized data processing.",
+                "Amending provisions within the Data Privacy Act."
+            ],
+            "correct_answer": "Issuing Cease and Desist Orders against unauthorized data processing.",
+            "explanation": "Issuing a Cease and Desist Order is an adjudicatory action, which falls strictly under the NPC's quasi-judicial powers."
+        },
+        {
+            "id": 1102,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information",
+                "Practice Quiz"
+            ],
+            "lesson_concept": "Personal Information (PI) is any information from which the identity of an individual is apparent or can be reasonably and directly ascertained.",
+            "question_text": "Under the Data Privacy Act, which of the following is considered standard Personal Information rather than Sensitive Personal Information?",
+            "options": [
+                "A person's religious affiliation.",
+                "A person's ethnic origin.",
+                "A person's mobile phone number.",
+                "A person's Social Security System (SSS) number."
+            ],
+            "correct_answer": "A person's mobile phone number.",
+            "explanation": "A mobile phone number is standard Personal Information. Religion, ethnicity, and government-issued IDs are classified as Sensitive Personal Information."
+        },
+        {
+            "id": 1103,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 2: Concepts",
+                "Scenario",
+                "PIC vs PIP"
+            ],
+            "lesson_concept": "A Personal Information Controller (PIC) dictates the 'why' and 'how' of data processing, while a Personal Information Processor (PIP) merely acts on the PIC's instructions.",
+            "question_text": "A university hires an external cloud storage provider to back up student grades. The provider cannot access or use the data for its own purposes. What is the role of the external provider?",
+            "options": [
+                "Personal Information Controller (PIC)",
+                "Personal Information Processor (PIP)",
+                "Data Protection Officer (DPO)",
+                "Joint Controller"
+            ],
+            "correct_answer": "Personal Information Processor (PIP)",
+            "explanation": "Because the cloud provider processes the student grades strictly based on the university's instructions and cannot use the data for its own purposes, it acts as a PIP."
+        },
+        {
+            "id": 1104,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Proportionality"
+            ],
+            "lesson_concept": "The Principle of Proportionality requires that data processing be adequate, relevant, suitable, necessary, and not excessive in relation to a declared purpose.",
+            "question_text": "A local coffee shop starts a loyalty card program. To sign up, customers are required to provide their full name, email address, and a photocopy of their passport. Which general privacy principle is directly violated?",
+            "options": [
+                "Transparency",
+                "Accountability",
+                "Legitimate Purpose",
+                "Proportionality"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Requiring a passport for a simple coffee shop loyalty program is excessive and unnecessary, violating the Principle of Proportionality."
+        },
+        {
+            "id": 1105,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Legitimate Interest",
+                "Practice Quiz"
+            ],
+            "lesson_concept": "Legitimate Interest can be used as a lawful basis for processing standard Personal Information, provided it does not override the fundamental rights of the data subject.",
+            "question_text": "Can a company rely on 'Legitimate Interest' as the sole lawful basis to process Sensitive Personal Information (SPI)?",
+            "options": [
+                "Yes, if the company conducts a Privacy Impact Assessment.",
+                "Yes, as long as the data subject is notified.",
+                "No, Legitimate Interest only applies to general Personal Information.",
+                "No, unless they get approval from the NPC first."
+            ],
+            "correct_answer": "No, Legitimate Interest only applies to general Personal Information.",
+            "explanation": "Section 13 of the DPA strictly dictates the criteria for processing SPI, and Legitimate Interest is not one of them. It only applies to general PI under Section 12."
+        },
+        {
+            "id": 1106,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Scenario",
+                "Medical Emergency"
+            ],
+            "lesson_concept": "Processing of Sensitive Personal Information is lawful when necessary to protect the life and health of a data subject who cannot legally or physically give consent.",
+            "question_text": "A passenger collapses on a flight. A doctor on board checks the passenger's medical ID bracelet, which reveals a severe allergy to penicillin, and uses this data to administer safe first aid. What is the lawful basis for processing this SPI?",
+            "options": [
+                "Consent",
+                "Protection of Life and Health",
+                "Public Organizations",
+                "Existing Law and Regulation"
+            ],
+            "correct_answer": "Protection of Life and Health",
+            "explanation": "Because the passenger is incapacitated and unable to give consent, the doctor can lawfully process the medical data to protect the passenger's life and health."
+        },
+        {
+            "id": 1107,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Data Portability",
+                "Practice Quiz"
+            ],
+            "lesson_concept": "The Right to Data Portability allows data subjects to obtain their electronically processed data in a structured, commonly used format.",
+            "question_text": "Which data subject right is specifically designed to prevent 'vendor lock-in' by allowing individuals to obtain and transfer their electronic data to a different service provider?",
+            "options": [
+                "Right to Access",
+                "Right to Data Portability",
+                "Right to Object",
+                "Right to Erasure"
+            ],
+            "correct_answer": "Right to Data Portability",
+            "explanation": "The Right to Data Portability ensures users can securely extract their data in a structured electronic format to move it between services."
+        },
+        {
+            "id": 1108,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 6: Penalties",
+                "Scenario",
+                "Unauthorized Processing"
+            ],
+            "lesson_concept": "The DPA imposes criminal penalties on responsible officers of a juridical person if they participated in or, by gross negligence, allowed a privacy crime to occur.",
+            "question_text": "A company director intentionally sells an internal employee database to a marketing agency without consent. The NPC investigates and finds the director fully responsible. What type of penalty is the director liable for?",
+            "options": [
+                "Only administrative fines.",
+                "Civil damages only.",
+                "Criminal penalties, including imprisonment and fines.",
+                "A formal warning and mandatory DPO retraining."
+            ],
+            "correct_answer": "Criminal penalties, including imprisonment and fines.",
+            "explanation": "Unauthorized processing and malicious disclosure are criminal offenses under the DPA, subjecting the responsible officer to mandatory imprisonment and fines."
+        },
+        {
+            "id": 1109,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "72-Hour Rule",
+                "Practice Quiz"
+            ],
+            "lesson_concept": "A PIC must notify the NPC within 72 hours upon knowledge of a breach involving SPI that poses a real risk of serious harm.",
+            "question_text": "What is the mandatory timeframe for a Personal Information Controller to notify the National Privacy Commission after discovering a personal data breach that requires notification?",
+            "options": [
+                "24 hours",
+                "48 hours",
+                "72 hours",
+                "5 working days"
+            ],
+            "correct_answer": "72 hours",
+            "explanation": "NPC Circular 16-03 explicitly mandates a 72-hour notification window upon knowledge of, or reasonable belief that, a qualifying personal data breach has occurred."
+        },
+        {
+            "id": 1110,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Scenario",
+                "Availability Breach"
+            ],
+            "lesson_concept": "Not all security incidents trigger mandatory notification. If a system outage occurs (availability breach) but no unauthorized access to data takes place, the 72-hour NPC notification is generally not required.",
+            "question_text": "A ransomware attack locks a hospital's booking system for two days. Forensic analysts confirm the data was encrypted in place but never accessed, viewed, or extracted by the attackers. Must the hospital issue a mandatory 72-hour breach notification to the NPC?",
+            "options": [
+                "Yes, because all ransomware attacks require NPC notification.",
+                "Yes, because hospital booking data is automatically Sensitive Personal Information.",
+                "No, because while it is a security incident, there was no unauthorized acquisition of data posing a risk of identity fraud or serious harm.",
+                "No, but they must inform the local police department within 24 hours."
+            ],
+            "correct_answer": "No, because while it is a security incident, there was no unauthorized acquisition of data posing a risk of identity fraud or serious harm.",
+            "explanation": "Under NPC Circular 16-03, mandatory notification specifically requires the unauthorized acquisition of sensitive data. An availability issue without unauthorized data access does not strictly trigger the 72-hour reporting rule."
+        }
+    ]
+}

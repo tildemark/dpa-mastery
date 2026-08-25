@@ -1,0 +1,197 @@
+{
+    "version": 5,
+    "release_date": "2026-08-26",
+    "module": "Module 1",
+    "items": [
+        {
+            "id": 1006,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 1: Framework",
+                "Scope of DPA",
+                "Applicability"
+            ],
+            "lesson_concept": "Scope of the Data Privacy Act (RA 10173)\n\nThe Data Privacy Act applies to the processing of all types of personal information and to any natural and juridical person involved in personal information processing. \n\n• Natural Person: A living human being.\n• Juridical Person: A non-human legal entity recognized by law, such as a corporation, partnership, government agency, or organization.",
+            "question_text": "Does the Data Privacy Act of 2012 apply strictly to government agencies, or does it also govern private corporations and individuals?",
+            "options": [
+                "It applies exclusively to government agencies and their contractors.",
+                "It applies only to private corporations that exceed 1,000 employees.",
+                "It applies to both natural and juridical persons involved in personal information processing in the public and private sectors.",
+                "It applies only to individuals (natural persons) and not to corporations."
+            ],
+            "correct_answer": "It applies to both natural and juridical persons involved in personal information processing in the public and private sectors.",
+            "explanation": "Section 4 of the DPA explicitly states that the act applies to the processing of all types of personal information by any natural or juridical person, covering both the public and private sectors."
+        },
+        {
+            "id": 1007,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Constitutional Right",
+                "Bill of Rights"
+            ],
+            "lesson_concept": "The Bill of Rights: Section 2\n\nWhile Section 3 of the Bill of Rights protects the privacy of communication and correspondence, Section 2 is equally critical. \n\nArticle III, Section 2 of the 1987 Constitution protects the right of the people to be secure in their persons, houses, papers, and effects against unreasonable searches and seizures of whatever nature and for any purpose.",
+            "question_text": "Which provision of the 1987 Philippine Constitution explicitly protects citizens against 'unreasonable searches and seizures' of their papers and effects?",
+            "options": [
+                "Article III, Section 1",
+                "Article III, Section 2",
+                "Article III, Section 3",
+                "Article III, Section 4"
+            ],
+            "correct_answer": "Article III, Section 2",
+            "explanation": "Article III, Section 2 guarantees the right against unreasonable searches and seizures, forming a core pillar of the constitutional right to privacy."
+        },
+        {
+            "id": 1008,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Regulatory Framework",
+                "NPC Structure"
+            ],
+            "lesson_concept": "Structure of the National Privacy Commission\n\nThe National Privacy Commission (NPC) is an independent body attached to the Department of Information and Communications Technology (DICT) strictly for policy and program coordination.\n\nTo execute its mandate of administering the DPA, the NPC is headed by a distinct leadership structure consisting of three appointed officials: One (1) Privacy Commissioner who serves as the Chairman, and Two (2) Deputy Privacy Commissioners.",
+            "question_text": "According to the Data Privacy Act, what is the composition of the leadership of the National Privacy Commission?",
+            "options": [
+                "One Secretary and three Undersecretaries.",
+                "A five-member Board of Directors appointed by Congress.",
+                "One Privacy Commissioner and Two Deputy Privacy Commissioners.",
+                "A single Director-General operating under the NBI."
+            ],
+            "correct_answer": "One Privacy Commissioner and Two Deputy Privacy Commissioners.",
+            "explanation": "Section 7 of the DPA establishes that the Commission shall be headed by one (1) Privacy Commissioner, assisted by two (2) Deputy Privacy Commissioners."
+        },
+        {
+            "id": 1009,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Regulatory Framework",
+                "Quasi-Judicial Powers"
+            ],
+            "lesson_concept": "Powers of the NPC: Quasi-Judicial vs. Quasi-Legislative\n\nThe NPC has broad authority categorized into different powers:\n\n1. Quasi-Legislative (Rule-Making): Drafting the IRR, issuing Circulars, and publishing advisory opinions.\n2. Quasi-Judicial (Adjudicatory): Receiving complaints, instituting investigations, facilitating settlements, and issuing cease and desist orders to stop the processing of personal data if a severe violation is found.\n3. Advisory/Public Education: Promoting data privacy awareness.",
+            "question_text": "If a telecommunications company is found to be actively leaking customer data, the NPC can issue a 'Cease and Desist Order' forcing them to halt data processing. This action falls under which specific power of the NPC?",
+            "options": [
+                "Quasi-Legislative Power",
+                "Quasi-Judicial Power",
+                "Advisory Power",
+                "Congressional Power"
+            ],
+            "correct_answer": "Quasi-Judicial Power",
+            "explanation": "The ability to investigate complaints, hold hearings, and issue binding enforcement actions like Cease and Desist orders constitutes the NPC's quasi-judicial (adjudicatory) power."
+        },
+        {
+            "id": 1010,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "AMLA"
+            ],
+            "lesson_concept": "Statutory Exclusions: Anti-Money Laundering Act (AMLA)\n\nUnder Section 4 of the DPA, certain processing activities are excluded from the strict limitations of the law to ensure the government can fight crime and maintain economic stability. \n\nOne major exclusion is information necessary in order for banks and other financial institutions to comply with the Anti-Money Laundering Act (AMLA) and other applicable laws. In these specific contexts, the privacy rights of the individual yield to the state's interest in preventing financial crimes.",
+            "question_text": "A commercial bank continuously monitors a client's transaction history and reports suspicious multi-million peso deposits to the Anti-Money Laundering Council (AMLC) without the client's consent. The client sues the bank for a data privacy violation. Will the suit prosper?",
+            "options": [
+                "Yes, because financial data is Sensitive Personal Information requiring explicit consent.",
+                "Yes, the bank must always secure a court order before reporting to the AMLC.",
+                "No, because processing necessary to comply with the Anti-Money Laundering Act is explicitly excluded from the DPA.",
+                "No, provided the bank only shares the data with private credit bureaus."
+            ],
+            "correct_answer": "No, because processing necessary to comply with the Anti-Money Laundering Act is explicitly excluded from the DPA.",
+            "explanation": "Section 4(f) of the DPA excludes information necessary for banks to comply with AMLA. The bank is legally obligated to report suspicious transactions, and this supersedes the DPA's general consent requirements."
+        },
+        {
+            "id": 1011,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 1: Framework",
+                "Constitutional Right",
+                "Jurisprudence"
+            ],
+            "lesson_concept": "Jurisprudence: Zones of Privacy\n\nThe Philippine Supreme Court has recognized the right to privacy through landmark decisions even before the DPA was enacted. \n\nIn cases like 'Morfe v. Mutuc' and famously 'Ople v. Torres', the Supreme Court ruled that the Constitution establishes 'zones of privacy' (such as one's home, papers, and correspondence). The State cannot intrude into these zones without a compelling state interest and narrowly tailored means.",
+            "question_text": "Which landmark Philippine Supreme Court case is widely cited for recognizing the 'zones of privacy' and striking down a national ID system due to its lack of adequate safeguards for personal data?",
+            "options": [
+                "Republic v. Sereno",
+                "Ople v. Torres",
+                "Disini v. Secretary of Justice",
+                "People v. Marti"
+            ],
+            "correct_answer": "Ople v. Torres",
+            "explanation": "Ople v. Torres (1998) is a foundational privacy case in the Philippines where the Supreme Court struck down Administrative Order No. 308 (a proposed national ID system) for violating the constitutional right to privacy."
+        },
+        {
+            "id": 1012,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 1: Framework",
+                "Scope of DPA",
+                "Equipment in PH"
+            ],
+            "lesson_concept": "Extraterritoriality: Equipment Located in the Philippines\n\nThe extraterritorial application of the DPA does not only apply when Philippine citizens are involved. \n\nUnder Section 6, the DPA also applies to an entity formed outside the Philippines, processing the data of foreigners, if that entity uses equipment that is located in the Philippines, or maintains an office, branch, or agency in the Philippines.",
+            "question_text": "A Japanese gaming company has no offices in the Philippines and solely targets Japanese citizens. However, they rent physical cloud servers situated in a data center in Metro Manila to process their players' data. Is the processing by this Japanese company subject to the Philippine Data Privacy Act?",
+            "options": [
+                "No, because the data subjects are not Philippine citizens or residents.",
+                "No, because the company is not incorporated under Philippine law.",
+                "Yes, because the company uses equipment located in the Philippines for processing personal information.",
+                "Yes, but only if the data center formally registers as a Personal Information Controller."
+            ],
+            "correct_answer": "Yes, because the company uses equipment located in the Philippines for processing personal information.",
+            "explanation": "Section 6(a) of the DPA explicitly extends the scope of the law to entities formed outside the Philippines that use equipment located in the Philippines to process personal information."
+        },
+        {
+            "id": 1013,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "Foreign Jurisdictions"
+            ],
+            "lesson_concept": "Statutory Exclusions: Foreign Jurisdictions\n\nTo respect international law and cross-border business processing (like the BPO industry), the DPA has a specific exclusion regarding foreign data.\n\nSection 4(g) excludes personal information originally collected from residents of foreign jurisdictions in accordance with the laws of those foreign jurisdictions, including any applicable data privacy laws, which is being processed in the Philippines.",
+            "question_text": "A BPO company in Manila is hired by a French hospital to process the medical records of French citizens living in Paris. The data was collected strictly in accordance with the EU GDPR. Which law primarily governs the protection of these medical records while being processed in Manila?",
+            "options": [
+                "The Philippine Data Privacy Act exclusively, because the BPO is in Manila.",
+                "Both the DPA and GDPR apply equally.",
+                "The laws of the foreign jurisdiction (GDPR), as this data is excluded from the primary scope of the DPA.",
+                "Neither, as cross-border health data has international immunity."
+            ],
+            "correct_answer": "The laws of the foreign jurisdiction (GDPR), as this data is excluded from the primary scope of the DPA.",
+            "explanation": "Under Section 4(g), personal information originally collected from residents of foreign jurisdictions in accordance with their laws is excluded from the DPA, ensuring the BPO adheres to the foreign law (GDPR)."
+        },
+        {
+            "id": 1014,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Limitations of Exclusions"
+            ],
+            "lesson_concept": "Loss of Statutory Exemption\n\nThe exclusions provided under Section 4 of the DPA (such as processing for journalistic, research, or public officer functions) are not absolute and permanent.\n\nIf personal data collected under an exemption is subsequently used for a purpose that falls outside that exemption (for example, a journalist takes data gathered for a news story and sells it to a marketing firm), the processing immediately loses its exempt status and becomes fully subject to the strict requirements and penalties of the DPA.",
+            "question_text": "An academic researcher legitimately collects the health data of 500 respondents for a university study, which is excluded from the DPA under the research exemption. Months later, the researcher starts an independent pharmaceutical business and uses that same data to email marketing materials to the respondents. What is the legal status of this new processing activity?",
+            "options": [
+                "It remains exempt because the data was originally collected for research.",
+                "The new processing loses the exemption and is fully subject to the DPA, meaning the researcher committed unauthorized processing.",
+                "It is partially exempt; the researcher only faces administrative fines but no criminal liability.",
+                "The university assumes all liability for the researcher's new business."
+            ],
+            "correct_answer": "The new processing loses the exemption and is fully subject to the DPA, meaning the researcher committed unauthorized processing.",
+            "explanation": "Exemptions only apply as long as the data is processed for the specific exempt purpose. Using research data for commercial marketing strips the exemption, making it a criminal violation (unauthorized processing)."
+        },
+        {
+            "id": 1015,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Hierarchy of Laws"
+            ],
+            "lesson_concept": "The Hierarchy of Privacy Laws\n\nWhen applying privacy rules, organizations must understand the hierarchy of legal authority. \n\n1. The 1987 Constitution is supreme.\n2. Republic Act No. 10173 (The Data Privacy Act) is the primary statute passed by Congress.\n3. The Implementing Rules and Regulations (IRR) and NPC Circulars are administrative issuances. \n\nIf a rule in an NPC Circular contradicts a provision in RA 10173, the statute (RA 10173) prevails. Administrative agencies cannot expand or restrict the law beyond what Congress explicitly passed.",
+            "question_text": "Suppose a newly issued NPC Circular mandates that all companies must retain employee data for exactly 10 years, but RA 10173 explicitly states that data must only be retained as long as necessary for its declared purpose. A company deletes data after 2 years when an employee resigns, facing an NPC audit. Which legal provision takes precedence?",
+            "options": [
+                "The NPC Circular, because it is the most recent issuance.",
+                "RA 10173, because a statutory law passed by Congress supersedes any administrative circular.",
+                "Neither; the matter must immediately go to the Supreme Court.",
+                "The NPC Circular, because the NPC has absolute quasi-legislative authority."
+            ],
+            "correct_answer": "RA 10173, because a statutory law passed by Congress supersedes any administrative circular.",
+            "explanation": "In the Philippine legal system, administrative issuances (like NPC Circulars) must conform to the statute (RA 10173) that created them. An administrative rule cannot amend or override an act of Congress."
+        }
+    ]
+}

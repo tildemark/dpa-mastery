@@ -1,0 +1,84 @@
+{
+    "version": 1,
+    "release_date": "2026-08-25",
+    "module": "Module 2",
+    "items": [
+        {
+            "id": 201,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information",
+                "Definitions"
+            ],
+            "lesson_concept": "Personal Information (PI)\n\nPersonal Information refers to any information, whether recorded in a material form or not, from which the identity of an individual is apparent or can be reasonably and directly ascertained by the entity holding the information, or when put together with other information would directly and certainly identify an individual.\n\nExamples:\n• Full name\n• Contact number and personal email address\n• Home address\n• Vehicle plate number (when linked to an owner)\n• CCTV footage capturing identifiable faces",
+            "question_text": "Which of the following best defines Personal Information under Republic Act No. 10173?",
+            "options": [
+                "Information that only relates to a person's medical records or health conditions",
+                "Any information from which the identity of an individual is apparent or can be reasonably and directly ascertained",
+                "Only data that has been published or made available in the public domain",
+                "Data that is exclusively processed by government regulatory bodies"
+            ],
+            "correct_answer": "Any information from which the identity of an individual is apparent or can be reasonably and directly ascertained",
+            "explanation": "Under Section 3(g) of the DPA, Personal Information refers to any data from which the identity of an individual is apparent or can be reasonably and directly ascertained."
+        },
+        {
+            "id": 202,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Definitions"
+            ],
+            "lesson_concept": "Sensitive Personal Information (SPI)\n\nSensitive Personal Information is a special category of personal data subject to stricter processing rules. Under Section 3(l) of the DPA, SPI refers to personal information:\n\n1. About an individual's race, ethnic origin, marital status, age, color, and religious, philosophical, or political affiliations.\n2. About an individual's health, education, genetic data, sexual life, or proceeding for any offense committed or alleged.\n3. Issued by government agencies peculiar to an individual (e.g., SSS, GSIS, TIN, Passport Number, Driver's License).\n4. Specifically established by an executive order or an act of Congress to be kept classified.",
+            "question_text": "Under the Data Privacy Act of 2012, which of the following is classified as Sensitive Personal Information (SPI)?",
+            "options": [
+                "A person's business email address and office landline",
+                "Social Security System (SSS) number and passport number",
+                "A person's job title and company department",
+                "A user's preferred shopping delivery address"
+            ],
+            "correct_answer": "Social Security System (SSS) number and passport number",
+            "explanation": "Government-issued identification numbers peculiar to an individual (such as SSS, TIN, and passport numbers) are expressly classified as Sensitive Personal Information under Section 3(l) of RA 10173."
+        },
+        {
+            "id": 203,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC",
+                "PIP",
+                "Roles"
+            ],
+            "lesson_concept": "PIC vs. PIP (Roles and Responsibilities)\n\n• Data Subject: The individual whose personal, sensitive personal, or privileged information is being processed.\n• Personal Information Controller (PIC): A person or organization who controls the collection, holding, processing, or use of personal information, including instructing another to process personal information on its behalf. The PIC decides WHAT data is collected and WHY.\n• Personal Information Processor (PIP): Any natural or juridical person to whom a PIC may outsource the processing of personal data. The PIP acts only on the documented instructions of the PIC.",
+            "question_text": "A retail bank hires an external cloud vendor to host its customer transaction database under strict contractual instructions. In this arrangement, what role does the external cloud vendor fulfill?",
+            "options": [
+                "Personal Information Controller (PIC)",
+                "Personal Information Processor (PIP)",
+                "Data Protection Officer (DPO)",
+                "Data Subject"
+            ],
+            "correct_answer": "Personal Information Processor (PIP)",
+            "explanation": "Because the cloud vendor processes data strictly under contract and on the instructions of the bank, the cloud vendor acts as a Personal Information Processor (PIP), while the bank remains the PIC."
+        },
+        {
+            "id": 204,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC Obligations",
+                "Accountability"
+            ],
+            "lesson_concept": "General Obligations of Personal Information Controllers (PICs)\n\nPICs carry legal accountability for personal data under their custody. Core obligations include:\n\n• Principle of Accountability: Implementing reasonable and appropriate organizational, physical, and technical security measures.\n• Data Protection Officer (DPO): Designating an individual accountable for ensuring compliance with the DPA.\n• Contractual Controls: Binding third-party processors (PIPs) via formal data sharing or outsourcing agreements.\n• Breach Protocol: Maintaining internal protocols to identify, log, and report data breaches within the mandatory statutory deadlines.",
+            "question_text": "If a Personal Information Processor (PIP) commits a data breach due to lack of security controls, can the Personal Information Controller (PIC) also be held accountable under the DPA?",
+            "options": [
+                "No, outsourcing entirely transfers legal responsibility to the PIP.",
+                "Yes, the PIC retains accountability for data under its custody and must ensure its processors maintain adequate security measures.",
+                "No, provided the PIP is an international company.",
+                "Yes, but only if the data subjects give written notice within 24 hours."
+            ],
+            "correct_answer": "Yes, the PIC retains accountability for data under its custody and must ensure its processors maintain adequate security measures.",
+            "explanation": "Under the principle of accountability, the PIC remains responsible for personal data under its control, even when processing has been outsourced to a third-party PIP."
+        }
+    ]
+}
