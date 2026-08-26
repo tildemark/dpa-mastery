@@ -110,40 +110,39 @@ flutter run -d windows
 | Platform | Target Output File | Local Workspace Path |
 | :--- | :--- | :--- |
 | **Android (APK)** | Universal Release APK | [`build/app/outputs/flutter-apk/app-release.apk`](file:///c:/code/dpa-mastery/build/app/outputs/flutter-apk/app-release.apk) |
-| **Windows (Desktop)** | Release Executable & Bundle | [`build/windows/x64/runner/Release/dpa_mastery.exe`](file:///c:/code/dpa-mastery/build/windows/x64/runner/Release/dpa_mastery.exe) |
+| **Windows (Portable ZIP)** | Standalone Portable ZIP | [`build/dpa_mastery_windows_portable_v1.0.0.zip`](file:///c:/code/dpa-mastery/build/dpa_mastery_windows_portable_v1.0.0.zip) |
+| **Windows (Raw Release)** | Release Executable & Bundle | [`build/windows/x64/runner/Release/dpa_mastery.exe`](file:///c:/code/dpa-mastery/build/windows/x64/runner/Release/dpa_mastery.exe) |
 
 ---
 
-**Build Android Release APK:**
+### Step-by-Step Release Packaging Commands
+
+#### 1. Android Release APK:
 
 ```bash
-# Single universal release APK:
+# Build universal APK:
 flutter build apk --release
 
-# Output path:
+# Output binary location:
 # build/app/outputs/flutter-apk/app-release.apk
-
-# (Recommended for smaller file sizes) Split per ABI (arm64-v8a, armeabi-v7a, x86_64):
-flutter build apk --split-per-abi --release
 ```
 
-**Build Android App Bundle (AAB for Google Play):**
+#### 2. Windows Portable ZIP (Recommended):
 
-```bash
-flutter build appbundle --release
-
-# Output path:
-# build/app/outputs/bundle/release/app-release.aab
-```
-
-**Build Windows Desktop Release Executable:**
-
-```bash
+```powershell
+# 1. Compile native 64-bit Windows release binary:
 flutter build windows --release
 
-# Output directory:
-# build/windows/x64/runner/Release/
+# 2. Package release folder into a portable standalone .zip:
+Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build\dpa_mastery_windows_portable_v1.0.0.zip -Force
+
+# Output portable package location:
+# build/dpa_mastery_windows_portable_v1.0.0.zip
 ```
+
+> **Why Portable ZIP for Windows?** Users simply extract the `.zip` anywhere and launch `dpa_mastery.exe` without requiring administrator privileges or installer setup wizards.
+
+---
 
 > **Note on iOS Builds:** Apple requires macOS and Xcode to compile iOS bundles (`.ipa`). On Windows, Android and Windows binaries compile natively. To compile for iOS, run `flutter build ipa --no-codesign` on a Mac or use a macOS GitHub Actions workflow.
 
