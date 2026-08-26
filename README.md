@@ -2,30 +2,30 @@
 
 **DPA Mastery** is an offline-first mobile application designed to help privacy professionals, compliance officers, and aspiring Data Protection Officers (DPOs) prepare for the **Philippine National Privacy Commission (NPC) Data Privacy Competency Examination**.
 
-Built using **Flutter**, **Drift (SQLite)**, and **Riverpod**, the app integrates a **WaniKani-style Spaced Repetition System (SRS)** with a **Difficulty Tier Gating Engine** to ensure comprehensive understanding and long-term retention of Republic Act No. 10173 (The Data Privacy Act of 2012), its IRR, and NPC issuances.
+Built using **Flutter**, **Drift (SQLite)**, and **Riverpod**, the app integrates an **8-Stage Spaced Repetition System (SRS)** with a **Difficulty Tier Gating Engine** to ensure comprehensive understanding and long-term retention of Republic Act No. 10173 (The Data Privacy Act of 2012), its IRR, and NPC issuances.
 
 ---
 
 ## 🚀 Key Features
 
-- **WaniKani-Style Spaced Repetition System (SRS)**:
+- **8-Stage Spaced Repetition System (SRS)**:
   - Progression across 9 stages: `Locked (0)` $\rightarrow$ `Apprentice I–IV (1–4)` $\rightarrow$ `Guru I–II (5–6)` $\rightarrow$ `Master (7)` $\rightarrow$ `Burned (8)`.
   - Realistic review intervals: `4h`, `8h`, `24h`, `48h`, `1w`, `2w`, and `1mo`.
   - Strict penalty structure: Incorrect answers demote Guru items to Apprentice I and Master items to Guru I.
+- **Reviews-First Gating & Apprentice Cap**:
+  - Gated lesson flow requiring pending reviews to be cleared first.
+  - Configurable Apprentice capacity (default 50 items) to prevent study overload.
 - **Difficulty Gating Engine (85% Guru Rule)**:
   - Progression spans 5 difficulty tiers (from foundational definitions to complex multi-concept scenarios and legal edge cases).
   - Tier $X+1$ unlocks only when at least **85%** of items in Tier $X$ reach **Guru status (Stage 5+)**.
-- **Guided Lessons & Review Modes**:
-  - **Lessons Flow**: High-yield `ConceptCard` review followed immediately by an applied multiple-choice question.
-  - **Reviews Flow**: Spaced repetition drills with animated stage elevation/demotion badges and detailed legal explanations.
-- **Tag-Based Topic Drills**:
+- **2-Phase Guided Lessons & Review Modes**:
+  - **Phase 1 (Learning)**: Sequential concept walkthroughs with high-yield study cards.
+  - **Phase 2 (Exam)**: Direct question exam with shuffled options and randomized order (promotes to Apprentice 1 upon passing).
+- **Targeted Self-Study & Tag Drills**:
   - Practice specific NPC exam topics (e.g., *Scope of DPA*, *Consent*, *Statutory Exclusions*, *Data Breach Management*) without impacting your SRS review schedule.
 - **Hybrid Seed & Over-The-Air (OTA) Sync**:
-  - **Module 1** is bundled in the app for cold, offline first-launch.
-  - **Modules 2–7** are fetched OTA from a versioned static GitHub Pages repository.
-  - SQLite upsert logic safely updates question text and tags while preserving all local `UserProgress` records.
-- **Static Seed API & Landing Hub**:
-  - Includes a Next.js static site hosted on GitHub Pages that serves OTA question payloads and manifest versions.
+  - Offline-first SQLite database pre-loaded with canonical NPC question seeds (10 modules / batches).
+  - Background OTA sync fetches newly updated questions and jurisprudence revisions without overwriting user study progress.
 
 ---
 
@@ -39,19 +39,20 @@ dpa-mastery/
 │   │   ├── app_database.dart   # @DriftDatabase configuration & connection
 │   │   └── daos/               # QuestionDao & ProgressDao (safe upsert pipelines)
 │   ├── engine/                 # Pure Dart SRS & gating engines
-│   │   ├── srs_engine.dart     # WaniKani state machine & demotion rules
+│   │   ├── srs_engine.dart     # 8-Stage SRS state machine & penalty rules
 │   │   └── gating_service.dart # 85% Guru progression threshold logic
 │   ├── features/               # Presentation & UI layer
-│   │   ├── home/               # Dashboard with progress bars & quick actions
-│   │   ├── lessons/            # 3-step lesson flow (Concept -> Question -> Summary)
+│   │   ├── home/               # Dashboard with SRS distribution bar & quick actions
+│   │   ├── lessons/            # 2-Phase lesson flow (Concept -> Exam -> Summary)
 │   │   ├── reviews/            # Review session flow & post-session breakdown
-│   │   └── drills/             # Tag-filtered drill mode
-│   ├── services/               # Seed loader, OTA sync, & community submission
+│   │   ├── drills/             # Tag-filtered drill mode & cram engine
+│   │   └── settings/           # Daily pace, Apprentice cap, & profile preferences
+│   ├── services/               # Seed loader, OTA sync, & rank service
 │   └── main.dart               # Bootstrap & Riverpod ProviderScope setup
-├── assets/seeds/               # Bundled Module 1 JSON for instant offline launch
-├── docs/seeds/                 # Canonical question seed files (Modules 1–7)
-├── web/                        # Next.js static site & OTA seed distribution API
-└── test/                       # Unit & widget test suites (24 tests passing)
+├── assets/seeds/               # Bundled canonical JSON seeds for instant offline launch
+├── docs/seeds/                 # Seed backup registry
+├── web/                        # Next.js static marketing landing page & OTA seed API
+└── test/                       # Unit & widget test suites (25 tests passing)
 ```
 
 ---
@@ -67,7 +68,7 @@ dpa-mastery/
 ### 1. Clone & Install Dependencies
 
 ```bash
-git clone https://github.com/tildeapp/dpa-mastery.git
+git clone https://github.com/tildemark/dpa-mastery.git
 cd dpa-mastery
 flutter pub get
 ```
@@ -205,7 +206,7 @@ If running `adb devices` shows an empty list or your device is hijacked by third
 
 - **Developer**: Alfredo Sanchez Jr
 - **Website**: [https://sanchez.ph](https://sanchez.ph)
-- **Project**: DPA Mastery — WaniKani SRS Study Platform for the Philippine NPC DPO Examination.
+- **Project**: DPA Mastery — Offline-First SRS Study Platform for the Philippine NPC DPO Examination.
 
 ---
 

@@ -343,7 +343,7 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database pre-bundled.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildeapp/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download">
                 Download APK (.apk) &rarr;
               </a>
               <span className="meta-info">Android 8.0+ (Oreo or later)</span>
@@ -365,7 +365,7 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Native standalone desktop executable for intensive multi-monitor study sessions.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildeapp/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download secondary">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download secondary">
                 Download for Windows (.zip) &rarr;
               </a>
               <span className="meta-info">Windows 10 / 11 (64-bit)</span>
@@ -388,7 +388,7 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">iOS build package and TestFlight beta invitations for iPhone and iPad.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildeapp/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download secondary">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download secondary">
                 View iOS Release Notes &rarr;
               </a>
               <span className="meta-info">iOS 15.0 or later</span>
@@ -425,7 +425,7 @@ export default function HomePage() {
               <h5>Developers &amp; OTA</h5>
               <Link href="/updates">Seed Registry</Link>
               <a href="/manifest.json" target="_blank" rel="noreferrer">Manifest JSON</a>
-              <a href="https://github.com/tildeapp/dpa-mastery" target="_blank" rel="noreferrer">GitHub Repository</a>
+              <a href="https://github.com/tildemark/dpa-mastery" target="_blank" rel="noreferrer">GitHub Repository</a>
             </div>
             <div className="footer-column">
               <h5>Legal &amp; Privacy</h5>

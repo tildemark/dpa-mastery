@@ -84,7 +84,7 @@ export default function PrivacyPage() {
               <strong>Alfredo Sanchez Jr.</strong><br/>
               Lead Developer &bull; DPA Mastery Project<br/>
               Website: <a href="https://sanchez.ph" target="_blank" rel="noreferrer">https://sanchez.ph</a><br/>
-              Repository: <a href="https://github.com/tildeapp/dpa-mastery" target="_blank" rel="noreferrer">github.com/tildeapp/dpa-mastery</a>
+              Repository: <a href="https://github.com/tildemark/dpa-mastery" target="_blank" rel="noreferrer">github.com/tildemark/dpa-mastery</a>
             </div>
           </section>
         </div>
