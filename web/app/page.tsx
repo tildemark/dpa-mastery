@@ -371,6 +371,29 @@ export default function HomePage() {
               <span className="meta-info">Windows 10 / 11 (64-bit)</span>
             </div>
           </div>
+
+          {/* iOS Card (Coming Soon) */}
+          <div className="download-card coming-soon">
+            <div className="platform-header">
+              <div className="platform-icon apple">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 1.28 0 2.37-1.06 4-1.06 1.83 0 3.72 1.34 3.72 1.34s-2.89-1.63-2.89-4.8c0-3.32 2.73-4.8 2.73-4.8-1.57-2.33-4-2.42-4.88-2.42-2.12 0-3.4 1.25-4.48 1.25-1.12 0-2.65-1.25-4.48-1.25C7.2 10.22 4 12.44 4 16.73c0 4.16 2.57 9.27 5.72 9.27 1.43 0 2.58-.94 4-.94z"/>
+                  <path d="M15.5 2c0 1.94-1.39 3.5-3 3.5-.22 0-.44-.02-.65-.08.15-1.78 1.58-3.42 3.65-3.42z"/>
+                </svg>
+              </div>
+              <div>
+                <h3>iOS / iPadOS</h3>
+                <span className="platform-tag" style={{ color: '#94a3b8' }}>Coming Soon</span>
+              </div>
+            </div>
+            <p className="platform-desc">iOS package and TestFlight beta invitations are currently in preparation.</p>
+            <div className="download-actions">
+              <button disabled className="btn-download secondary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
+                iOS Build Coming Soon
+              </button>
+              <span className="meta-info">Requires iOS 15.0 or later</span>
+            </div>
+          </div>
         </div>
       </section>
 
