@@ -52,22 +52,24 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
         title: Text('Drill: ${widget.tagName}'),
         centerTitle: true,
       ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _questions == null || _questions!.isEmpty
-              ? Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(24.0),
-                    child: Text(
-                      'No questions found for tag "${widget.tagName}".',
-                      style: Theme.of(context).textTheme.titleMedium,
-                      textAlign: TextAlign.center,
+      body: SafeArea(
+        child: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : _questions == null || _questions!.isEmpty
+                ? Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Text(
+                        'No questions found for tag "${widget.tagName}".',
+                        style: Theme.of(context).textTheme.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                )
-              : _currentIndex >= _questions!.length
-                  ? _buildDrillSummary(context)
-                  : _buildQuestionCard(context),
+                  )
+                : _currentIndex >= _questions!.length
+                    ? _buildDrillSummary(context)
+                    : _buildQuestionCard(context),
+      ),
     );
   }
 

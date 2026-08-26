@@ -70,32 +70,34 @@ class _ReviewsScreenState extends ConsumerState<ReviewsScreen>
         ),
         centerTitle: true,
       ),
-      body: queueAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
-        data: (items) {
-          if (items.isEmpty) {
-            return _EmptyQueue(cs: cs);
-          }
+      body: SafeArea(
+        child: queueAsync.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (e, _) => Center(child: Text('Error: $e')),
+          data: (items) {
+            if (items.isEmpty) {
+              return _EmptyQueue(cs: cs);
+            }
 
-          if (!_initialised) {
-            _initialised = true;
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              ref.read(reviewControllerProvider.notifier).seed(
-                    ReviewSessionState(
-                      items: items,
-                      currentIndex: 0,
-                      step: ReviewStep.question,
-                    ),
-                  );
-            });
-          }
+            if (!_initialised) {
+              _initialised = true;
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                ref.read(reviewControllerProvider.notifier).seed(
+                      ReviewSessionState(
+                        items: items,
+                        currentIndex: 0,
+                        step: ReviewStep.question,
+                      ),
+                    );
+              });
+            }
 
-          return _ReviewFlow(
-            fadeAnim: _fadeAnim,
-            onTransition: _transitionTo,
-          );
-        },
+            return _ReviewFlow(
+              fadeAnim: _fadeAnim,
+              onTransition: _transitionTo,
+            );
+          },
+        ),
       ),
     );
   }

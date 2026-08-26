@@ -1,0 +1,935 @@
+{
+    "version": 9,
+    "release_date": "2026-08-26",
+    "module": "Expanded Practice Quiz Batch",
+    "items": [
+        {
+            "id": 1401,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Processing",
+                "Definitions"
+            ],
+            "lesson_concept": "Processing refers to any operation performed upon personal data including collection, recording, organization, storage, updating, modification, retrieval, consultation, use, consolidation, blocking, erasure, or destruction.",
+            "question_text": "Under the DPA, which of the following activities is strictly considered as 'Processing' of personal data?",
+            "options": [
+                "Only the permanent deletion of data.",
+                "Only the collection and storage of data.",
+                "Any operation performed upon personal data, including collection, storage, modification, and destruction.",
+                "Only the selling of data to third parties."
+            ],
+            "correct_answer": "Any operation performed upon personal data, including collection, storage, modification, and destruction.",
+            "explanation": "Processing is a comprehensive term under Section 3(j) that covers virtually any operation performed on personal data from collection to destruction."
+        },
+        {
+            "id": 1402,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Transparency",
+                "Scenario"
+            ],
+            "lesson_concept": "Transparency requires that data subjects be informed of the nature, purpose, and extent of the processing using clear and plain language.",
+            "question_text": "A mobile application uses a 50-page Terms of Service agreement written entirely in dense legal Latin to explain its data collection practices. Which privacy principle is most directly violated?",
+            "options": [
+                "Legitimate Purpose",
+                "Transparency",
+                "Proportionality",
+                "Data Minimization"
+            ],
+            "correct_answer": "Transparency",
+            "explanation": "Transparency requires that information regarding data processing be easily accessible and understandable, utilizing clear and plain language."
+        },
+        {
+            "id": 1403,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Scenario",
+                "Vital Interests"
+            ],
+            "lesson_concept": "Processing standard Personal Information is lawful when it is necessary to protect vitally important interests of the data subject, including life and health.",
+            "question_text": "During a massive flood, a local government unit (LGU) shares the home addresses (PI) of stranded residents with private rescue organizations without the residents' prior consent. Is this lawful?",
+            "options": [
+                "No, because the LGU did not conduct a Privacy Impact Assessment.",
+                "No, because consent is strictly required for any sharing of home addresses.",
+                "Yes, because the processing is necessary to protect the vitally important interests of the data subjects.",
+                "Yes, but only if the residents sign a waiver after being rescued."
+            ],
+            "correct_answer": "Yes, because the processing is necessary to protect the vitally important interests of the data subjects.",
+            "explanation": "Section 12(d) allows processing without consent when necessary to protect vitally important interests of the data subject, such as in life-threatening emergencies."
+        },
+        {
+            "id": 1404,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Damages"
+            ],
+            "lesson_concept": "The Right to Damages allows data subjects to be indemnified for any damages sustained due to inaccurate, incomplete, outdated, false, unlawfully obtained, or unauthorized use of personal data.",
+            "question_text": "Which right empowers a data subject to seek financial compensation if they suffer harm due to a company's negligent handling of their personal data?",
+            "options": [
+                "Right to Rectify",
+                "Right to Damages",
+                "Right to Object",
+                "Right to File a Complaint"
+            ],
+            "correct_answer": "Right to Damages",
+            "explanation": "The Right to Damages specifically provides for indemnification for harm caused by DPA violations."
+        },
+        {
+            "id": 1405,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Extraterritoriality"
+            ],
+            "lesson_concept": "The DPA applies to processing done outside the Philippines if it relates to personal information about a Philippine citizen or resident.",
+            "question_text": "An Australian university with no offices in the Philippines accepts an enrollment application from a Filipino citizen living in Cebu. The university's database in Sydney is later hacked, exposing the student's data. Does the Philippine NPC have jurisdiction to investigate the university?",
+            "options": [
+                "No, because the university has no physical equipment or branch in the Philippines.",
+                "No, the jurisdiction is strictly limited to Australian regulatory bodies.",
+                "Yes, because the processing relates to the personal information of a Philippine citizen.",
+                "Yes, but only if the student files a lawsuit in an Australian court first."
+            ],
+            "correct_answer": "Yes, because the processing relates to the personal information of a Philippine citizen.",
+            "explanation": "Section 6 of the DPA applies extraterritorially to foreign entities processing the data of Philippine citizens or residents, granting the NPC jurisdiction."
+        },
+        {
+            "id": 1406,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 6: Penalties",
+                "Malicious Disclosure"
+            ],
+            "lesson_concept": "Disclosing personal data with malice or bad faith constitutes the crime of Malicious Disclosure, which carries heavier penalties than negligence.",
+            "question_text": "An angry employee steals a colleague's performance review (SPI) and posts it on a public forum to intentionally humiliate them. What specific DPA offense is this?",
+            "options": [
+                "Accessing due to Negligence",
+                "Concealment of Security Breaches",
+                "Malicious Disclosure",
+                "Unauthorized Processing"
+            ],
+            "correct_answer": "Malicious Disclosure",
+            "explanation": "Publishing the data to intentionally humiliate someone demonstrates malice and bad faith, fitting the crime of Malicious Disclosure (Section 27)."
+        },
+        {
+            "id": 1407,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Scenario",
+                "Notification Exemptions"
+            ],
+            "lesson_concept": "A PIC may be exempted from notifying data subjects of a breach if the NPC determines that such notification would hinder a criminal investigation.",
+            "question_text": "A bank suffers a data breach and the NBI requests the bank to temporarily withhold notifying the affected customers to avoid tipping off the hackers during a sting operation. What is the proper legal procedure?",
+            "options": [
+                "The bank can unilaterally decide to withhold notification.",
+                "The bank must still notify the customers within 72 hours, as the DPA supersedes the NBI.",
+                "The bank must formally request the NPC for an exemption or postponement of notification to data subjects.",
+                "The bank must publish a blind notice in a national newspaper instead."
+            ],
+            "correct_answer": "The bank must formally request the NPC for an exemption or postponement of notification to data subjects.",
+            "explanation": "Only the NPC has the authority to officially postpone or exempt a PIC from notifying data subjects to protect a law enforcement investigation."
+        },
+        {
+            "id": 1408,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Data Subject"
+            ],
+            "lesson_concept": "A Data Subject is an individual whose personal, sensitive personal, or privileged information is processed.",
+            "question_text": "In the context of the Data Privacy Act, who is considered the 'Data Subject'?",
+            "options": [
+                "The IT administrator managing the database.",
+                "The individual whose personal information is being processed.",
+                "The company collecting the data.",
+                "The Data Protection Officer (DPO)."
+            ],
+            "correct_answer": "The individual whose personal information is being processed.",
+            "explanation": "The Data Subject is the specific natural person to whom the personal data belongs."
+        },
+        {
+            "id": 1409,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Scenario",
+                "Consent Limitations"
+            ],
+            "lesson_concept": "Consent must be freely given. If providing consent is made a mandatory prerequisite for a service where the data is not actually necessary, the consent is legally invalid.",
+            "question_text": "A flashlight app requires users to consent to sharing their GPS location before the app will turn on the phone's LED light. Is this consent valid under the DPA?",
+            "options": [
+                "Yes, because the user explicitly clicked 'Agree'.",
+                "Yes, because it is a free application.",
+                "No, because the consent is not 'freely given' if the service is made conditional on data processing that is unnecessary for the service.",
+                "No, because GPS data is classified as Privileged Information."
+            ],
+            "correct_answer": "No, because the consent is not 'freely given' if the service is made conditional on data processing that is unnecessary for the service.",
+            "explanation": "Consent is invalid if it is forced. Requiring irrelevant data (GPS) as a condition to use a basic service (flashlight) violates both Consent and Proportionality rules."
+        },
+        {
+            "id": 1410,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "File a Complaint"
+            ],
+            "lesson_concept": "If a data subject's rights are violated and the PIC fails to address the issue, the subject has the right to file a formal complaint with the National Privacy Commission.",
+            "question_text": "A data subject repeatedly asks a company to rectify an error in their billing profile, but the company ignores the requests for 60 days. What is the data subject's most appropriate next step under the DPA?",
+            "options": [
+                "File a complaint with the National Privacy Commission (NPC).",
+                "Hack the company's servers to change the data.",
+                "File a criminal case directly with the Supreme Court.",
+                "Do nothing, as companies have up to 1 year to rectify data."
+            ],
+            "correct_answer": "File a complaint with the National Privacy Commission (NPC).",
+            "explanation": "The Right to File a Complaint allows individuals to escalate unresolved grievances directly to the NPC for investigation and adjudication."
+        },
+        {
+            "id": 1411,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "NPC Issuances",
+                "Hierarchy"
+            ],
+            "lesson_concept": "The NPC issues Circulars to enforce the DPA. However, administrative circulars cannot override or expand the statutory laws passed by Congress.",
+            "question_text": "If a new NPC Circular contradicts a specific provision explicitly written in the Data Privacy Act of 2012, which legal rule takes precedence?",
+            "options": [
+                "The NPC Circular, because it is the most recent.",
+                "The Data Privacy Act of 2012, because statutes override administrative issuances.",
+                "Neither; the matter is suspended until the President decides.",
+                "The NPC Circular, because the NPC has supreme quasi-judicial power."
+            ],
+            "correct_answer": "The Data Privacy Act of 2012, because statutes override administrative issuances.",
+            "explanation": "In the Philippine legal hierarchy, an administrative issuance (like an NPC Circular) must conform to the statute (RA 10173) it aims to implement."
+        },
+        {
+            "id": 1412,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Journalism Exemption"
+            ],
+            "lesson_concept": "Processing personal data strictly for journalistic, artistic, or literary purposes is exempt from the DPA to protect freedom of the press.",
+            "question_text": "A news agency publishes the private travel logs of a public official to expose tax fraud. The official files a DPA complaint. Is the news agency liable for unauthorized processing?",
+            "options": [
+                "Yes, travel logs are strictly confidential.",
+                "No, because processing for journalistic purposes is a statutory exemption under the DPA.",
+                "Yes, they must secure the official's written consent first.",
+                "No, but they must pay an administrative fine."
+            ],
+            "correct_answer": "No, because processing for journalistic purposes is a statutory exemption under the DPA.",
+            "explanation": "Section 4(d) exempts personal information processed for journalistic purposes to uphold press freedom and public interest."
+        },
+        {
+            "id": 1413,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Government Contracts"
+            ],
+            "lesson_concept": "Information relating to individuals performing services under contract for a government institution is excluded from the DPA.",
+            "question_text": "A private software developer is contracted to build an inventory system for a local government unit. A citizen requests the developer's name and contract details. Are these details protected by the DPA?",
+            "options": [
+                "Yes, all private contractor data is protected.",
+                "No, information relating to individuals performing services under a government contract is excluded from the DPA.",
+                "Yes, unless the developer explicitly waives their rights.",
+                "No, but only if the contract is worth more than 1 million pesos."
+            ],
+            "correct_answer": "No, information relating to individuals performing services under a government contract is excluded from the DPA.",
+            "explanation": "Section 4(b) excludes information relating to individuals performing services under contract for a government institution to promote transparency."
+        },
+        {
+            "id": 1414,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Privileged Information"
+            ],
+            "lesson_concept": "Privileged Information refers to data protected under the Rules of Court, such as communications between a doctor and patient, or lawyer and client.",
+            "question_text": "Which of the following constitutes 'Privileged Information' under the DPA?",
+            "options": [
+                "A student's grades.",
+                "An employee's salary.",
+                "Confidential communications between a patient and their psychiatrist.",
+                "A customer's credit card number."
+            ],
+            "correct_answer": "Confidential communications between a patient and their psychiatrist.",
+            "explanation": "Doctor-patient communications are legally privileged under the Rules of Court, classifying them as Privileged Information."
+        },
+        {
+            "id": 1415,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 2: Concepts",
+                "Scenario",
+                "PIC vs PIP"
+            ],
+            "lesson_concept": "A PIC decides the 'why' and 'how' of processing. A PIP only acts on the documented instructions of the PIC.",
+            "question_text": "A developer builds an offline Point-of-Sale (POS) software and licenses it to a retail store. The store uses the software locally to process customer transactions. The developer has no access to the store's local database. Who is the Personal Information Controller (PIC)?",
+            "options": [
+                "The software developer.",
+                "The retail store.",
+                "Both the developer and the store (Joint Controllers).",
+                "The customers."
+            ],
+            "correct_answer": "The retail store.",
+            "explanation": "The retail store determines the purpose and means of collecting the customer data. The developer merely provided the tool and has no access, so the store is the PIC."
+        },
+        {
+            "id": 1416,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 2: Concepts",
+                "Biometrics",
+                "SPI"
+            ],
+            "lesson_concept": "Biometric data used to uniquely identify an individual (e.g., fingerprints, facial recognition) is classified as Sensitive Personal Information.",
+            "question_text": "A maritime company requires deckhands to log their attendance using a TTL serial fingerprint reader. Under the DPA, what classification is this fingerprint data?",
+            "options": [
+                "General Personal Information",
+                "Sensitive Personal Information",
+                "Privileged Information",
+                "Public Information"
+            ],
+            "correct_answer": "Sensitive Personal Information",
+            "explanation": "Biometrics used to uniquely identify an individual are classified as Sensitive Personal Information (SPI)."
+        },
+        {
+            "id": 1417,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality",
+                "Data Minimization"
+            ],
+            "lesson_concept": "Proportionality requires that the data collected must be adequate, relevant, and not excessive in relation to the declared purpose.",
+            "question_text": "A website offering free video editing tutorials requires users to submit their passport copy before they can watch the videos. This violates the principle of:",
+            "options": [
+                "Transparency",
+                "Legitimate Purpose",
+                "Proportionality",
+                "Accountability"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Asking for a passport to watch free tutorials is highly excessive and unnecessary for the purpose, violating Proportionality."
+        },
+        {
+            "id": 1418,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Legitimate Purpose"
+            ],
+            "lesson_concept": "Personal data must be processed fairly and lawfully, and not used for a secondary purpose incompatible with the original declared purpose.",
+            "question_text": "A solar panel installation company collects customer phone numbers for warranty support. Two years later, they sell the list to a telemarketing firm selling insurance. Which principle was violated?",
+            "options": [
+                "Accountability",
+                "Accuracy",
+                "Legitimate Purpose",
+                "Proportionality"
+            ],
+            "correct_answer": "Legitimate Purpose",
+            "explanation": "Selling the data to third-party telemarketers is completely incompatible with the original declared purpose (warranty support)."
+        },
+        {
+            "id": 1419,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Accountability",
+                "DPO"
+            ],
+            "lesson_concept": "The principle of Accountability mandates that organizations implement verifiable measures to demonstrate compliance, starting with appointing a DPO.",
+            "question_text": "Which principle places the burden on the Personal Information Controller to demonstrate compliance by implementing active security measures and designating a Data Protection Officer?",
+            "options": [
+                "Transparency",
+                "Fairness",
+                "Proportionality",
+                "Accountability"
+            ],
+            "correct_answer": "Accountability",
+            "explanation": "Accountability requires the PIC to take ownership of the data and prove they have organizational, physical, and technical measures in place."
+        },
+        {
+            "id": 1420,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent",
+                "Definitions"
+            ],
+            "lesson_concept": "Consent must be freely given, specific, informed, and evidenced by written, electronic, or recorded means.",
+            "question_text": "According to the DPA, what is an essential characteristic of valid 'Consent'?",
+            "options": [
+                "It can be assumed if the user does not object.",
+                "It must be evidenced by written, electronic, or recorded means.",
+                "It must be renewed annually.",
+                "It is only required for minors."
+            ],
+            "correct_answer": "It must be evidenced by written, electronic, or recorded means.",
+            "explanation": "Section 3(b) mandates that valid consent must be clearly evidenced by written, electronic, or recorded means."
+        },
+        {
+            "id": 1421,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Scenario",
+                "Contract"
+            ],
+            "lesson_concept": "Processing is lawful if it is necessary for the performance of a contract to which the data subject is a party.",
+            "question_text": "An IT company requires its new remote developers to provide their bank account numbers to disburse their monthly salaries. What is the lawful basis for collecting this data?",
+            "options": [
+                "Legitimate Interest",
+                "Compliance with a Legal Obligation",
+                "Fulfillment of a Contract",
+                "Vital Interests"
+            ],
+            "correct_answer": "Fulfillment of a Contract",
+            "explanation": "Paying the employee is a fundamental necessity for fulfilling the employment contract."
+        },
+        {
+            "id": 1422,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "SPI Exception",
+                "Legal Claims"
+            ],
+            "lesson_concept": "SPI can be processed without consent if necessary for the establishment, exercise, or defense of legal claims.",
+            "question_text": "A law firm collects the past criminal records (SPI) of their client to prepare a defense in an ongoing court trial. Is this lawful without explicit consent?",
+            "options": [
+                "No, criminal records can never be processed.",
+                "Yes, under the exception for the establishment, exercise, or defense of legal claims.",
+                "No, unless the NPC issues a special permit.",
+                "Yes, but only if the data is pseudonymized."
+            ],
+            "correct_answer": "Yes, under the exception for the establishment, exercise, or defense of legal claims.",
+            "explanation": "Section 13(f) explicitly allows the processing of SPI when necessary for court proceedings or legal claims."
+        },
+        {
+            "id": 1423,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Legitimate Interest",
+                "Limitations"
+            ],
+            "lesson_concept": "Legitimate interest is a valid basis for standard PI (Section 12), but it is never a valid lawful basis for Sensitive Personal Information (Section 13).",
+            "question_text": "A company wants to collect the religious affiliations of its employees to analyze workplace diversity, claiming 'Legitimate Interest'. Is this legally valid?",
+            "options": [
+                "Yes, workplace diversity is a valid legitimate interest.",
+                "No, because religious affiliation is SPI, and legitimate interest cannot be used as a lawful basis for processing SPI.",
+                "Yes, provided they notify the employees first.",
+                "No, unless they share the data with the government."
+            ],
+            "correct_answer": "No, because religious affiliation is SPI, and legitimate interest cannot be used as a lawful basis for processing SPI.",
+            "explanation": "Religious affiliation is Sensitive Personal Information (SPI). Section 13 does not list Legitimate Interest as a valid exception for processing SPI."
+        },
+        {
+            "id": 1424,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Access"
+            ],
+            "lesson_concept": "The Right to Access allows subjects to demand information on what data is held, how it is processed, and who it has been disclosed to.",
+            "question_text": "Which right allows a user to demand a list of all third-party vendors that a company has shared their personal data with?",
+            "options": [
+                "Right to Data Portability",
+                "Right to Access",
+                "Right to Rectify",
+                "Right to Object"
+            ],
+            "correct_answer": "Right to Access",
+            "explanation": "The Right to Access includes the right to know the names and addresses of recipients to whom the personal data has been disclosed."
+        },
+        {
+            "id": 1425,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Rectify"
+            ],
+            "lesson_concept": "The Right to Rectify allows subjects to dispute inaccuracies. The PIC must correct it immediately unless the request is vexatious or unreasonable.",
+            "question_text": "A data subject notices their birthdate is incorrectly listed on their health insurance portal and requests a correction. What is the PIC's obligation?",
+            "options": [
+                "Correct it during the next annual audit.",
+                "Correct the inaccuracy immediately and accordingly, unless the request is vexatious.",
+                "Require the data subject to file a lawsuit first.",
+                "Delete the account entirely."
+            ],
+            "correct_answer": "Correct the inaccuracy immediately and accordingly, unless the request is vexatious.",
+            "explanation": "Section 16(d) dictates that inaccuracies must be rectified immediately upon the data subject's request."
+        },
+        {
+            "id": 1426,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Scenario",
+                "Right to Erasure Exceptions"
+            ],
+            "lesson_concept": "The Right to Erasure is not absolute. It can be denied if the data is necessary for compliance with a legal obligation.",
+            "question_text": "A user demands an online payment platform erase their 3-year transaction history. The platform refuses, citing a central bank regulation requiring 5-year data retention for anti-money laundering. Is the platform justified?",
+            "options": [
+                "No, the Right to Erasure overrides central bank regulations.",
+                "Yes, because the data is necessary for compliance with a legal obligation to which the PIC is subject.",
+                "No, unless the NPC grants a specific exemption.",
+                "Yes, but only if the user owes the platform money."
+            ],
+            "correct_answer": "Yes, because the data is necessary for compliance with a legal obligation to which the PIC is subject.",
+            "explanation": "Statutory retention laws (like AMLA) take precedence over a user's request for erasure."
+        },
+        {
+            "id": 1427,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Data Portability",
+                "Interoperability"
+            ],
+            "lesson_concept": "Data portability requires the PIC to provide the data in an electronic, structured, and commonly used format to prevent vendor lock-in.",
+            "question_text": "To properly fulfill a 'Right to Data Portability' request, how must the PIC provide the data?",
+            "options": [
+                "Printed on physical paper.",
+                "In a proprietary format that can only be read by the PIC's software.",
+                "In an electronic, structured, and commonly used format.",
+                "As a verbal summary over the phone."
+            ],
+            "correct_answer": "In an electronic, structured, and commonly used format.",
+            "explanation": "The core purpose of portability is interoperability, requiring structured electronic formats like JSON or CSV."
+        },
+        {
+            "id": 1428,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Transmissibility"
+            ],
+            "lesson_concept": "Data subject rights are transmissible. Lawful heirs and assigns may invoke the rights of the data subject after their death or incapacity.",
+            "question_text": "After a patient passes away due to medical malpractice, can their legal heirs invoke the Right to Access to obtain the deceased patient's medical records?",
+            "options": [
+                "No, privacy rights expire upon death.",
+                "Yes, the lawful heirs can invoke the rights of the data subject under the principle of transmissibility.",
+                "No, only a court judge can access deceased records.",
+                "Yes, but only if the patient signed a DPA waiver before dying."
+            ],
+            "correct_answer": "Yes, the lawful heirs can invoke the rights of the data subject under the principle of transmissibility.",
+            "explanation": "Section 17 of the DPA explicitly allows lawful heirs to invoke the rights of a deceased or incapacitated data subject."
+        },
+        {
+            "id": 1429,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 6: Penalties",
+                "Criminal Penalties"
+            ],
+            "lesson_concept": "The DPA imposes criminal penalties (imprisonment and fines) for offenses like unauthorized processing, malicious disclosure, and negligence.",
+            "question_text": "Unlike some international privacy laws that only issue fines, what severe penalty can regular Philippine courts impose for violations of the DPA?",
+            "options": [
+                "Loss of citizenship.",
+                "Mandatory imprisonment of the responsible officers.",
+                "Exile.",
+                "Community service."
+            ],
+            "correct_answer": "Mandatory imprisonment of the responsible officers.",
+            "explanation": "Chapter VIII of the DPA specifies mandatory imprisonment terms alongside fines for various privacy crimes."
+        },
+        {
+            "id": 1430,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 6: Penalties",
+                "Negligence"
+            ],
+            "lesson_concept": "Accessing or providing access to personal data due to negligence—such as failing to set a password on a database—is a criminal offense.",
+            "question_text": "An IT administrator accidentally leaves a cloud storage bucket containing employee tax IDs completely public, resulting in a data leak. What is the specific criminal offense?",
+            "options": [
+                "Malicious Disclosure",
+                "Concealment of Security Breaches",
+                "Accessing Sensitive Personal Information Due to Negligence",
+                "Unauthorized Processing"
+            ],
+            "correct_answer": "Accessing Sensitive Personal Information Due to Negligence",
+            "explanation": "Failing to secure the bucket is an act of gross negligence, triggering Section 26 of the DPA."
+        },
+        {
+            "id": 1431,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 6: Penalties",
+                "Scenario",
+                "Corporate Liability"
+            ],
+            "lesson_concept": "When a corporation commits a DPA crime, the penalty is imposed on the responsible officers who participated in or allowed the crime through negligence.",
+            "question_text": "A tech startup's CEO explicitly orders the engineering team to scrape and sell user data without consent. The NPC investigates. Who faces criminal imprisonment?",
+            "options": [
+                "The startup as a juridical entity.",
+                "The NPC cannot imprison anyone in a startup.",
+                "The CEO and any other responsible officers who participated in the crime.",
+                "Only the DPO."
+            ],
+            "correct_answer": "The CEO and any other responsible officers who participated in the crime.",
+            "explanation": "Section 34 states that for juridical persons, the penalty is imposed on the responsible officers who ordered or allowed the violation."
+        },
+        {
+            "id": 1432,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 6: Penalties",
+                "Administrative Fines"
+            ],
+            "lesson_concept": "The NPC can impose administrative fines (up to 3-5% of gross income) for infractions like failing to appoint a DPO or failing to register processing systems.",
+            "question_text": "If a Personal Information Controller repeatedly refuses to draft a Privacy Manual and register their processing systems, what action can the NPC directly take?",
+            "options": [
+                "Issue an arrest warrant.",
+                "Impose administrative fines based on the company's annual gross income.",
+                "Shut down the company's physical office.",
+                "Confiscate the company's servers."
+            ],
+            "correct_answer": "Impose administrative fines based on the company's annual gross income.",
+            "explanation": "The NPC has quasi-judicial authority to levy administrative fines for regulatory infractions, as outlined in NPC Circular 2022-01."
+        },
+        {
+            "id": 1433,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Security Incident vs Breach"
+            ],
+            "lesson_concept": "A security incident threatens system integrity/availability. A personal data breach specifically results in unauthorized access, loss, or alteration of personal data.",
+            "question_text": "A company's website is defaced by hackers, but the underlying customer database remains fully secure and untouched. How is this event classified?",
+            "options": [
+                "A mandatory personal data breach.",
+                "A security incident, but not a personal data breach.",
+                "A lawful exception.",
+                "A malicious disclosure."
+            ],
+            "correct_answer": "A security incident, but not a personal data breach.",
+            "explanation": "Because system integrity was affected (defacement), it is a security incident. Because no personal data was compromised, it is not a personal data breach."
+        },
+        {
+            "id": 1434,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "72-Hour Rule"
+            ],
+            "lesson_concept": "A PIC must notify the NPC within 72 hours upon knowledge of, or reasonable belief that, a qualifying personal data breach has occurred.",
+            "question_text": "An organization confirms a massive breach of sensitive personal data on a Friday at 6:00 PM. When does the 72-hour deadline to notify the NPC expire?",
+            "options": [
+                "Monday at 6:00 PM.",
+                "Wednesday at 6:00 PM (skipping weekends).",
+                "Friday at midnight.",
+                "Tuesday at 9:00 AM."
+            ],
+            "correct_answer": "Monday at 6:00 PM.",
+            "explanation": "The 72-hour rule runs continuously and includes weekends and holidays."
+        },
+        {
+            "id": 1435,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Notification Triggers",
+                "SPI"
+            ],
+            "lesson_concept": "Mandatory notification is triggered when the breach involves SPI or identity fraud data, is acquired by an unauthorized person, and risks serious harm.",
+            "question_text": "Which of the following scenarios absolutely triggers the mandatory 72-hour breach notification to the NPC?",
+            "options": [
+                "An encrypted laptop is stolen, but the encryption key is secure.",
+                "A server outage delays internal emails for 4 hours.",
+                "Hackers download an unencrypted database containing customer Social Security Numbers and passport copies.",
+                "An employee accidentally deletes a blank folder."
+            ],
+            "correct_answer": "Hackers download an unencrypted database containing customer Social Security Numbers and passport copies.",
+            "explanation": "This scenario meets all criteria: it involves SPI (passports/SSS), unauthorized acquisition (hackers), and creates a real risk of serious harm (identity theft)."
+        },
+        {
+            "id": 1436,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Scenario",
+                "PIP Duty to Notify"
+            ],
+            "lesson_concept": "When a PIP suffers a breach, their legal duty is to notify the PIC immediately without undue delay, so the PIC can report to the NPC.",
+            "question_text": "A cloud hosting vendor (PIP) realizes their servers were compromised, exposing the data of a hospital client (PIC). What must the vendor do?",
+            "options": [
+                "Notify the NPC directly within 72 hours.",
+                "Notify the hospital (PIC) immediately without undue delay.",
+                "Notify the patients directly.",
+                "Wait for the hospital to discover it."
+            ],
+            "correct_answer": "Notify the hospital (PIC) immediately without undue delay.",
+            "explanation": "The PIP must inform the PIC immediately so the PIC can initiate their incident response and fulfill their statutory obligation to notify the NPC."
+        },
+        {
+            "id": 1437,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "SIRT"
+            ],
+            "lesson_concept": "Organizations are required to establish a Security Incident Response Team (SIRT) to prepare for, detect, and respond to breaches.",
+            "question_text": "To comply with the 'Preparation' phase of the Incident Response Life Cycle under NPC Circular 16-03, what structural body must an organization create?",
+            "options": [
+                "A Cybersecurity Board of Directors.",
+                "A Security Incident Response Team (SIRT).",
+                "An internal Police Force.",
+                "A Data Marketing Committee."
+            ],
+            "correct_answer": "A Security Incident Response Team (SIRT).",
+            "explanation": "NPC Circular 16-03 explicitly mandates the creation of a data breach response team (SIRT)."
+        },
+        {
+            "id": 1438,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Annual Report"
+            ],
+            "lesson_concept": "All security incidents must be logged internally, and a summary must be submitted to the NPC in an Annual Security Incident Report.",
+            "question_text": "A company experiences several minor phishing attempts that are blocked by their firewall. No data is breached. Do they need to document these events?",
+            "options": [
+                "No, blocked attempts are legally irrelevant.",
+                "Yes, they must be documented internally and summarized in the Annual Security Incident Report submitted to the NPC.",
+                "Only if the hackers demand a ransom.",
+                "Yes, but they must be reported within 72 hours."
+            ],
+            "correct_answer": "Yes, they must be documented internally and summarized in the Annual Security Incident Report submitted to the NPC.",
+            "explanation": "All security incidents, even minor ones that don't trigger mandatory notification, must be logged and included in the annual report."
+        },
+        {
+            "id": 1439,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 6: Penalties",
+                "Concealment",
+                "Scenario"
+            ],
+            "lesson_concept": "Intentionally failing to report a mandatory breach to the NPC to hide the incident constitutes Concealment of Security Breaches.",
+            "question_text": "A Chief Information Officer discovers a massive leak of biometric data. Fearing bad PR, they order the IT team to wipe the logs and hide the event from the NPC. What specific crime is committed?",
+            "options": [
+                "Unauthorized Processing",
+                "Concealment of Security Breaches",
+                "Malicious Disclosure",
+                "Data Portability Violation"
+            ],
+            "correct_answer": "Concealment of Security Breaches",
+            "explanation": "Intentionally delaying or failing to notify the NPC of a qualifying breach to hide it is penalized under Section 30."
+        },
+        {
+            "id": 1440,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Containment"
+            ],
+            "lesson_concept": "The immediate priority upon discovering a breach is containment—stopping the active exfiltration of data.",
+            "question_text": "During an active cyberattack where hackers are actively downloading a database, what is the most critical immediate step for the Security Incident Response Team?",
+            "options": [
+                "Drafting the NPC notification letter.",
+                "Containment, such as disconnecting the affected servers from the network to stop the data theft.",
+                "Filing a civil lawsuit against the hackers.",
+                "Conducting a post-incident review."
+            ],
+            "correct_answer": "Containment, such as disconnecting the affected servers from the network to stop the data theft.",
+            "explanation": "Operational containment is the absolute first priority in incident response to prevent further data loss before administrative steps are taken."
+        },
+        {
+            "id": 1441,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality",
+                "Retention"
+            ],
+            "lesson_concept": "Under the principle of Proportionality, personal data shall not be retained longer than necessary for the fulfillment of the declared, specified, and legitimate purpose.",
+            "question_text": "A tech company collects resumes from unsuccessful job applicants and keeps them in an active, unencrypted database indefinitely 'just in case' they need them in 10 years. Which DPA principle does this violate?",
+            "options": [
+                "Transparency",
+                "Accuracy",
+                "Proportionality (specifically Data Retention limits)",
+                "Accountability"
+            ],
+            "correct_answer": "Proportionality (specifically Data Retention limits)",
+            "explanation": "Retaining personal data indefinitely when it is no longer necessary for the immediate hiring purpose is excessive and violates the retention limits of the Proportionality principle."
+        },
+        {
+            "id": 1442,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 2: Concepts",
+                "Privileged Information",
+                "Rules of Court"
+            ],
+            "lesson_concept": "Privileged Information includes data protected under the Rules of Court, such as marital privilege, where a spouse cannot be forced to testify against the other regarding private communications.",
+            "question_text": "A company investigator tries to force an employee to disclose private text messages sent by their spouse regarding a potential internal fraud case. What classification protects these text messages?",
+            "options": [
+                "Sensitive Personal Information",
+                "General Personal Information",
+                "Public Domain Information",
+                "Privileged Information"
+            ],
+            "correct_answer": "Privileged Information",
+            "explanation": "Spousal communications are protected under marital privilege in the Rules of Court, rendering them Privileged Information under the DPA."
+        },
+        {
+            "id": 1443,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 6: Penalties",
+                "Unauthorized Purpose"
+            ],
+            "lesson_concept": "Processing personal data for purposes not authorized by the data subject or otherwise permitted by law constitutes the crime of Processing for Unauthorized Purposes.",
+            "question_text": "A logistics company collects customer phone numbers specifically for package delivery updates. A rogue manager extracts this list and uses it to text political campaign ads. What offense has been committed?",
+            "options": [
+                "Accessing Due to Negligence",
+                "Processing for Unauthorized Purposes",
+                "Concealment of Security Breaches",
+                "Data Portability Violation"
+            ],
+            "correct_answer": "Processing for Unauthorized Purposes",
+            "explanation": "Using data collected for shipping to conduct political campaigning is a severe deviation from the authorized purpose, constituting a criminal offense under Section 28."
+        },
+        {
+            "id": 1444,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to be Informed",
+                "Timing"
+            ],
+            "lesson_concept": "The Right to be Informed requires that the data subject be notified of the processing details *before* their personal data enters the processing system.",
+            "question_text": "A website collects user survey data but only displays its Privacy Notice on a 'Thank You' page *after* the user has submitted the form. Why is this a violation?",
+            "options": [
+                "The Privacy Notice must be translated into multiple languages.",
+                "The Right to be Informed requires notification BEFORE the entry of personal data into the processing system.",
+                "The website must mail a physical copy of the notice.",
+                "Privacy Notices are not required for surveys."
+            ],
+            "correct_answer": "The Right to be Informed requires notification BEFORE the entry of personal data into the processing system.",
+            "explanation": "To ensure consent is informed, the data subject must understand the processing details prior to submitting their data, not after the fact."
+        },
+        {
+            "id": 1445,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Vulnerability vs Breach"
+            ],
+            "lesson_concept": "A system vulnerability or an unexploited open port is a security risk, but it does not constitute a personal data breach unless personal data is actually compromised.",
+            "question_text": "During an annual audit, a penetration tester finds a critical flaw in a hospital's firewall that *could* allow access to patient records. However, logs prove no unauthorized access actually occurred. Is this a Personal Data Breach?",
+            "options": [
+                "Yes, all critical vulnerabilities must be reported as data breaches within 72 hours.",
+                "Yes, because patient records are Sensitive Personal Information.",
+                "No, it is a vulnerability/security risk, but not a data breach since no personal data was unlawfully accessed or disclosed.",
+                "No, unless the media finds out about the vulnerability."
+            ],
+            "correct_answer": "No, it is a vulnerability/security risk, but not a data breach since no personal data was unlawfully accessed or disclosed.",
+            "explanation": "A data breach requires actual or reasonably suspected compromise of personal data. A discovered, unexploited vulnerability is an operational risk, not a breach."
+        },
+        {
+            "id": 1446,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 2: Concepts",
+                "Publicly Available Data",
+                "Scope"
+            ],
+            "lesson_concept": "The DPA still applies to personal data even if it is publicly available. Scraping public data for automated profiling or facial recognition requires a lawful basis.",
+            "question_text": "A tech startup creates a facial recognition database by scraping millions of publicly visible profile pictures from social media. Does the Data Privacy Act apply to this publicly available data?",
+            "options": [
+                "No, data posted publicly loses all DPA protection.",
+                "Yes, the DPA applies to the processing of personal data regardless of whether it was sourced from the public domain.",
+                "No, as long as the startup does not sell the data.",
+                "Yes, but only if the individuals are government officials."
+            ],
+            "correct_answer": "Yes, the DPA applies to the processing of personal data regardless of whether it was sourced from the public domain.",
+            "explanation": "The NPC has repeatedly clarified that personal data does not lose its privacy protection merely because it is accessible in the public domain; a lawful basis is still required for processing."
+        },
+        {
+            "id": 1447,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent",
+                "Minors"
+            ],
+            "lesson_concept": "For minors or individuals without legal capacity, valid consent must be obtained from their parents or lawful legal guardians.",
+            "question_text": "A mobile gaming app explicitly targeting 10-year-old children asks the players to click 'I Consent' to share their location data. Is this consent legally valid under the DPA?",
+            "options": [
+                "Yes, electronic consent clicks are always valid.",
+                "No, because minors lack legal capacity; consent must be obtained from a parent or lawful guardian.",
+                "Yes, as long as the game is free to play.",
+                "No, unless the game has an educational purpose."
+            ],
+            "correct_answer": "No, because minors lack legal capacity; consent must be obtained from a parent or lawful guardian.",
+            "explanation": "Minors cannot legally grant valid consent. Processing their data based on consent requires authorization from a parent or legal guardian."
+        },
+        {
+            "id": 1448,
+            "difficulty_level": 5,
+            "tags": [
+                "Module 6: Penalties",
+                "Intentional Disclosure"
+            ],
+            "lesson_concept": "The DPA distinguishes between negligent exposure (accidental) and malicious disclosure (intentional bad faith), with the latter carrying heavier penalties.",
+            "question_text": "An IT administrator discovers their company is downsizing and, in retaliation, actively emails the entire corporate payroll database to a competing firm. What specific crime does this constitute?",
+            "options": [
+                "Accessing Due to Negligence",
+                "Concealment of Security Breaches",
+                "Malicious Disclosure",
+                "Failure to Register"
+            ],
+            "correct_answer": "Malicious Disclosure",
+            "explanation": "The deliberate and retaliatory act of leaking the database to a competitor demonstrates clear malice and bad faith, fitting the crime of Malicious Disclosure."
+        },
+        {
+            "id": 1449,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accuracy"
+            ],
+            "lesson_concept": "The principle of Accuracy mandates that data must be accurate, complete, and kept up-to-date, especially if it affects the data subject's rights.",
+            "question_text": "A user legally changes their name and provides the necessary court documents to a bank. The bank refuses to update their system because 'it takes too much administrative effort.' Which principle is the bank violating?",
+            "options": [
+                "Proportionality",
+                "Transparency",
+                "Accuracy",
+                "Accountability"
+            ],
+            "correct_answer": "Accuracy",
+            "explanation": "Refusing to update demonstrably incorrect or outdated personal data violates the principle of Accuracy."
+        },
+        {
+            "id": 1450,
+            "difficulty_level": 4,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Post-Incident Activity"
+            ],
+            "lesson_concept": "The final phase of the Incident Response Life Cycle is Post-Incident Activity, which involves reviewing what happened, learning from mistakes, and updating policies to prevent recurrence.",
+            "question_text": "Following a successful containment and eradication of a malware infection, the Security Incident Response Team (SIRT) holds a meeting to rewrite their firewall policies based on the attack vectors used. Which phase of the Incident Response Life Cycle is this?",
+            "options": [
+                "Preparation",
+                "Detection and Analysis",
+                "Containment, Eradication, and Recovery",
+                "Post-Incident Activity"
+            ],
+            "correct_answer": "Post-Incident Activity",
+            "explanation": "Reviewing the incident, identifying lessons learned, and updating policies to prevent future breaches are the core components of the Post-Incident Activity phase."
+        }
+    ]
+}

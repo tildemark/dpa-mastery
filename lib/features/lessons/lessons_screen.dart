@@ -84,10 +84,11 @@ class _LessonsScreenState extends ConsumerState<LessonsScreen>
         ),
         centerTitle: true,
       ),
-      body: batchAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
-        data: (batch) {
+      body: SafeArea(
+        child: batchAsync.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (e, _) => Center(child: Text('Error: $e')),
+          data: (batch) {
           if (batch == null) {
             return Center(
               child: Padding(
@@ -128,8 +129,9 @@ class _LessonsScreenState extends ConsumerState<LessonsScreen>
           );
         },
       ),
-    );
-  }
+    ),
+  );
+}
 }
 
 // ─── Lesson flow body ─────────────────────────────────────────────────────────

@@ -84,20 +84,55 @@ dart run build_runner build --delete-conflicting-outputs
 flutter test
 ```
 
-### 4. Launch the Flutter App
+### 4. Launch the Flutter App (Debug / Development)
 
 **On Android device / emulator:**
+
 ```bash
 flutter run
 ```
 
 **On Windows Desktop:**
+
 ```bash
 # Ensure Windows runner is enabled (done once):
 flutter create --platforms=windows .
 
 # Run on Windows:
 flutter run -d windows
+```
+
+### 5. Build for Production / Release
+
+**Build Android Release APK:**
+
+```bash
+# Single universal release APK:
+flutter build apk --release
+
+# Output path:
+# build/app/outputs/flutter-apk/app-release.apk
+
+# (Recommended for smaller file sizes) Split per ABI (arm64-v8a, armeabi-v7a, x86_64):
+flutter build apk --split-per-abi --release
+```
+
+**Build Android App Bundle (AAB for Google Play):**
+
+```bash
+flutter build appbundle --release
+
+# Output path:
+# build/app/outputs/bundle/release/app-release.aab
+```
+
+**Build Windows Desktop Release Executable:**
+
+```bash
+flutter build windows --release
+
+# Output directory:
+# build/windows/x64/runner/Release/
 ```
 
 ---
@@ -177,6 +212,7 @@ If running `adb devices` shows an empty list or your device is hijacked by third
 ## 🛡️ Privacy Policy (100% Offline Guarantee)
 
 **DPA Mastery is strictly 100% offline.**
+
 - **Zero Personal Data Collection**: No telemetry, analytics, tracking, or device identifiers are collected.
 - **Local Storage Only**: All flashcard mastery progress, study statistics, and review timestamps reside exclusively on your device in a local SQLite database (`drift`).
 - **Privacy by Design**: Built in full compliance with the Data Privacy Act of 2012 (Republic Act No. 10173).

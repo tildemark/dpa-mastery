@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../db/daos/progress_dao.dart';
 import '../../engine/gating_service.dart';
 import '../../engine/rank_service.dart';
 import '../../main.dart';
@@ -13,12 +12,30 @@ import '../cram/cram_screen.dart';
 
 import '../../services/settings_service.dart';
 import '../settings/settings_screen.dart';
+import '../profile/profile_dialog.dart';
+import 'srs_breakdown_sheet.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final settings = ref.read(settingsServiceProvider);
+      if (!settings.hasCompletedOnboarding) {
+        ProfileDialog.show(context, isOnboarding: true);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final db = ref.watch(dbProvider);
     final settings = ref.watch(settingsServiceProvider);
     final gating = GatingService(db);
@@ -29,11 +46,11 @@ class HomeScreen extends ConsumerWidget {
     final nextReviewAsync = ref.watch(nextReviewTimeStreamProvider);
     final cs = Theme.of(context).colorScheme;
 
-    final counts = srsCountsAsync.asData?.value ??
-        const SrsStageCounts(locked: 0, apprentice: 0, guru: 0, master: 0, burned: 0);
+    final counts = srsCountsAsync.value;
     final fc = forecastAsync.asData?.value;
     final nextTime = nextReviewAsync.asData?.value;
-    final availableLessons = settings.getAvailableLessonsToday(counts.locked);
+    final isCountsLoading = srsCountsAsync.isLoading || counts == null;
+    final availableLessons = counts != null ? settings.getAvailableLessonsToday(counts.locked) : 0;
 
     return Scaffold(
       backgroundColor: cs.surface,
@@ -96,11 +113,12 @@ class HomeScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
             // ── 1. DPO Rank & Certification Profile Card ──
             FutureBuilder<UserRankProfile>(
               future: rankService.getUserRankProfile(),
@@ -160,9 +178,9 @@ class HomeScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        rank?.title ?? 'Privacy Cadet',
+                        '${settings.userName} • ${rank?.title ?? "Privacy Cadet"}',
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w800,
                           letterSpacing: -0.3,
                         ),
@@ -190,9 +208,13 @@ class HomeScreen extends ConsumerWidget {
                 Expanded(
                   child: _ActionCard(
                     title: 'Lessons',
-                    subtitle: availableLessons > 0
-                        ? '$availableLessons available today'
-                        : 'Daily quota complete',
+                    subtitle: isCountsLoading
+                        ? 'Loading lessons...'
+                        : (availableLessons > 0
+                            ? '$availableLessons available today'
+                            : (counts.locked == 0
+                                ? 'All lessons completed'
+                                : 'Daily quota complete')),
                     icon: Icons.school_rounded,
                     color: const Color(0xFF5E6AD2),
                     badgeCount: availableLessons,
@@ -284,12 +306,25 @@ class HomeScreen extends ConsumerWidget {
             const SizedBox(height: 24),
 
             // ── 4. WaniKani SRS Stage Distribution Bar ──
-            Text(
-              'SRS Mastery Breakdown',
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: cs.onSurfaceVariant,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'SRS Mastery Breakdown',
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: cs.onSurfaceVariant,
+                      ),
+                ),
+                Text(
+                  'Tap for details',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: cs.primary,
+                    fontWeight: FontWeight.w600,
                   ),
+                ),
+              ],
             ),
             const SizedBox(height: 10),
             Container(
@@ -305,31 +340,31 @@ class HomeScreen extends ConsumerWidget {
                     children: [
                       _SrsStageMetric(
                         label: 'Locked',
-                        count: counts.locked,
+                        count: counts?.locked ?? 0,
                         color: const Color(0xFF64748B),
                         icon: Icons.lock_outline,
                       ),
                       _SrsStageMetric(
                         label: 'Apprentice',
-                        count: counts.apprentice,
+                        count: counts?.apprentice ?? 0,
                         color: const Color(0xFFEF5350),
                         icon: Icons.local_fire_department,
                       ),
                       _SrsStageMetric(
                         label: 'Guru',
-                        count: counts.guru,
+                        count: counts?.guru ?? 0,
                         color: const Color(0xFF7C4DFF),
                         icon: Icons.auto_awesome,
                       ),
                       _SrsStageMetric(
                         label: 'Master',
-                        count: counts.master,
+                        count: counts?.master ?? 0,
                         color: const Color(0xFF1565C0),
                         icon: Icons.workspace_premium,
                       ),
                       _SrsStageMetric(
                         label: 'Burned',
-                        count: counts.burned,
+                        count: counts?.burned ?? 0,
                         color: const Color(0xFFF59E0B),
                         icon: Icons.whatshot,
                       ),
@@ -438,7 +473,8 @@ class HomeScreen extends ConsumerWidget {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 }
 
@@ -457,30 +493,44 @@ class _SrsStageMetric extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: color.withAlpha(25),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: color, size: 18),
+    return InkWell(
+      onTap: () {
+        SrsBreakdownSheet.show(
+          context,
+          stageName: label,
+          stageColor: color,
+          stageIcon: icon,
+        );
+      },
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: color.withAlpha(25),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: color, size: 18),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              '$count',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+                color: color,
+              ),
+            ),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 10, color: Colors.grey),
+            ),
+          ],
         ),
-        const SizedBox(height: 6),
-        Text(
-          '$count',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w800,
-            color: color,
-          ),
-        ),
-        Text(
-          label,
-          style: const TextStyle(fontSize: 10, color: Colors.grey),
-        ),
-      ],
+      ),
     );
   }
 }

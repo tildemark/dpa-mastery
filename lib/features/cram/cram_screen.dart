@@ -406,36 +406,38 @@ class _CramScreenState extends ConsumerState<CramScreen> {
           ),
         ],
       ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _questions == null || _questions!.isEmpty
-              ? Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.check_circle_outline, size: 64, color: cs.primary),
-                        const SizedBox(height: 16),
-                        Text(
-                          widget.mistakesOnly
-                              ? 'No troubled cards found with mistakes.'
-                              : 'No matching study cards found for this filter.',
-                          style: Theme.of(context).textTheme.titleMedium,
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 20),
-                        FilledButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('Back to Home'),
-                        ),
-                      ],
+      body: SafeArea(
+        child: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : _questions == null || _questions!.isEmpty
+                ? Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.check_circle_outline, size: 64, color: cs.primary),
+                          const SizedBox(height: 16),
+                          Text(
+                            widget.mistakesOnly
+                                ? 'No troubled cards found with mistakes.'
+                                : 'No matching study cards found for this filter.',
+                            style: Theme.of(context).textTheme.titleMedium,
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 20),
+                          FilledButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: const Text('Back to Home'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              : _currentIndex >= _questions!.length
-                  ? _buildSummary(context)
-                  : _buildQuestion(context),
+                  )
+                : _currentIndex >= _questions!.length
+                    ? _buildSummary(context)
+                    : _buildQuestion(context),
+      ),
     );
   }
 

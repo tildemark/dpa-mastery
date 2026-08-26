@@ -60,10 +60,22 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
     await into(userProgress).insertOnConflictUpdate(companion);
   }
 
+  /// Resets all user progress records back to Stage 0 (Locked).
+  Future<void> resetAllProgress() async {
+    await update(userProgress).write(
+      const UserProgressCompanion(
+        srsStage: Value(0),
+        mistakeCount: Value(0),
+        isLessonCompleted: Value(false),
+        nextReviewTime: Value(null),
+      ),
+    );
+  }
+
   /// Initialises a [UserProgress] row at Stage 0 (Locked) for a new question,
-  /// only if one does not already exist (preserves existing progress).
+  /// only if one does not already exist (preserves existing progress on every app launch).
   Future<void> initProgressIfAbsent(int questionId) async {
-    await into(userProgress).insertOnConflictUpdate(
+    await into(userProgress).insert(
       UserProgressCompanion(
         questionId: Value(questionId),
         srsStage: const Value(0),
@@ -71,6 +83,7 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
         isLessonCompleted: const Value(false),
         isCustom: const Value(false),
       ),
+      mode: InsertMode.insertOrIgnore,
     );
   }
 

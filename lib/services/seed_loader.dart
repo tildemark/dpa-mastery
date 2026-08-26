@@ -31,6 +31,7 @@ class SeedLoader {
       'assets/seeds/update_v5_practice_quiz.json',
       'assets/seeds/update_v6_practice_quiz.json',
       'assets/seeds/update_v7_practice_quiz.json',
+      'assets/seeds/update_v9_expanded_batch.json',
     ];
 
     for (final file in seedFiles) {

@@ -63,16 +63,28 @@ This document tracks the current implementation status of **DPA Mastery** agains
 - [x] **Developer & Credits**: In-app About dialog and README credits for Alfredo Sanchez Jr (`https://sanchez.ph`).
 - [x] **100% Offline Privacy Guarantee**: Documented zero-data-collection policy in-app and in `README.md`.
 
+### 6. Profile & Onboarding Management
+- [x] **First-Launch Name Onboarding**: Welcoming modal on first run prompting the user for their name or allowing "Continue as Guest".
+- [x] **Personalized Dashboard**: Header badge displays user name alongside DPO Level and Title (`[Name] • Level 1 Privacy Cadet`).
+- [x] **Profile Editing**: Quick-edit display name from Settings anytime.
+- [x] **Reset Progress & New Profile**: Reset all SRS study progress back to Stage 0 and restore daily lesson quota, or start fresh with a new profile.
+
 ---
 
-## 📝 Unimplemented / Backlog Features (TODO)
+## 🔮 Upcoming Milestones & Roadmap (TODO)
 
-### 1. `CustomDecks` Table & User Custom Flashcards
-- [ ] **Custom Decks Schema**: `CustomDecks` table mentioned in `architecture.md` diagram for user-created custom cards and decks.
+### 1. Google Authentication & Cloud Sync
+- [ ] **Google Sign-In**: Optional Google Account authentication (`firebase_auth` / `google_sign_in`).
+- [ ] **Cloud Progress Backup**: Snapshot sync of `UserProgress` and daily quota records to cloud storage for cross-device continuity.
+- [ ] **Account Linking**: Seamless migration from local Guest profile to Google account.
+
+### 2. Custom Decks & Question Suggestions
+- [ ] **Community Question Suggestions**: Submit new questions or report corrections.
+- [ ] **Custom Study Decks**: Create and export user-defined study sets.
 - [ ] **Custom Card Editor UI**: Allow users to create custom flashcards and tag them with `isCustom: true`.
 - [ ] **Custom Deck Study Mode**: Interface to browse and cram user-created custom decks alongside official NPC seeds.
 
-### 2. Question Suggestion API (Web / Next.js)
+### 3. Question Suggestion API (Web / Next.js)
 - [ ] **API Endpoint**: Next.js API route `/api/suggest-question` to allow community submission of new DPA exam scenario questions.
 - [ ] **Review Dashboard**: Lightweight admin/review interface on the Next.js web portal to review, approve, and export submitted questions into `docs/seeds/`.
 
