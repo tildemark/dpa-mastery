@@ -109,7 +109,7 @@ flutter run -d windows
 
 | Platform | Target Output File | Local Workspace Path |
 | :--- | :--- | :--- |
-| **Android (APK)** | Universal Release APK | [`build/app/outputs/flutter-apk/app-release.apk`](file:///c:/code/dpa-mastery/build/app/outputs/flutter-apk/app-release.apk) |
+| **Android (APK)** | Direct Named Release APK | [`build/dpa-mastery-v1.0.0.apk`](file:///c:/code/dpa-mastery/build/dpa-mastery-v1.0.0.apk) |
 | **Windows (Portable ZIP)** | Standalone Portable ZIP | [`build/dpa_mastery_windows_portable_v1.0.0.zip`](file:///c:/code/dpa-mastery/build/dpa_mastery_windows_portable_v1.0.0.zip) |
 | **Windows (Raw Release)** | Release Executable & Bundle | [`build/windows/x64/runner/Release/dpa_mastery.exe`](file:///c:/code/dpa-mastery/build/windows/x64/runner/Release/dpa_mastery.exe) |
 
@@ -120,11 +120,14 @@ flutter run -d windows
 #### 1. Android Release APK:
 
 ```bash
-# Build universal APK:
+# 1. Build universal APK:
 flutter build apk --release
 
+# 2. Copy/Rename to release asset:
+cp build/app/outputs/flutter-apk/app-release.apk build/dpa-mastery-v1.0.0.apk
+
 # Output binary location:
-# build/app/outputs/flutter-apk/app-release.apk
+# build/dpa-mastery-v1.0.0.apk
 ```
 
 #### 2. Windows Portable ZIP (Recommended):

@@ -343,8 +343,8 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database and all 7 modules pre-bundled.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download">
-                Download APK (.apk) &rarr;
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.0.0/dpa-mastery-v1.0.0.apk" target="_blank" rel="noreferrer" className="btn-download">
+                Download APK (dpa-mastery-v1.0.0.apk) &rarr;
               </a>
               <span className="meta-info">Android 8.0+ (Oreo or later)</span>
             </div>
@@ -365,7 +365,7 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Native standalone 64-bit desktop executable for intensive study sessions and mock exams.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download secondary">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.0.0/dpa_mastery_windows_portable_v1.0.0.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
                 Download for Windows (.zip) &rarr;
               </a>
               <span className="meta-info">Windows 10 / 11 (64-bit)</span>
