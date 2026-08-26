@@ -19,11 +19,18 @@ class SettingsService extends ChangeNotifier {
   static const _keyShuffleOptions = 'setting_shuffle_options';
   static const _keyUserName = 'setting_user_name';
   static const _keyOnboarded = 'setting_has_onboarded';
+  static const _keyApprenticeCap = 'setting_apprentice_cap'; // 50, 75, 100, 0 (disabled)
 
   int get dailyTarget => _prefs.getInt(_keyDailyTarget) ?? 10;
   bool get shuffleOptions => _prefs.getBool(_keyShuffleOptions) ?? true;
   String get userName => _prefs.getString(_keyUserName) ?? 'Guest';
   bool get hasCompletedOnboarding => _prefs.getBool(_keyOnboarded) ?? false;
+  int get apprenticeCap => _prefs.getInt(_keyApprenticeCap) ?? 50;
+
+  Future<void> setApprenticeCap(int cap) async {
+    await _prefs.setInt(_keyApprenticeCap, cap);
+    notifyListeners();
+  }
 
   Future<void> setDailyTarget(int target) async {
     await _prefs.setInt(_keyDailyTarget, target);

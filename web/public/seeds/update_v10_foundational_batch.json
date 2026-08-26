@@ -1,0 +1,367 @@
+{
+    "version": 10,
+    "release_date": "2026-08-26",
+    "module": "Foundational Basics Batch",
+    "items": [
+        {
+            "id": 1501,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 1: Framework",
+                "Definitions"
+            ],
+            "lesson_concept": "Republic Act No. 10173 is the primary law governing data privacy in the Philippines, officially known as the Data Privacy Act of 2012.",
+            "question_text": "What does the acronym 'DPA' stand for in the context of Philippine privacy law?",
+            "options": [
+                "Data Protection Authority",
+                "Data Privacy Act",
+                "Digital Privacy Agency",
+                "Data Processing Agreement"
+            ],
+            "correct_answer": "Data Privacy Act",
+            "explanation": "DPA stands for the Data Privacy Act of 2012 (Republic Act No. 10173)."
+        },
+        {
+            "id": 1502,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 1: Framework",
+                "NPC"
+            ],
+            "lesson_concept": "The National Privacy Commission (NPC) is the independent government agency mandated to administer and implement the Data Privacy Act.",
+            "question_text": "Which government body is primarily responsible for enforcing the Data Privacy Act in the Philippines?",
+            "options": [
+                "Department of Justice (DOJ)",
+                "National Bureau of Investigation (NBI)",
+                "National Privacy Commission (NPC)",
+                "Supreme Court"
+            ],
+            "correct_answer": "National Privacy Commission (NPC)",
+            "explanation": "The NPC is the country's privacy watchdog and regulatory body created by the DPA."
+        },
+        {
+            "id": 1503,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Data Subject"
+            ],
+            "lesson_concept": "A Data Subject refers to an individual whose personal, sensitive personal, or privileged information is processed.",
+            "question_text": "Under the Data Privacy Act, what term is used to describe the individual whose personal information is being collected or processed?",
+            "options": [
+                "Data Owner",
+                "Data Subject",
+                "Data Controller",
+                "Data Client"
+            ],
+            "correct_answer": "Data Subject",
+            "explanation": "The law formally refers to the individual whose data is processed as the 'Data Subject'."
+        },
+        {
+            "id": 1504,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information"
+            ],
+            "lesson_concept": "Personal Information is any data from which the identity of an individual is apparent or can be reasonably and directly ascertained.",
+            "question_text": "Which of the following is the most basic example of standard Personal Information?",
+            "options": [
+                "A person's full name.",
+                "A person's genetic sequence.",
+                "A person's political affiliation.",
+                "A person's medical history."
+            ],
+            "correct_answer": "A person's full name.",
+            "explanation": "A full name is standard Personal Information. Genetics, politics, and health are considered Sensitive Personal Information."
+        },
+        {
+            "id": 1505,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information"
+            ],
+            "lesson_concept": "Sensitive Personal Information (SPI) requires stricter protection. It includes race, marital status, health, genetics, and government-issued IDs.",
+            "question_text": "Which of these is explicitly categorized as Sensitive Personal Information (SPI)?",
+            "options": [
+                "A business email address.",
+                "An individual's health record.",
+                "A company phone number.",
+                "An office building address."
+            ],
+            "correct_answer": "An individual's health record.",
+            "explanation": "Information about an individual's health is strictly classified as Sensitive Personal Information."
+        },
+        {
+            "id": 1506,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC"
+            ],
+            "lesson_concept": "A Personal Information Controller (PIC) is a person or organization who controls the collection, holding, processing, or use of personal information.",
+            "question_text": "What do you call the entity that determines the purpose and the means of processing personal data?",
+            "options": [
+                "Data Subject",
+                "Personal Information Processor (PIP)",
+                "Personal Information Controller (PIC)",
+                "Data Protection Officer (DPO)"
+            ],
+            "correct_answer": "Personal Information Controller (PIC)",
+            "explanation": "The PIC is the decision-maker that controls why and how data is processed."
+        },
+        {
+            "id": 1507,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "PIP"
+            ],
+            "lesson_concept": "A Personal Information Processor (PIP) is any natural or juridical person to whom a PIC outsources the processing of personal data.",
+            "question_text": "If a company outsources data processing to a third party that only acts on given instructions, what is the third party called?",
+            "options": [
+                "Personal Information Controller (PIC)",
+                "Personal Information Processor (PIP)",
+                "Data Protection Officer (DPO)",
+                "Privacy Commissioner"
+            ],
+            "correct_answer": "Personal Information Processor (PIP)",
+            "explanation": "An entity that processes data strictly on behalf of and according to the instructions of a PIC is a PIP."
+        },
+        {
+            "id": 1508,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "DPO"
+            ],
+            "lesson_concept": "Every PIC and PIP must appoint a Data Protection Officer (DPO) who is accountable for ensuring the organization complies with the DPA.",
+            "question_text": "What is the primary role of a Data Protection Officer (DPO)?",
+            "options": [
+                "To fix broken servers.",
+                "To ensure the organization complies with the Data Privacy Act.",
+                "To handle all company public relations.",
+                "To sell data to advertisers."
+            ],
+            "correct_answer": "To ensure the organization complies with the Data Privacy Act.",
+            "explanation": "The DPO is the individual designated to oversee and ensure the organization's compliance with privacy laws."
+        },
+        {
+            "id": 1509,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 3: Principles",
+                "Transparency"
+            ],
+            "lesson_concept": "Transparency requires organizations to inform data subjects about how their data will be processed using clear and plain language.",
+            "question_text": "Which privacy principle dictates that you must clearly inform data subjects about what data you collect and why?",
+            "options": [
+                "Transparency",
+                "Proportionality",
+                "Confidentiality",
+                "Legitimate Purpose"
+            ],
+            "correct_answer": "Transparency",
+            "explanation": "Transparency ensures nothing is done in secret and the individual understands the processing."
+        },
+        {
+            "id": 1510,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality"
+            ],
+            "lesson_concept": "Proportionality means processing must be adequate, relevant, suitable, necessary, and not excessive in relation to a declared purpose.",
+            "question_text": "Which privacy principle dictates that an organization should only collect the absolute minimum amount of data necessary?",
+            "options": [
+                "Accountability",
+                "Legitimate Purpose",
+                "Proportionality",
+                "Accuracy"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Proportionality strictly discourages excessive data collection."
+        },
+        {
+            "id": 1511,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 3: Principles",
+                "Legitimate Purpose"
+            ],
+            "lesson_concept": "Legitimate Purpose means data must only be processed for specific, declared, and lawful reasons.",
+            "question_text": "If a company collects data for a contest, but later uses it to send spam marketing emails without permission, which principle is violated?",
+            "options": [
+                "Data Portability",
+                "Legitimate Purpose",
+                "Proportionality",
+                "Accountability"
+            ],
+            "correct_answer": "Legitimate Purpose",
+            "explanation": "Using data for a secondary, incompatible purpose violates the principle of Legitimate Purpose."
+        },
+        {
+            "id": 1512,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent"
+            ],
+            "lesson_concept": "Consent is any freely given, specific, informed indication of will whereby the data subject agrees to the processing of their data.",
+            "question_text": "Under the DPA, what must consent be in order to be considered valid?",
+            "options": [
+                "Assumed based on silence.",
+                "Freely given, specific, and informed.",
+                "Forced as a condition of service.",
+                "Given verbally without any recording."
+            ],
+            "correct_answer": "Freely given, specific, and informed.",
+            "explanation": "Consent must be explicitly and freely given, and the data subject must know exactly what they are agreeing to."
+        },
+        {
+            "id": 1513,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Alternatives to Consent"
+            ],
+            "lesson_concept": "While consent is a common lawful basis, it is not the only one. Data can also be processed to fulfill a contract, comply with a law, or protect a life.",
+            "question_text": "Is 'Consent' the only legal way an organization can process Personal Information?",
+            "options": [
+                "Yes, consent is always required.",
+                "No, there are other lawful bases such as fulfilling a contract or complying with a legal obligation.",
+                "Yes, unless the person is a government employee.",
+                "No, but only if the data is printed on paper."
+            ],
+            "correct_answer": "No, there are other lawful bases such as fulfilling a contract or complying with a legal obligation.",
+            "explanation": "The DPA provides several lawful criteria for processing data beyond just consent (e.g., contracts, legal obligations, legitimate interests)."
+        },
+        {
+            "id": 1514,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Access"
+            ],
+            "lesson_concept": "The Right to Access gives data subjects the right to obtain a copy of their personal data held by an organization.",
+            "question_text": "Which right allows you to ask a company for a copy of all the personal data they currently hold about you?",
+            "options": [
+                "Right to Object",
+                "Right to Access",
+                "Right to Rectify",
+                "Right to Erasure"
+            ],
+            "correct_answer": "Right to Access",
+            "explanation": "The Right to Access empowers individuals to see exactly what information a company has on them."
+        },
+        {
+            "id": 1515,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Rectify"
+            ],
+            "lesson_concept": "The Right to Rectify is the right to dispute inaccuracies in personal data and have the PIC correct them.",
+            "question_text": "If a bank spells your name wrong on your account profile, which right allows you to demand they fix it?",
+            "options": [
+                "Right to Erasure",
+                "Right to Object",
+                "Right to Rectify",
+                "Right to Data Portability"
+            ],
+            "correct_answer": "Right to Rectify",
+            "explanation": "The Right to Rectify allows data subjects to correct inaccurate or outdated information."
+        },
+        {
+            "id": 1516,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 5: Data Subject Rights",
+                "Right to Erasure"
+            ],
+            "lesson_concept": "The Right to Erasure or Blocking allows a data subject to request the deletion of their data when it is no longer needed or was unlawfully processed.",
+            "question_text": "Which right allows you to demand the deletion of your personal data from a company's database?",
+            "options": [
+                "Right to Erasure or Blocking",
+                "Right to be Informed",
+                "Right to Rectify",
+                "Right to File a Complaint"
+            ],
+            "correct_answer": "Right to Erasure or Blocking",
+            "explanation": "The Right to Erasure allows you to request the removal or destruction of your personal data."
+        },
+        {
+            "id": 1517,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 6: Penalties",
+                "Liabilities"
+            ],
+            "lesson_concept": "The DPA imposes severe penalties for violations, including heavy administrative fines and mandatory imprisonment for criminal offenses.",
+            "question_text": "What type of penalties can be imposed on individuals who commit serious criminal violations of the Data Privacy Act?",
+            "options": [
+                "Only a warning letter.",
+                "Only community service.",
+                "Imprisonment and monetary fines.",
+                "Suspension of internet access."
+            ],
+            "correct_answer": "Imprisonment and monetary fines.",
+            "explanation": "Criminal violations under the DPA carry mandatory imprisonment and fines."
+        },
+        {
+            "id": 1518,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Security Incident"
+            ],
+            "lesson_concept": "A security incident is an event that affects data protection or may compromise the availability, integrity, or confidentiality of a system.",
+            "question_text": "What is the general term used for any event that compromises the availability, integrity, or confidentiality of an IT system?",
+            "options": [
+                "A Security Incident",
+                "A Lawful Processing",
+                "A Consent Form",
+                "A Privacy Notice"
+            ],
+            "correct_answer": "A Security Incident",
+            "explanation": "A security incident is the broad term for any threat or compromise to a system's security."
+        },
+        {
+            "id": 1519,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "Data Breach"
+            ],
+            "lesson_concept": "A personal data breach is a specific type of security incident where personal data is actually compromised, lost, or unlawfully accessed.",
+            "question_text": "What is the difference between a 'Security Incident' and a 'Personal Data Breach'?",
+            "options": [
+                "There is no difference.",
+                "A personal data breach is a type of security incident that specifically involves the compromise of personal data.",
+                "A security incident only involves physical paper.",
+                "A data breach only happens to government agencies."
+            ],
+            "correct_answer": "A personal data breach is a type of security incident that specifically involves the compromise of personal data.",
+            "explanation": "All data breaches are security incidents, but a security incident is only a data breach if personal information is actually affected."
+        },
+        {
+            "id": 1520,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 7: Data Breach Management",
+                "72-Hour Rule"
+            ],
+            "lesson_concept": "Organizations must notify the NPC within 72 hours upon discovering a personal data breach that requires mandatory notification.",
+            "question_text": "How many hours does an organization have to notify the National Privacy Commission (NPC) after discovering a mandatory reportable data breach?",
+            "options": [
+                "24 hours",
+                "48 hours",
+                "72 hours",
+                "96 hours"
+            ],
+            "correct_answer": "72 hours",
+            "explanation": "The NPC enforces a strict 72-hour notification rule for qualifying personal data breaches."
+        }
+    ]
+}

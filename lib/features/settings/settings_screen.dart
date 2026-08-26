@@ -25,6 +25,7 @@ class SettingsSheet extends ConsumerStatefulWidget {
 
 class _SettingsSheetState extends ConsumerState<SettingsSheet> {
   late int _dailyTarget;
+  late int _apprenticeCap;
   late bool _shuffleOptions;
 
   @override
@@ -32,6 +33,7 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
     super.initState();
     final settings = ref.read(settingsServiceProvider);
     _dailyTarget = settings.dailyTarget;
+    _apprenticeCap = settings.apprenticeCap;
     _shuffleOptions = settings.shuffleOptions;
   }
 
@@ -159,7 +161,31 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
           ),
           const SizedBox(height: 20),
 
-          // ── 2. Randomize Choices ──
+          // ── 2. Apprentice Stage Cap (Review Overload Protection) ──
+          const Text(
+            'Apprentice Stage Cap',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Pauses new lessons if you have too many active apprentice items to prevent review avalanche.',
+            style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant),
+          ),
+          const SizedBox(height: 10),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              _buildApprenticeChip(30, '30 items (Strict)'),
+              _buildApprenticeChip(50, '50 items (Recommended)'),
+              _buildApprenticeChip(75, '75 items (High)'),
+              _buildApprenticeChip(100, '100 items (Very High)'),
+              _buildApprenticeChip(0, 'Disabled'),
+            ],
+          ),
+          const SizedBox(height: 20),
+
+          // ── 3. Randomize Choices ──
           Container(
             decoration: BoxDecoration(
               color: cs.surfaceContainerHigh,
@@ -258,6 +284,22 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
         if (selected) {
           setState(() => _dailyTarget = value);
           await settings.setDailyTarget(value);
+        }
+      },
+    );
+  }
+
+  Widget _buildApprenticeChip(int value, String label) {
+    final isSelected = _apprenticeCap == value;
+    final settings = ref.read(settingsServiceProvider);
+
+    return ChoiceChip(
+      label: Text(label),
+      selected: isSelected,
+      onSelected: (selected) async {
+        if (selected) {
+          setState(() => _apprenticeCap = value);
+          await settings.setApprenticeCap(value);
         }
       },
     );

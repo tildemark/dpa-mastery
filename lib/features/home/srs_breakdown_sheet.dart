@@ -72,6 +72,25 @@ final stageBreakdownProvider =
 
   int total = 0;
 
+  final moduleMap = <int, String>{
+    1: 'Module 1: Framework',
+    2: 'Module 2: Concepts',
+    3: 'Module 3: Principles',
+    4: 'Module 4: Lawful Criteria',
+    5: 'Module 5: Data Subject Rights',
+    6: 'Module 6: Penalties',
+    7: 'Module 7: Data Breach Management',
+  };
+
+  String normalizeModuleTag(String rawTag, int fallbackLevel) {
+    for (final entry in moduleMap.entries) {
+      if (rawTag.startsWith('Module ${entry.key}')) {
+        return entry.value;
+      }
+    }
+    return moduleMap[fallbackLevel] ?? 'Module $fallbackLevel';
+  }
+
   for (final q in allQuestions) {
     final stage = progressMap[q.id] ?? 0;
     if (matchesStage(stage)) {
@@ -80,13 +99,17 @@ final stageBreakdownProvider =
 
       final modules = questionModules[q.id];
       if (modules != null && modules.isNotEmpty) {
+        final normalizedSet = <String>{};
         for (final m in modules) {
-          moduleCounts[m] = (moduleCounts[m] ?? 0) + 1;
+          normalizedSet.add(normalizeModuleTag(m, q.difficultyLevel));
+        }
+        for (final norm in normalizedSet) {
+          moduleCounts[norm] = (moduleCounts[norm] ?? 0) + 1;
         }
       } else {
         // Fallback if tag is general
-        moduleCounts['Module ${q.difficultyLevel}'] =
-            (moduleCounts['Module ${q.difficultyLevel}'] ?? 0) + 1;
+        final fallback = moduleMap[q.difficultyLevel] ?? 'Module ${q.difficultyLevel}';
+        moduleCounts[fallback] = (moduleCounts[fallback] ?? 0) + 1;
       }
     }
   }

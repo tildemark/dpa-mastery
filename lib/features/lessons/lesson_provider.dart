@@ -87,7 +87,7 @@ class LessonBatchState {
 
 // ─── Lesson controller ────────────────────────────────────────────────────────
 
-/// Manages WaniKani 2-Phase Lesson Flow:
+/// Manages 2-Phase SRS Lesson Flow:
 /// Phase 1 (Learning): Concepts presented sequentially.
 /// Phase 2 (Exam): Direct randomized questions with shuffled options and zero concepts.
 /// Items are only promoted to Apprentice Stage 1 upon passing the Phase 2 Exam.

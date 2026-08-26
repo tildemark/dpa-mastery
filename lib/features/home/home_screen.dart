@@ -51,6 +51,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final nextTime = nextReviewAsync.asData?.value;
     final isCountsLoading = srsCountsAsync.isLoading || counts == null;
     final availableLessons = counts != null ? settings.getAvailableLessonsToday(counts.locked) : 0;
+    final pendingReviewsCount = reviewQueueAsync.asData?.value.length ?? 0;
+
+    // ── Review Gating & Apprentice Cap Logic ──
+    final hasPendingReviews = pendingReviewsCount > 0;
+    final isApprenticeCapped = settings.apprenticeCap > 0 &&
+        counts != null &&
+        counts.apprentice >= settings.apprenticeCap;
+    final isLessonThrottled = (hasPendingReviews || isApprenticeCapped) && availableLessons > 0;
+
+    String lessonSubtitle;
+    if (isCountsLoading) {
+      lessonSubtitle = 'Loading lessons...';
+    } else if (hasPendingReviews) {
+      lessonSubtitle = 'Complete $pendingReviewsCount reviews first';
+    } else if (isApprenticeCapped) {
+      lessonSubtitle = 'Apprentice cap reached (${counts.apprentice}/${settings.apprenticeCap})';
+    } else if (availableLessons > 0) {
+      lessonSubtitle = '$availableLessons available today';
+    } else if (counts.locked == 0) {
+      lessonSubtitle = 'All lessons completed';
+    } else {
+      lessonSubtitle = 'Daily quota complete';
+    }
 
     return Scaffold(
       backgroundColor: cs.surface,
@@ -208,17 +231,77 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 Expanded(
                   child: _ActionCard(
                     title: 'Lessons',
-                    subtitle: isCountsLoading
-                        ? 'Loading lessons...'
-                        : (availableLessons > 0
-                            ? '$availableLessons available today'
-                            : (counts.locked == 0
-                                ? 'All lessons completed'
-                                : 'Daily quota complete')),
+                    subtitle: lessonSubtitle,
                     icon: Icons.school_rounded,
                     color: const Color(0xFF5E6AD2),
-                    badgeCount: availableLessons,
+                    badgeCount: isLessonThrottled ? 0 : availableLessons,
+                    isLocked: isLessonThrottled,
                     onTap: () async {
+                      if (hasPendingReviews) {
+                        showDialog(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                            title: const Row(
+                              children: [
+                                Icon(Icons.repeat_rounded, color: Color(0xFF10B981)),
+                                SizedBox(width: 10),
+                                Text('Reviews Pending'),
+                              ],
+                            ),
+                            content: Text(
+                              'You have $pendingReviewsCount review(s) waiting for you! Clearing pending reviews first strengthens memory consolidation and prevents study overload.',
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.of(ctx).pop(),
+                                child: const Text('Later'),
+                              ),
+                              FilledButton.icon(
+                                onPressed: () {
+                                  Navigator.of(ctx).pop();
+                                  Navigator.of(context).push(ReviewsScreen.route());
+                                },
+                                icon: const Icon(Icons.play_arrow_rounded),
+                                label: const Text('Start Reviews'),
+                              ),
+                            ],
+                          ),
+                        );
+                        return;
+                      }
+
+                      if (isApprenticeCapped) {
+                        showDialog(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                            title: const Row(
+                              children: [
+                                Icon(Icons.shield_outlined, color: Colors.amber),
+                                SizedBox(width: 10),
+                                Text('Apprentice Cap Reached'),
+                              ],
+                            ),
+                            content: Text(
+                              'You currently have ${counts?.apprentice ?? 0} active Apprentice items (limit: ${settings.apprenticeCap}).\n\nTo prevent review overload, advance existing items to Guru (Stage 5+) by completing reviews before unlocking more lessons.',
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.of(ctx).pop(),
+                                child: const Text('OK'),
+                              ),
+                              FilledButton(
+                                onPressed: () {
+                                  Navigator.of(ctx).pop();
+                                  SettingsSheet.show(context);
+                                },
+                                child: const Text('Adjust Cap'),
+                              ),
+                            ],
+                          ),
+                        );
+                        return;
+                      }
+
                       final unlocked = await gating.getUnlockedLevels();
                       final currentLevel = unlocked.isNotEmpty ? unlocked.last : 1;
                       if (context.mounted) {
@@ -305,7 +388,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 24),
 
-            // ── 4. WaniKani SRS Stage Distribution Bar ──
+            // ── 4. SRS Stage Distribution Bar ──
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -567,6 +650,7 @@ class _ActionCard extends StatelessWidget {
     required this.color,
     required this.onTap,
     this.badgeCount = 0,
+    this.isLocked = false,
   });
 
   final String title;
@@ -575,18 +659,21 @@ class _ActionCard extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
   final int badgeCount;
+  final bool isLocked;
 
   @override
   Widget build(BuildContext context) {
+    final effectiveColor = isLocked ? Colors.grey : color;
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          color: color.withAlpha(25),
+          color: effectiveColor.withAlpha(25),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: color.withAlpha(80), width: 1.5),
+          border: Border.all(color: effectiveColor.withAlpha(80), width: 1.5),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -594,12 +681,16 @@ class _ActionCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(icon, color: color, size: 30),
-                if (badgeCount > 0)
+                Icon(
+                  isLocked ? Icons.lock_outline_rounded : icon,
+                  color: effectiveColor,
+                  size: 30,
+                ),
+                if (badgeCount > 0 && !isLocked)
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: color,
+                      color: effectiveColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
@@ -610,20 +701,41 @@ class _ActionCard extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
+                  )
+                else if (isLocked)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withAlpha(50),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Text(
+                      'Paused',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 11,
+                      ),
+                    ),
                   ),
               ],
             ),
             const SizedBox(height: 14),
             Text(
               title,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: isLocked ? Colors.grey : null,
+              ),
             ),
             const SizedBox(height: 4),
             Text(
               subtitle,
               style: TextStyle(
                 fontSize: 12,
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                color: isLocked ? Colors.amber[700] : Theme.of(context).colorScheme.onSurfaceVariant,
+                fontWeight: isLocked ? FontWeight.w500 : null,
               ),
             ),
           ],

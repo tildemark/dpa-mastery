@@ -58,13 +58,16 @@ class ReviewSessionState {
     String? selectedAnswer,
     int? newStage,
     List<ReviewResult>? results,
+    bool clearSelectedAnswer = false,
+    bool clearNewStage = false,
   }) =>
       ReviewSessionState(
         items: items,
         currentIndex: currentIndex ?? this.currentIndex,
         step: step ?? this.step,
-        selectedAnswer: selectedAnswer ?? this.selectedAnswer,
-        newStage: newStage ?? this.newStage,
+        selectedAnswer:
+            clearSelectedAnswer ? null : (selectedAnswer ?? this.selectedAnswer),
+        newStage: clearNewStage ? null : (newStage ?? this.newStage),
         results: results ?? this.results,
       );
 }
@@ -141,8 +144,8 @@ class ReviewController extends StateNotifier<ReviewSessionState?> {
     state = s.copyWith(
       currentIndex: s.currentIndex + 1,
       step: ReviewStep.question,
-      selectedAnswer: null,
-      newStage: null,
+      clearSelectedAnswer: true,
+      clearNewStage: true,
       results: updatedResults,
     );
   }
@@ -171,7 +174,7 @@ final reviewControllerProvider = StateNotifierProvider.autoDispose<
   (ref) => ReviewController(ref.read(dbProvider)),
 );
 
-/// Live stream provider for all 5 WaniKani SRS stage counts.
+/// Live stream provider for all 5 SRS stage counts.
 final srsStageCountsStreamProvider = StreamProvider.autoDispose<SrsStageCounts>((ref) {
   final db = ref.watch(dbProvider);
   return db.select(db.userProgress).watch().map((all) {
