@@ -318,7 +318,7 @@ export default function HomePage() {
         <div className="section-header">
           <span className="badge">Get Started</span>
           <h2>Download DPA Mastery</h2>
-          <p>Available cross-platform for Android, Windows, and iOS. Zero ads, zero subscriptions.</p>
+          <p>Available for Android and Windows Desktop. 100% offline, zero ads, zero subscriptions.</p>
         </div>
 
         <div className="downloads-grid">
@@ -341,7 +341,7 @@ export default function HomePage() {
                 <span className="platform-tag">Recommended • APK Direct</span>
               </div>
             </div>
-            <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database pre-bundled.</p>
+            <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database and all 7 modules pre-bundled.</p>
             <div className="download-actions">
               <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download">
                 Download APK (.apk) &rarr;
@@ -363,35 +363,12 @@ export default function HomePage() {
                 <span className="platform-tag">Desktop Edition</span>
               </div>
             </div>
-            <p className="platform-desc">Native standalone desktop executable for intensive multi-monitor study sessions.</p>
+            <p className="platform-desc">Native standalone 64-bit desktop executable for intensive study sessions and mock exams.</p>
             <div className="download-actions">
               <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download secondary">
                 Download for Windows (.zip) &rarr;
               </a>
               <span className="meta-info">Windows 10 / 11 (64-bit)</span>
-            </div>
-          </div>
-
-          {/* iOS Card */}
-          <div className="download-card">
-            <div className="platform-header">
-              <div className="platform-icon apple">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 1.28 0 2.37-1.06 4-1.06 1.83 0 3.72 1.34 3.72 1.34s-2.89-1.63-2.89-4.8c0-3.32 2.73-4.8 2.73-4.8-1.57-2.33-4-2.42-4.88-2.42-2.12 0-3.4 1.25-4.48 1.25-1.12 0-2.65-1.25-4.48-1.25C7.2 10.22 4 12.44 4 16.73c0 4.16 2.57 9.27 5.72 9.27 1.43 0 2.58-.94 4-.94z"/>
-                  <path d="M15.5 2c0 1.94-1.39 3.5-3 3.5-.22 0-.44-.02-.65-.08.15-1.78 1.58-3.42 3.65-3.42z"/>
-                </svg>
-              </div>
-              <div>
-                <h3>iOS / iPadOS</h3>
-                <span className="platform-tag">TestFlight / Sideload</span>
-              </div>
-            </div>
-            <p className="platform-desc">iOS build package and TestFlight beta invitations for iPhone and iPad.</p>
-            <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/latest" target="_blank" rel="noreferrer" className="btn-download secondary">
-                View iOS Release Notes &rarr;
-              </a>
-              <span className="meta-info">iOS 15.0 or later</span>
             </div>
           </div>
         </div>

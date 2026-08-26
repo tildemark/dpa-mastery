@@ -105,6 +105,15 @@ flutter run -d windows
 
 ### 5. Build for Production / Release
 
+#### 📦 Compiled Release Binary Locations (Local Workspace)
+
+| Platform | Target Output File | Local Workspace Path |
+| :--- | :--- | :--- |
+| **Android (APK)** | Universal Release APK | [`build/app/outputs/flutter-apk/app-release.apk`](file:///c:/code/dpa-mastery/build/app/outputs/flutter-apk/app-release.apk) |
+| **Windows (Desktop)** | Release Executable & Bundle | [`build/windows/x64/runner/Release/dpa_mastery.exe`](file:///c:/code/dpa-mastery/build/windows/x64/runner/Release/dpa_mastery.exe) |
+
+---
+
 **Build Android Release APK:**
 
 ```bash
@@ -135,6 +144,8 @@ flutter build windows --release
 # Output directory:
 # build/windows/x64/runner/Release/
 ```
+
+> **Note on iOS Builds:** Apple requires macOS and Xcode to compile iOS bundles (`.ipa`). On Windows, Android and Windows binaries compile natively. To compile for iOS, run `flutter build ipa --no-codesign` on a Mac or use a macOS GitHub Actions workflow.
 
 ---
 
