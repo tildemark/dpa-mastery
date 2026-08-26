@@ -81,5 +81,29 @@ This document tracks the current implementation status of **DPA Mastery** agains
 
 ---
 
+## 🔮 Upcoming Milestones & Roadmap (Deferred / Post-V1)
+
+### 1. Google Authentication & Cloud Sync (Deferred)
+> *Note: Currently deferred to maintain the 100% Offline Privacy Guarantee.*
+- [ ] **Google Sign-In**: Optional Google Account authentication (`firebase_auth` / `google_sign_in`).
+- [ ] **Cloud Progress Backup**: Snapshot sync of `UserProgress` and daily quota records to cloud storage for cross-device continuity.
+- [ ] **Account Linking**: Seamless migration from local Guest profile to Google account.
+- [ ] **Encrypted Backup & Restore**: Local SQLite export/import file (JSON/DB backup) so users can transfer progress without cloud accounts.
+
+### 2. Custom Decks & Card Editor (Deferred)
+- [ ] **Custom Card Editor UI**: Allow users to create custom flashcards and tag them with `isCustom: true`.
+- [ ] **Custom Study Decks**: Create and export user-defined study sets.
+- [ ] **Custom Deck Study Mode**: Interface to browse and cram user-created custom decks alongside official NPC seeds.
+
+### 3. Question Suggestion API & Community Submissions (Deferred)
+- [ ] **Community Question Suggestions**: Submit new questions or report corrections.
+- [ ] **API Endpoint (Next.js)**: API route `/api/suggest-question` to allow community submission of new DPA exam scenario questions.
+- [ ] **Review Dashboard**: Lightweight admin/review interface on the Next.js web portal to review, approve, and export submitted questions into `docs/seeds/`.
+
+### 4. Audio / Text-to-Speech (TTS) for Rote Concepts (Deferred Enhancement)
+- [ ] Read statutory definitions and legal concepts aloud during Phase 1 Lesson Walkthroughs.
+
+---
+
 *Version: 1.0.0 (Release Candidate)*
 
