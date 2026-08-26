@@ -8,9 +8,8 @@ import 'services/ota_sync_service.dart';
 import 'services/settings_service.dart';
 import 'features/home/home_screen.dart';
 
-// TODO(Phase 6): Replace with the real GitHub Pages URL once deployed.
 const _manifestUrl =
-    'https://tildeapp.github.io/dpa-mastery/seeds/manifest.json';
+    'https://dpa-mastery.sanchez.ph/manifest.json';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
