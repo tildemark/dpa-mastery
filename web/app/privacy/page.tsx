@@ -7,9 +7,7 @@ export default function PrivacyPage() {
         <div className="nav-container">
           <Link href="/" className="logo-group" style={{ textDecoration: 'none' }}>
             <div className="logo-icon small">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
+              <img src="/logo-512.png" alt="DPA Mastery Logo" width={28} height={28} />
             </div>
             <span className="logo-text">DPA Mastery</span>
           </Link>
@@ -81,18 +79,19 @@ export default function PrivacyPage() {
               If you have inquiries regarding this Privacy Notice or our security practices, you may reach out directly to the developer:
             </p>
             <div className="contact-box">
-              <strong>Alfredo Sanchez Jr.</strong><br/>
-              Lead Developer &bull; DPA Mastery Project<br/>
-              Website: <a href="https://sanchez.ph" target="_blank" rel="noreferrer">https://sanchez.ph</a><br/>
-              Repository: <a href="https://github.com/tildemark/dpa-mastery" target="_blank" rel="noreferrer">github.com/tildemark/dpa-mastery</a>
+              <p>
+                <strong>Alfredo Sanchez Jr.</strong><br/>
+                Lead Developer, DPA Mastery<br/>
+                Website: <a href="https://sanchez.ph" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-light)', textDecoration: 'underline' }}>https://sanchez.ph</a>
+              </p>
             </div>
           </section>
         </div>
       </main>
 
       <footer className="footer-section" style={{ marginTop: '4rem' }}>
-        <div className="footer-bottom">
-          <p>&copy; 2026 Alfredo Sanchez Jr. &bull; DPA Mastery. All rights reserved.</p>
+        <div className="legal-footer">
+          <p>&copy; 2026 <a href="https://sanchez.ph" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>Alfredo Sanchez Jr.</a> &bull; DPA Mastery. All rights reserved.</p>
         </div>
       </footer>
     </div>

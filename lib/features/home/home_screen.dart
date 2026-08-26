@@ -95,14 +95,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 context: context,
                 applicationName: 'DPA Mastery',
                 applicationVersion: '1.2.0',
-                applicationIcon: Container(
-                  width: 48,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: cs.primaryContainer,
-                    borderRadius: BorderRadius.circular(12),
+                applicationIcon: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 48,
+                    height: 48,
+                    fit: BoxFit.contain,
                   ),
-                  child: Icon(Icons.verified_user_rounded, color: cs.primary, size: 28),
                 ),
                 applicationLegalese: '© 2026 Alfredo Sanchez Jr.\nAll rights reserved.',
                 children: [

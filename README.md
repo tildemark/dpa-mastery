@@ -109,8 +109,8 @@ flutter run -d windows
 
 | Platform | Target Output File | Local Workspace Path |
 | :--- | :--- | :--- |
-| **Android (APK)** | Direct Named Release APK | [`build/dpa-mastery-v1.0.0.apk`](file:///c:/code/dpa-mastery/build/dpa-mastery-v1.0.0.apk) |
-| **Windows (Portable ZIP)** | Standalone Portable ZIP | [`build/dpa_mastery_windows_portable_v1.0.0.zip`](file:///c:/code/dpa-mastery/build/dpa_mastery_windows_portable_v1.0.0.zip) |
+| **Android (APK)** | Direct Named Release APK | [`build/dpa_mastery_v1.2.0_android.apk`](file:///c:/code/dpa-mastery/build/dpa_mastery_v1.2.0_android.apk) |
+| **Windows (Portable ZIP)** | Standalone Portable ZIP | [`build/dpa_mastery_v1.2.0_windows_x64.zip`](file:///c:/code/dpa-mastery/build/dpa_mastery_v1.2.0_windows_x64.zip) |
 | **Windows (Raw Release)** | Release Executable & Bundle | [`build/windows/x64/runner/Release/dpa_mastery.exe`](file:///c:/code/dpa-mastery/build/windows/x64/runner/Release/dpa_mastery.exe) |
 
 ---
@@ -124,10 +124,10 @@ flutter run -d windows
 flutter build apk --release
 
 # 2. Copy/Rename to release asset:
-cp build/app/outputs/flutter-apk/app-release.apk build/dpa-mastery-v1.0.0.apk
+cp build/app/outputs/flutter-apk/app-release.apk build/dpa_mastery_v1.2.0_android.apk
 
 # Output binary location:
-# build/dpa-mastery-v1.0.0.apk
+# build/dpa_mastery_v1.2.0_android.apk
 ```
 
 #### 2. Windows Portable ZIP (Recommended):
@@ -137,10 +137,10 @@ cp build/app/outputs/flutter-apk/app-release.apk build/dpa-mastery-v1.0.0.apk
 flutter build windows --release
 
 # 2. Package release folder into a portable standalone .zip:
-Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build\dpa_mastery_windows_portable_v1.0.0.zip -Force
+Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build\dpa_mastery_v1.2.0_windows_x64.zip -Force
 
 # Output portable package location:
-# build/dpa_mastery_windows_portable_v1.0.0.zip
+# build/dpa_mastery_v1.2.0_windows_x64.zip
 ```
 
 > **Why Portable ZIP for Windows?** Users simply extract the `.zip` anywhere and launch `dpa_mastery.exe` without requiring administrator privileges or installer setup wizards.

@@ -75,7 +75,7 @@ class _ReviewsScreenState extends ConsumerState<ReviewsScreen>
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (e, _) => Center(child: Text('Error: $e')),
           data: (items) {
-            if (items.isEmpty) {
+            if (items.isEmpty && !_initialised) {
               return _EmptyQueue(cs: cs);
             }
 

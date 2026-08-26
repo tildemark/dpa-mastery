@@ -8,9 +8,7 @@ export default function HomePage() {
         <div className="nav-container">
           <div className="logo-group">
             <div className="logo-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
+              <img src="/logo-512.png" alt="DPA Mastery Logo" width={36} height={36} />
             </div>
             <span className="logo-text">DPA Mastery</span>
             <span className="version-pill">v1.2</span>
@@ -343,10 +341,10 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database and all 7 modules pre-bundled.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.0.0/dpa-mastery-v1.0.0.apk" target="_blank" rel="noreferrer" className="btn-download">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.2.0/dpa_mastery_v1.2.0_android.apk" target="_blank" rel="noreferrer" className="btn-download">
                 Download APK (.apk) &rarr;
               </a>
-              <span className="meta-info">Android 8.0+ (Oreo or later)</span>
+              <span className="meta-info">Android 8.0+ (Oreo or later) • v1.2.0</span>
             </div>
           </div>
 
@@ -365,10 +363,10 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Native standalone 64-bit desktop executable for intensive study sessions and mock exams.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.0.0/dpa_mastery_windows_portable_v1.0.0.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.2.0/dpa_mastery_v1.2.0_windows_x64.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
                 Download for Windows (.zip) &rarr;
               </a>
-              <span className="meta-info">Windows 10 / 11 (64-bit)</span>
+              <span className="meta-info">Windows 10 / 11 (64-bit) • v1.2.0</span>
             </div>
           </div>
 
@@ -403,9 +401,7 @@ export default function HomePage() {
           <div className="footer-brand">
             <div className="logo-group">
               <div className="logo-icon small">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
+                <img src="/logo-512.png" alt="DPA Mastery Logo" width={28} height={28} />
               </div>
               <span className="logo-text">DPA Mastery</span>
             </div>
@@ -438,7 +434,7 @@ export default function HomePage() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2026 Alfredo Sanchez Jr. &bull; DPA Mastery. All rights reserved.</p>
+          <p>&copy; 2026 <a href="https://sanchez.ph" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>Alfredo Sanchez Jr.</a> &bull; DPA Mastery. All rights reserved.</p>
           <p className="footer-subtext">Not officially affiliated with the National Privacy Commission (NPC). Designed as an educational study aid.</p>
         </div>
       </footer>

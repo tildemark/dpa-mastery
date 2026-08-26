@@ -154,19 +154,26 @@ class ReviewController extends StateNotifier<ReviewSessionState?> {
 // ─── Providers ────────────────────────────────────────────────────────────────
 
 /// Loads all items currently due for review, paired with their question data.
+/// Automatically emits new states whenever user progress updates in the database.
 final reviewQueueProvider =
-    FutureProvider.autoDispose<List<ReviewItem>>((ref) async {
-  final db = ref.read(dbProvider);
-  final progressRows = await db.progressDao.getReviewQueue();
+    StreamProvider.autoDispose<List<ReviewItem>>((ref) {
+  final db = ref.watch(dbProvider);
+  return db.select(db.userProgress).watch().asyncMap((all) async {
+    final now = DateTime.now();
+    final dueRows = all.where((p) =>
+        p.isLessonCompleted &&
+        p.nextReviewTime != null &&
+        !p.nextReviewTime!.isAfter(now)).toList();
 
-  final items = <ReviewItem>[];
-  for (final p in progressRows) {
-    final question = await db.questionDao.getQuestionById(p.questionId);
-    if (question != null) {
-      items.add(ReviewItem(question: question, progress: p));
+    final items = <ReviewItem>[];
+    for (final p in dueRows) {
+      final question = await db.questionDao.getQuestionById(p.questionId);
+      if (question != null) {
+        items.add(ReviewItem(question: question, progress: p));
+      }
     }
-  }
-  return items;
+    return items;
+  });
 });
 
 final reviewControllerProvider = StateNotifierProvider.autoDispose<

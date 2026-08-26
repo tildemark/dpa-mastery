@@ -2,7 +2,7 @@ name: dpa_mastery
 description: "DPA Mastery — Offline-first review app for the Philippine NPC Data Privacy Competency Exam."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.2.0+2
 
 environment:
   sdk: ^3.12.0
@@ -54,3 +54,4 @@ flutter:
 
   assets:
     - assets/seeds/
+    - assets/images/
