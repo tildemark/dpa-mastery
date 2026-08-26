@@ -344,7 +344,7 @@ export default function HomePage() {
             <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database and all 7 modules pre-bundled.</p>
             <div className="download-actions">
               <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.0.0/dpa-mastery-v1.0.0.apk" target="_blank" rel="noreferrer" className="btn-download">
-                Download APK (dpa-mastery-v1.0.0.apk) &rarr;
+                Download APK (.apk) &rarr;
               </a>
               <span className="meta-info">Android 8.0+ (Oreo or later)</span>
             </div>
