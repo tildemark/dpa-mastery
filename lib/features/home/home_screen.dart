@@ -260,20 +260,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              const Icon(Icons.schedule_rounded, size: 13, color: Color(0xFF818CF8)),
-                              const SizedBox(width: 4),
-                              Text(
-                                'Est. Ready: $estimatedTimeStr',
-                                style: const TextStyle(
-                                  fontSize: 11,
-                                  color: Color(0xFF818CF8),
-                                  fontWeight: FontWeight.w600,
+                          Flexible(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(Icons.schedule_rounded, size: 13, color: Color(0xFF818CF8)),
+                                const SizedBox(width: 4),
+                                Flexible(
+                                  child: Text(
+                                    'Est. Ready: $estimatedTimeStr',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                      fontSize: 11,
+                                      color: Color(0xFF818CF8),
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                          const SizedBox(width: 8),
                           Text(
                             '${counts?.total ?? 282} Qs Bank',
                             style: TextStyle(
