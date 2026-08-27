@@ -155,9 +155,11 @@ class _DlcStoreScreenState extends ConsumerState<DlcStoreScreen> {
                                 ),
                               ),
                             ),
+                            const SizedBox(width: 8),
                             const Spacer(),
                             if (pack.isInstalled)
                               const Row(
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Icon(Icons.check_circle, size: 16, color: Color(0xFF10B981)),
                                   SizedBox(width: 4),
@@ -168,23 +170,29 @@ class _DlcStoreScreenState extends ConsumerState<DlcStoreScreen> {
                                 ],
                               )
                             else if (!pack.isAvailable)
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withAlpha(40),
-                                  borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(color: Colors.grey.withAlpha(80)),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Icon(Icons.schedule_rounded, size: 13, color: Colors.grey),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      pack.statusNote,
-                                      style: const TextStyle(fontSize: 11, color: Colors.grey, fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.withAlpha(40),
+                                    borderRadius: BorderRadius.circular(6),
+                                    border: Border.all(color: Colors.grey.withAlpha(80)),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.schedule_rounded, size: 13, color: Colors.grey),
+                                      const SizedBox(width: 4),
+                                      Flexible(
+                                        child: Text(
+                                          pack.statusNote,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: const TextStyle(fontSize: 11, color: Colors.grey, fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                           ],
