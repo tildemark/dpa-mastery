@@ -5,15 +5,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../db/app_database.dart';
 import '../../main.dart';
 
-/// Screen for freely drilling questions associated with a specific Tag,
-/// outside the strict WaniKani scheduling loop.
+/// Screen for freely drilling questions associated with a specific Tag or
+/// drilling questions where the user recorded mistakes (Troubled / Missed Items).
 class TagDrillScreen extends ConsumerStatefulWidget {
-  const TagDrillScreen({super.key, required this.tagName});
+  const TagDrillScreen({
+    super.key,
+    this.tagName,
+    this.missedQuestionsMode = false,
+  }) : assert(missedQuestionsMode || tagName != null, 'Must provide tagName or enable missedQuestionsMode');
 
-  final String tagName;
+  final String? tagName;
+  final bool missedQuestionsMode;
 
   static Route<void> route(String tagName) => MaterialPageRoute(
         builder: (_) => TagDrillScreen(tagName: tagName),
+      );
+
+  static Route<void> missedQuestionsRoute() => MaterialPageRoute(
+        builder: (_) => const TagDrillScreen(missedQuestionsMode: true),
       );
 
   @override
@@ -35,7 +44,12 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
 
   Future<void> _loadQuestions() async {
     final db = ref.read(dbProvider);
-    final list = await db.questionDao.getQuestionsByTag(widget.tagName);
+    List<Question> list;
+    if (widget.missedQuestionsMode) {
+      list = await db.progressDao.getMissedQuestions();
+    } else {
+      list = await db.questionDao.getQuestionsByTag(widget.tagName!);
+    }
     setState(() {
       _questions = list;
       _isLoading = false;
@@ -45,11 +59,14 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final title = widget.missedQuestionsMode
+        ? 'Missed Questions Review'
+        : 'Drill: ${widget.tagName}';
 
     return Scaffold(
       backgroundColor: cs.surface,
       appBar: AppBar(
-        title: Text('Drill: ${widget.tagName}'),
+        title: Text(title),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -60,7 +77,9 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Text(
-                        'No questions found for tag "${widget.tagName}".',
+                        widget.missedQuestionsMode
+                            ? 'No missed questions recorded yet! Keep studying.'
+                            : 'No questions found for tag "${widget.tagName}".',
                         style: Theme.of(context).textTheme.titleMedium,
                         textAlign: TextAlign.center,
                       ),

@@ -567,33 +567,112 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 24),
 
-            // ── 7. Quick Practice Drill Topics ──
-            Text(
-              'Targeted Concept Drills',
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: cs.onSurfaceVariant,
-                  ),
+            // ── 7. Missed Questions Review & Weak Areas ──
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Missed Questions Review',
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: cs.onSurfaceVariant,
+                      ),
+                ),
+                StreamBuilder<int>(
+                  stream: db.progressDao.watchMissedQuestionsCount(),
+                  builder: (context, snapshot) {
+                    final count = snapshot.data ?? 0;
+                    if (count == 0) return const SizedBox.shrink();
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFEF4444).withAlpha(30),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: const Color(0xFFEF4444).withAlpha(100)),
+                      ),
+                      child: Text(
+                        '$count missed',
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFEF4444),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
             const SizedBox(height: 10),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                'Scope of DPA',
-                'Statutory Exclusions',
-                'General Principles',
-                'Consent',
-                'Data Breach Management',
-              ].map((tag) {
-                return ActionChip(
-                  label: Text(tag),
-                  avatar: const Icon(Icons.tag, size: 16),
-                  onPressed: () {
-                    Navigator.of(context).push(TagDrillScreen.route(tag));
-                  },
+            StreamBuilder<int>(
+              stream: db.progressDao.watchMissedQuestionsCount(),
+              builder: (context, snapshot) {
+                final count = snapshot.data ?? 0;
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: cs.surfaceContainerHigh,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: count > 0
+                          ? const Color(0xFFEF4444).withAlpha(90)
+                          : cs.outlineVariant.withAlpha(80),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: (count > 0 ? const Color(0xFFEF4444) : const Color(0xFF10B981)).withAlpha(25),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          count > 0 ? Icons.error_outline_rounded : Icons.check_circle_outline_rounded,
+                          color: count > 0 ? const Color(0xFFEF4444) : const Color(0xFF10B981),
+                          size: 24,
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              count > 0 ? '$count questions need review' : 'No missed questions!',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              count > 0
+                                  ? 'Drill the exact questions you answered incorrectly during lessons & reviews.'
+                                  : 'Great comprehension! Keep going through lessons and reviews.',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: cs.onSurfaceVariant,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      FilledButton.tonal(
+                        onPressed: count > 0
+                            ? () => Navigator.of(context).push(TagDrillScreen.missedQuestionsRoute())
+                            : null,
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 14),
+                          visualDensity: VisualDensity.compact,
+                        ),
+                        child: const Text('Review'),
+                      ),
+                    ],
+                  ),
                 );
-              }).toList(),
+              },
             ),
             const SizedBox(height: 24),
           ],

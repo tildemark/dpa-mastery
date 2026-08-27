@@ -275,6 +275,27 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
           (mistakesOnly ? p.mistakeCount.isBiggerThanValue(0) : const Constant(true)));
     return query.get();
   }
+
+  /// Returns questions where the user has recorded 1 or more mistakes,
+  /// sorted by most mistakes first.
+  Future<List<Question>> getMissedQuestions() async {
+    final query = select(userProgress).join([
+      innerJoin(db.questions, db.questions.id.equalsExp(userProgress.questionId)),
+    ])
+      ..where(userProgress.mistakeCount.isBiggerThanValue(0))
+      ..orderBy([OrderingTerm.desc(userProgress.mistakeCount)]);
+
+    final rows = await query.get();
+    return rows.map((r) => r.readTable(db.questions)).toList();
+  }
+
+  /// Live count stream of questions with mistakes.
+  Stream<int> watchMissedQuestionsCount() {
+    return (select(userProgress)
+          ..where((p) => p.mistakeCount.isBiggerThanValue(0)))
+        .watch()
+        .map((list) => list.length);
+  }
 }
 
 class SrsStageCounts {

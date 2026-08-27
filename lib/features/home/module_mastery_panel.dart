@@ -18,14 +18,14 @@ class ModuleMasteryPanel extends ConsumerWidget {
 
     return masteryAsync.when(
       loading: () => const SizedBox(
-        height: 110,
+        height: 140,
         child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
       ),
       error: (_, _) => const SizedBox.shrink(),
       data: (modules) {
         if (modules.isEmpty) return const SizedBox.shrink();
         return SizedBox(
-          height: 118,
+          height: 144,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: EdgeInsets.zero,
@@ -55,8 +55,8 @@ class _ModuleCard extends StatelessWidget {
     final color = _ringColor(ratio);
 
     return Container(
-      width: 100,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+      width: 104,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
       decoration: BoxDecoration(
         color: cs.surfaceContainerHigh,
         borderRadius: BorderRadius.circular(16),
@@ -66,12 +66,13 @@ class _ModuleCard extends StatelessWidget {
         ),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Circular progress ring
           SizedBox(
-            width: 52,
-            height: 52,
+            width: 48,
+            height: 48,
             child: CustomPaint(
               painter: _RingPainter(
                 ratio: ratio,
@@ -91,7 +92,7 @@ class _ModuleCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
           Text(
             'Mod ${data.moduleNumber}',
             style: TextStyle(
@@ -106,7 +107,11 @@ class _ModuleCard extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 9, color: cs.onSurfaceVariant),
+            style: TextStyle(
+              fontSize: 9.5,
+              height: 1.15,
+              color: cs.onSurfaceVariant,
+            ),
           ),
         ],
       ),
