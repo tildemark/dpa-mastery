@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'lesson_provider.dart';
 import 'lesson_widgets.dart';
 import 'lesson_summary_screen.dart';
+import 'tier_unlock_dialog.dart';
 
 /// Main entry point for the Lessons Mode experience.
 ///
@@ -154,9 +155,20 @@ class _LessonFlow extends ConsumerWidget {
     final controller =
         ref.read(lessonControllerProvider(difficultyLevel).notifier);
 
-    // Batch complete → push summary.
+    // Batch complete → optionally show tier unlock → push summary.
     if (state.isBatchComplete) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        // Show tier unlock dialog if a new tier was just unlocked.
+        if (state.newTierUnlocked != null && context.mounted) {
+          final tierNum = state.newTierUnlocked!;
+          final tierName = _tierName(tierNum);
+          await TierUnlockDialog.show(
+            context,
+            newTierNumber: tierNum,
+            newTierName: tierName,
+          );
+        }
+        if (!context.mounted) return;
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (_) => LessonSummaryScreen(
@@ -201,3 +213,11 @@ class _LessonFlow extends ConsumerWidget {
     );
   }
 }
+
+String _tierName(int tier) => switch (tier) {
+      1 => 'Foundations',
+      2 => 'Compliance Practitioner',
+      3 => 'Privacy Specialist',
+      4 => 'Lead Privacy Architect',
+      _ => 'Master DPO',
+    };

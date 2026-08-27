@@ -4,6 +4,7 @@ import 'package:drift/drift.dart' show Value;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../db/app_database.dart';
+import '../../engine/gating_service.dart';
 import '../../engine/srs_engine.dart';
 import '../../main.dart';
 import '../../services/settings_service.dart';
@@ -33,6 +34,7 @@ class LessonBatchState {
     this.shuffledOptions,
     this.completedExamIds = const [],
     this.missedExamIds = const [],
+    this.newTierUnlocked,
   });
 
   final LessonPhase phase;
@@ -44,6 +46,10 @@ class LessonBatchState {
   final List<String>? shuffledOptions;
   final List<int> completedExamIds;
   final List<int> missedExamIds;
+
+  /// Set to the newly unlocked tier number when a tier gate was just crossed.
+  /// Null otherwise.
+  final int? newTierUnlocked;
 
   Question get currentItem =>
       phase == LessonPhase.learning ? learningItems[currentIndex] : examItems[currentIndex];
@@ -67,8 +73,10 @@ class LessonBatchState {
     List<String>? shuffledOptions,
     List<int>? completedExamIds,
     List<int>? missedExamIds,
+    int? newTierUnlocked,
     bool clearSelectedAnswer = false,
     bool clearShuffledOptions = false,
+    bool clearNewTierUnlocked = false,
   }) =>
       LessonBatchState(
         phase: phase ?? this.phase,
@@ -82,6 +90,7 @@ class LessonBatchState {
             clearShuffledOptions ? null : (shuffledOptions ?? this.shuffledOptions),
         completedExamIds: completedExamIds ?? this.completedExamIds,
         missedExamIds: missedExamIds ?? this.missedExamIds,
+        newTierUnlocked: clearNewTierUnlocked ? null : (newTierUnlocked ?? this.newTierUnlocked),
       );
 }
 
@@ -206,6 +215,10 @@ class LessonController extends StateNotifier<AsyncValue<LessonBatchState?>> {
 
       // Check if all unique exam items are completed
       if (currentVal.currentIndex >= currentVal.examItems.length - 1) {
+        // Snapshot which tiers were unlocked BEFORE the final promotion
+        final gating = GatingService(_db);
+        final unlockedBefore = await gating.getUnlockedLevels();
+
         // Record quota deduction in settings
         final remainingUnlearned =
             await _db.questionDao.getUnlearnedQuestions(_level);
@@ -214,9 +227,17 @@ class LessonController extends StateNotifier<AsyncValue<LessonBatchState?>> {
           remainingUnlearned.length,
         );
 
+        // Check if a new tier was unlocked after this batch
+        final unlockedAfter = await gating.getUnlockedLevels();
+        int? newlyUnlocked;
+        if (unlockedAfter.length > unlockedBefore.length) {
+          newlyUnlocked = unlockedAfter.last;
+        }
+
         state = AsyncValue.data(
           currentVal.copyWith(
             completedExamIds: updatedCompleted,
+            newTierUnlocked: newlyUnlocked,
           ),
         );
         return;

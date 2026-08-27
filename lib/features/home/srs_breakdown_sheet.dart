@@ -296,7 +296,7 @@ class SrsBreakdownSheet extends ConsumerWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Level $level: ${_levelLabel(level)}',
+                                    'Tier $level: ${_levelLabel(level)}',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 13,
@@ -430,11 +430,11 @@ class SrsBreakdownSheet extends ConsumerWidget {
   }
 
   String _levelLabel(int l) => switch (l) {
-        1 => 'Foundational Framework',
-        2 => 'Key Definitions & Rules',
-        3 => 'Single-Concept Scenarios',
-        4 => 'Multi-Concept Application',
-        _ => 'Edge Cases & Exceptions',
+        1 => 'Foundations',
+        2 => 'Compliance Practitioner',
+        3 => 'Privacy Specialist',
+        4 => 'Lead Privacy Architect',
+        _ => 'Master DPO',
       };
 
   Color _levelColor(int l) => switch (l) {

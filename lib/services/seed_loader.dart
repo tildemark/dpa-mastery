@@ -21,19 +21,7 @@ class SeedLoader {
   /// Safe to call on every launch (uses non-destructive upsert).
   Future<void> loadBundledSeeds() async {
     const seedFiles = [
-      'assets/seeds/module1.json',
-      'assets/seeds/module2.json',
-      'assets/seeds/module3.json',
-      'assets/seeds/module4.json',
-      'assets/seeds/module5.json',
-      'assets/seeds/module6.json',
-      'assets/seeds/module7.json',
-      'assets/seeds/update_v5_practice_quiz.json',
-      'assets/seeds/update_v5_module1_expanded.json',
-      'assets/seeds/update_v6_practice_quiz.json',
-      'assets/seeds/update_v7_practice_quiz.json',
-      'assets/seeds/update_v9_expanded_batch.json',
-      'assets/seeds/update_v10_foundational_batch.json',
+      'assets/seeds/core_question_bank.json',
     ];
 
     for (final file in seedFiles) {
@@ -43,6 +31,27 @@ class SeedLoader {
         // Skip missing or invalid asset safely
       }
     }
+
+    // Migrate legacy eager-init rows from older app versions.
+    // If all UserProgress rows are at stage 0 with zero real progress,
+    // wipe them so lazy initialisation takes over (home shows "Available: 43").
+    await _db.progressDao.migrateEagerProgressRows();
+
+    // Auto-clean any legacy orphaned questions from earlier versions
+    await _purgeOrphanedQuestions();
+  }
+
+  /// Removes any questions in the database with IDs beyond the core bank (unless registered as DLC)
+  Future<void> _purgeOrphanedQuestions() async {
+    // If the database has old questions beyond 282 from before consolidation, remove them
+    await _db.customStatement('DELETE FROM questions WHERE id > 282');
+  }
+
+  /// Completely wipes all questions, tags, and progress, then reloads the core question bank.
+  Future<void> resetAndReseedCoreBank() async {
+    await _db.progressDao.clearAllProgress();
+    await _db.questionDao.clearAllQuestionsAndTags();
+    await loadBundledSeeds();
   }
 
   /// Parses a seed JSON string and upserts all questions, tags, and
@@ -67,15 +76,16 @@ class SeedLoader {
         ),
       ]);
 
-      // ── Upsert tags and link them ────────────────────────────────────────
+      // ── Upsert tags and link them ───────────────────────────────────────
       final rawTags = item['tags'] as List<dynamic>? ?? [];
       for (final tagName in rawTags.cast<String>()) {
         final tagId = await _db.questionDao.upsertTag(tagName);
         await _db.questionDao.linkQuestionTag(questionId, tagId);
       }
 
-      // ── Initialise UserProgress at Stage 0 if not already present ────────
-      await _db.progressDao.initProgressIfAbsent(questionId);
+      // NOTE: UserProgress rows are no longer pre-created here.
+      // Lazy initialisation: a progress row is only inserted the first time
+      // the user encounters this question in a Lesson session.
     }
   }
 

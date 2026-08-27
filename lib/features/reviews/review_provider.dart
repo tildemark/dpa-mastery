@@ -181,43 +181,14 @@ final reviewControllerProvider = StateNotifierProvider.autoDispose<
   (ref) => ReviewController(ref.read(dbProvider)),
 );
 
-/// Live stream provider for all 5 SRS stage counts.
+/// Live stream provider for all SRS stage counts.
+/// With lazy progress initialisation, 'available' represents Tier-1 questions
+/// not yet started, computed by joining the Questions table.
 final srsStageCountsStreamProvider = StreamProvider.autoDispose<SrsStageCounts>((ref) {
   final db = ref.watch(dbProvider);
-  return db.select(db.userProgress).watch().map((all) {
-    int locked = 0;
-    int apprentice = 0;
-    int guru = 0;
-    int master = 0;
-    int burned = 0;
-
-    for (final p in all) {
-      switch (p.srsStage) {
-        case 0:
-          locked++;
-          break;
-        case 1 || 2 || 3 || 4:
-          apprentice++;
-          break;
-        case 5 || 6:
-          guru++;
-          break;
-        case 7:
-          master++;
-          break;
-        case 8:
-          burned++;
-          break;
-      }
-    }
-
-    return SrsStageCounts(
-      locked: locked,
-      apprentice: apprentice,
-      guru: guru,
-      master: master,
-      burned: burned,
-    );
+  // Watch both tables so the stream re-fires when either changes
+  return db.select(db.userProgress).watch().asyncMap((_) async {
+    return db.progressDao.getSrsStageCounts();
   });
 });
 

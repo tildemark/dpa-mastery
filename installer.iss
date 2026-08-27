@@ -3,7 +3,7 @@
 ; Compile via CLI: iscc installer.iss
 
 #define MyAppName "DPA Mastery"
-#define MyAppVersion "1.2.0"
+#define MyAppVersion "1.3.0"
 #define MyAppPublisher "Alfredo Sanchez Jr"
 #define MyAppURL "https://sanchez.ph"
 #define MyAppExeName "dpa_mastery.exe"
@@ -20,7 +20,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 LicenseFile=LICENSE
 OutputDir=build
-OutputBaseFilename=dpa_mastery_windows_setup_v1.2.0
+OutputBaseFilename=dpa_mastery_windows_setup_v1.3.0
 Compression=lzma2/ultra64
 SolidCompression=yes
 SetupIconFile=windows\runner\resources\app_icon.ico

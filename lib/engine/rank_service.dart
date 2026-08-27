@@ -26,9 +26,9 @@ class RankService {
 
     final title = switch (highestUnlocked) {
       1 => 'Privacy Cadet',
-      2 => 'Privacy Compliance Specialist',
-      3 => 'Senior Privacy Officer',
-      4 => 'Lead Compliance Architect',
+      2 => 'Compliance Practitioner',
+      3 => 'Privacy Specialist',
+      4 => 'Lead Privacy Architect',
       _ => 'Certified Master DPO',
     };
 

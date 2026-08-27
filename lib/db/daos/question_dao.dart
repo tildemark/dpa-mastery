@@ -19,6 +19,13 @@ class QuestionDao extends DatabaseAccessor<AppDatabase>
     });
   }
 
+  /// Clears all questions, tags, and question tags for a clean bank reload.
+  Future<void> clearAllQuestionsAndTags() async {
+    await delete(questionTags).go();
+    await delete(questions).go();
+    await delete(tags).go();
+  }
+
   /// Inserts or resolves a tag by name, returning its id.
   Future<int> upsertTag(String tagName) async {
     final existing = await (select(tags)

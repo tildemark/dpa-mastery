@@ -72,6 +72,11 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
     );
   }
 
+  /// Deletes all user progress rows (full table wipe).
+  Future<void> clearAllProgress() async {
+    await delete(userProgress).go();
+  }
+
   /// Initialises a [UserProgress] row at Stage 0 (Locked) for a new question,
   /// only if one does not already exist (preserves existing progress on every app launch).
   Future<void> initProgressIfAbsent(int questionId) async {
@@ -90,6 +95,7 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
   // ─── Gating Stats ────────────────────────────────────────────────────────
 
   /// Returns how many questions at [difficultyLevel] have reached Guru (stage >= 5).
+  /// Joins UserProgress so only questions that have been started are counted.
   Future<int> countGuruAtLevel(int difficultyLevel) async {
     final query = select(userProgress).join([
       innerJoin(
@@ -105,18 +111,20 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
     return rows.length;
   }
 
-  /// Returns the total number of questions at [difficultyLevel].
+  /// Returns the total number of questions at [difficultyLevel] from the
+  /// Questions table directly — accurate even before UserProgress rows exist
+  /// (i.e. with lazy progress initialisation).
   Future<int> countTotalAtLevel(int difficultyLevel) async {
-    final query = select(userProgress).join([
-      innerJoin(
-        db.questions,
-        db.questions.id.equalsExp(userProgress.questionId),
-      ),
-    ])
-      ..where(db.questions.difficultyLevel.equals(difficultyLevel));
-    final rows = await query.get();
+    final rows = await (select(db.questions)
+          ..where((q) => q.difficultyLevel.equals(difficultyLevel)))
+        .get();
     return rows.length;
   }
+
+  /// Convenience alias — same as [countTotalAtLevel] but named for clarity at
+  /// call sites that explicitly want the raw question count.
+  Future<int> countQuestionsAtLevel(int difficultyLevel) =>
+      countTotalAtLevel(difficultyLevel);
 
   // ─── Progress by Question ────────────────────────────────────────────────
 
@@ -126,27 +134,49 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
         .getSingleOrNull();
   }
 
+  /// Detects the "eager init" footprint from older app versions:
+  /// All 282 questions were pre-inserted at stage 0 before lazy-init was
+  /// introduced.  If the user has zero real progress (apprentice/guru/master/
+  /// burned == 0) we safely wipe those stage-0 rows so the lazy path takes
+  /// over and the home screen shows "Available: 43" instead of "Locked: 282".
+  Future<void> migrateEagerProgressRows() async {
+    final all = await select(userProgress).get();
+    if (all.isEmpty) return; // already clean
+
+    // If any real progress exists, do NOT migrate — preserve the user's data.
+    final hasRealProgress = all.any((p) => p.srsStage > 0);
+    if (hasRealProgress) return;
+
+    // All rows are stage 0 — legacy eager init. Wipe so lazy path takes over.
+    await delete(userProgress).go();
+  }
+
   // ─── WaniKani Dashboard Metrics & Forecast ────────────────────────────────
 
-  /// Returns count breakdown across all 5 WaniKani SRS categories:
-  /// - locked: stage == 0
+  /// Returns count breakdown across all 5 WaniKani SRS categories.
+  ///
+  /// With lazy progress initialisation, questions have no [UserProgress] row
+  /// until they are first encountered in a lesson.  The [available] count
+  /// represents Tier-1 (difficultyLevel == 1) questions that have not yet
+  /// started — i.e. no progress row OR progress row at stage 0.
+  ///
+  /// Categories:
+  /// - available: Tier-1 questions not yet started (no row or stage 0)
   /// - apprentice: stage in 1..4
   /// - guru: stage in 5..6
   /// - master: stage == 7
   /// - burned: stage == 8
   Future<SrsStageCounts> getSrsStageCounts() async {
-    final all = await select(userProgress).get();
-    int locked = 0;
+    final allProgress = await select(userProgress).get();
     int apprentice = 0;
     int guru = 0;
     int master = 0;
     int burned = 0;
 
-    for (final p in all) {
+    for (final p in allProgress) {
       switch (p.srsStage) {
         case 0:
-          locked++;
-          break;
+          break; // stage-0 rows are "in-progress but not yet learned" — counted in available below
         case 1 || 2 || 3 || 4:
           apprentice++;
           break;
@@ -162,8 +192,22 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
       }
     }
 
+    // Available = Tier-1 questions that have not been promoted to Apprentice yet.
+    // This uses the Questions table directly so it works with lazy init.
+    final tier1Total = await countTotalAtLevel(1);
+    // Count progress rows that belong to tier 1 and have been lesson-completed
+    final tier1ProgressRows = await (select(userProgress).join([
+      innerJoin(db.questions, db.questions.id.equalsExp(userProgress.questionId)),
+    ])
+          ..where(db.questions.difficultyLevel.equals(1)))
+        .get();
+    final tier1InProgress = tier1ProgressRows
+        .where((r) => r.readTable(userProgress).isLessonCompleted || r.readTable(userProgress).srsStage > 0)
+        .length;
+    final available = (tier1Total - tier1InProgress).clamp(0, tier1Total);
+
     return SrsStageCounts(
-      locked: locked,
+      available: available,
       apprentice: apprentice,
       guru: guru,
       master: master,
@@ -235,20 +279,21 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
 
 class SrsStageCounts {
   const SrsStageCounts({
-    required this.locked,
+    required this.available,
     required this.apprentice,
     required this.guru,
     required this.master,
     required this.burned,
   });
 
-  final int locked;
+  /// Tier-1 questions not yet started (shown on home screen as "Available").
+  final int available;
   final int apprentice;
   final int guru;
   final int master;
   final int burned;
 
-  int get total => locked + apprentice + guru + master + burned;
+  int get total => available + apprentice + guru + master + burned;
   int get learnedTotal => apprentice + guru + master + burned;
   int get masteredTotal => guru + master + burned;
 }

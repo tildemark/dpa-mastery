@@ -47,6 +47,11 @@ class OtaSyncService {
         final remoteVersion = entry['version'] as int;
         final url = entry['url'] as String;
 
+        // Skip legacy separate module downloads since all core modules (1-7) are bundled in the core question bank.
+        if (moduleName.startsWith('module')) {
+          continue;
+        }
+
         final localVersion = prefs.getInt('$_prefKeyPrefix$moduleName') ?? 0;
 
         if (remoteVersion > localVersion) {
@@ -65,12 +70,17 @@ class OtaSyncService {
   // ─── Private ─────────────────────────────────────────────────────────────
 
   Future<void> _downloadAndApply(String url) async {
+    final manifestUri = Uri.parse(_manifestUrl);
+    final targetUri = url.startsWith('http')
+        ? Uri.parse(url)
+        : manifestUri.resolve(url);
+
     final response = await http
-        .get(Uri.parse(url))
+        .get(targetUri)
         .timeout(const Duration(seconds: 30));
 
     if (response.statusCode != 200) {
-      throw Exception('Failed to download seed: $url (${response.statusCode})');
+      throw Exception('Failed to download seed: $targetUri (${response.statusCode})');
     }
 
     await _seedLoader.applySeedJson(response.body);

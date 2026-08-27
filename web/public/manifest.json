@@ -1,12 +1,8 @@
 {
   "version": 1,
-  "release_date": "2026-08-25",
+  "release_date": "2026-08-27",
   "modules": [
-    { "module": "module2", "url": "/seeds/module2.json", "version": 1 },
-    { "module": "module3", "url": "/seeds/module3.json", "version": 1 },
-    { "module": "module4", "url": "/seeds/module4.json", "version": 1 },
-    { "module": "module5", "url": "/seeds/module5.json", "version": 1 },
-    { "module": "module6", "url": "/seeds/module6.json", "version": 1 },
-    { "module": "module7", "url": "/seeds/module7.json", "version": 1 }
+    { "module": "core_bank", "url": "/seeds/core_question_bank.json", "version": 1 }
   ]
 }
+

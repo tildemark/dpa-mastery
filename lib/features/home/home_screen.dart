@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../engine/gating_service.dart';
 import '../../engine/rank_service.dart';
+import '../../engine/readiness_service.dart';
 import '../../main.dart';
 import '../lessons/lessons_screen.dart';
 import '../reviews/reviews_screen.dart';
@@ -13,6 +14,7 @@ import '../cram/cram_screen.dart';
 import '../../services/settings_service.dart';
 import '../settings/settings_screen.dart';
 import '../profile/profile_dialog.dart';
+import 'module_mastery_panel.dart';
 import 'srs_breakdown_sheet.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -40,6 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final settings = ref.watch(settingsServiceProvider);
     final gating = GatingService(db);
     final rankService = RankService(db);
+    final readinessService = ReadinessService(db);
     final reviewQueueAsync = ref.watch(reviewQueueProvider);
     final srsCountsAsync = ref.watch(srsStageCountsStreamProvider);
     final forecastAsync = ref.watch(reviewForecastStreamProvider);
@@ -50,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final fc = forecastAsync.asData?.value;
     final nextTime = nextReviewAsync.asData?.value;
     final isCountsLoading = srsCountsAsync.isLoading || counts == null;
-    final availableLessons = counts != null ? settings.getAvailableLessonsToday(counts.locked) : 0;
+    final availableLessons = counts != null ? settings.getAvailableLessonsToday(counts.available) : 0;
     final pendingReviewsCount = reviewQueueAsync.asData?.value.length ?? 0;
 
     // ── Review Gating & Apprentice Cap Logic ──
@@ -69,7 +72,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       lessonSubtitle = 'Apprentice cap reached (${counts.apprentice}/${settings.apprenticeCap})';
     } else if (availableLessons > 0) {
       lessonSubtitle = '$availableLessons available today';
-    } else if (counts.locked == 0) {
+    } else if (counts.available == 0 && counts.learnedTotal == counts.total) {
       lessonSubtitle = 'All lessons completed';
     } else {
       lessonSubtitle = 'Daily quota complete';
@@ -94,7 +97,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               showAboutDialog(
                 context: context,
                 applicationName: 'DPA Mastery',
-                applicationVersion: '1.2.0',
+                applicationVersion: '1.3.0',
                 applicationIcon: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.asset(
@@ -143,10 +146,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
             // ── 1. DPO Rank & Certification Profile Card ──
-            FutureBuilder<UserRankProfile>(
-              future: rankService.getUserRankProfile(),
-              builder: (context, snapshot) {
-                final rank = snapshot.data;
+            FutureBuilder<(UserRankProfile?, int)>(
+              future: Future.wait([
+                rankService.getUserRankProfile(),
+                readinessService.computeReadiness().then((r) => r.score),
+              ]).then((results) => (results[0] as UserRankProfile?, results[1] as int)),
+              // ── Profile Card: includes Question Bank size and NPC readiness score ──
+            builder: (context, snapshot) {
+                final rank = snapshot.data?.$1;
+                final readinessScore = snapshot.data?.$2 ?? 0;
                 return Container(
                   padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
@@ -179,7 +187,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 const Icon(Icons.verified_user_rounded, color: Color(0xFF818CF8), size: 14),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Level ${rank?.level ?? 1}',
+                                  'Tier ${rank?.level ?? 1}',
                                   style: const TextStyle(
                                     color: Color(0xFF818CF8),
                                     fontWeight: FontWeight.bold,
@@ -190,7 +198,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ),
                           ),
                           Text(
-                            '${(rank?.masteryPercentage ?? 0).toInt()}% Exam Ready',
+                            '$readinessScore% Exam Ready',
                             style: const TextStyle(
                               color: Color(0xFF10B981),
                               fontWeight: FontWeight.bold,
@@ -212,11 +220,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(6),
                         child: LinearProgressIndicator(
-                          value: (rank?.masteryPercentage ?? 0) / 100,
+                          value: readinessScore / 100,
                           minHeight: 6,
                           backgroundColor: cs.surfaceContainerHighest,
                           valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF10B981)),
                         ),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'NPC DPO Question Bank',
+                            style: TextStyle(fontSize: 11, color: cs.outline),
+                          ),
+                          Text(
+                            '282 questions',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: cs.outline,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -282,7 +308,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               ],
                             ),
                             content: Text(
-                              'You currently have ${counts?.apprentice ?? 0} active Apprentice items (limit: ${settings.apprenticeCap}).\n\nTo prevent review overload, advance existing items to Guru (Stage 5+) by completing reviews before unlocking more lessons.',
+                              'You currently have ${counts.apprentice} active Apprentice items (limit: ${settings.apprenticeCap}).\n\nTo prevent review overload, advance existing items to Guru (Stage 5+) by completing reviews before unlocking more lessons.',
                             ),
                             actions: [
                               TextButton(
@@ -422,10 +448,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       _SrsStageMetric(
-                        label: 'Locked',
-                        count: counts?.locked ?? 0,
+                        label: 'Available',
+                        count: counts?.available ?? 0,
                         color: const Color(0xFF64748B),
-                        icon: Icons.lock_outline,
+                        icon: Icons.lock_open_rounded,
                       ),
                       _SrsStageMetric(
                         label: 'Apprentice',
@@ -458,6 +484,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 24),
 
+            // ── 4b. Module Curriculum Mastery ──
+            Text(
+              'Curriculum Mastery by Module',
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: cs.onSurfaceVariant,
+                  ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'NPC DPO exam modules — Guru+ questions',
+              style: TextStyle(fontSize: 11, color: cs.outline),
+            ),
+            const SizedBox(height: 10),
+            const ModuleMasteryPanel(),
+            const SizedBox(height: 24),
+
             // ── 5. Review Forecast (Upcoming Countdowns) ──
             Text(
               'Review Forecast',
@@ -486,9 +529,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 24),
 
-            // ── 6. Difficulty Progression (85% Guru Gating) ──
+            // ── 6. Tier Progression (85% Guru Gating) ──
             Text(
-              'Difficulty Progression (85% Guru Gating)',
+              'Tier Progression',
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: cs.onSurfaceVariant,
@@ -786,7 +829,7 @@ class _LevelProgressTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Level $level: ${_levelLabel(level)}',
+                        'Tier $level: ${_levelLabel(level)}',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: isUnlocked ? cs.onSurface : cs.outline,
@@ -823,11 +866,11 @@ class _LevelProgressTile extends StatelessWidget {
   }
 
   String _levelLabel(int l) => switch (l) {
-        1 => 'Foundational Framework',
-        2 => 'Key Definitions & Rules',
-        3 => 'Single-Concept Scenarios',
-        4 => 'Multi-Concept Application',
-        _ => 'Edge Cases & Exceptions',
+        1 => 'Foundations',
+        2 => 'Compliance Practitioner',
+        3 => 'Privacy Specialist',
+        4 => 'Lead Privacy Architect',
+        _ => 'Master DPO',
       };
 
   Color _levelColor(int l) => switch (l) {

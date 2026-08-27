@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../main.dart';
 import '../../services/settings_service.dart';
+import '../../services/seed_loader.dart';
 import '../profile/profile_dialog.dart';
 
 /// Modal bottom sheet allowing users to configure daily lesson pace and learning preferences.
@@ -335,8 +336,9 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
     if (confirmed == true && mounted) {
       final db = ref.read(dbProvider);
       final settings = ref.read(settingsServiceProvider);
+      final seedLoader = SeedLoader(db);
 
-      await db.progressDao.resetAllProgress();
+      await seedLoader.resetAndReseedCoreBank();
       await settings.resetQuota();
 
       if (isNewProfile) {

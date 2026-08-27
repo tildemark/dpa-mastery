@@ -11,15 +11,16 @@ export default function HomePage() {
               <img src="/logo-512.png" alt="DPA Mastery Logo" width={36} height={36} />
             </div>
             <span className="logo-text">DPA Mastery</span>
-            <span className="version-pill">v1.2</span>
+            <span className="version-pill">v1.3</span>
           </div>
 
           <div className="nav-links">
             <a href="#features">Features</a>
-            <a href="#curriculum">Curriculum</a>
+            <a href="#tiers">Tier Progression</a>
+            <a href="#curriculum">7-Module Mastery</a>
             <a href="#downloads">Downloads</a>
             <Link href="/updates" className="nav-updates-link">
-              OTA Seeds &amp; API &rarr;
+              Core Bank &amp; OTA &rarr;
             </Link>
           </div>
         </div>
@@ -31,7 +32,7 @@ export default function HomePage() {
         <div className="hero-content">
           <div className="hero-badge">
             <span className="badge-dot"></span>
-            <span>Philippine NPC DPO Certification Exam Prep</span>
+            <span>Philippine NPC DPO Certification Exam Prep • Core Bank 282 Qs</span>
           </div>
 
           <h1 className="hero-title">
@@ -39,7 +40,7 @@ export default function HomePage() {
           </h1>
 
           <p className="hero-description">
-            The offline-first, SRS-powered study companion for the Philippine National Privacy Commission (NPC) DPO Certification Examination. Lock in RA 10173 concepts permanently.
+            The offline-first, SRS-powered study companion for the Philippine National Privacy Commission (NPC) DPO Certification Examination. Featuring 5 gated competency tiers, 7-module curriculum tracking, and an intelligent Exam Readiness score.
           </p>
 
           <div className="hero-cta-group">
@@ -49,10 +50,10 @@ export default function HomePage() {
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Download App Free
+              Download App Free (v1.3.0)
             </a>
             <a href="#features" className="btn-secondary">
-              Explore SRS Engine
+              Explore SRS Engine &amp; Tiers
             </a>
           </div>
 
@@ -62,19 +63,25 @@ export default function HomePage() {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
-              <span>100% Offline-First</span>
+              <span>100% Offline SQLite</span>
             </div>
             <div className="highlight-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
-              <span>Zero Tracking / No Telemetry</span>
+              <span>Zero Tracking &bull; Privacy by Design</span>
             </div>
             <div className="highlight-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
-              <span>Comprehensive 7-Module Syllabus</span>
+              <span>Master 282 Question Bank</span>
+            </div>
+            <div className="highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>NPC Readiness Index</span>
             </div>
           </div>
         </div>
@@ -89,7 +96,7 @@ export default function HomePage() {
               <span className="dot yellow"></span>
               <span className="dot green"></span>
             </div>
-            <span className="mockup-title">DPA Mastery Dashboard — SRS Progress &amp; Rank</span>
+            <span className="mockup-title">DPA Mastery Dashboard — SRS Progress, Tier Gating &amp; Readiness</span>
           </div>
           <div className="mockup-body">
             <div className="mockup-stat-grid">
@@ -101,7 +108,7 @@ export default function HomePage() {
               <div className="mockup-stat-card guru">
                 <span className="stat-label">Guru</span>
                 <span className="stat-value">Stages 5–6</span>
-                <span className="stat-sub">1 week • 2 weeks (Unlocks Next Level)</span>
+                <span className="stat-sub">1 week • 2 weeks (85% Unlocks Next Tier)</span>
               </div>
               <div className="mockup-stat-card master">
                 <span className="stat-label">Master</span>
@@ -149,9 +156,9 @@ export default function HomePage() {
 
           <div className="srs-timeline-bar">
             <div className="timeline-step">
-              <span className="step-badge">1. Lesson</span>
+              <span className="step-badge">1. Lesson (Available)</span>
               <span className="step-time">Instant</span>
-              <span className="step-desc">Learn concept</span>
+              <span className="step-desc">Concepts &amp; Exam</span>
             </div>
             <span className="timeline-arrow">&rarr;</span>
             <div className="timeline-step">
@@ -161,7 +168,7 @@ export default function HomePage() {
             </div>
             <span className="timeline-arrow">&rarr;</span>
             <div className="timeline-step">
-              <span className="step-badge">3. Guru</span>
+              <span className="step-badge">3. Guru (85% Gate)</span>
               <span className="step-time">1 – 2 weeks</span>
               <span className="step-desc">Solid retention</span>
             </div>
@@ -213,8 +220,8 @@ export default function HomePage() {
                 <line x1="12" y1="17" x2="12" y2="21"/>
               </svg>
             </div>
-            <h3>85% Guru Tier Progression Gating</h3>
-            <p>Difficulty levels 1 through 5 unlock sequentially only after demonstrating 85%+ mastery of preceding prerequisite concepts.</p>
+            <h3>85% Guru Tier Progression</h3>
+            <p>Five structured competency tiers unlock sequentially only after demonstrating 85%+ Guru mastery of prerequisite concepts.</p>
           </div>
 
           <div className="feature-card">
@@ -223,8 +230,8 @@ export default function HomePage() {
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
               </svg>
             </div>
-            <h3>Flexible Cram &amp; Tag Drill Modes</h3>
-            <p>Target specific focus areas like "Consent", "Breach Notification", or "DPO Liabilities" outside the strict SRS timer.</p>
+            <h3>7-Module Curriculum Mastery</h3>
+            <p>Dedicated real-time mastery rings track your progress across each of the 7 NPC examination syllabus modules independently.</p>
           </div>
 
           <div className="feature-card">
@@ -244,8 +251,55 @@ export default function HomePage() {
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
               </svg>
             </div>
-            <h3>Over-The-Air Question Expansion</h3>
-            <p>Automatic background OTA sync pulls newly published practice scenarios, jurisprudence updates, and NPC Circular revisions.</p>
+            <h3>Composite NPC Exam Readiness</h3>
+            <p>Weighted score blending depth of Guru+ knowledge with 7-module curriculum breadth to give you honest exam-day readiness.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Tier Progression Section */}
+      <section id="tiers" className="curriculum-section" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="section-header">
+          <span className="badge">Competency Roadmap</span>
+          <h2>5 Progressive Certification Tiers</h2>
+          <p>Structured progression from foundational definitions to edge-case jurisprudential mastery.</p>
+        </div>
+
+        <div className="curriculum-list">
+          <div className="curriculum-item">
+            <span className="module-num" style={{ color: '#5E6AD2' }}>T1</span>
+            <div className="module-text">
+              <h4>Tier 1: Foundations (43 Questions)</h4>
+              <p>Constitutional foundations, statutory definitions, core principles, and basic rights. Always available on Day 1.</p>
+            </div>
+          </div>
+          <div className="curriculum-item">
+            <span className="module-num" style={{ color: '#0EA5E9' }}>T2</span>
+            <div className="module-text">
+              <h4>Tier 2: Compliance Practitioner (60 Questions)</h4>
+              <p>Key legal definitions, consent criteria, PIC/PIP duties, and mandatory registration requirements. Unlocks at 85% Tier 1 Guru.</p>
+            </div>
+          </div>
+          <div className="curriculum-item">
+            <span className="module-num" style={{ color: '#10B981' }}>T3</span>
+            <div className="module-text">
+              <h4>Tier 3: Privacy Specialist (79 Questions)</h4>
+              <p>Single-concept application scenarios, legitimate interest assessments, and data sharing agreement protocols. Unlocks at 85% Tier 2 Guru.</p>
+            </div>
+          </div>
+          <div className="curriculum-item">
+            <span className="module-num" style={{ color: '#F59E0B' }}>T4</span>
+            <div className="module-text">
+              <h4>Tier 4: Lead Privacy Architect (69 Questions)</h4>
+              <p>Multi-concept complex scenarios, 72-hour breach containment drills, cross-border data transfer mechanisms, and security governance.</p>
+            </div>
+          </div>
+          <div className="curriculum-item">
+            <span className="module-num" style={{ color: '#EF4444' }}>T5</span>
+            <div className="module-text">
+              <h4>Tier 5: Master DPO (31 Questions)</h4>
+              <p>Edge cases, statutory exclusions (AMLA, journalism, intelligence), jurisprudence, corporate officer criminal liability, and NPC advisories.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -315,8 +369,8 @@ export default function HomePage() {
       <section id="downloads" className="downloads-section">
         <div className="section-header">
           <span className="badge">Get Started</span>
-          <h2>Download DPA Mastery</h2>
-          <p>Available for Android and Windows Desktop. 100% offline, zero ads, zero subscriptions.</p>
+          <h2>Download DPA Mastery v1.3.0</h2>
+          <p>Available for Android and Windows Desktop. 100% offline, zero ads, zero subscriptions, 282 core questions included.</p>
         </div>
 
         <div className="downloads-grid">
@@ -339,12 +393,12 @@ export default function HomePage() {
                 <span className="platform-tag">Recommended • APK Direct</span>
               </div>
             </div>
-            <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database and all 7 modules pre-bundled.</p>
+            <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database and master 282 question bank pre-bundled.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.2.0/dpa_mastery_v1.2.0_android.apk" target="_blank" rel="noreferrer" className="btn-download">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.3.0/dpa_mastery_v1.3.0_android.apk" target="_blank" rel="noreferrer" className="btn-download">
                 Download APK (.apk) &rarr;
               </a>
-              <span className="meta-info">Android 8.0+ (Oreo or later) • v1.2.0</span>
+              <span className="meta-info">Android 8.0+ (Oreo or later) • v1.3.0</span>
             </div>
           </div>
 
@@ -363,10 +417,10 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Native standalone 64-bit desktop executable for intensive study sessions and mock exams.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.2.0/dpa_mastery_v1.2.0_windows_x64.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.3.0/dpa_mastery_v1.3.0_windows_x64.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
                 Download for Windows (.zip) &rarr;
               </a>
-              <span className="meta-info">Windows 10 / 11 (64-bit) • v1.2.0</span>
+              <span className="meta-info">Windows 10 / 11 (64-bit) • v1.3.0</span>
             </div>
           </div>
 
@@ -414,6 +468,7 @@ export default function HomePage() {
             <div className="footer-column">
               <h5>Navigation</h5>
               <a href="#features">Features</a>
+              <a href="#tiers">Tier Progression</a>
               <a href="#curriculum">Curriculum</a>
               <a href="#downloads">Downloads</a>
             </div>
