@@ -1,0 +1,386 @@
+{
+    "version": 28,
+    "release_date": "2026-08-27",
+    "module": "Module 4: Lawful Criteria Level 2 Set",
+    "items": [
+        {
+            "id": 503,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent",
+                "Freely Given"
+            ],
+            "lesson_concept": "Consent must be freely given, specific, and informed[cite: 1]. If it is bundled with a service as a non-negotiable condition when the data is not actually necessary, it is invalid.",
+            "question_text": "An employer makes signing a waiver that allows the company to sell the applicant's personal data to third-party marketers a mandatory condition for being hired. Is this consent legally valid?",
+            "options": [
+                "Yes, because the applicant signed the waiver.",
+                "No, because the consent is not 'freely given' if employment is unfairly conditioned on an unnecessary data processing activity.",
+                "Yes, because employers have absolute legitimate interest over employees.",
+                "No, because the consent must be recorded on video."
+            ],
+            "correct_answer": "No, because the consent is not 'freely given' if employment is unfairly conditioned on an unnecessary data processing activity.",
+            "explanation": "Consent is legally invalid if an individual is forced or coerced into giving it as a condition for a service or employment where the data is completely unnecessary[cite: 1]."
+        },
+        {
+            "id": 504,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Contractual Necessity"
+            ],
+            "lesson_concept": "Processing is lawful if it is necessary for the fulfillment of a contract with the data subject[cite: 1].",
+            "question_text": "A hotel requires a guest to provide their credit card details and home address to secure a room reservation. What is the most appropriate lawful basis for processing this data?",
+            "options": [
+                "Legal Obligation",
+                "Fulfillment of a Contract",
+                "Protection of Vital Interests",
+                "Public Authority"
+            ],
+            "correct_answer": "Fulfillment of a Contract",
+            "explanation": "Processing the payment and contact information is necessary to fulfill the reservation and service contract between the hotel and the guest[cite: 1]."
+        },
+        {
+            "id": 505,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Legal Obligation",
+                "Scenario"
+            ],
+            "lesson_concept": "Processing is permitted if it is for compliance with a legal obligation to which the PIC is subject[cite: 1].",
+            "question_text": "An employer submits the Social Security System (SSS) numbers of all its new hires to the government without asking the employees to sign a separate DPA consent form. Is this a violation?",
+            "options": [
+                "Yes, explicit consent is always required for SPI like an SSS number.",
+                "No, because processing the SSS number is necessary for compliance with a legal obligation to which the employer is subject.",
+                "Yes, the employer must conduct a Privacy Impact Assessment first.",
+                "No, because employers own the SSS numbers of their employees."
+            ],
+            "correct_answer": "No, because processing the SSS number is necessary for compliance with a legal obligation to which the employer is subject.",
+            "explanation": "Employers have a statutory legal mandate to remit employee SSS contributions, providing a lawful basis (Legal Obligation) that supersedes the need for consent[cite: 1]."
+        },
+        {
+            "id": 506,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Vital Interests",
+                "Scenario"
+            ],
+            "lesson_concept": "Processing standard Personal Information is lawful when necessary to protect vitally important interests of the data subject, including life and health[cite: 1].",
+            "question_text": "During a massive landslide, a telecommunications provider tracks the GPS locations of stranded subscribers and shares them with rescue units without prior consent. What is the lawful basis?",
+            "options": [
+                "Fulfillment of a Contract",
+                "Protection of Vital Interests (Life and Health)",
+                "Legitimate Interest",
+                "Public Organizations"
+            ],
+            "correct_answer": "Protection of Vital Interests (Life and Health)",
+            "explanation": "Processing location data to locate stranded individuals in a disaster falls squarely under protecting the vitally important interests (life and physical safety) of the data subjects[cite: 1]."
+        },
+        {
+            "id": 507,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Legitimate Interest",
+                "Scope"
+            ],
+            "lesson_concept": "Legitimate interest allows processing PI without consent if necessary for the legitimate interests pursued by the PIC, provided it does not override fundamental rights[cite: 1].",
+            "question_text": "A retail chain shares CCTV images of known shoplifters among its own branch managers to prevent theft, without the shoplifters' consent. Can this be justified under Legitimate Interest?",
+            "options": [
+                "No, because CCTV footage cannot be processed without written consent.",
+                "Yes, provided the company's legitimate interest in security and fraud prevention does not override the fundamental rights of the individuals.",
+                "No, Legitimate Interest only applies to government agencies.",
+                "Yes, because shoplifters forfeit all constitutional rights."
+            ],
+            "correct_answer": "Yes, provided the company's legitimate interest in security and fraud prevention does not override the fundamental rights of the individuals.",
+            "explanation": "Fraud prevention and physical security are valid legitimate interests, provided the PIC conducts a balancing test to ensure the processing is proportionate and safeguards rights[cite: 1]."
+        },
+        {
+            "id": 508,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Legitimate Interest",
+                "Limitation"
+            ],
+            "lesson_concept": "Legitimate interest ONLY applies to the processing of standard Personal Information (PI) under Section 12. It CANNOT be used to process Sensitive Personal Information (SPI)[cite: 1].",
+            "question_text": "A corporation wants to share the medical diagnosis (SPI) of employees who frequently take sick leave with external auditors to optimize health insurance costs, citing 'Legitimate Interest'. Is this valid?",
+            "options": [
+                "Yes, cost optimization is a valid legitimate business interest.",
+                "No, because Legitimate Interest cannot be used as a lawful basis to process Sensitive Personal Information (SPI).",
+                "Yes, as long as the auditors sign a Non-Disclosure Agreement.",
+                "No, unless the NPC conducts the audit."
+            ],
+            "correct_answer": "No, because Legitimate Interest cannot be used as a lawful basis to process Sensitive Personal Information (SPI).",
+            "explanation": "Medical diagnoses are Sensitive Personal Information (SPI)[cite: 1]. Section 13 does not allow Legitimate Interest as a legal ground for processing SPI; it only applies to general PI under Section 12[cite: 1]."
+        },
+        {
+            "id": 509,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "SPI Exception",
+                "Medical Treatment"
+            ],
+            "lesson_concept": "Processing SPI is allowed without consent if carried out for medical treatment by a medical practitioner under professional secrecy[cite: 1].",
+            "question_text": "A paramedic checks the wallet of an unconscious accident victim, finds a card detailing a severe allergy, and processes this information to safely administer drugs. What is the lawful basis?",
+            "options": [
+                "Legitimate Interest",
+                "Existing Law and Regulation",
+                "Protection of Life and Health / Medical Treatment",
+                "Fulfillment of a Contract"
+            ],
+            "correct_answer": "Protection of Life and Health / Medical Treatment",
+            "explanation": "Section 13 allows the processing of SPI to protect life and health when the subject cannot give consent, and for medical treatment by a practitioner[cite: 1]."
+        },
+        {
+            "id": 510,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "SPI Exception",
+                "Legal Claims"
+            ],
+            "lesson_concept": "Under Section 13(f), processing SPI is permissible without consent when necessary for the establishment, exercise, or defense of legal claims[cite: 1].",
+            "question_text": "An employee sues their company for illegal medical dismissal. In court, the company submits the employee's official medical records (SPI) to the judge to defend their actions. Did the company violate the DPA by processing the SPI without consent?",
+            "options": [
+                "Yes, medical records require consent under all circumstances.",
+                "No, processing the SPI was necessary for the establishment, exercise, or defense of legal claims.",
+                "Yes, unless the hospital authorized the transfer.",
+                "No, because employers own the medical records of their staff."
+            ],
+            "correct_answer": "No, processing the SPI was necessary for the establishment, exercise, or defense of legal claims.",
+            "explanation": "Section 13 explicitly permits the processing of SPI without consent when it is necessary to defend against legal claims in court proceedings[cite: 1]."
+        },
+        {
+            "id": 511,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "SPI Exception",
+                "Public Organizations"
+            ],
+            "lesson_concept": "Non-profit bodies and political groups can process the SPI (like political affiliations) of their own members for legitimate purposes, confined to their members[cite: 1].",
+            "question_text": "A registered political party maintains a secure internal database of its members' political affiliations (SPI). They do not share this list with external parties. Is this lawful?",
+            "options": [
+                "Yes, under the exception for legitimate activities of public organizations or political bodies concerning their own members.",
+                "No, political affiliation can never be recorded.",
+                "Yes, but they must encrypt the database twice.",
+                "No, because political parties are strictly prohibited from data processing."
+            ],
+            "correct_answer": "Yes, under the exception for legitimate activities of public organizations or political bodies concerning their own members.",
+            "explanation": "Section 13 allows processing of SPI by non-profit organizations or political bodies for legitimate purposes, provided it is confined strictly to their members[cite: 1]."
+        },
+        {
+            "id": 512,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent",
+                "Withdrawal vs Other Bases"
+            ],
+            "lesson_concept": "A subject can withdraw consent. However, if the PIC has another valid lawful basis (like legal obligation), they can continue processing necessary data[cite: 1].",
+            "question_text": "A user deletes their account on a trading app and withdraws all consent. However, the app retains their past transaction records for 5 years due to an active Anti-Money Laundering (AMLA) mandate. Is the retention lawful?",
+            "options": [
+                "No, withdrawing consent automatically mandates the immediate deletion of all data.",
+                "Yes, because the retention is based on a separate lawful basis: Compliance with a Legal Obligation.",
+                "No, unless the user gave a second, permanent consent.",
+                "Yes, but the app must pay the user a holding fee."
+            ],
+            "correct_answer": "Yes, because the retention is based on a separate lawful basis: Compliance with a Legal Obligation.",
+            "explanation": "Even if consent is withdrawn, an organization can lawfully retain data if another criteria, such as a statutory legal obligation, applies[cite: 1]."
+        },
+        {
+            "id": 513,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent",
+                "Specific Purpose"
+            ],
+            "lesson_concept": "Consent must be specific to a declared purpose[cite: 1]. Blanket, open-ended consent forms are invalid.",
+            "question_text": "A mobile application asks users to check a box stating: 'I agree to allow the developer to use my personal data for any current or future business venture.' Why is this legally insufficient?",
+            "options": [
+                "It is valid because the user checked the box voluntarily.",
+                "It violates the rule that consent must be 'specific' and tied to a clearly defined, declared purpose.",
+                "It violates the requirement for electronic signatures.",
+                "It is valid only if the business venture is profitable."
+            ],
+            "correct_answer": "It violates the rule that consent must be 'specific' and tied to a clearly defined, declared purpose.",
+            "explanation": "Consent under the DPA must be specific. Broad, blanket statements covering 'any future venture' do not constitute valid, informed, specific consent[cite: 1]."
+        },
+        {
+            "id": 514,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Contractual Necessity",
+                "Limitation"
+            ],
+            "lesson_concept": "Data processed under 'Fulfillment of a Contract' must actually be necessary for that contract. Unrelated data cannot be justified under this basis[cite: 1].",
+            "question_text": "A streaming service requires users to submit their exact GPS location and blood type to fulfill a monthly subscription contract for watching movies. Is 'Fulfillment of a Contract' a valid lawful basis for this data?",
+            "options": [
+                "Yes, because the user agreed to the subscription contract.",
+                "No, because GPS and blood type are entirely unnecessary for fulfilling a movie streaming contract.",
+                "Yes, but only for premium 4K subscribers.",
+                "No, because streaming services are exempt from the DPA."
+            ],
+            "correct_answer": "No, because GPS and blood type are entirely unnecessary for fulfilling a movie streaming contract.",
+            "explanation": "The 'Contract' basis only covers data strictly necessary to execute the contract. Unrelated data (blood type) fails both the Contract necessity test and the Proportionality principle[cite: 1]."
+        },
+        {
+            "id": 515,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "SPI Exception",
+                "Medical Secrecy Requirement"
+            ],
+            "lesson_concept": "Medical treatment allows SPI processing without consent, but it MUST be carried out by a medical practitioner under professional secrecy[cite: 1].",
+            "question_text": "A nurse processes a patient's medical records for treatment but then carelessly posts the patient's diagnosis on a public blog. Why does the medical treatment exemption fail here?",
+            "options": [
+                "Because nurses are not considered medical practitioners.",
+                "Because the exemption strictly requires the processing to be carried out under the obligation of professional secrecy, which the public post violated.",
+                "Because the patient did not pay their bill yet.",
+                "Because blogs are regulated by the NBI."
+            ],
+            "correct_answer": "Because the exemption strictly requires the processing to be carried out under the obligation of professional secrecy, which the public post violated.",
+            "explanation": "Section 13(e) permits medical processing only if it is carried out by a medical practitioner or institution under strict professional secrecy[cite: 1]."
+        },
+        {
+            "id": 516,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Legitimate Interest",
+                "Balancing Test"
+            ],
+            "lesson_concept": "Legitimate interest requires a balancing test to ensure the processing does not override the fundamental rights and freedoms of the data subject[cite: 1].",
+            "question_text": "An employer claims 'Legitimate Interest' to install hidden audio recording devices inside employee restrooms to prevent supply theft. Why does this fail the Legitimate Interest test?",
+            "options": [
+                "It passes the test because preventing theft is a legitimate corporate interest.",
+                "It fails the balancing test because the highly intrusive surveillance overrides the employees' fundamental rights to privacy.",
+                "It fails because audio recordings are automatically classified as SPI.",
+                "It passes the test provided they delete the audio every 24 hours."
+            ],
+            "correct_answer": "It fails the balancing test because the highly intrusive surveillance overrides the employees' fundamental rights to privacy.",
+            "explanation": "Even if the purpose (preventing theft) is legitimate, extreme measures like bathroom surveillance severely override the fundamental privacy rights of subjects, failing the balancing test[cite: 1]."
+        },
+        {
+            "id": 517,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "SPI Consent",
+                "Explicit vs Implied"
+            ],
+            "lesson_concept": "Consent for Sensitive Personal Information must be specific, explicit, and given prior to processing[cite: 1].",
+            "question_text": "A website's Terms of Service state: 'By continuing to use this site, you automatically consent to us collecting your government ID numbers.' Is this implied consent valid for collecting SPI?",
+            "options": [
+                "Yes, continued use of a website constitutes legally binding implied consent.",
+                "No, processing Sensitive Personal Information requires specific and explicit consent, not implied or assumed consent.",
+                "Yes, as long as the Terms of Service are available on the homepage.",
+                "No, because government IDs can never be collected online."
+            ],
+            "correct_answer": "No, processing Sensitive Personal Information requires specific and explicit consent, not implied or assumed consent.",
+            "explanation": "Under Section 13(a), the processing of SPI requires specific and explicit consent prior to processing, prohibiting assumed or implied consent mechanisms[cite: 1]."
+        },
+        {
+            "id": 518,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Public Authority",
+                "Scenario"
+            ],
+            "lesson_concept": "Processing is lawful if it is necessary for the fulfillment of public order and safety, or to respond to a national emergency[cite: 1].",
+            "question_text": "During a highly infectious disease outbreak, a local government unit maps the travel history of infected citizens without their explicit consent to impose localized quarantines. What is the lawful basis?",
+            "options": [
+                "Fulfillment of a Contract",
+                "Corporate Legitimate Interest",
+                "Response to National Emergency / Public Order and Safety",
+                "Establishment of Legal Claims"
+            ],
+            "correct_answer": "Response to National Emergency / Public Order and Safety",
+            "explanation": "Section 12(e) allows the processing of PI without consent when it is necessary for public order and safety or to respond to a national emergency[cite: 1]."
+        },
+        {
+            "id": 519,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent",
+                "Evidenced Means"
+            ],
+            "lesson_concept": "Consent must be evidenced by written, electronic, or recorded means[cite: 1]. Verbal consent without a recording is difficult to prove and generally invalid.",
+            "question_text": "A telemarketer calls a potential client, verbally explains how their data will be used, and the client says 'Sure, go ahead.' However, the call is not recorded. If audited, will this consent hold up under the DPA?",
+            "options": [
+                "Yes, verbal agreements are always fully binding in data privacy.",
+                "No, because valid consent must be clearly evidenced by written, electronic, or recorded means.",
+                "Yes, provided the telemarketer swears an oath.",
+                "No, because telemarketers are banned from processing data."
+            ],
+            "correct_answer": "No, because valid consent must be clearly evidenced by written, electronic, or recorded means.",
+            "explanation": "Section 3(b) mandates that consent must be evidenced. A verbal agreement with no recording or electronic trail fails the evidentiary requirement[cite: 1]."
+        },
+        {
+            "id": 520,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "SPI Exception",
+                "Existing Law (KYC)"
+            ],
+            "lesson_concept": "Processing SPI is allowed when mandated by existing laws that guarantee the protection of the SPI[cite: 1].",
+            "question_text": "To open a new bank account, a financial institution requires a customer to submit a photocopy of their passport (SPI) to comply with the 'Know-Your-Customer' (KYC) regulations of the central bank. What is the lawful basis?",
+            "options": [
+                "Protection of Life and Health",
+                "Existing Law and Regulation",
+                "Legitimate Interest",
+                "Public Organizations"
+            ],
+            "correct_answer": "Existing Law and Regulation",
+            "explanation": "Section 13(b) allows the processing of SPI without consent when it is mandated by an existing law or regulation (like KYC/AMLA rules) that guarantees data protection[cite: 1]."
+        },
+        {
+            "id": 521,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Legitimate Interest",
+                "Consent Alternative"
+            ],
+            "lesson_concept": "Legitimate interest is an alternative to consent. If the balancing test is met, explicit consent is not legally required[cite: 1].",
+            "question_text": "If a company successfully passes the three-part balancing test to prove Legitimate Interest for processing basic Personal Information, do they still need to secure the data subject's explicit consent?",
+            "options": [
+                "Yes, consent is an absolute requirement for all processing activities.",
+                "No, Legitimate Interest is a valid alternative lawful basis to consent under Section 12.",
+                "Yes, unless they pay an exemption fee to the NPC.",
+                "No, but they must ask the DPO to sign a consent waiver."
+            ],
+            "correct_answer": "No, Legitimate Interest is a valid alternative lawful basis to consent under Section 12.",
+            "explanation": "Section 12 lists several alternative lawful criteria. If Legitimate Interest applies and is properly balanced, the processing is lawful without needing to obtain separate consent[cite: 1]."
+        },
+        {
+            "id": 522,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 4: Lawful Criteria",
+                "Consent",
+                "Separate Agreement"
+            ],
+            "lesson_concept": "Consent must be specific and informed[cite: 1]. It should not be buried deep inside a massive Terms of Service agreement.",
+            "question_text": "A social media platform buries a clause allowing them to sell user biometric data on page 45 of their general 'Terms of Service'. A user clicks 'I Agree' to create an account. Is this consent valid?",
+            "options": [
+                "Yes, users are legally responsible for reading entire documents.",
+                "No, consent for such processing (especially SPI) must be specific, explicit, and distinctly highlighted, not buried in general terms.",
+                "Yes, as long as the Terms of Service are written in English.",
+                "No, because biometric data is completely illegal to process."
+            ],
+            "correct_answer": "No, consent for such processing (especially SPI) must be specific, explicit, and distinctly highlighted, not buried in general terms.",
+            "explanation": "To be truly 'informed' and 'specific', consent clauses regarding sensitive processing must be prominently presented, not hidden deep within unrelated terms of service agreements[cite: 1]."
+        }
+    ]
+}

@@ -49,3 +49,6 @@ web/node_modules/
 web/.next/
 web/out/
 
+# Release distribution folder (uploaded directly to GitHub Releases)
+/dist/
+

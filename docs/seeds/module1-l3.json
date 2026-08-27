@@ -1,0 +1,389 @@
+{
+    "version": 32,
+    "release_date": "2026-08-27",
+    "module": "Module 1: Framework Level 3 Set",
+    "items": [
+        {
+            "id": 583,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Extraterritoriality",
+                "OFWs"
+            ],
+            "lesson_concept": "The DPA has extraterritorial application. It applies to an act done or practice engaged in outside of the Philippines if it relates to personal information about a Philippine citizen or a resident[cite: 1].",
+            "question_text": "A human resources firm based entirely in Dubai, UAE, collects the personal data of Overseas Filipino Workers (OFWs) to place them in local Middle Eastern companies. The firm has no physical servers or offices in the Philippines. Does the Philippine DPA apply to their processing of the OFWs' data?",
+            "options": [
+                "No, because the firm has no equipment or office physically located in the Philippines.",
+                "Yes, because the processing relates to the personal information of Philippine citizens.",
+                "No, the jurisdiction is entirely governed by UAE labor and privacy laws.",
+                "Yes, but only if the OFWs physically return to the Philippines."
+            ],
+            "correct_answer": "Yes, because the processing relates to the personal information of Philippine citizens.",
+            "explanation": "Extraterritoriality under Section 6 extends the scope of the DPA to entities outside the country if their data processing activities relate to the personal information of Philippine citizens, regardless of where the servers are located[cite: 1]."
+        },
+        {
+            "id": 584,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "DICT Attachment",
+                "NPC Independence"
+            ],
+            "lesson_concept": "The National Privacy Commission (NPC) is an independent body attached to the Department of Information and Communications Technology (DICT) strictly for policy and program coordination[cite: 1].",
+            "question_text": "The Secretary of the DICT disagrees with a Cease and Desist Order issued by the NPC against a major tech company. Can the DICT Secretary legally override or veto the NPC's order?",
+            "options": [
+                "Yes, because the NPC is a subordinate agency attached to the DICT.",
+                "No, the NPC is an independent body, and its attachment to the DICT is strictly for policy and program coordination.",
+                "Yes, provided the President of the Philippines co-signs the veto.",
+                "No, unless the tech company files an appeal directly with the DICT."
+            ],
+            "correct_answer": "No, the NPC is an independent body, and its attachment to the DICT is strictly for policy and program coordination.",
+            "explanation": "The NPC's attachment to the DICT does not make it a subordinate department subject to executive veto on its adjudicatory decisions. The attachment is strictly for policy and program coordination to preserve the NPC's independence[cite: 1]."
+        },
+        {
+            "id": 585,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "BPO Exemption Split"
+            ],
+            "lesson_concept": "Personal information originally collected from residents of foreign jurisdictions in accordance with their laws is excluded from the DPA when processed in the Philippines (e.g., BPO exemption)[cite: 1]. However, this exemption does not apply to the BPO's local employees.",
+            "question_text": "A BPO company in Cebu processes the credit card data of US citizens under US laws (exempt from the DPA), while simultaneously processing the payroll and health data of its 500 Filipino call center agents. How does the DPA apply to this company?",
+            "options": [
+                "The BPO is completely exempt from the DPA due to its status as an international processor.",
+                "The BPO must apply the DPA to both the US citizens' data and its local employees' data.",
+                "The US citizens' data is excluded from the DPA, but the BPO must fully comply with the DPA regarding the processing of its local Filipino employees' data.",
+                "The BPO can choose to apply US law to its Filipino employees."
+            ],
+            "correct_answer": "The US citizens' data is excluded from the DPA, but the BPO must fully comply with the DPA regarding the processing of its local Filipino employees' data.",
+            "explanation": "The Section 4(g) exclusion only applies to the data collected from foreign residents under foreign laws[cite: 1]. The BPO remains a Personal Information Controller subject to the DPA for the HR data of its local Filipino workforce."
+        },
+        {
+            "id": 586,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Government Official Exemption Limits"
+            ],
+            "lesson_concept": "Information regarding the official functions, position, or salary of government employees is excluded from the DPA to ensure public transparency[cite: 1]. This exclusion does not strip them of privacy rights regarding purely personal data.",
+            "question_text": "A news outlet files a request to obtain the psychiatric evaluation records of a sitting City Councilor, claiming that public officials are entirely excluded from DPA protections. Is this request legally valid under the DPA?",
+            "options": [
+                "Yes, public officials waive all rights to privacy upon taking office.",
+                "No, the exclusion only applies to information relating to the official's position, functions, or salary grade, not their private health records.",
+                "Yes, as long as the news outlet proves it is for public interest.",
+                "No, because City Councilors are not considered government employees."
+            ],
+            "correct_answer": "No, the exclusion only applies to information relating to the official's position, functions, or salary grade, not their private health records.",
+            "explanation": "Section 4(a) excludes information about government officers strictly relating to their position, official functions, and salary range[cite: 1]. It does not remove privacy protections for their Sensitive Personal Information, such as health records."
+        },
+        {
+            "id": 587,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "AMLA Exemption Repurposing"
+            ],
+            "lesson_concept": "Information necessary for banks and financial institutions to comply with the Anti-Money Laundering Act (AMLA) is explicitly excluded from the DPA[cite: 1]. Repurposing this data removes the exemption.",
+            "question_text": "A bank legally bypasses the DPA's consent requirements to process a client's data to file a mandatory Suspicious Transaction Report (STR) under AMLA. Later, the bank's marketing team uses that same STR data list to offer the clients high-risk investment products. What is the legal status of the marketing activity?",
+            "options": [
+                "It is protected because the data was originally collected under the AMLA exemption.",
+                "It constitutes unauthorized processing because using the data for commercial marketing falls outside the statutory AMLA exemption, making it fully subject to the DPA.",
+                "It is lawful as long as the clients are very wealthy.",
+                "It is partially exempt, resulting only in an administrative warning."
+            ],
+            "correct_answer": "It constitutes unauthorized processing because using the data for commercial marketing falls outside the statutory AMLA exemption, making it fully subject to the DPA.",
+            "explanation": "Statutory exclusions only apply to the specific exempted purpose. Once the bank repurposes AMLA compliance data for commercial marketing, the processing loses its exemption and violates the DPA[cite: 1]."
+        },
+        {
+            "id": 588,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Journalism Exemption Repurposing"
+            ],
+            "lesson_concept": "To protect freedom of expression, processing personal information exclusively for journalistic, artistic, or literary purposes is exempt from the DPA[cite: 1]. If used for non-journalistic purposes, the exemption is lost[cite: 1].",
+            "question_text": "A documentary filmmaker gathers hundreds of interviews and personal background checks on subjects for a film about political corruption. After the film is released, a private intelligence firm offers to buy the unused interview data. If the filmmaker sells the data, what happens to the DPA exemption?",
+            "options": [
+                "The exemption is permanently attached to the data, making the sale lawful.",
+                "The intelligence firm inherits the journalistic exemption.",
+                "The data loses its journalistic exemption, and the sale becomes an act of unauthorized processing under the DPA.",
+                "The filmmaker must pay a royalty fee to the subjects."
+            ],
+            "correct_answer": "The data loses its journalistic exemption, and the sale becomes an act of unauthorized processing under the DPA.",
+            "explanation": "The exemption under Section 4(d) applies 'exclusively' for journalistic, artistic, literary, or research purposes[cite: 1]. Selling the data to an intelligence firm is a commercial, non-journalistic purpose, instantly nullifying the exemption."
+        },
+        {
+            "id": 589,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Hierarchy of Laws"
+            ],
+            "lesson_concept": "The hierarchy of laws places the statute (RA 10173) above administrative issuances like NPC Circulars. A Circular cannot amend or contradict the law[cite: 1].",
+            "question_text": "A local City Council passes a municipal ordinance requiring all businesses in the city to publicly post the full names and home addresses of their employees on their storefronts. Businesses refuse, citing the Data Privacy Act (RA 10173). Which legal directive must the businesses follow?",
+            "options": [
+                "The municipal ordinance, because local laws always override national laws.",
+                "The Data Privacy Act (RA 10173), because a national statutory law supersedes conflicting local government ordinances.",
+                "Neither; they must wait for an executive order from the President.",
+                "The municipal ordinance, but only for businesses with over 100 employees."
+            ],
+            "correct_answer": "The Data Privacy Act (RA 10173), because a national statutory law supersedes conflicting local government ordinances.",
+            "explanation": "In the Philippine hierarchy of laws, a national statute passed by Congress (RA 10173) takes precedence over conflicting local ordinances or administrative issuances[cite: 1]."
+        },
+        {
+            "id": 590,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Zones of Privacy Application"
+            ],
+            "lesson_concept": "In cases like Ople v. Torres, the Supreme Court ruled that the Constitution establishes 'zones of privacy'. The State cannot intrude into these zones without a compelling state interest and narrowly tailored means[cite: 1].",
+            "question_text": "Based on the jurisprudence of Ople v. Torres, if the government attempts to implement a mandatory centralized database of all citizens' biometric and GPS data without establishing clear legislative safeguards on how the data is secured, how would the Supreme Court likely rule?",
+            "options": [
+                "The Court would uphold the database as a valid exercise of absolute police power.",
+                "The Court would strike it down as an unconstitutional intrusion into the citizens' zones of privacy due to the lack of adequate safeguards.",
+                "The Court would allow it, provided the government uses encrypted servers.",
+                "The Court would defer the decision entirely to the National Privacy Commission."
+            ],
+            "correct_answer": "The Court would strike it down as an unconstitutional intrusion into the citizens' zones of privacy due to the lack of adequate safeguards.",
+            "explanation": "Ople v. Torres established that while the state has interests, it cannot mandate sweeping data collection systems (like national IDs) that intrude upon zones of privacy without clear, legislated safeguards to protect that data[cite: 1]."
+        },
+        {
+            "id": 591,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Discretionary Benefits"
+            ],
+            "lesson_concept": "Information relating to discretionary benefits of a financial nature granted by the government, such as licenses and permits, is excluded from the DPA[cite: 1].",
+            "question_text": "A non-governmental organization (NGO) requests a master list of all citizens who were granted a special 'COVID-19 Financial Subsidy' by the provincial governor. Can the governor's office legally invoke the DPA to keep the list a secret?",
+            "options": [
+                "Yes, because financial data is automatically Sensitive Personal Information.",
+                "No, because information relating to discretionary financial benefits granted by the government to individuals is excluded from DPA protection to maintain transparency.",
+                "Yes, unless the NGO pays an administrative access fee.",
+                "No, but they must redact the citizens' last names."
+            ],
+            "correct_answer": "No, because information relating to discretionary financial benefits granted by the government to individuals is excluded from DPA protection to maintain transparency.",
+            "explanation": "Section 4(c) expressly excludes information relating to discretionary benefits of a financial nature granted by the government, ensuring transparency in how public funds are disbursed[cite: 1]."
+        },
+        {
+            "id": 592,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Research Exemption Limit"
+            ],
+            "lesson_concept": "The research exemption requires that the data is intended for a public benefit and that no decision directly affecting the data subject is made on the basis of the collected data[cite: 1].",
+            "question_text": "A private health institute invokes the 'research exemption' to analyze patient DNA. Based on their findings, they automatically cancel the health insurance policies of patients who show a high risk for cancer. Did the institute legally utilize the research exemption?",
+            "options": [
+                "Yes, because genetic research always falls under the statutory exemption.",
+                "No, because the exemption requires that no decision directly affecting the data subject is made based on the collected data.",
+                "Yes, provided they informed the National Privacy Commission.",
+                "No, because private institutes cannot conduct research."
+            ],
+            "correct_answer": "No, because the exemption requires that no decision directly affecting the data subject is made based on the collected data.",
+            "explanation": "The research exemption is strictly conditional. It is voided if the data processing results in a direct decision affecting the data subject (such as canceling their insurance)[cite: 1]."
+        },
+        {
+            "id": 593,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Manual Filing Systems"
+            ],
+            "lesson_concept": "The DPA applies to processing personal information whether recorded in a material form or not, covering both digital/automated systems and structured manual filing systems[cite: 1].",
+            "question_text": "A traditional, family-owned accounting firm has operated since 1985 and keeps all its client records in alphabetical order inside physical steel filing cabinets. They use no computers. When the NPC conducts an audit, the firm claims they are exempt because the DPA only governs 'cyber' or digital data. Is this defense valid?",
+            "options": [
+                "Yes, the DPA is functionally a cybercrime law that only applies to digital systems.",
+                "No, the DPA applies to the processing of personal information, explicitly including structured manual filing systems.",
+                "Yes, records created before 2012 are permanently exempt from the DPA.",
+                "No, but they are only subject to 50% of the normal penalties."
+            ],
+            "correct_answer": "No, the DPA applies to the processing of personal information, explicitly including structured manual filing systems.",
+            "explanation": "The DPA's scope is not limited to digital technology. It explicitly regulates structured manual filing systems, meaning highly organized physical paper records are fully subject to the law[cite: 1]."
+        },
+        {
+            "id": 594,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Quasi-Judicial vs Legislative Action"
+            ],
+            "lesson_concept": "The NPC has Quasi-Legislative (Rule-Making) Power (issuing Circulars) and Quasi-Judicial (Adjudicatory) Power (issuing cease and desist orders or resolving complaints)[cite: 1].",
+            "question_text": "A coalition of banks requests the NPC to establish a new, permanent industry standard for multi-factor authentication. The NPC responds by drafting and publishing a new 'Circular on Banking Security'. Which power did the NPC exercise?",
+            "options": [
+                "Quasi-Judicial Power",
+                "Advisory Power",
+                "Quasi-Legislative (Rule-Making) Power",
+                "Executive Enforcement Power"
+            ],
+            "correct_answer": "Quasi-Legislative (Rule-Making) Power",
+            "explanation": "Drafting and publishing a Circular to establish new regulatory standards across an industry is an exercise of the NPC's rule-making, or quasi-legislative, mandate[cite: 1]."
+        },
+        {
+            "id": 595,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Domestic Use Expansion"
+            ],
+            "lesson_concept": "Individuals processing personal data exclusively for personal, family, or household affairs are excluded from the DPA's strict regulations[cite: 1].",
+            "question_text": "A homeowner installs a doorbell camera that records the faces of visitors to their private residence for home security. A few months later, the homeowner starts a neighborhood watch blog and publicly posts the videos to identify people. How does the DPA domestic exemption apply?",
+            "options": [
+                "The exemption applies permanently because the camera is attached to a private home.",
+                "The initial recording for home security is exempt, but publishing the data on a public blog falls outside 'exclusive personal or household affairs' and may be subject to regulation.",
+                "The homeowner must register as a Personal Information Controller before buying the camera.",
+                "The exemption does not apply at all because video data is Sensitive Personal Information."
+            ],
+            "correct_answer": "The initial recording for home security is exempt, but publishing the data on a public blog falls outside 'exclusive personal or household affairs' and may be subject to regulation.",
+            "explanation": "Section 3(h) exempts processing *exclusively* for personal or household affairs[cite: 1]. Once the data is published publicly to a wider audience, it breaches the boundary of a purely domestic affair."
+        },
+        {
+            "id": 596,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Government Contractor Employee Data"
+            ],
+            "lesson_concept": "Information about an individual performing services under a government contract is excluded from the DPA, provided it relates to the services performed[cite: 1].",
+            "question_text": "A private construction company wins a government contract to build a highway. While the contract terms are public, a journalist demands the personal health records of the construction workers building the road, citing the government contractor exemption. Is the company required to release the health records?",
+            "options": [
+                "Yes, the exemption removes all privacy rights for employees of a government contractor.",
+                "No, the exemption only applies to information relating to the services performed and the terms of the contract, not the private health data of the workers.",
+                "Yes, provided the journalist pays an administrative fee.",
+                "No, because construction workers are classified as public officers."
+            ],
+            "correct_answer": "No, the exemption only applies to information relating to the services performed and the terms of the contract, not the private health data of the workers.",
+            "explanation": "Section 4(b) narrowly excludes information relating to the terms of the contract and the services performed[cite: 1]. It does not strip private employees of their right to privacy regarding unrelated personal data like health records."
+        },
+        {
+            "id": 597,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "NPC Confidentiality Breach"
+            ],
+            "lesson_concept": "The NPC must ensure at all times the confidentiality of any personal information that comes to its knowledge and possession during investigations[cite: 1].",
+            "question_text": "During an investigation into a corporate hack, an NPC investigator carelessly leaves a USB drive containing the seized corporate databases at a coffee shop, causing a secondary leak. Did the NPC violate its own governing law?",
+            "options": [
+                "No, regulatory bodies have absolute immunity from privacy laws.",
+                "Yes, Section 9 explicitly requires the Commission to ensure at all times the confidentiality of personal information that comes into its possession.",
+                "No, because the data was already leaked by the original hackers.",
+                "Yes, but they are only liable if the data belonged to government officials."
+            ],
+            "correct_answer": "Yes, Section 9 explicitly requires the Commission to ensure at all times the confidentiality of personal information that comes into its possession.",
+            "explanation": "The NPC is not immune to the principles of data security. Section 9 mandates that the Commission and its staff must strictly maintain the confidentiality of any data they handle during their duties[cite: 1]."
+        },
+        {
+            "id": 598,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Extraterritoriality Server Hosting"
+            ],
+            "lesson_concept": "The DPA applies to entities NOT found in the Philippines if they use equipment located in the Philippines[cite: 1].",
+            "question_text": "A startup incorporated in Singapore provides a business-to-business (B2B) app strictly to Indonesian companies. They have no Filipino clients and no offices in Manila. However, their primary AWS database cluster is physically located in a data center in Taguig, Philippines. Can the NPC audit this database?",
+            "options": [
+                "No, because the data subjects (Indonesians) are not protected by the DPA.",
+                "Yes, the DPA asserts jurisdiction over the entity because it utilizes equipment located in the Philippines to process personal information.",
+                "No, the DPA only applies to consumer (B2C) applications, not B2B.",
+                "Yes, but only if the Singaporean startup formally requests an audit."
+            ],
+            "correct_answer": "Yes, the DPA asserts jurisdiction over the entity because it utilizes equipment located in the Philippines to process personal information.",
+            "explanation": "Section 6(a) establishes that using equipment located in the Philippines to process data brings an entity under the extraterritorial jurisdiction of the DPA, regardless of the nationality of the data subjects[cite: 1]."
+        },
+        {
+            "id": 599,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Constitutional Right Sec 3 vs Sec 2"
+            ],
+            "lesson_concept": "Section 2 protects against unreasonable searches of physical effects; Section 3 protects the privacy of communication and correspondence[cite: 1].",
+            "question_text": "A police officer intercepts and records the digital text messages of a suspect without securing a lawful court order. Under the Bill of Rights in the 1987 Constitution, which specific provision is primarily violated?",
+            "options": [
+                "Article III, Section 2 (Unreasonable searches and seizures)",
+                "Article III, Section 3 (Inviolability of privacy of communication and correspondence)",
+                "Article III, Section 1 (Due process of law)",
+                "Article III, Section 4 (Freedom of expression)"
+            ],
+            "correct_answer": "Article III, Section 3 (Inviolability of privacy of communication and correspondence)",
+            "explanation": "While Section 2 protects physical papers and effects from searches, Section 3 explicitly and specifically guarantees that the privacy of communication and correspondence (like text messages) shall be inviolable without a court order[cite: 1]."
+        },
+        {
+            "id": 600,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "NPC Independence Limits"
+            ],
+            "lesson_concept": "The NPC is an independent body attached to the DICT[cite: 1]. Its commissioners serve fixed 3-year terms to protect them from political pressure[cite: 1].",
+            "question_text": "Following a controversial ruling against a government agency, the President attempts to immediately fire the Privacy Commissioner before their term ends, citing 'loss of confidence'. How does the structural design of the DPA protect the Commissioner?",
+            "options": [
+                "It does not; the President has absolute firing power over all DICT attached agencies.",
+                "The DPA establishes a fixed term of three (3) years for the Commissioner, ensuring independence and preventing arbitrary removal without just cause.",
+                "The Commissioner can only be fired by a unanimous vote of the Senate.",
+                "The Commissioner is protected by diplomatic immunity."
+            ],
+            "correct_answer": "The DPA establishes a fixed term of three (3) years for the Commissioner, ensuring independence and preventing arbitrary removal without just cause.",
+            "explanation": "Section 7 designs the NPC as an independent body and grants the Commissioners fixed three-year terms to insulate them from political pressure and arbitrary dismissal[cite: 1]."
+        },
+        {
+            "id": 601,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "Juridical Person vs Data Subject Rights"
+            ],
+            "lesson_concept": "A Data Subject is an individual (natural person) whose personal information is processed[cite: 1]. Juridical persons do not have personal data privacy rights under this definition.",
+            "question_text": "A rival corporation hacks into Company X's servers and steals their proprietary financial forecasts and trade secrets. Company X files a complaint with the NPC, claiming its 'Data Subject Rights' were violated. Why will the NPC likely dismiss this specific claim under the DPA?",
+            "options": [
+                "Because trade secrets are classified as Privileged Information.",
+                "Because Company X is a juridical person, and the DPA's definition of a 'Data Subject' strictly applies only to living individuals (natural persons).",
+                "Because the NPC only handles government breaches.",
+                "Because hacking is strictly a matter for the local police, not the NPC."
+            ],
+            "correct_answer": "Because Company X is a juridical person, and the DPA's definition of a 'Data Subject' strictly applies only to living individuals (natural persons).",
+            "explanation": "The DPA is designed to protect the personal information of individuals. A corporation (juridical person) cannot invoke Data Subject rights for its corporate data or trade secrets[cite: 1]."
+        },
+        {
+            "id": 602,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 1: Framework",
+                "Scenario",
+                "AMLA Exclusion Scope"
+            ],
+            "lesson_concept": "Information necessary for banks and other financial institutions to comply with the AMLA is excluded[cite: 1]. This exclusion does not give non-financial entities blanket permission to ignore the DPA.",
+            "question_text": "A local grocery store decides to independently monitor its customers' cash purchases and forwards the list to the police, claiming they are exempt from the DPA under the 'Anti-Money Laundering Act' exception. Is the grocery store's defense valid?",
+            "options": [
+                "Yes, any citizen or business can invoke the AMLA exception to report crimes.",
+                "No, the AMLA exception strictly applies to information necessary for banks and covered financial institutions to comply with the law, not ordinary retail stores.",
+                "Yes, as long as the cash purchases exceed PHP 10,000.",
+                "No, but they can claim the journalistic exemption instead."
+            ],
+            "correct_answer": "No, the AMLA exception strictly applies to information necessary for banks and covered financial institutions to comply with the law, not ordinary retail stores.",
+            "explanation": "Section 4(f) is a specific exclusion tailored for banks and financial institutions legally mandated to comply with AMLA. It does not grant general retail businesses immunity to process data without consent[cite: 1]."
+        }
+    ]
+}

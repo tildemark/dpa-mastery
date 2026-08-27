@@ -20,12 +20,22 @@ class SettingsService extends ChangeNotifier {
   static const _keyUserName = 'setting_user_name';
   static const _keyOnboarded = 'setting_has_onboarded';
   static const _keyApprenticeCap = 'setting_apprentice_cap'; // 50, 75, 100, 0 (disabled)
+  static const _keyHighestUnlockedLevel = 'setting_highest_unlocked_level'; // High-water mark
 
   int get dailyTarget => _prefs.getInt(_keyDailyTarget) ?? 10;
   bool get shuffleOptions => _prefs.getBool(_keyShuffleOptions) ?? true;
   String get userName => _prefs.getString(_keyUserName) ?? 'Guest';
   bool get hasCompletedOnboarding => _prefs.getBool(_keyOnboarded) ?? false;
   int get apprenticeCap => _prefs.getInt(_keyApprenticeCap) ?? 50;
+  int get highestUnlockedLevel => _prefs.getInt(_keyHighestUnlockedLevel) ?? 1;
+
+  Future<void> setHighestUnlockedLevel(int level) async {
+    final current = highestUnlockedLevel;
+    if (level > current) {
+      await _prefs.setInt(_keyHighestUnlockedLevel, level);
+      notifyListeners();
+    }
+  }
 
   Future<void> setApprenticeCap(int cap) async {
     await _prefs.setInt(_keyApprenticeCap, cap);

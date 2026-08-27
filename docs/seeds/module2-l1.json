@@ -1,0 +1,387 @@
+{
+    "version": 19,
+    "release_date": "2026-08-27",
+    "module": "Module 2: Concepts Basic Level 1 Set",
+    "items": [
+        {
+            "id": 323,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Data Subject",
+                "Definitions"
+            ],
+            "lesson_concept": "A Data Subject is an individual whose personal, sensitive personal, or privileged information is processed.",
+            "question_text": "Under the Data Privacy Act, what is the formal term for the individual whose personal information is being collected and processed?",
+            "options": [
+                "Data Controller",
+                "Data Processor",
+                "Data Subject",
+                "Data Owner"
+            ],
+            "correct_answer": "Data Subject",
+            "explanation": "The law formally refers to the living individual whose data is being processed as the 'Data Subject'."
+        },
+        {
+            "id": 324,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information",
+                "Definitions"
+            ],
+            "lesson_concept": "Personal Information is any data, whether recorded in a material form or not, from which the identity of an individual is apparent or can be reasonably and directly ascertained.",
+            "question_text": "Which of the following phrases best defines 'Personal Information' under the DPA?",
+            "options": [
+                "Data from which the identity of an individual is apparent or can be reasonably ascertained.",
+                "Data that is permanently kept secret by the government.",
+                "Only data that includes a person's medical history.",
+                "Anonymous statistics used for research."
+            ],
+            "correct_answer": "Data from which the identity of an individual is apparent or can be reasonably ascertained.",
+            "explanation": "Section 3(g) defines Personal Information as any information that identifies or can reasonably identify an individual."
+        },
+        {
+            "id": 325,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information",
+                "Examples"
+            ],
+            "lesson_concept": "Standard Personal Information includes basic identifiers that do not fall into the strict 'sensitive' category, such as a full name, home address, or personal phone number.",
+            "question_text": "Which of the following is an example of standard Personal Information?",
+            "options": [
+                "A person's genetic sequence",
+                "A person's full name",
+                "A person's religious affiliation",
+                "A person's blood type"
+            ],
+            "correct_answer": "A person's full name",
+            "explanation": "A full name is standard Personal Information, while genetics, religion, and blood type are classified as Sensitive Personal Information."
+        },
+        {
+            "id": 326,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Definitions"
+            ],
+            "lesson_concept": "Sensitive Personal Information (SPI) is a special category of personal data subject to much stricter processing rules and higher penalties for mishandling.",
+            "question_text": "What type of personal data is subject to stricter processing rules and higher penalties under the DPA?",
+            "options": [
+                "Public Domain Information",
+                "General Personal Information",
+                "Sensitive Personal Information (SPI)",
+                "Anonymized Information"
+            ],
+            "correct_answer": "Sensitive Personal Information (SPI)",
+            "explanation": "SPI requires higher levels of protection and stricter lawful bases for processing compared to standard Personal Information."
+        },
+        {
+            "id": 327,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Health Data"
+            ],
+            "lesson_concept": "Under Section 3(l) of the DPA, any information about an individual's health, medical history, or genetic data is strictly classified as Sensitive Personal Information.",
+            "question_text": "Under the DPA, how is a person's medical diagnosis or health record classified?",
+            "options": [
+                "As Privileged Information",
+                "As standard Personal Information",
+                "As Sensitive Personal Information (SPI)",
+                "As Unregulated Data"
+            ],
+            "correct_answer": "As Sensitive Personal Information (SPI)",
+            "explanation": "Health and medical records are explicitly categorized as Sensitive Personal Information."
+        },
+        {
+            "id": 328,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Government IDs"
+            ],
+            "lesson_concept": "Numbers or licenses issued by government agencies peculiar to an individual (such as SSS, GSIS, TIN, or Passport numbers) are classified as Sensitive Personal Information.",
+            "question_text": "Which of the following data points is explicitly considered Sensitive Personal Information (SPI)?",
+            "options": [
+                "A work email address",
+                "A Social Security System (SSS) number",
+                "A personal mobile number",
+                "A residential address"
+            ],
+            "correct_answer": "A Social Security System (SSS) number",
+            "explanation": "Government-issued identification numbers unique to an individual are classified as SPI."
+        },
+        {
+            "id": 329,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Privileged Information",
+                "Definitions"
+            ],
+            "lesson_concept": "Privileged Information refers to any data that constitutes privileged communication under the Rules of Court, such as attorney-client or doctor-patient communications.",
+            "question_text": "What classification is given to data protected by legal privilege under the Rules of Court, such as attorney-client communications?",
+            "options": [
+                "Sensitive Personal Information",
+                "Public Information",
+                "Privileged Information",
+                "General Personal Information"
+            ],
+            "correct_answer": "Privileged Information",
+            "explanation": "Section 3(k) defines data protected by the Rules of Court as Privileged Information."
+        },
+        {
+            "id": 330,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC",
+                "Definitions"
+            ],
+            "lesson_concept": "A Personal Information Controller (PIC) is a person or organization that controls the collection, holding, processing, or use of personal information.",
+            "question_text": "What do you call the entity that controls the collection, holding, and processing of personal data, essentially deciding the 'why' and 'how'?",
+            "options": [
+                "Data Subject",
+                "Personal Information Controller (PIC)",
+                "Personal Information Processor (PIP)",
+                "Data Protection Officer (DPO)"
+            ],
+            "correct_answer": "Personal Information Controller (PIC)",
+            "explanation": "The PIC is the ultimate decision-maker regarding the purpose and means of data processing."
+        },
+        {
+            "id": 331,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "PIP",
+                "Definitions"
+            ],
+            "lesson_concept": "A Personal Information Processor (PIP) is any natural or juridical person to whom a PIC outsources the processing of personal data.",
+            "question_text": "What term describes an outsourced third party that processes personal data strictly on behalf of and according to the instructions of another company?",
+            "options": [
+                "Personal Information Controller (PIC)",
+                "Personal Information Processor (PIP)",
+                "Privacy Commissioner",
+                "Data Subject"
+            ],
+            "correct_answer": "Personal Information Processor (PIP)",
+            "explanation": "A PIP is an entity that processes data strictly on the documented instructions of a PIC."
+        },
+        {
+            "id": 332,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC vs PIP",
+                "Instructions"
+            ],
+            "lesson_concept": "A Personal Information Processor (PIP) does not own the data it processes. It acts exclusively upon the documented instructions of the Personal Information Controller (PIC).",
+            "question_text": "Which entity is legally required to act ONLY on the documented instructions of the other?",
+            "options": [
+                "The PIC must act only on the instructions of the PIP.",
+                "The PIP must act only on the documented instructions of the PIC.",
+                "The Data Subject must act only on the instructions of the DPO.",
+                "The DPO must act only on the instructions of the PIP."
+            ],
+            "correct_answer": "The PIP must act only on the documented instructions of the PIC.",
+            "explanation": "A PIP has no authority to determine its own purposes for the data; it strictly follows the PIC's instructions."
+        },
+        {
+            "id": 333,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Processing",
+                "Definitions"
+            ],
+            "lesson_concept": "Processing refers to ANY operation performed on personal data, including collection, recording, organization, storage, updating, retrieval, use, or destruction.",
+            "question_text": "Under the DPA, the term 'Processing' covers which of the following activities?",
+            "options": [
+                "Only the collection of data.",
+                "Only the deletion of data.",
+                "Any operation performed on personal data, from collection to destruction.",
+                "Only the selling of data."
+            ],
+            "correct_answer": "Any operation performed on personal data, from collection to destruction.",
+            "explanation": "Processing is a comprehensive term that covers the entire lifecycle of data manipulation."
+        },
+        {
+            "id": 334,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Processing",
+                "Scope"
+            ],
+            "lesson_concept": "Because 'Processing' includes the destruction of data, companies must follow strict privacy rules even when they are simply deleting or shredding old files.",
+            "question_text": "Is the act of deleting or shredding old personal records considered 'Processing' under the DPA?",
+            "options": [
+                "Yes, destruction and erasure are explicitly defined as forms of processing.",
+                "No, processing only refers to active use of data.",
+                "No, destroying data removes it from DPA jurisdiction.",
+                "Yes, but only for digital files, not paper."
+            ],
+            "correct_answer": "Yes, destruction and erasure are explicitly defined as forms of processing.",
+            "explanation": "Section 3(j) explicitly lists erasure and destruction as operations constituting 'processing'."
+        },
+        {
+            "id": 335,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "DPO",
+                "Acronym"
+            ],
+            "lesson_concept": "DPO stands for Data Protection Officer, the individual designated to oversee an organization's compliance with the DPA.",
+            "question_text": "In the context of the Data Privacy Act, what does 'DPO' stand for?",
+            "options": [
+                "Data Processing Operator",
+                "Data Protection Officer",
+                "Digital Privacy Official",
+                "Data Privacy Organizer"
+            ],
+            "correct_answer": "Data Protection Officer",
+            "explanation": "DPO stands for Data Protection Officer, the mandatory compliance champion for PICs and PIPs."
+        },
+        {
+            "id": 336,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "DPO",
+                "Requirement"
+            ],
+            "lesson_concept": "Every Personal Information Controller (PIC) and Personal Information Processor (PIP) is legally mandated to appoint a Data Protection Officer (DPO).",
+            "question_text": "Who is required by the DPA to designate a Data Protection Officer (DPO)?",
+            "options": [
+                "Only government agencies",
+                "Only companies with more than 1,000 employees",
+                "Every Personal Information Controller (PIC) and Personal Information Processor (PIP)",
+                "Only foreign corporations"
+            ],
+            "correct_answer": "Every Personal Information Controller (PIC) and Personal Information Processor (PIP)",
+            "explanation": "NPC Circular 16-01 mandates that all PICs and PIPs must appoint an accountable DPO."
+        },
+        {
+            "id": 337,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Age"
+            ],
+            "lesson_concept": "Under Section 3(l) of the DPA, an individual's specific age is explicitly classified as Sensitive Personal Information.",
+            "question_text": "According to the strict definitions of the DPA, how is a person's exact age classified?",
+            "options": [
+                "As General Personal Information",
+                "As Sensitive Personal Information (SPI)",
+                "As Privileged Information",
+                "As Public Data"
+            ],
+            "correct_answer": "As Sensitive Personal Information (SPI)",
+            "explanation": "Section 3(l) explicitly lists age alongside race and marital status as Sensitive Personal Information."
+        },
+        {
+            "id": 338,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Education"
+            ],
+            "lesson_concept": "Under Section 3(l) of the DPA, an individual's educational background and records are classified as Sensitive Personal Information.",
+            "question_text": "How does the Data Privacy Act classify information regarding an individual's education or schooling?",
+            "options": [
+                "Sensitive Personal Information (SPI)",
+                "General Personal Information",
+                "Privileged Information",
+                "Unregulated Data"
+            ],
+            "correct_answer": "Sensitive Personal Information (SPI)",
+            "explanation": "Information about an individual's education is explicitly classified as SPI under the law."
+        },
+        {
+            "id": 339,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Criminal Records"
+            ],
+            "lesson_concept": "Under Section 3(l) of the DPA, information relating to any proceeding for any offense committed or alleged to have been committed by an individual is Sensitive Personal Information.",
+            "question_text": "Is information about an individual's alleged criminal offenses or court proceedings considered Sensitive Personal Information?",
+            "options": [
+                "Yes, it is explicitly classified as Sensitive Personal Information (SPI).",
+                "No, it is strictly General Personal Information.",
+                "No, it is Public Domain Information exempt from the DPA.",
+                "Yes, but only if the individual is convicted."
+            ],
+            "correct_answer": "Yes, it is explicitly classified as Sensitive Personal Information (SPI).",
+            "explanation": "Records of offenses committed or alleged are categorized as SPI under the DPA."
+        },
+        {
+            "id": 340,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Anonymized Data",
+                "Scope"
+            ],
+            "lesson_concept": "Data that has been fully anonymized—meaning it can no longer identify an individual under any circumstances—is no longer considered Personal Information.",
+            "question_text": "If a dataset is fully and permanently anonymized so that no individual can ever be identified from it, is it still considered 'Personal Information'?",
+            "options": [
+                "Yes, all data remains Personal Information forever.",
+                "No, fully anonymized data that cannot identify a person is not Personal Information.",
+                "Yes, but it is downgraded to Public Information.",
+                "No, but the company must still pay a tax on it."
+            ],
+            "correct_answer": "No, fully anonymized data that cannot identify a person is not Personal Information.",
+            "explanation": "Personal Information requires that an individual's identity is apparent or ascertainable. True anonymization removes this link."
+        },
+        {
+            "id": 341,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information",
+                "Format"
+            ],
+            "lesson_concept": "Personal Information is covered by the DPA whether it is recorded in a material form (like paper or hard drives) or not.",
+            "question_text": "Does 'Personal Information' only refer to data that is permanently saved on a hard drive or written on paper?",
+            "options": [
+                "Yes, unrecorded spoken words can never be regulated.",
+                "No, the DPA covers personal information whether recorded in a material form or not.",
+                "Yes, it must be stored for at least 24 hours to be considered data.",
+                "No, it only refers to encrypted digital data."
+            ],
+            "correct_answer": "No, the DPA covers personal information whether recorded in a material form or not.",
+            "explanation": "The definition of Personal Information explicitly states 'whether recorded in a material form or not'."
+        },
+        {
+            "id": 342,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Marital Status"
+            ],
+            "lesson_concept": "Under Section 3(l) of the DPA, an individual's marital status is explicitly classified as Sensitive Personal Information.",
+            "question_text": "If a form asks whether a user is 'Single, Married, or Widowed', what classification of data is being collected?",
+            "options": [
+                "General Personal Information",
+                "Sensitive Personal Information (SPI)",
+                "Privileged Information",
+                "Anonymized Data"
+            ],
+            "correct_answer": "Sensitive Personal Information (SPI)",
+            "explanation": "Marital status is expressly listed as Sensitive Personal Information under Section 3(l) of the DPA."
+        }
+    ]
+}

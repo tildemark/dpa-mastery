@@ -10,12 +10,16 @@ import '../reviews/reviews_screen.dart';
 import '../reviews/review_provider.dart';
 import '../drills/tag_drill_screen.dart';
 import '../cram/cram_screen.dart';
+import '../dlc/dlc_store_screen.dart';
+import '../mock_exam/mock_exam_screen.dart';
+import '../../services/dlc/dlc_service.dart';
 
 import '../../services/settings_service.dart';
 import '../settings/settings_screen.dart';
 import '../profile/profile_dialog.dart';
 import 'module_mastery_panel.dart';
 import 'srs_breakdown_sheet.dart';
+import 'srs_explainer_sheet.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -81,10 +85,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       backgroundColor: cs.surface,
       appBar: AppBar(
-        title: const Text('DPA Mastery', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 28,
+                height: 28,
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              'DPA Mastery',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+            ),
+          ],
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.extension_outlined),
+            tooltip: 'Expansion Packs & DLCs',
+            onPressed: () => Navigator.of(context).push(DlcStoreScreen.route()),
+          ),
           IconButton(
             icon: const Icon(Icons.settings_outlined),
             tooltip: 'Study Settings',
@@ -146,15 +173,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
             // ── 1. DPO Rank & Certification Profile Card ──
-            FutureBuilder<(UserRankProfile?, int)>(
+            FutureBuilder<(UserRankProfile?, ReadinessResult)>(
               future: Future.wait([
                 rankService.getUserRankProfile(),
-                readinessService.computeReadiness().then((r) => r.score),
-              ]).then((results) => (results[0] as UserRankProfile?, results[1] as int)),
-              // ── Profile Card: includes Question Bank size and NPC readiness score ──
-            builder: (context, snapshot) {
+                readinessService.computeReadiness(),
+              ]).then((results) => (results[0] as UserRankProfile?, results[1] as ReadinessResult)),
+              // ── Profile Card: includes Question Bank size, readiness score, and estimated timeline ──
+              builder: (context, snapshot) {
                 final rank = snapshot.data?.$1;
-                final readinessScore = snapshot.data?.$2 ?? 0;
+                final readinessResult = snapshot.data?.$2;
+                final readinessScore = readinessResult?.score ?? 0;
+                final estimatedTimeStr = readinessResult?.estimatedTimeToReady(settings.dailyTarget) ?? 'Calculating...';
+
                 return Container(
                   padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
@@ -226,16 +256,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF10B981)),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 12),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'NPC DPO Question Bank',
-                            style: TextStyle(fontSize: 11, color: cs.outline),
+                          Row(
+                            children: [
+                              const Icon(Icons.schedule_rounded, size: 13, color: Color(0xFF818CF8)),
+                              const SizedBox(width: 4),
+                              Text(
+                                'Est. Ready: $estimatedTimeStr',
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  color: Color(0xFF818CF8),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
-                            '282 questions',
+                            '${counts?.total ?? 282} Qs Bank',
                             style: TextStyle(
                               fontSize: 11,
                               color: cs.outline,
@@ -412,18 +452,119 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ],
               ),
             ),
+            const SizedBox(height: 12),
+
+            // ── 3b. DPO Certification Mock Exam Simulation Hero Card ──
+            Builder(
+              builder: (context) {
+                final dlcService = ref.watch(dlcServiceProvider);
+                final isMockDlcInstalled = dlcService.isDlcInstalled('dlc_mock_exam_simulation');
+                final guruCount = counts?.masteredTotal ?? 0;
+                final isUnlocked = isMockDlcInstalled && guruCount >= 50;
+
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: isUnlocked
+                          ? [const Color(0xFF10B981).withAlpha(35), const Color(0xFF059669).withAlpha(15)]
+                          : [cs.surfaceContainerHigh, cs.surfaceContainer],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: isUnlocked ? const Color(0xFF10B981).withAlpha(120) : cs.outlineVariant.withAlpha(80),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            isUnlocked ? Icons.verified_user_rounded : Icons.lock_outline_rounded,
+                            color: isUnlocked ? const Color(0xFF10B981) : cs.outline,
+                            size: 24,
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'DPO Certification Mock Exam',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                    color: isUnlocked ? cs.onSurface : cs.outline,
+                                  ),
+                                ),
+                                Text(
+                                  isUnlocked
+                                      ? 'Timed 50-question simulation • 75% passing mark'
+                                      : !isMockDlcInstalled
+                                          ? 'Requires Mock Exam DLC Pack'
+                                          : 'Requires 50 Gurus (Current: $guruCount/50)',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: isUnlocked ? const Color(0xFF10B981) : cs.outline,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          if (isUnlocked)
+                            FilledButton(
+                              onPressed: () => Navigator.of(context).push(MockExamScreen.route()),
+                              style: FilledButton.styleFrom(
+                                backgroundColor: const Color(0xFF10B981),
+                                padding: const EdgeInsets.symmetric(horizontal: 14),
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: const Text('Start Exam'),
+                            )
+                          else
+                            OutlinedButton(
+                              onPressed: !isMockDlcInstalled
+                                  ? () => Navigator.of(context).push(DlcStoreScreen.route())
+                                  : null,
+                              style: OutlinedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                visualDensity: VisualDensity.compact,
+                              ),
+                              child: Text(!isMockDlcInstalled ? 'Get DLC' : 'Locked'),
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 24),
 
             // ── 4. SRS Stage Distribution Bar ──
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'SRS Mastery Breakdown',
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: cs.onSurfaceVariant,
-                      ),
+                Row(
+                  children: [
+                    Text(
+                      'SRS Mastery Breakdown',
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: cs.onSurfaceVariant,
+                          ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.info_outline_rounded, size: 16, color: cs.primary),
+                      padding: const EdgeInsets.only(left: 6),
+                      constraints: const BoxConstraints(),
+                      tooltip: 'How SRS Mastery Works',
+                      onPressed: () => SrsExplainerSheet.show(context),
+                    ),
+                  ],
                 ),
                 Text(
                   'Tap for details',
@@ -485,16 +626,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             const SizedBox(height: 24),
 
             // ── 4b. Module Curriculum Mastery ──
-            Text(
-              'Curriculum Mastery by Module',
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: cs.onSurfaceVariant,
-                  ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Curriculum Mastery by Module',
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: cs.onSurfaceVariant,
+                          ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.info_outline_rounded, size: 16, color: cs.primary),
+                      padding: const EdgeInsets.only(left: 6),
+                      constraints: const BoxConstraints(),
+                      tooltip: 'Mastery Explanation',
+                      onPressed: () => SrsExplainerSheet.show(context),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
             Text(
-              'NPC DPO exam modules — Guru+ questions',
+              'NPC DPO exam modules — Active Learning & Mastered (Guru+)',
               style: TextStyle(fontSize: 11, color: cs.outline),
             ),
             const SizedBox(height: 10),

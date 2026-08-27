@@ -5,6 +5,7 @@ import '../../main.dart';
 import '../../services/settings_service.dart';
 import '../../services/seed_loader.dart';
 import '../profile/profile_dialog.dart';
+import '../dlc/dlc_store_screen.dart';
 
 /// Modal bottom sheet allowing users to configure daily lesson pace and learning preferences.
 class SettingsSheet extends ConsumerStatefulWidget {
@@ -200,6 +201,25 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
               onChanged: (val) async {
                 setState(() => _shuffleOptions = val);
                 await settings.setShuffleOptions(val);
+              },
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // ── 2b. Expansion Packs / DLC Manager Navigation ──
+          Container(
+            decoration: BoxDecoration(
+              color: cs.surfaceContainerHigh,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: ListTile(
+              leading: const Icon(Icons.extension_rounded, color: Color(0xFF6366F1)),
+              title: const Text('Expansion Packs & DLCs', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
+              subtitle: const Text('Manage downloadable question packs and mock exams', style: TextStyle(fontSize: 12)),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(DlcStoreScreen.route());
               },
             ),
           ),

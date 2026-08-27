@@ -1,0 +1,407 @@
+{
+    "version": 34,
+    "release_date": "2026-08-27",
+    "module": "Module 3: Principles Level 3 Set",
+    "items": [
+        {
+            "id": 623,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Transparency",
+                "Clear Language"
+            ],
+            "lesson_concept": "Transparency requires that any information relating to the processing of personal data should be easy to access and understand, using clear and plain language[cite: 1].",
+            "question_text": "A mobile application targeted at high school students publishes a comprehensive Privacy Notice. However, the notice is 40 pages long and written entirely in complex legal jargon suitable for corporate lawyers. When audited, the company claims they fully disclosed their practices. Does this satisfy the principle of Transparency?",
+            "options": [
+                "Yes, because providing a comprehensive and detailed legal document fulfills the disclosure requirement.",
+                "No, because Transparency explicitly requires that information be easy to access and understand, using clear and plain language suitable for the target audience.",
+                "Yes, as long as the user checks the 'I Agree' box before using the app.",
+                "No, because Privacy Notices for students must be approved by the Department of Education."
+            ],
+            "correct_answer": "No, because Transparency explicitly requires that information be easy to access and understand, using clear and plain language suitable for the target audience.",
+            "explanation": "The principle of Transparency is violated if the Privacy Notice is intentionally dense or overly complex. It must use clear and plain language so that the data subjects (in this case, students) can actually understand it[cite: 1]."
+        },
+        {
+            "id": 624,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Legitimate Purpose",
+                "Incompatible Use"
+            ],
+            "lesson_concept": "Personal data must be used only according to the declared purpose and cannot be used for a new, incompatible purpose without obtaining new consent[cite: 1].",
+            "question_text": "A corporation installs biometric fingerprint scanners strictly for building access and physical security. Months later, HR starts using the biometric timestamp logs to identify and penalize employees who take long bathroom breaks. Which privacy principle is directly violated by HR's action?",
+            "options": [
+                "Transparency",
+                "Proportionality",
+                "Legitimate Purpose",
+                "Accountability"
+            ],
+            "correct_answer": "Legitimate Purpose",
+            "explanation": "Using physical security logs for employee performance monitoring and penalization is a new, secondary purpose that is entirely incompatible with the originally declared purpose, thus violating the Legitimate Purpose principle[cite: 1]."
+        },
+        {
+            "id": 625,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Proportionality",
+                "Retention"
+            ],
+            "lesson_concept": "Under Proportionality, personal data should not be retained longer than necessary for the declared and specified purpose[cite: 1].",
+            "question_text": "A bank retains the full dossiers of rejected loan applicants for 20 years. They argue this is necessary to feed data into a predictive AI model they might build in the future. Does this practice adhere to the DPA?",
+            "options": [
+                "Yes, AI development is a universally accepted legitimate business interest.",
+                "No, retaining personal data indefinitely for vague, undetermined future uses violates the retention limits of the Proportionality principle.",
+                "Yes, banks are legally required to keep all application data for 50 years.",
+                "No, because AI models are completely illegal under the DPA."
+            ],
+            "correct_answer": "No, retaining personal data indefinitely for vague, undetermined future uses violates the retention limits of the Proportionality principle.",
+            "explanation": "Proportionality mandates that data should not be retained longer than necessary[cite: 1]. Keeping data for decades based on a hypothetical future project violates both data minimization and retention principles[cite: 1]."
+        },
+        {
+            "id": 626,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Accountability",
+                "Contractual Controls"
+            ],
+            "lesson_concept": "The PIC carries legal accountability and must bind third-party processors (PIPs) via formal outsourcing agreements to maintain security[cite: 1].",
+            "question_text": "A hospital (PIC) hires an external IT firm (PIP) to manage its databases on a verbal agreement to 'keep things secure'. The IT firm suffers a breach. The hospital claims they are not at fault because the breach happened on the IT firm's servers. Under the Accountability principle, is the hospital liable?",
+            "options": [
+                "No, physical custody of the server dictates legal liability.",
+                "Yes, the hospital failed its accountability by not binding the PIP via formal, documented contractual controls regarding data security.",
+                "No, verbal agreements are sufficient for DPA compliance.",
+                "Yes, but only if the hospital specifically instructed the IT firm to lower its security."
+            ],
+            "correct_answer": "Yes, the hospital failed its accountability by not binding the PIP via formal, documented contractual controls regarding data security.",
+            "explanation": "The principle of Accountability requires the PIC to actively ensure its processors maintain adequate security measures through formal contractual controls (like a Data Processing Agreement)[cite: 1]."
+        },
+        {
+            "id": 627,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Accuracy",
+                "Decision Making"
+            ],
+            "lesson_concept": "The PIC must ensure data is accurate, complete, and up-to-date[cite: 1].",
+            "question_text": "An automated hiring algorithm uses a scraped, three-year-old database of professional licenses to auto-reject job applicants. An applicant who renewed their license last year is unfairly rejected. Which principle did the hiring company fail to uphold?",
+            "options": [
+                "Transparency",
+                "Accuracy",
+                "Proportionality",
+                "Legitimate Purpose"
+            ],
+            "correct_answer": "Accuracy",
+            "explanation": "Using outdated information to make decisions that significantly affect a data subject violates the principle of Accuracy, which requires data to be kept up-to-date[cite: 1]."
+        },
+        {
+            "id": 628,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Legitimate Purpose",
+                "Lawfulness"
+            ],
+            "lesson_concept": "Data collection and processing must not only meet organizational needs but also comply with legal standards and be lawful[cite: 1].",
+            "question_text": "An unlicensed lending app requires borrowers to grant the app access to their phone's contact book. If the borrower defaults, the app messages the borrower's contacts to shame them. Aside from Proportionality, which core principle makes this processing inherently invalid?",
+            "options": [
+                "Transparency",
+                "Accuracy",
+                "Legitimate Purpose",
+                "Accountability"
+            ],
+            "correct_answer": "Legitimate Purpose",
+            "explanation": "The objective of the processing (public shaming and harassment) is contrary to law and public morals. Therefore, it fundamentally fails the 'lawful' requirement of a Legitimate Purpose[cite: 1]."
+        },
+        {
+            "id": 629,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Proportionality",
+                "Data Minimization"
+            ],
+            "lesson_concept": "Only the data necessary to fulfill the specific, legitimate purpose should be collected, discouraging excessive collection[cite: 1].",
+            "question_text": "A local restaurant launches a digital menu app that allows customers to order food to their tables. The app requires users to input their gender, marital status, and upload a government ID before they can order a meal. Which principle is explicitly violated?",
+            "options": [
+                "Accountability",
+                "Proportionality",
+                "Accuracy",
+                "Transparency"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Gender, marital status, and government IDs are entirely excessive and unnecessary to fulfill the purpose of ordering food at a restaurant, blatantly violating Proportionality[cite: 1]."
+        },
+        {
+            "id": 630,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Transparency",
+                "Risks and Safeguards"
+            ],
+            "lesson_concept": "Transparency includes making the data subject aware of the risks and safeguards involved in the processing[cite: 1].",
+            "question_text": "A fintech company publishes a Privacy Notice that lists the data collected and the PIC's identity, but completely omits any mention of how the data is secured or the risks involved, claiming their security protocols are 'trade secrets'. Does this satisfy the Transparency principle?",
+            "options": [
+                "Yes, trade secrets override the requirement for Transparency.",
+                "No, Transparency explicitly requires that data subjects be informed of the risks and safeguards involved in the processing.",
+                "Yes, as long as they have a DPO.",
+                "No, because financial data cannot be collected online."
+            ],
+            "correct_answer": "No, Transparency explicitly requires that data subjects be informed of the risks and safeguards involved in the processing.",
+            "explanation": "To be truly transparent, an organization must communicate the risks and the general safeguards implemented, so the data subject can make an informed decision[cite: 1]."
+        },
+        {
+            "id": 631,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Accountability",
+                "Demonstrability"
+            ],
+            "lesson_concept": "Implementing reasonable and appropriate organizational, physical, and technical security measures is a requirement of Accountability[cite: 1].",
+            "question_text": "During an NPC audit, a company is found to have highly secure servers and no history of data breaches. However, they have no written Privacy Manual, no documented PIAs, and no appointed DPO. Why will the NPC still penalize them under the Accountability principle?",
+            "options": [
+                "Because Accountability requires an organization to actively demonstrate compliance through documented measures, not just rely on technical luck.",
+                "Because the DPA requires companies to suffer a breach before they are considered fully compliant.",
+                "Because the NPC only cares about administrative paperwork, not actual server security.",
+                "They will not be penalized; perfect server security satisfies Accountability."
+            ],
+            "correct_answer": "Because Accountability requires an organization to actively demonstrate compliance through documented measures, not just rely on technical luck.",
+            "explanation": "Accountability is about demonstrability. A PIC must be able to prove they have structured organizational controls (like a DPO and Manual) in place, not just unwritten technical practices[cite: 1]."
+        },
+        {
+            "id": 632,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Proportionality",
+                "Necessity Test"
+            ],
+            "lesson_concept": "Personal data shall be processed only if the purpose of the processing could not reasonably be fulfilled by other means[cite: 1].",
+            "question_text": "A small neighborhood association mandates facial recognition scanning to track attendance at a voluntary weekend seminar, arguing it is modern and efficient. A resident argues a simple paper sign-in sheet would suffice. Under DPA principles, who is legally correct and why?",
+            "options": [
+                "The association, because Legitimate Purpose encourages modern technological efficiency.",
+                "The resident, because Proportionality dictates data should only be processed if the purpose cannot reasonably be fulfilled by other, less intrusive means.",
+                "The association, because facial recognition is not considered personal data.",
+                "The resident, because the NPC strictly bans all facial recognition technology."
+            ],
+            "correct_answer": "The resident, because Proportionality dictates data should only be processed if the purpose cannot reasonably be fulfilled by other, less intrusive means.",
+            "explanation": "The necessity aspect of Proportionality requires evaluating if a less privacy-intrusive alternative (a sign-in sheet) can achieve the same goal as a highly intrusive method (facial scanning)[cite: 1]."
+        },
+        {
+            "id": 633,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Accuracy",
+                "Correction Propagation"
+            ],
+            "lesson_concept": "The Right to Rectify ties into the Principle of Accuracy. Corrected errors must be propagated[cite: 1].",
+            "question_text": "A consumer disputes an erroneous late payment on their file. The primary bank corrects it internally but fails to send the updated, accurate data to the centralized credit bureau they previously shared it with. As a result, the consumer is denied a car loan elsewhere. Which principle did the primary bank fail to uphold?",
+            "options": [
+                "Legitimate Purpose",
+                "Transparency",
+                "Accuracy",
+                "Proportionality"
+            ],
+            "correct_answer": "Accuracy",
+            "explanation": "The principle of Accuracy (and the corresponding Right to Rectify) requires that once an error is fixed, the PIC must ensure the correction is propagated to third parties who received the erroneous data[cite: 1]."
+        },
+        {
+            "id": 634,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Legitimate Purpose",
+                "Timing"
+            ],
+            "lesson_concept": "The specific purpose of data collection must be explicitly stated to the data subject before or at the point of collection[cite: 1].",
+            "question_text": "A tech startup launches a free app that silently collects users' browsing habits. Six months later, the startup figures out a way to monetize this data by selling targeted ad profiles, and finally updates their Privacy Notice to declare this purpose. Is this lawful?",
+            "options": [
+                "Yes, a company is allowed to determine the purpose of data processing retroactively.",
+                "No, because the Legitimate Purpose principle requires the specific purpose to be declared before or at the point of collection, not months later.",
+                "Yes, as long as the app remains free for users.",
+                "No, because browsing habits are considered Privileged Information."
+            ],
+            "correct_answer": "No, because the Legitimate Purpose principle requires the specific purpose to be declared before or at the point of collection, not months later.",
+            "explanation": "A core requirement of Legitimate Purpose is 'Purpose Specification', which mandates that the user must know the exact purpose before the data is collected to ensure fair processing[cite: 1]."
+        },
+        {
+            "id": 635,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Accountability",
+                "DPO Function"
+            ],
+            "lesson_concept": "Accountability requires designating an individual accountable for ensuring compliance with the DPA[cite: 1].",
+            "question_text": "To save costs, a company designates a 'ghost DPO'—a junior intern who simply signs DPA compliance forms without reading them or having any authority to implement security changes. Which foundational principle does this organizational setup violate?",
+            "options": [
+                "Accuracy",
+                "Accountability",
+                "Proportionality",
+                "Transparency"
+            ],
+            "correct_answer": "Accountability",
+            "explanation": "Accountability requires a genuinely empowered and capable DPO who actively ensures compliance, rather than a figurehead appointed just to pass superficial checks[cite: 1]."
+        },
+        {
+            "id": 636,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Transparency",
+                "Extent of Processing"
+            ],
+            "lesson_concept": "The data subject must be aware of the nature, purpose, and extent of the processing[cite: 1].",
+            "question_text": "A popular social media platform's Privacy Notice states: 'We collect your photos to provide our service.' However, it completely omits the fact that the photos are also fed into an external generative AI engine owned by a partner company. Which principle is clearly violated?",
+            "options": [
+                "Accuracy",
+                "Accountability",
+                "Transparency",
+                "Proportionality"
+            ],
+            "correct_answer": "Transparency",
+            "explanation": "Failing to disclose the true 'extent' of the processing (i.e., sharing data with external AI engines) violates the principle of Transparency by keeping the data subject in the dark[cite: 1]."
+        },
+        {
+            "id": 637,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Proportionality",
+                "Anonymization"
+            ],
+            "lesson_concept": "Data should not be retained longer than necessary. If needed for statistics, it should be anonymized[cite: 1].",
+            "question_text": "A retail chain wants to keep 15 years of customer purchase history to analyze seasonal buying trends, but DPA retention rules require deleting inactive profiles after 3 years. To comply with Proportionality while keeping their trend data, what technical step should the chain take?",
+            "options": [
+                "They should encrypt the active database and keep the passwords secure.",
+                "They should fully anonymize the 15-year dataset so that the identities of the individuals can no longer be ascertained.",
+                "They should transfer the data to an offshore server in a country without privacy laws.",
+                "They should claim a 'National Emergency' exemption."
+            ],
+            "correct_answer": "They should fully anonymize the 15-year dataset so that the identities of the individuals can no longer be ascertained.",
+            "explanation": "Fully anonymizing data removes it from the scope of the DPA, allowing the company to retain valuable statistical trends without violating the retention limits set by Proportionality[cite: 1]."
+        },
+        {
+            "id": 638,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Legitimate Purpose",
+                "Scope Creep"
+            ],
+            "lesson_concept": "Data collected must not be used for new, incompatible purposes without new consent[cite: 1].",
+            "question_text": "A hospital legitimately collects patient phone numbers to send appointment reminders. The IT department realizes they can generate extra revenue by allowing a local pharmacy to text those numbers with vitamin advertisements. Why is this action unlawful?",
+            "options": [
+                "Because the hospital did not pay the patients a dividend.",
+                "Because advertising vitamins is an incompatible secondary purpose that violates the principle of Legitimate Purpose.",
+                "Because pharmacies are not allowed to use cell phones.",
+                "Because phone numbers are classified as Privileged Information."
+            ],
+            "correct_answer": "Because advertising vitamins is an incompatible secondary purpose that violates the principle of Legitimate Purpose.",
+            "explanation": "Using contact details collected for medical administration to conduct third-party commercial marketing is a classic example of incompatible secondary use (scope creep), violating Legitimate Purpose[cite: 1]."
+        },
+        {
+            "id": 639,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Accountability",
+                "Breach Protocol"
+            ],
+            "lesson_concept": "Accountability includes maintaining internal protocols to identify, log, and report data breaches[cite: 1].",
+            "question_text": "A company invests millions in top-tier firewalls but completely fails to draft an Incident Response Plan. When a breach inevitably occurs, the staff panics and fails to report it to the NPC within 72 hours. Which foundational principle did the company fail to operationalize?",
+            "options": [
+                "Accuracy",
+                "Proportionality",
+                "Accountability",
+                "Transparency"
+            ],
+            "correct_answer": "Accountability",
+            "explanation": "Accountability requires organizational preparedness, including maintaining documented breach protocols and reporting procedures, not just buying technical security tools[cite: 1]."
+        },
+        {
+            "id": 640,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Accuracy",
+                "Vexatious Requests"
+            ],
+            "lesson_concept": "Accuracy requires correcting data immediately, unless the request is vexatious[cite: 1].",
+            "question_text": "A bank customer discovers a typo in their legal name on their profile and requests a correction. To stall the process, the bank demands the customer pay a high 'administrative research fee' and wait 90 days. Which principle is the bank violating by failing to act promptly?",
+            "options": [
+                "Proportionality",
+                "Accuracy",
+                "Legitimate Purpose",
+                "Transparency"
+            ],
+            "correct_answer": "Accuracy",
+            "explanation": "The principle of Accuracy (and the corresponding Right to Rectify) requires the PIC to correct erroneous data immediately and accordingly, without imposing unreasonable barriers or delays[cite: 1]."
+        },
+        {
+            "id": 641,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Proportionality",
+                "Storage Limitation"
+            ],
+            "lesson_concept": "Personal data should not be retained longer than necessary[cite: 1].",
+            "question_text": "An events company organizes a 3-day conference. They collect attendee dietary restrictions (SPI) to plan the catering. Five years after the event ends, the company still holds the unencrypted dietary data on its active servers. Which principle is violated?",
+            "options": [
+                "Accountability",
+                "Legitimate Purpose",
+                "Proportionality",
+                "Transparency"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Holding onto highly specific data (dietary SPI) years after the event for which it was collected has concluded violates the strict retention limits of the Proportionality principle[cite: 1]."
+        },
+        {
+            "id": 642,
+            "difficulty_level": 3,
+            "tags": [
+                "Module 3: Principles",
+                "Scenario",
+                "Transparency",
+                "Data Subject Rights"
+            ],
+            "lesson_concept": "Transparency requires informing the data subject of their rights[cite: 1].",
+            "question_text": "A corporate privacy policy excellently details what data is collected, why it is collected, and who the PIC is. However, it completely fails to mention that the user has the right to object, access, or erase their data. Which principle is fundamentally incomplete?",
+            "options": [
+                "Legitimate Purpose",
+                "Transparency",
+                "Accuracy",
+                "Proportionality"
+            ],
+            "correct_answer": "Transparency",
+            "explanation": "A core pillar of Transparency is explicitly educating and informing the data subjects about their legal rights (access, rectification, erasure, etc.) regarding the processing[cite: 1]."
+        }
+    ]
+}

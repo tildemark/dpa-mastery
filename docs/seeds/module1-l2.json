@@ -1,0 +1,385 @@
+{
+    "version": 25,
+    "release_date": "2026-08-27",
+    "module": "Module 1: Framework Level 2 Set",
+    "items": [
+        {
+            "id": 443,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Constitutional Right",
+                "Searches and Seizures"
+            ],
+            "lesson_concept": "Article III, Section 2 of the 1987 Constitution protects against unreasonable searches and seizures of a person's papers and effects[cite: 1].",
+            "question_text": "If law enforcement authorities forcefully seize physical documents from a corporate office without a valid warrant, which specific constitutional privacy right is primarily violated?",
+            "options": [
+                "Article III, Section 1 (Right to Life and Liberty)",
+                "Article III, Section 2 (Right against unreasonable searches and seizures)",
+                "Article III, Section 3 (Privacy of communication)",
+                "Article III, Section 4 (Freedom of speech)"
+            ],
+            "correct_answer": "Article III, Section 2 (Right against unreasonable searches and seizures)",
+            "explanation": "Article III, Section 2 of the 1987 Philippine Constitution explicitly protects the right of the people to be secure in their persons, houses, papers, and effects against unreasonable searches and seizures[cite: 1]."
+        },
+        {
+            "id": 444,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Jurisprudence",
+                "Zones of Privacy"
+            ],
+            "lesson_concept": "Philippine jurisprudence establishes 'zones of privacy' that the state cannot intrude upon without a compelling state interest[cite: 1].",
+            "question_text": "In Philippine legal history, what specific concept was established by the Supreme Court to describe areas of an individual's life (like their home or correspondence) that are protected from unwarranted state intrusion?",
+            "options": [
+                "The Privacy Shield",
+                "The Right to be Forgotten",
+                "Zones of Privacy",
+                "The Confidentiality Doctrine"
+            ],
+            "correct_answer": "Zones of Privacy",
+            "explanation": "Landmark Supreme Court cases established the concept of 'zones of privacy' that the state cannot legally intrude upon without a compelling state interest[cite: 1]."
+        },
+        {
+            "id": 445,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Extraterritoriality",
+                "Equipment in PH"
+            ],
+            "lesson_concept": "The DPA applies to entities outside the Philippines if they use equipment located in the Philippines[cite: 1].",
+            "question_text": "A European analytics firm operates entirely in Berlin and exclusively processes the data of European citizens. However, they rent server space in a data center located in Cebu, Philippines, to run their databases. Is this firm subject to the Philippine Data Privacy Act?",
+            "options": [
+                "No, because they do not process the data of Philippine citizens.",
+                "Yes, because the law has extraterritorial application when an entity uses equipment located in the Philippines.",
+                "No, because they are not registered as a Philippine corporation.",
+                "Yes, but only if they employ Filipino citizens in their Berlin office."
+            ],
+            "correct_answer": "Yes, because the law has extraterritorial application when an entity uses equipment located in the Philippines.",
+            "explanation": "The DPA applies to entities not found in the Philippines if they use equipment located in the Philippines to process personal information[cite: 1]."
+        },
+        {
+            "id": 446,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Extraterritoriality",
+                "Targeting PH Citizens"
+            ],
+            "lesson_concept": "The DPA applies to processing outside the Philippines if it relates to the personal information of Philippine citizens or residents[cite: 1].",
+            "question_text": "A mobile game developer based entirely in South Korea collects the names and billing details of users residing in the Philippines. Do they need to comply with the Philippine Data Privacy Act?",
+            "options": [
+                "Yes, because the processing relates to the personal information of Philippine residents.",
+                "No, the jurisdiction falls strictly to South Korean privacy authorities.",
+                "No, because the developer has no physical presence or branch in the Philippines.",
+                "Yes, but only if the game developer applies for a business permit in Manila."
+            ],
+            "correct_answer": "Yes, because the processing relates to the personal information of Philippine residents.",
+            "explanation": "The extraterritorial application of the DPA explicitly covers entities abroad if their data processing relates to the personal information of Philippine citizens or residents[cite: 1]."
+        },
+        {
+            "id": 447,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "Foreign Jurisdictions"
+            ],
+            "lesson_concept": "Personal information originally collected from residents of foreign jurisdictions in accordance with their laws is excluded from the DPA when processed in the PH[cite: 1].",
+            "question_text": "A call center in Metro Manila is hired to process the medical records of Australian citizens strictly under Australian privacy laws. Which law primarily governs the protection of these records while being processed in Manila?",
+            "options": [
+                "The Philippine Data Privacy Act exclusively.",
+                "The laws of the foreign jurisdiction (Australia), as this data is excluded from the primary scope of the DPA.",
+                "Both the Philippine DPA and Australian laws apply equally.",
+                "Neither, as cross-border data processing is unregulated."
+            ],
+            "correct_answer": "The laws of the foreign jurisdiction (Australia), as this data is excluded from the primary scope of the DPA.",
+            "explanation": "Section 4(g) of the DPA excludes personal information originally collected from residents of foreign jurisdictions in accordance with those foreign laws, which protects the BPO industry[cite: 1]."
+        },
+        {
+            "id": 448,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "Domestic Use"
+            ],
+            "lesson_concept": "Processing personal information exclusively for personal, family, or household affairs is exempt from the DPA[cite: 1]. If used for business, it loses this exemption.",
+            "question_text": "A home baker maintains a spreadsheet of customer names and home addresses to deliver cakes sold through their online business page. Can the baker claim the 'domestic use' exemption under the DPA to avoid compliance?",
+            "options": [
+                "Yes, because the business is run from a personal home.",
+                "No, because the data is collected and used for a commercial business purpose, not exclusively for personal, family, or household affairs.",
+                "Yes, as long as the baker makes less than PHP 1 Million a year.",
+                "No, because spreadsheets are considered automated digital systems."
+            ],
+            "correct_answer": "No, because the data is collected and used for a commercial business purpose, not exclusively for personal, family, or household affairs.",
+            "explanation": "The domestic exclusion strictly applies to individuals processing information exclusively for personal, family, or household affairs, and does not cover commercial or business activities[cite: 1]."
+        },
+        {
+            "id": 449,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "Loss of Exemption"
+            ],
+            "lesson_concept": "Data collected under a statutory exemption loses that protection if it is later processed for a non-exempt purpose, such as commercial marketing[cite: 1].",
+            "question_text": "A reporter gathers a list of politicians' personal phone numbers for a news article, which is exempt from the DPA. Later, the reporter sells this contact list to an advertising firm. What is the legal consequence of this sale?",
+            "options": [
+                "The list remains fully exempt because it was originally collected for journalism.",
+                "The new processing loses the journalistic exemption and becomes fully subject to the DPA, potentially constituting unauthorized processing.",
+                "The advertising firm inherits the journalistic exemption.",
+                "The reporter is only required to issue a public apology."
+            ],
+            "correct_answer": "The new processing loses the journalistic exemption and becomes fully subject to the DPA, potentially constituting unauthorized processing.",
+            "explanation": "Statutory exemptions are conditional; repurposing data gathered for an exempt purpose (like journalism) into a commercial activity strips the exemption and makes it fully subject to the DPA[cite: 1]."
+        },
+        {
+            "id": 450,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "AMLA"
+            ],
+            "lesson_concept": "Information necessary for banks to comply with the Anti-Money Laundering Act (AMLA) is explicitly excluded from the DPA[cite: 1].",
+            "question_text": "A bank detects a suspicious pattern of deposits and reports the client's financial data to the Anti-Money Laundering Council (AMLC) without asking for the client's consent. Is this a violation of the client's privacy rights under the DPA?",
+            "options": [
+                "Yes, reporting financial data always requires explicit consent.",
+                "No, because processing necessary to comply with the Anti-Money Laundering Act is explicitly excluded from the DPA.",
+                "Yes, unless the bank obtains a court order first.",
+                "No, but the bank must pay a regulatory fee to the NPC."
+            ],
+            "correct_answer": "No, because processing necessary to comply with the Anti-Money Laundering Act is explicitly excluded from the DPA.",
+            "explanation": "Section 4 excludes information necessary for financial institutions to comply with AMLA, prioritizing the state's ability to combat financial crimes over individual consent[cite: 1]."
+        },
+        {
+            "id": 451,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "Government Contractors"
+            ],
+            "lesson_concept": "Information about an individual performing services under a government contract is excluded from the DPA, provided it relates to the services performed[cite: 1].",
+            "question_text": "A citizen files a Freedom of Information request to see the contract details and the name of a private IT consultant hired to build a government database. Can the government agency refuse disclosure by citing the Data Privacy Act?",
+            "options": [
+                "Yes, private contractors retain absolute privacy rights for all their government dealings.",
+                "No, information relating to individuals performing services under a government contract is explicitly excluded from the DPA.",
+                "Yes, unless the citizen pays a privacy clearance fee.",
+                "No, but only if the consultant is a registered corporation, not an individual."
+            ],
+            "correct_answer": "No, information relating to individuals performing services under a government contract is explicitly excluded from the DPA.",
+            "explanation": "Section 4(b) removes DPA protections for information relating to the terms of the contract and the services performed by individuals contracted by the government[cite: 1]."
+        },
+        {
+            "id": 452,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "NPC Powers",
+                "Quasi-Judicial"
+            ],
+            "lesson_concept": "Issuing Cease and Desist Orders to halt harmful data processing is an exercise of the NPC's enforcement and quasi-judicial powers[cite: 1].",
+            "question_text": "Following a severe data breach investigation, the National Privacy Commission legally orders a telecommunications company to temporarily halt all data processing. Which of the NPC's mandated powers is being exercised?",
+            "options": [
+                "Quasi-Legislative Power",
+                "Advisory Power",
+                "Quasi-Judicial Power",
+                "Executive Clemency Power"
+            ],
+            "correct_answer": "Quasi-Judicial Power",
+            "explanation": "The authority to investigate complaints, hold hearings, and issue binding enforcement actions like Cease and Desist Orders constitutes the NPC's quasi-judicial (adjudicatory) power[cite: 1]."
+        },
+        {
+            "id": 453,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "NPC Powers",
+                "Quasi-Legislative"
+            ],
+            "lesson_concept": "The NPC exercises quasi-legislative (rule-making) power when drafting and issuing implementing rules and regulations[cite: 1].",
+            "question_text": "When the National Privacy Commission holds public consultations to draft and promulgate the Implementing Rules and Regulations (IRR) of the DPA, it acts under which specific authority?",
+            "options": [
+                "Quasi-Judicial Power",
+                "Quasi-Legislative (Rule-Making) Power",
+                "Diplomatic Power",
+                "Prosecutorial Power"
+            ],
+            "correct_answer": "Quasi-Legislative (Rule-Making) Power",
+            "explanation": "The drafting of rules, regulations, and guidelines to implement the DPA falls strictly under the NPC's rule-making or quasi-legislative mandate[cite: 1]."
+        },
+        {
+            "id": 454,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Hierarchy of Laws"
+            ],
+            "lesson_concept": "The hierarchy of laws places the statute (RA 10173) above administrative issuances like NPC Circulars. A Circular cannot amend or contradict the law[cite: 1].",
+            "question_text": "If a legal dispute arises because a newly issued NPC Circular directly contradicts an explicit provision written in the Data Privacy Act of 2012 (RA 10173), which legal document must prevail?",
+            "options": [
+                "The NPC Circular, because it reflects the most modern interpretation of privacy.",
+                "The Data Privacy Act (RA 10173), because a statutory law passed by Congress supersedes administrative circulars.",
+                "Neither; the conflict must immediately be resolved by the President.",
+                "The NPC Circular, because the NPC has absolute regulatory authority."
+            ],
+            "correct_answer": "The Data Privacy Act (RA 10173), because a statutory law passed by Congress supersedes administrative circulars.",
+            "explanation": "Under the Philippine hierarchy of laws, administrative issuances (Circulars) cannot restrict, expand, or contradict the statutory provisions of the law (RA 10173) they aim to implement[cite: 1]."
+        },
+        {
+            "id": 455,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Scope",
+                "Manual Filing Systems"
+            ],
+            "lesson_concept": "The DPA applies to both digital/automated systems and structured manual filing systems[cite: 1].",
+            "question_text": "A rural health clinic stores patient records exclusively in physical manila folders organized by patient ID in a filing cabinet, utilizing no computers. Are these physical records covered by the Data Privacy Act?",
+            "options": [
+                "No, the DPA only applies to digital computer databases.",
+                "Yes, the DPA applies to the processing of personal information, including structured manual filing systems.",
+                "No, physical papers are permanently exempt from the law.",
+                "Yes, but only if the clinic scans them into PDF format."
+            ],
+            "correct_answer": "Yes, the DPA applies to the processing of personal information, including structured manual filing systems.",
+            "explanation": "The scope of the DPA is broad and covers personal information regardless of its format, explicitly including structured manual filing systems[cite: 1]."
+        },
+        {
+            "id": 456,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "NPC Structure",
+                "Agency Attachment"
+            ],
+            "lesson_concept": "The NPC is an independent body attached to the DICT strictly for policy and program coordination[cite: 1].",
+            "question_text": "The National Privacy Commission (NPC) is legally attached to the Department of Information and Communications Technology (DICT). What is the specific legal nature and limitation of this attachment?",
+            "options": [
+                "The DICT has full veto power over all NPC decisions.",
+                "The attachment is strictly for policy and program coordination, preserving the NPC's independence as a regulatory body.",
+                "The DICT acts as the appellate court for all NPC fines.",
+                "The attachment means the NPC is a sub-department that cannot issue its own circulars."
+            ],
+            "correct_answer": "The attachment is strictly for policy and program coordination, preserving the NPC's independence as a regulatory body.",
+            "explanation": "Section 7 of the DPA explicitly states that the Commission is attached to the DICT strictly for policy and program coordination, ensuring it remains an independent body[cite: 1]."
+        },
+        {
+            "id": 457,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "Limits on Government Exclusions"
+            ],
+            "lesson_concept": "Information about a government officer relating to their position, functions, and salary is excluded from the DPA[cite: 1]. However, their private, non-official information (like medical records) remains protected.",
+            "question_text": "A newspaper requests the private medical records of a city mayor, arguing that all personal data of public officials is excluded from the DPA's protection. Is this argument legally correct?",
+            "options": [
+                "Yes, public officials waive all their privacy rights upon taking the oath of office.",
+                "No, the exclusion only applies to information relating to the official's position, functions, or salary grade, not their private medical records.",
+                "Yes, as long as the newspaper invokes the Freedom of Information act.",
+                "No, because mayors are not considered government officials."
+            ],
+            "correct_answer": "No, the exclusion only applies to information relating to the official's position, functions, or salary grade, not their private medical records.",
+            "explanation": "Section 4(a) narrowly excludes information relating to the position, official functions, and salary range of government employees; it does not strip them of their privacy rights regarding purely personal matters like health[cite: 1]."
+        },
+        {
+            "id": 458,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Scope",
+                "Public vs Private"
+            ],
+            "lesson_concept": "The Data Privacy Act applies to processing by both natural and juridical persons involved in personal information processing in the public and private sectors[cite: 1].",
+            "question_text": "Does the Data Privacy Act impose different foundational privacy principles for government agencies compared to private corporations?",
+            "options": [
+                "Yes, government agencies are exempt from the principle of transparency.",
+                "No, the law applies the same foundational privacy principles to any natural and juridical person processing data in both the public and private sectors.",
+                "Yes, private corporations face stricter principles than the government.",
+                "No, but the government does not need to appoint Data Protection Officers."
+            ],
+            "correct_answer": "No, the law applies the same foundational privacy principles to any natural and juridical person processing data in both the public and private sectors.",
+            "explanation": "Section 4 of the DPA explicitly states that the act applies universally to the processing of personal information across both the public and private sectors[cite: 1]."
+        },
+        {
+            "id": 459,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "NPC Term Limits",
+                "Reappointment"
+            ],
+            "lesson_concept": "The Privacy Commissioner and Deputy Privacy Commissioners serve a term of three years, and may be reappointed for another term of three years[cite: 1].",
+            "question_text": "A Privacy Commissioner has successfully completed their initial three-year term of office. Under the DPA, what is the maximum limitation regarding their reappointment?",
+            "options": [
+                "They cannot be reappointed under any circumstances.",
+                "They may be reappointed indefinitely as long as the President approves.",
+                "They may be reappointed for only one additional term of three (3) years.",
+                "They are automatically given a lifetime tenure."
+            ],
+            "correct_answer": "They may be reappointed for only one additional term of three (3) years.",
+            "explanation": "Section 7 dictates that the Commissioners serve a term of three years, which may be reappointed for one additional three-year term[cite: 1]."
+        },
+        {
+            "id": 460,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Statutory Exclusions",
+                "Discretionary Benefits"
+            ],
+            "lesson_concept": "Information relating to discretionary benefits of a financial nature granted by the government, such as licenses and permits, is excluded from the DPA[cite: 1].",
+            "question_text": "Why is information regarding the granting of a government business permit to a specific individual excluded from the strict protections of the Data Privacy Act?",
+            "options": [
+                "Because business owners are not considered data subjects.",
+                "To ensure public transparency regarding discretionary benefits of a financial nature granted by the government.",
+                "Because permits are not considered personal information.",
+                "Because the NPC has no jurisdiction over businesses."
+            ],
+            "correct_answer": "To ensure public transparency regarding discretionary benefits of a financial nature granted by the government.",
+            "explanation": "Section 4(c) excludes information relating to discretionary financial benefits like licenses or permits granted by the government to individuals, to maintain transparency in public administration[cite: 1]."
+        },
+        {
+            "id": 461,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "Declaration of Policy"
+            ],
+            "lesson_concept": "The State seeks to balance protecting the fundamental human right to privacy of communication while ensuring the free flow of information to promote innovation and growth[cite: 1].",
+            "question_text": "A tech startup publicly argues that the Data Privacy Act should be abolished because strict privacy regulations inherently hinder business growth. How does the DPA's Declaration of Policy address this concern?",
+            "options": [
+                "It ignores business growth and focuses solely on absolute data secrecy.",
+                "It seeks to balance the protection of the right to privacy with ensuring the free flow of information to promote innovation and growth.",
+                "It provides a blanket exemption for all technology startups.",
+                "It completely bans the free flow of information."
+            ],
+            "correct_answer": "It seeks to balance the protection of the right to privacy with ensuring the free flow of information to promote innovation and growth.",
+            "explanation": "The DPA recognizes that while privacy is a fundamental right, the free flow of information is simultaneously necessary to foster innovation and economic growth[cite: 1]."
+        },
+        {
+            "id": 462,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 1: Framework",
+                "NPC Confidentiality",
+                "Investigations"
+            ],
+            "lesson_concept": "The NPC must ensure at all times the confidentiality of any personal information that comes to its knowledge and possession during investigations[cite: 1].",
+            "question_text": "During a severe compliance audit, the National Privacy Commission (NPC) legally seizes a company's hard drives containing sensitive customer data. What strict legal obligation binds the NPC regarding this seized data?",
+            "options": [
+                "The NPC must publish the data online as a public warning.",
+                "The NPC must ensure at all times the confidentiality of any personal information that comes to its knowledge and possession.",
+                "The NPC must auction the data to pay for administrative fines.",
+                "The NPC is immune from confidentiality rules."
+            ],
+            "correct_answer": "The NPC must ensure at all times the confidentiality of any personal information that comes to its knowledge and possession.",
+            "explanation": "Section 9 explicitly requires the Commission to ensure at all times the confidentiality of any personal information that comes to its knowledge and possession during the course of its duties[cite: 1]."
+        }
+    ]
+}

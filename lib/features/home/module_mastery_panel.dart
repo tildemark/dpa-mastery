@@ -51,17 +51,19 @@ class _ModuleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    final ratio = data.masteryRatio;
-    final color = _ringColor(ratio);
+    final masteryRatio = data.masteryRatio;
+    final learningRatio = data.learningRatio;
+    final hasStarted = data.startedTotal > 0;
+    final primaryColor = _ringColor(masteryRatio, learningRatio);
 
     return Container(
-      width: 104,
+      width: 112,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
       decoration: BoxDecoration(
         color: cs.surfaceContainerHigh,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: color.withAlpha(ratio > 0 ? 100 : 40),
+          color: primaryColor.withAlpha(hasStarted ? 100 : 40),
           width: 1.5,
         ),
       ),
@@ -69,23 +71,27 @@ class _ModuleCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Circular progress ring
+          // Circular progress ring (Dual arc: Learning in Coral/Amber, Mastered in Green/Purple)
           SizedBox(
             width: 48,
             height: 48,
             child: CustomPaint(
               painter: _RingPainter(
-                ratio: ratio,
-                color: color,
+                masteryRatio: masteryRatio,
+                learningRatio: learningRatio,
+                masteryColor: const Color(0xFF10B981),
+                learningColor: const Color(0xFFEF5350),
                 trackColor: cs.surfaceContainerHighest,
               ),
               child: Center(
                 child: Text(
                   data.masteryLabel,
                   style: TextStyle(
-                    fontSize: ratio >= 1.0 ? 11 : 12,
+                    fontSize: masteryRatio >= 1.0 ? 11 : 12,
                     fontWeight: FontWeight.w800,
-                    color: ratio > 0 ? color : cs.outline,
+                    color: masteryRatio > 0
+                        ? const Color(0xFF10B981)
+                        : (learningRatio > 0 ? const Color(0xFFEF5350) : cs.outline),
                     height: 1,
                   ),
                 ),
@@ -105,12 +111,26 @@ class _ModuleCard extends StatelessWidget {
           Text(
             data.shortName,
             textAlign: TextAlign.center,
-            maxLines: 2,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 9.5,
-              height: 1.15,
+              fontWeight: FontWeight.w500,
               color: cs.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: 3),
+          // Subtitle showing active status
+          Text(
+            data.apprenticeCount > 0
+                ? '${data.apprenticeCount} learning'
+                : (data.guruPlus > 0 ? '${data.guruPlus} mastered' : '0/${data.total}'),
+            style: TextStyle(
+              fontSize: 8.5,
+              fontWeight: FontWeight.w600,
+              color: data.apprenticeCount > 0
+                  ? const Color(0xFFEF5350)
+                  : (data.guruPlus > 0 ? const Color(0xFF10B981) : cs.outline),
             ),
           ),
         ],
@@ -118,27 +138,32 @@ class _ModuleCard extends StatelessWidget {
     );
   }
 
-  Color _ringColor(double ratio) {
-    if (ratio >= 1.0) return const Color(0xFF10B981); // complete — green
-    if (ratio >= 0.5) return const Color(0xFF5E6AD2); // halfway — indigo
-    if (ratio > 0.0) return const Color(0xFFF59E0B); // started — amber
-    return const Color(0xFF64748B);                  // not started — slate
+  Color _ringColor(double masteryRatio, double learningRatio) {
+    if (masteryRatio >= 1.0) return const Color(0xFF10B981); // complete — green
+    if (masteryRatio >= 0.5) return const Color(0xFF7C4DFF); // halfway guru+ — purple
+    if (masteryRatio > 0.0) return const Color(0xFF10B981);  // some guru+
+    if (learningRatio > 0.0) return const Color(0xFFEF5350); // learning — coral
+    return const Color(0xFF64748B);                         // not started — slate
   }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Ring Painter
+// Ring Painter (Supports Mastered Arc + Learning Arc)
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _RingPainter extends CustomPainter {
   const _RingPainter({
-    required this.ratio,
-    required this.color,
+    required this.masteryRatio,
+    required this.learningRatio,
+    required this.masteryColor,
+    required this.learningColor,
     required this.trackColor,
   });
 
-  final double ratio;
-  final Color color;
+  final double masteryRatio;
+  final double learningRatio;
+  final Color masteryColor;
+  final Color learningColor;
   final Color trackColor;
 
   @override
@@ -149,7 +174,7 @@ class _RingPainter extends CustomPainter {
     final radius = math.min(cx, cy) - strokeWidth / 2;
     final rect = Rect.fromCircle(center: Offset(cx, cy), radius: radius);
 
-    // Track arc (background)
+    // 1. Track arc (background)
     canvas.drawArc(
       rect,
       -math.pi / 2,
@@ -162,23 +187,44 @@ class _RingPainter extends CustomPainter {
         ..strokeCap = StrokeCap.round,
     );
 
-    if (ratio <= 0) return;
+    // 2. Learning arc (drawn under or starting after mastery)
+    if (learningRatio > 0) {
+      final startAngle = -math.pi / 2 + (2 * math.pi * masteryRatio.clamp(0.0, 1.0));
+      final sweepAngle = 2 * math.pi * learningRatio.clamp(0.0, 1.0 - masteryRatio);
+      canvas.drawArc(
+        rect,
+        startAngle,
+        sweepAngle,
+        false,
+        Paint()
+          ..color = learningColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = strokeWidth
+          ..strokeCap = StrokeCap.round,
+      );
+    }
 
-    // Progress arc
-    canvas.drawArc(
-      rect,
-      -math.pi / 2,
-      2 * math.pi * ratio.clamp(0.0, 1.0),
-      false,
-      Paint()
-        ..color = color
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = strokeWidth
-        ..strokeCap = StrokeCap.round,
-    );
+    // 3. Mastery arc (Guru+)
+    if (masteryRatio > 0) {
+      canvas.drawArc(
+        rect,
+        -math.pi / 2,
+        2 * math.pi * masteryRatio.clamp(0.0, 1.0),
+        false,
+        Paint()
+          ..color = masteryColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = strokeWidth
+          ..strokeCap = StrokeCap.round,
+      );
+    }
   }
 
   @override
   bool shouldRepaint(_RingPainter old) =>
-      old.ratio != ratio || old.color != color || old.trackColor != trackColor;
+      old.masteryRatio != masteryRatio ||
+      old.learningRatio != learningRatio ||
+      old.masteryColor != masteryColor ||
+      old.learningColor != learningColor ||
+      old.trackColor != trackColor;
 }

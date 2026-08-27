@@ -1,0 +1,386 @@
+{
+    "version": 26,
+    "release_date": "2026-08-27",
+    "module": "Module 2: Concepts Level 2 Set",
+    "items": [
+        {
+            "id": 463,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information",
+                "Ascertainability"
+            ],
+            "lesson_concept": "Personal Information refers to any information from which the identity of an individual is apparent or can be reasonably and directly ascertained by the entity holding the information, or when put together with other information would directly and certainly identify an individual[cite: 1].",
+            "question_text": "A retail store's CCTV camera captures clear footage of a customer's face as they walk through the aisles. Is this video footage considered Personal Information under the DPA?",
+            "options": [
+                "No, because the store does not know the customer's name.",
+                "Yes, because the identity of the individual is apparent or can be reasonably and directly ascertained from the footage.",
+                "No, CCTV footage is always classified as public domain information.",
+                "Yes, but only if the customer signs a consent form upon entering."
+            ],
+            "correct_answer": "Yes, because the identity of the individual is apparent or can be reasonably and directly ascertained from the footage.",
+            "explanation": "Even without a name, a clear image of a face allows an individual's identity to be reasonably ascertained, making it Personal Information[cite: 1]."
+        },
+        {
+            "id": 464,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Health Data"
+            ],
+            "lesson_concept": "Sensitive Personal Information (SPI) includes personal information about an individual's health, education, genetic data, sexual life, or proceeding for any offense committed or alleged[cite: 1].",
+            "question_text": "A fitness application tracks a user's daily heart rate, blood pressure, and sleep apnea symptoms. How is this data classified under the Data Privacy Act?",
+            "options": [
+                "General Personal Information",
+                "Sensitive Personal Information (SPI)",
+                "Privileged Information",
+                "Anonymized Data"
+            ],
+            "correct_answer": "Sensitive Personal Information (SPI)",
+            "explanation": "Data concerning an individual's health and medical conditions is explicitly classified as Sensitive Personal Information (SPI)[cite: 1]."
+        },
+        {
+            "id": 465,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC vs PIP",
+                "Scenario"
+            ],
+            "lesson_concept": "A Personal Information Processor (PIP) acts only on the documented instructions of the Personal Information Controller (PIC)[cite: 1].",
+            "question_text": "A hospital (PIC) hires an IT vendor (PIP) strictly to store patient backups. The vendor secretly decides to use the patient data to train its own commercial AI model. What violation occurred regarding their role?",
+            "options": [
+                "The hospital failed to collect consent for AI training.",
+                "The vendor unlawfully assumed the role of a PIC by independently deciding a new purpose and means for processing the data.",
+                "The vendor failed to register the AI model with the hospital.",
+                "No violation occurred if the AI model is kept secure."
+            ],
+            "correct_answer": "The vendor unlawfully assumed the role of a PIC by independently deciding a new purpose and means for processing the data.",
+            "explanation": "A PIP must act only on the documented instructions of the PIC[cite: 1]. By independently deciding to use the data for its own AI, the vendor violated its mandate and unlawfully acted as a PIC."
+        },
+        {
+            "id": 466,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Processing",
+                "Scenario"
+            ],
+            "lesson_concept": "Processing refers to any operation performed on personal data, including collection, recording, storage, blocking, erasure, or destruction.",
+            "question_text": "An HR department receives unsolicited physical resumes. They immediately put the rejected resumes into a shredder without reading them. Does this act of shredding constitute 'processing' under the DPA?",
+            "options": [
+                "Yes, the destruction or erasure of personal data is explicitly defined as a form of processing.",
+                "No, because the resumes were never read or entered into a database.",
+                "No, physical paper is not covered by the DPA.",
+                "Yes, but only if the resumes contained Sensitive Personal Information."
+            ],
+            "correct_answer": "Yes, the destruction or erasure of personal data is explicitly defined as a form of processing.",
+            "explanation": "Processing is a comprehensive term that includes the destruction and erasure of personal data, meaning secure disposal rules still apply[cite: 1]."
+        },
+        {
+            "id": 467,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Data Subject",
+                "Natural Person"
+            ],
+            "lesson_concept": "A Data Subject is an individual whose personal, sensitive personal, or privileged information is processed[cite: 1]. The DPA protects natural persons, not juridical entities.",
+            "question_text": "A business-to-business (B2B) software company stores the personal mobile phone number and home address of their vendor's Lead Engineer. In this scenario, who is the 'Data Subject'?",
+            "options": [
+                "The software company storing the data.",
+                "The vendor company as a corporate entity.",
+                "The Lead Engineer (the natural person).",
+                "The telecommunications provider."
+            ],
+            "correct_answer": "The Lead Engineer (the natural person).",
+            "explanation": "The Data Subject is the specific living individual (natural person) whose personal information is being processed, which in this case is the Lead Engineer[cite: 1]."
+        },
+        {
+            "id": 468,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Government vs Corporate ID"
+            ],
+            "lesson_concept": "Sensitive Personal Information includes numbers or licenses issued by government agencies peculiar to an individual (e.g., SSS, GSIS, TIN, Passport Number)[cite: 1].",
+            "question_text": "When comparing a corporate employee ID number and a government-issued Tax Identification Number (TIN), how does the DPA classify them?",
+            "options": [
+                "Both are considered Sensitive Personal Information.",
+                "The corporate ID is Sensitive Personal Information, while the TIN is General Personal Information.",
+                "The TIN is Sensitive Personal Information (SPI), while the corporate employee ID is General Personal Information.",
+                "Both are considered General Personal Information."
+            ],
+            "correct_answer": "The TIN is Sensitive Personal Information (SPI), while the corporate employee ID is General Personal Information.",
+            "explanation": "Government-issued identification numbers peculiar to an individual (such as a TIN) are expressly classified as Sensitive Personal Information under Section 3(l)[cite: 1]. Corporate IDs are standard PI."
+        },
+        {
+            "id": 469,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "DPO",
+                "Small Organizations"
+            ],
+            "lesson_concept": "The appointment of a Data Protection Officer (DPO) is an absolute requirement for ensuring compliance with the DPA.",
+            "question_text": "A small non-profit organization only has 5 employees and processes the personal data of 50 local beneficiaries. Are they required to designate a Data Protection Officer (DPO)?",
+            "options": [
+                "Yes, every Personal Information Controller and Processor must designate an accountable individual/DPO, regardless of size.",
+                "No, organizations with fewer than 10 employees are exempt.",
+                "Yes, but only if they process data electronically.",
+                "No, non-profits are entirely exempt from the DPA."
+            ],
+            "correct_answer": "Yes, every Personal Information Controller and Processor must designate an accountable individual/DPO, regardless of size.",
+            "explanation": "The principle of accountability mandates that every organization acting as a PIC or PIP must designate an individual accountable for ensuring DPA compliance[cite: 1]."
+        },
+        {
+            "id": 470,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC Accountability",
+                "Outsourcing"
+            ],
+            "lesson_concept": "The Personal Information Controller (PIC) retains accountability for personal data under its custody and must ensure its processors (PIPs) maintain adequate security measures[cite: 1].",
+            "question_text": "An e-commerce company (PIC) hires a delivery courier (PIP) to ship packages. If the courier negligently leaks the customers' home addresses, can the e-commerce company be held accountable?",
+            "options": [
+                "No, outsourcing entirely transfers legal responsibility to the PIP.",
+                "Yes, the PIC retains accountability for data under its control and must ensure its PIPs maintain adequate security measures.",
+                "No, because addresses are not considered personal information.",
+                "Yes, but only if the e-commerce company explicitly instructed the leak."
+            ],
+            "correct_answer": "Yes, the PIC retains accountability for data under its control and must ensure its PIPs maintain adequate security measures.",
+            "explanation": "Under the principle of accountability, the PIC remains responsible for personal data even when processing has been outsourced to a third-party PIP[cite: 1]."
+        },
+        {
+            "id": 471,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Race and Ethnicity"
+            ],
+            "lesson_concept": "Sensitive Personal Information refers to personal information about an individual's race, ethnic origin, marital status, age, color, and religious, philosophical, or political affiliations[cite: 1].",
+            "question_text": "A university admissions form asks applicants to specify their 'race and ethnic origin' for diversity tracking. How does the law classify this specific data field?",
+            "options": [
+                "Public Domain Information",
+                "General Personal Information",
+                "Sensitive Personal Information (SPI)",
+                "Privileged Information"
+            ],
+            "correct_answer": "Sensitive Personal Information (SPI)",
+            "explanation": "Race and ethnic origin are explicitly categorized as Sensitive Personal Information under Section 3(l) of the DPA[cite: 1]."
+        },
+        {
+            "id": 472,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Privileged Information",
+                "Scenario"
+            ],
+            "lesson_concept": "Privileged Information refers to data that constitutes privileged communication under the Rules of Court.",
+            "question_text": "A corporate HR manager demands that an employee's private psychiatrist hand over the employee's therapy session notes to verify a medical leave. What legal classification protects these notes from being disclosed?",
+            "options": [
+                "Sensitive Personal Information",
+                "Privileged Information",
+                "General Personal Information",
+                "Public Information"
+            ],
+            "correct_answer": "Privileged Information",
+            "explanation": "Doctor-patient communications (including psychiatrist notes) are protected as privileged communication under the Rules of Court, classifying them as Privileged Information."
+        },
+        {
+            "id": 473,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Processing",
+                "Storage"
+            ],
+            "lesson_concept": "Processing includes the storage and holding of personal data.",
+            "question_text": "A company collected user data five years ago. They have not opened, viewed, or analyzed the data since, but it remains stored on their active servers. Is the company currently 'processing' this data?",
+            "options": [
+                "No, because the data is dormant and unread.",
+                "Yes, because the mere storage and holding of personal data constitutes processing.",
+                "No, data expires from processing status after one year.",
+                "Yes, but only if the data contains SPI."
+            ],
+            "correct_answer": "Yes, because the mere storage and holding of personal data constitutes processing.",
+            "explanation": "The definition of processing encompasses any operation performed upon personal data, explicitly including 'storage' and 'holding'[cite: 1]."
+        },
+        {
+            "id": 474,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Joint Controllers",
+                "Scenario"
+            ],
+            "lesson_concept": "A PIC decides WHAT data is collected and WHY[cite: 1]. When multiple entities jointly make these decisions, they act as joint controllers.",
+            "question_text": "An airline and a bank partner to create a co-branded travel credit card. They jointly decide what applicant data to collect and how to use it for mutual marketing. What is their role regarding the collected data?",
+            "options": [
+                "The airline is the PIC and the bank is the PIP.",
+                "They are Joint Personal Information Controllers (PICs).",
+                "They are both Personal Information Processors (PIPs).",
+                "The applicant is the PIC."
+            ],
+            "correct_answer": "They are Joint Personal Information Controllers (PICs).",
+            "explanation": "Because both organizations jointly determine the purposes and means of processing the data, they share the responsibilities of a Personal Information Controller[cite: 1]."
+        },
+        {
+            "id": 475,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Pseudonymization vs Anonymization"
+            ],
+            "lesson_concept": "Personal Information is any information from which identity can be reasonably ascertained, or when put together with other information would directly identify an individual[cite: 1].",
+            "question_text": "A researcher replaces patient names with unique codes in a dataset. However, the researcher keeps a secret 'key' file that can link the codes back to the original names. Is the coded dataset still considered Personal Information?",
+            "options": [
+                "No, it is fully anonymized.",
+                "Yes, it is pseudonymized; because the researcher holds the key, the identity can still be reasonably ascertained when put together with other information.",
+                "No, as long as the key is encrypted.",
+                "Yes, but it is downgraded to public domain data."
+            ],
+            "correct_answer": "Yes, it is pseudonymized; because the researcher holds the key, the identity can still be reasonably ascertained when put together with other information.",
+            "explanation": "If data can be re-identified by combining it with other information held by the entity (like a decryption key), it is still considered Personal Information under the law[cite: 1]."
+        },
+        {
+            "id": 476,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "DPO",
+                "Conflict of Interest"
+            ],
+            "lesson_concept": "The DPO must act independently. Individuals who make decisions about the purposes and means of processing (like a CEO) usually face a conflict of interest if appointed as DPO.",
+            "question_text": "A startup appoints its Chief Executive Officer (CEO), who single-handedly dictates all marketing and data collection strategies, as its Data Protection Officer (DPO). Why is this problematic under DPA compliance standards?",
+            "options": [
+                "CEOs are legally exempt from the DPA.",
+                "It creates a conflict of interest, as the DPO should independently monitor compliance rather than determining the purposes and means of processing.",
+                "A DPO must be an external consultant.",
+                "CEOs are required to focus solely on financial audits."
+            ],
+            "correct_answer": "It creates a conflict of interest, as the DPO should independently monitor compliance rather than determining the purposes and means of processing.",
+            "explanation": "A DPO must be able to perform their duties independently. An executive who decides the 'why' and 'how' of data processing (a PIC function) cannot objectively monitor their own compliance."
+        },
+        {
+            "id": 477,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Criminal Offenses"
+            ],
+            "lesson_concept": "Information about a proceeding for any offense committed or alleged to have been committed by an individual is Sensitive Personal Information[cite: 1].",
+            "question_text": "An employer conducts a background check on a candidate, discovering a record of an alleged traffic violation that was later dismissed in court. How is this data classified?",
+            "options": [
+                "Public Domain Information",
+                "General Personal Information",
+                "Sensitive Personal Information (SPI)",
+                "Privileged Information"
+            ],
+            "correct_answer": "Sensitive Personal Information (SPI)",
+            "explanation": "Records regarding proceedings for any offense committed or *alleged* to have been committed are strictly classified as SPI[cite: 1]."
+        },
+        {
+            "id": 478,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Juridical Person",
+                "Data Subject limitations"
+            ],
+            "lesson_concept": "A Data Subject is an individual (natural person)[cite: 1]. Juridical persons (corporations) do not have personal privacy rights under the DPA.",
+            "question_text": "Can a registered corporation file a complaint claiming its 'personal privacy rights' as a Data Subject were violated when its corporate financial records were leaked?",
+            "options": [
+                "Yes, corporations have the exact same privacy rights as individuals.",
+                "No, the DPA's definition of a Data Subject only applies to natural persons (living individuals), not juridical entities.",
+                "Yes, but only if the corporation is wholly owned by Filipinos.",
+                "No, unless the leaked data includes the CEO's personal address."
+            ],
+            "correct_answer": "No, the DPA's definition of a Data Subject only applies to natural persons (living individuals), not juridical entities.",
+            "explanation": "A Data Subject is specifically defined as an individual (a natural person) whose personal information is processed. Corporations are juridical persons and do not possess personal privacy rights[cite: 1]."
+        },
+        {
+            "id": 479,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "PIC Determination",
+                "Instructions"
+            ],
+            "lesson_concept": "A Personal Information Controller (PIC) decides WHAT data is collected and WHY[cite: 1].",
+            "question_text": "Company A dictates what customer data should be collected and provides Company B with strict parameters on how to organize it. Company B organizes the data and sends it back. Which company is the Personal Information Controller (PIC)?",
+            "options": [
+                "Company B",
+                "Company A",
+                "Both are PICs",
+                "Neither are PICs"
+            ],
+            "correct_answer": "Company A",
+            "explanation": "Company A is the PIC because it controls the collection and determines the purpose and means of the processing (deciding WHAT and WHY)[cite: 1]."
+        },
+        {
+            "id": 480,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Personal Information",
+                "Context"
+            ],
+            "lesson_concept": "Information becomes PI when put together with other information would directly and certainly identify an individual[cite: 1].",
+            "question_text": "A dataset contains only an unassigned vehicle plate number. However, the database administrator also has access to the LTO registry that links plate numbers to owner names. In the hands of this administrator, what is the plate number considered?",
+            "options": [
+                "Anonymized Data",
+                "Personal Information",
+                "Privileged Information",
+                "Sensitive Personal Information"
+            ],
+            "correct_answer": "Personal Information",
+            "explanation": "Because the plate number, when put together with other information held by the entity (the LTO registry), can directly identify the owner, it constitutes Personal Information[cite: 1]."
+        },
+        {
+            "id": 481,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "Sensitive Personal Information",
+                "Marital Status vs Name"
+            ],
+            "lesson_concept": "SPI includes marital status. General PI includes full name[cite: 1].",
+            "question_text": "A user fills out a profile providing their 'Full Name' and 'Marital Status'. How are these two data points classified under the DPA?",
+            "options": [
+                "Both are General Personal Information.",
+                "Full Name is General Personal Information; Marital Status is Sensitive Personal Information.",
+                "Full Name is Sensitive Personal Information; Marital Status is General Personal Information.",
+                "Both are Sensitive Personal Information."
+            ],
+            "correct_answer": "Full Name is General Personal Information; Marital Status is Sensitive Personal Information.",
+            "explanation": "A full name is standard Personal Information, whereas marital status is explicitly defined as Sensitive Personal Information under Section 3(l)[cite: 1]."
+        },
+        {
+            "id": 482,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 2: Concepts",
+                "PIP Constraints",
+                "Subcontracting"
+            ],
+            "lesson_concept": "A PIP acts only on the documented instructions of the PIC[cite: 1].",
+            "question_text": "A Personal Information Processor (PIP) wishes to subcontract part of its data storage duties to another vendor. What is required before the PIP can legally share the data with the subcontractor?",
+            "options": [
+                "The PIP can do so freely to improve efficiency.",
+                "The PIP must obtain the prior documented authorization or instruction from the Personal Information Controller (PIC).",
+                "The PIP only needs to notify the Data Subjects.",
+                "The PIP must register the subcontractor with the NPC."
+            ],
+            "correct_answer": "The PIP must obtain the prior documented authorization or instruction from the Personal Information Controller (PIC).",
+            "explanation": "Because a PIP can only act upon the documented instructions of the PIC, any subcontracting or further sharing of data requires explicit authorization from the PIC[cite: 1]."
+        }
+    ]
+}

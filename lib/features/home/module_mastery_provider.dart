@@ -13,6 +13,7 @@ class ModuleMasteryData {
     required this.name,
     required this.shortName,
     required this.total,
+    required this.apprenticeCount,
     required this.guruPlus,
   });
 
@@ -27,11 +28,23 @@ class ModuleMasteryData {
   /// Total number of questions in this module.
   final int total;
 
+  /// Questions currently in active learning (srsStage 1..4).
+  final int apprenticeCount;
+
   /// Questions that have reached Guru or above (srsStage >= 5).
   final int guruPlus;
 
-  /// Mastery ratio 0.0–1.0. Safe: returns 0 when total == 0.
+  /// Combined items started (Apprentice + Guru+).
+  int get startedTotal => apprenticeCount + guruPlus;
+
+  /// Mastery ratio 0.0–1.0 (Guru+ items). Safe: returns 0 when total == 0.
   double get masteryRatio => total > 0 ? guruPlus / total : 0.0;
+
+  /// Learning ratio 0.0–1.0 (Apprentice items). Safe: returns 0 when total == 0.
+  double get learningRatio => total > 0 ? apprenticeCount / total : 0.0;
+
+  /// Total active started ratio (Mastered + Learning).
+  double get startedRatio => total > 0 ? (startedTotal / total).clamp(0.0, 1.0) : 0.0;
 
   /// Mastery as a percentage string e.g. "42%".
   String get masteryLabel => '${(masteryRatio * 100).round()}%';
@@ -87,8 +100,9 @@ final moduleMasteryStreamProvider =
       }
     }
 
-    // Tally totals and guruPlus per module.
+    // Tally totals, apprenticeCounts and guruPlus per module.
     final totals = <int, int>{for (final (n, _, _) in _kModules) n: 0};
+    final apprenticeCounts = <int, int>{for (final (n, _, _) in _kModules) n: 0};
     final guruCounts = <int, int>{for (final (n, _, _) in _kModules) n: 0};
 
     for (final q in allQuestions) {
@@ -98,7 +112,9 @@ final moduleMasteryStreamProvider =
 
       for (final mod in mods) {
         totals[mod] = (totals[mod] ?? 0) + 1;
-        if (stage >= 5) {
+        if (stage >= 1 && stage <= 4) {
+          apprenticeCounts[mod] = (apprenticeCounts[mod] ?? 0) + 1;
+        } else if (stage >= 5) {
           guruCounts[mod] = (guruCounts[mod] ?? 0) + 1;
         }
       }
@@ -111,6 +127,7 @@ final moduleMasteryStreamProvider =
           name: fullName,
           shortName: shortName,
           total: totals[num] ?? 0,
+          apprenticeCount: apprenticeCounts[num] ?? 0,
           guruPlus: guruCounts[num] ?? 0,
         ),
     ];

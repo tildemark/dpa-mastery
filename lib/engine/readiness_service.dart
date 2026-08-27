@@ -26,7 +26,16 @@ class ReadinessService {
 
     // ── Depth score ──────────────────────────────────────────────────────────
     final totalQ = allQuestions.length;
-    if (totalQ == 0) return const ReadinessResult(score: 0, depth: 0, breadth: 0);
+    if (totalQ == 0) {
+      return const ReadinessResult(
+        score: 0,
+        depth: 0,
+        breadth: 0,
+        totalQuestions: 0,
+        guruPlusTotal: 0,
+        remainingItemsToGuru: 0,
+      );
+    }
 
     final progressByQid = {for (final p in allProgress) p.questionId: p.srsStage};
     int guruPlusTotal = 0;
@@ -72,12 +81,37 @@ class ReadinessService {
     const depthWeight = 0.60;
     const breadthWeight = 0.40;
     final composite = (depth * depthWeight + breadth * breadthWeight) * 100;
+    final score = composite.round().clamp(0, 100);
+
+    // ── Readiness Time Estimation ──────────────────────────────────────────────
+    // To reach ~80%+ Exam Readiness, a candidate needs to bring at least ~70% of
+    // total questions to Guru+ (Stage 5+). Each question takes ~1.5 weeks of spaced
+    // reviews (Stage 1 -> 2 -> 3 -> 4 -> 5).
+    // Remaining items to Guru:
+    final targetGuruCount = (totalQ * 0.75).round();
+    final remainingItemsToGuru = (targetGuruCount - guruPlusTotal).clamp(0, totalQ);
 
     return ReadinessResult(
-      score: composite.round().clamp(0, 100),
+      score: score,
       depth: depth,
       breadth: breadth,
+      totalQuestions: totalQ,
+      guruPlusTotal: guruPlusTotal,
+      remainingItemsToGuru: remainingItemsToGuru,
     );
+  }
+
+  /// Calculates estimated days remaining based on user's daily lesson target.
+  static int estimateDaysToExamReady({
+    required int remainingItemsToGuru,
+    required int dailyTarget,
+  }) {
+    if (remainingItemsToGuru <= 0) return 0;
+    final pace = dailyTarget <= 0 ? 15 : dailyTarget;
+    // Days needed to introduce lessons + SRS cycle maturation (~7 to 10 days for Stage 5)
+    final daysToIntroduce = (remainingItemsToGuru / pace).ceil();
+    final totalEstimatedDays = daysToIntroduce + 8; // +8 days for the last batch to reach Guru 1
+    return totalEstimatedDays;
   }
 }
 
@@ -86,6 +120,9 @@ class ReadinessResult {
     required this.score,
     required this.depth,
     required this.breadth,
+    required this.totalQuestions,
+    required this.guruPlusTotal,
+    required this.remainingItemsToGuru,
   });
 
   /// Composite readiness score, 0–100.
@@ -96,4 +133,21 @@ class ReadinessResult {
 
   /// Proportion of modules >= 50 % Guru (0.0–1.0).
   final double breadth;
+
+  final int totalQuestions;
+  final int guruPlusTotal;
+  final int remainingItemsToGuru;
+
+  /// Formatted estimated time string based on daily pace.
+  String estimatedTimeToReady(int dailyTarget) {
+    if (score >= 80) return 'Exam Ready Now';
+    final days = ReadinessService.estimateDaysToExamReady(
+      remainingItemsToGuru: remainingItemsToGuru,
+      dailyTarget: dailyTarget,
+    );
+    if (days <= 0) return 'Exam Ready Now';
+    final weeks = (days / 7).ceil();
+    if (weeks <= 1) return '~$days days at current pace';
+    return '~$weeks weeks ($days days) at current pace';
+  }
 }

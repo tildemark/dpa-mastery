@@ -296,6 +296,28 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
         .watch()
         .map((list) => list.length);
   }
+
+  /// Decrements the mistakeCount for a question (min 0) when answered correctly during review.
+  Future<void> decrementMistakeCount(int questionId) async {
+    final progress = await getProgressForQuestion(questionId);
+    if (progress != null && progress.mistakeCount > 0) {
+      await (update(userProgress)..where((p) => p.questionId.equals(questionId))).write(
+        UserProgressCompanion(
+          mistakeCount: Value((progress.mistakeCount - 1).clamp(0, 999999)),
+        ),
+      );
+    }
+  }
+
+  /// Clears mistake count (sets to 0) for a specific set of question IDs.
+  Future<void> clearMistakesForQuestions(List<int> questionIds) async {
+    if (questionIds.isEmpty) return;
+    await (update(userProgress)..where((p) => p.questionId.isIn(questionIds))).write(
+      const UserProgressCompanion(
+        mistakeCount: Value(0),
+      ),
+    );
+  }
 }
 
 class SrsStageCounts {

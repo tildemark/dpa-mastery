@@ -1,0 +1,387 @@
+{
+    "version": 27,
+    "release_date": "2026-08-27",
+    "module": "Module 3: Principles Level 2 Set",
+    "items": [
+        {
+            "id": 483,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Transparency",
+                "Scenario"
+            ],
+            "lesson_concept": "Transparency requires that the data subject must be aware of the nature, purpose, and extent of the processing of their personal data[cite: 1].",
+            "question_text": "A retail store installs CCTV cameras for security purposes. How does the store practically fulfill the principle of Transparency for walk-in customers?",
+            "options": [
+                "By placing highly visible signs at the entrances notifying individuals of the CCTV surveillance.",
+                "By handing out a 20-page privacy manual to every customer who enters.",
+                "By verbally telling only the customers who look suspicious.",
+                "By registering the cameras with the National Privacy Commission."
+            ],
+            "correct_answer": "By placing highly visible signs at the entrances notifying individuals of the CCTV surveillance.",
+            "explanation": "Transparency dictates that individuals must be informed of data collection in an easily accessible manner[cite: 1]. Visible signage is the standard practical method for CCTV surveillance."
+        },
+        {
+            "id": 484,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Legitimate Purpose",
+                "Incompatible Use"
+            ],
+            "lesson_concept": "Data collection must have a declared, specified, and lawful purpose. Personal data cannot be used for a new, incompatible purpose without obtaining new consent[cite: 1].",
+            "question_text": "A university collects student contact details strictly for emergency campus alerts. Later, they use the same list to promote a paid alumni gala. Which principle was violated?",
+            "options": [
+                "Transparency",
+                "Accuracy",
+                "Proportionality",
+                "Legitimate Purpose"
+            ],
+            "correct_answer": "Legitimate Purpose",
+            "explanation": "Using emergency contact data for promotional marketing is a secondary, incompatible use that violates the Legitimate Purpose principle[cite: 1]."
+        },
+        {
+            "id": 485,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality",
+                "Excessive Data"
+            ],
+            "lesson_concept": "The principle of proportionality ensures that processing is adequate, relevant, suitable, necessary, and not excessive in relation to a declared purpose[cite: 1].",
+            "question_text": "A mobile game designed for children requires users to input their exact home address and school name to play offline single-player levels. Which principle is clearly violated?",
+            "options": [
+                "Accountability",
+                "Transparency",
+                "Proportionality",
+                "Fairness"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Requesting a physical address and school name to play an offline game is highly excessive and not necessary for the app's function, violating Proportionality[cite: 1]."
+        },
+        {
+            "id": 486,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accountability",
+                "Vendor Management"
+            ],
+            "lesson_concept": "Accountability requires PICs to implement reasonable controls, including binding third-party processors (PIPs) via formal agreements to maintain adequate security measures[cite: 1].",
+            "question_text": "A bank (PIC) hires a printing company (PIP) to mail bank statements but fails to execute a Data Processing Agreement or check their security controls. If the printer leaks the data, which core principle did the bank fail to uphold?",
+            "options": [
+                "Legitimate Purpose",
+                "Accuracy",
+                "Accountability",
+                "Proportionality"
+            ],
+            "correct_answer": "Accountability",
+            "explanation": "The PIC retains legal accountability for data under its custody and must ensure its processors maintain adequate security measures[cite: 1]."
+        },
+        {
+            "id": 487,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accuracy",
+                "Consequences"
+            ],
+            "lesson_concept": "The principle of Accuracy requires PICs to maintain accurate, complete, and up-to-date personal information, especially when used to make decisions[cite: 1].",
+            "question_text": "A health insurance company refuses to update a policyholder's mistakenly recorded 'smoker' status, resulting in the policyholder paying higher monthly premiums. Which principle is directly violated?",
+            "options": [
+                "Accountability",
+                "Accuracy",
+                "Proportionality",
+                "Transparency"
+            ],
+            "correct_answer": "Accuracy",
+            "explanation": "Failing to maintain correct and up-to-date personal data, especially when it negatively affects the data subject, directly violates the principle of Accuracy[cite: 1]."
+        },
+        {
+            "id": 488,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Transparency",
+                "Clear Language"
+            ],
+            "lesson_concept": "Any information relating to the processing of personal data should be easy to access and understand, using clear and plain language[cite: 1].",
+            "question_text": "A local e-commerce app updates its Privacy Notice, but it is written entirely in dense legal jargon that an average consumer cannot understand. Which principle is compromised?",
+            "options": [
+                "Transparency",
+                "Accountability",
+                "Legitimate Purpose",
+                "Data Quality"
+            ],
+            "correct_answer": "Transparency",
+            "explanation": "The Principle of Transparency explicitly requires that communication relating to data processing use clear and plain language so the data subject actually understands it[cite: 1]."
+        },
+        {
+            "id": 489,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality",
+                "Retention Limit"
+            ],
+            "lesson_concept": "Under Proportionality, personal data should not be retained longer than necessary to fulfill the specific, legitimate purpose[cite: 1].",
+            "question_text": "A hotel keeps the credit card details of former guests indefinitely in their active database 'just in case' they book again in the future. Which principle does this infinite retention violate?",
+            "options": [
+                "Transparency",
+                "Proportionality",
+                "Accuracy",
+                "Accountability"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Retaining data indefinitely without a strictly necessary current purpose violates the data minimization and retention limits of Proportionality[cite: 1]."
+        },
+        {
+            "id": 490,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Legitimate Purpose",
+                "Lawfulness"
+            ],
+            "lesson_concept": "Legitimate purpose mandates that the processing of personal data must be for a purpose that is declared, specified, and lawful[cite: 1].",
+            "question_text": "An illegal underground betting syndicate has a perfectly written, easy-to-read Privacy Notice detailing exactly what data they collect. Why is their data processing still a violation of the DPA?",
+            "options": [
+                "It violates Accountability, because they do not have a DPO.",
+                "It violates Accuracy, because bets are unpredictable.",
+                "It violates Legitimate Purpose, because the objective of the processing is contrary to law.",
+                "It violates Proportionality, because they collect too much money."
+            ],
+            "correct_answer": "It violates Legitimate Purpose, because the objective of the processing is contrary to law.",
+            "explanation": "A core requirement of Legitimate Purpose is that the objective must be 'lawful'. An illegal operation cannot have a lawful basis for processing[cite: 1]."
+        },
+        {
+            "id": 491,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accountability",
+                "Demonstrability"
+            ],
+            "lesson_concept": "Accountability mandates that PICs implement measures and be able to demonstrate compliance with the DPA[cite: 1].",
+            "question_text": "A tech company strictly follows privacy rules internally but has zero written policies, no documented PIAs, and no records of employee training. Which principle are they failing?",
+            "options": [
+                "Transparency",
+                "Accuracy",
+                "Proportionality",
+                "Accountability"
+            ],
+            "correct_answer": "Accountability",
+            "explanation": "Accountability requires an organization not just to act securely, but to be able to actively demonstrate compliance through documented measures and audit trails[cite: 1]."
+        },
+        {
+            "id": 492,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accuracy",
+                "Source Verification"
+            ],
+            "lesson_concept": "Accuracy requires PICs to maintain complete and up-to-date personal information[cite: 1].",
+            "question_text": "A recruitment firm scrapes outdated LinkedIn profiles to build a candidate database, frequently sending senior-level job offers to people who changed industries years ago. What principle are they failing to uphold?",
+            "options": [
+                "Legitimate Purpose",
+                "Accuracy",
+                "Transparency",
+                "Proportionality"
+            ],
+            "correct_answer": "Accuracy",
+            "explanation": "By failing to verify or update the scraped data before using it to contact individuals, the firm is violating the principle of Accuracy[cite: 1]."
+        },
+        {
+            "id": 493,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Transparency",
+                "Disclosing Recipients"
+            ],
+            "lesson_concept": "Transparency requires informing the data subject about the nature, purpose, and extent of processing, including who the data will be shared with[cite: 1].",
+            "question_text": "A ridesharing app legally shares user location data with third-party advertisers, but deliberately hides this fact from its Privacy Notice to avoid losing customers. Which principle is violated?",
+            "options": [
+                "Accuracy",
+                "Accountability",
+                "Proportionality",
+                "Transparency"
+            ],
+            "correct_answer": "Transparency",
+            "explanation": "The failure to inform the data subject about the extent of the processing (sharing with third parties) is a direct violation of Transparency[cite: 1]."
+        },
+        {
+            "id": 494,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality",
+                "App Permissions"
+            ],
+            "lesson_concept": "Only the data necessary to fulfill the specific, legitimate purpose should be collected, discouraging excessive collection[cite: 1].",
+            "question_text": "A simple offline text-based calculator application for Android requires permission to access the user's microphone and contact list to function. Which principle does this excessive request violate?",
+            "options": [
+                "Proportionality",
+                "Transparency",
+                "Legitimate Purpose",
+                "Accountability"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "Microphone and contact access are entirely unnecessary for a text-based calculator, violating the data minimization aspect of Proportionality[cite: 1]."
+        },
+        {
+            "id": 495,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accountability",
+                "Privacy by Design"
+            ],
+            "lesson_concept": "Implementing reasonable and appropriate organizational, physical, and technical security measures is a core obligation under Accountability[cite: 1].",
+            "question_text": "A software team builds automatic data encryption and role-based access controls into their app's core architecture before it even launches. This practice of 'Privacy by Design' operationalizes which general principle?",
+            "options": [
+                "Legitimate Purpose",
+                "Transparency",
+                "Accountability",
+                "Proportionality"
+            ],
+            "correct_answer": "Accountability",
+            "explanation": "Embedding proactive security and privacy controls into a system's design is the operational execution of the Accountability principle[cite: 1]."
+        },
+        {
+            "id": 496,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Legitimate Purpose",
+                "Purpose Specification"
+            ],
+            "lesson_concept": "The specific purpose of data collection must be explicitly stated to the data subject before or at the point of collection[cite: 1].",
+            "question_text": "A website collects user emails and states in its notice: 'We will use your email for future, undetermined business opportunities.' Why does this violate the Legitimate Purpose principle?",
+            "options": [
+                "Because emails are Sensitive Personal Information.",
+                "Because the purpose is not explicitly specified and clearly defined before the collection.",
+                "Because they did not pay the user.",
+                "Because it violates data portability."
+            ],
+            "correct_answer": "Because the purpose is not explicitly specified and clearly defined before the collection.",
+            "explanation": "Legitimate Purpose requires the objective to be declared and specified. Vague, 'undetermined' future uses are not specific and therefore invalid[cite: 1]."
+        },
+        {
+            "id": 497,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality",
+                "Alternatives"
+            ],
+            "lesson_concept": "Personal data shall be processed only if the purpose could not reasonably be fulfilled by other means[cite: 1].",
+            "question_text": "A company requires employees to submit biometric retina scans just to enter the cafeteria, even though a simple RFID ID badge swipe would work equally well. Which principle is challenged by using this overly intrusive means?",
+            "options": [
+                "Accuracy",
+                "Proportionality",
+                "Transparency",
+                "Legitimate Purpose"
+            ],
+            "correct_answer": "Proportionality",
+            "explanation": "If a less intrusive method (RFID badge) can fulfill the purpose (access control), using highly sensitive data (retina scans) violates Proportionality[cite: 1]."
+        },
+        {
+            "id": 498,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Transparency",
+                "Identity of PIC"
+            ],
+            "lesson_concept": "Transparency requires informing the data subject of the identity of the personal information controller[cite: 1].",
+            "question_text": "A survey form asks for detailed household income information but does not state the name of the research company conducting the survey or how to contact them. Which principle is directly violated?",
+            "options": [
+                "Proportionality",
+                "Accountability",
+                "Transparency",
+                "Accuracy"
+            ],
+            "correct_answer": "Transparency",
+            "explanation": "Hiding the identity of the entity collecting the data deprives the subject of their right to know who is holding their information, violating Transparency[cite: 1]."
+        },
+        {
+            "id": 499,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accountability",
+                "DPO Independence"
+            ],
+            "lesson_concept": "Accountability requires an organization to empower an accountable individual (DPO) to ensure compliance[cite: 1].",
+            "question_text": "A company officially designates a Data Protection Officer (DPO) to satisfy regulations but explicitly bans the DPO from accessing management meetings or audit tools. Which principle is being undermined?",
+            "options": [
+                "Accountability",
+                "Transparency",
+                "Legitimate Purpose",
+                "Proportionality"
+            ],
+            "correct_answer": "Accountability",
+            "explanation": "Appointing a DPO in name only without empowering them to actually monitor compliance is a failure of organizational Accountability[cite: 1]."
+        },
+        {
+            "id": 500,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Legitimate Purpose",
+                "New Consent"
+            ],
+            "lesson_concept": "Data cannot be used for a new, incompatible purpose without obtaining new consent[cite: 1].",
+            "question_text": "If a hospital wants to use patient contact data—originally collected strictly for medical treatment—to conduct a commercial marketing study, what must they do to satisfy the Legitimate Purpose principle?",
+            "options": [
+                "Pay an administrative fee to the NPC.",
+                "Obtain a new, specific consent from the patients for the commercial marketing study.",
+                "Anonymize the data only after the study is complete.",
+                "Include a disclaimer in the local newspaper."
+            ],
+            "correct_answer": "Obtain a new, specific consent from the patients for the commercial marketing study.",
+            "explanation": "Because commercial marketing is incompatible with the original declared purpose of medical treatment, a new, specific consent must be obtained[cite: 1]."
+        },
+        {
+            "id": 501,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Accuracy",
+                "Correction Propagation"
+            ],
+            "lesson_concept": "The right to rectify requires inaccuracies to be corrected immediately[cite: 1]. Accuracy demands that this correct state is maintained across the ecosystem.",
+            "question_text": "A bank successfully corrects an erroneous default status on a customer's internal record but fails to inform the external credit bureaus they previously shared the bad data with. Which principle did the bank fail to fully satisfy?",
+            "options": [
+                "Accountability",
+                "Transparency",
+                "Accuracy",
+                "Proportionality"
+            ],
+            "correct_answer": "Accuracy",
+            "explanation": "To maintain Data Quality and Accuracy, corrections to inaccurate data must be propagated to third parties who previously received the erroneous information."
+        },
+        {
+            "id": 502,
+            "difficulty_level": 2,
+            "tags": [
+                "Module 3: Principles",
+                "Proportionality",
+                "Anonymization for Retention"
+            ],
+            "lesson_concept": "Personal data should not be retained longer than necessary[cite: 1]. If data must be kept for statistical reasons, it should be anonymized.",
+            "question_text": "An e-commerce site wants to analyze 10 years of purchasing trends, but DPA retention rules say they must delete the personal profiles after 5 years. How can they satisfy Proportionality while keeping the data for analytics?",
+            "options": [
+                "By fully anonymizing the dataset so it can no longer identify any individual.",
+                "By encrypting the database with a weak password.",
+                "By paying the users a monthly royalty fee.",
+                "By claiming a permanent legitimate interest."
+            ],
+            "correct_answer": "By fully anonymizing the dataset so it can no longer identify any individual.",
+            "explanation": "Anonymizing the data removes it from the scope of the DPA, allowing the company to retain the statistical trends without violating the retention limits of Proportionality."
+        }
+    ]
+}

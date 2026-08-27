@@ -178,12 +178,20 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
             ),
             const SizedBox(height: 16),
             FilledButton(
-              onPressed: () {
-                if (isCorrect) _correctCount++;
-                setState(() {
-                  _currentIndex++;
-                  _selectedAnswer = null;
-                });
+              onPressed: () async {
+                final db = ref.read(dbProvider);
+                if (isCorrect) {
+                  _correctCount++;
+                  if (widget.missedQuestionsMode) {
+                    await db.progressDao.decrementMistakeCount(q.id);
+                  }
+                }
+                if (mounted) {
+                  setState(() {
+                    _currentIndex++;
+                    _selectedAnswer = null;
+                  });
+                }
               },
               child: const Text('Next'),
             ),
@@ -203,7 +211,7 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
             const Icon(Icons.stars_rounded, size: 64, color: Color(0xFFF59E0B)),
             const SizedBox(height: 16),
             Text(
-              'Drill Complete!',
+              widget.missedQuestionsMode ? 'Review Complete!' : 'Drill Complete!',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
@@ -211,11 +219,47 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
               'Score: $_correctCount / ${_questions!.length} correct',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
+            if (widget.missedQuestionsMode && _correctCount > 0) ...[
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF10B981).withAlpha(25),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  '$_correctCount mistake${_correctCount > 1 ? "s" : ""} reduced/cleared!',
+                  style: const TextStyle(
+                    color: Color(0xFF10B981),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+            ],
             const SizedBox(height: 24),
+            if (widget.missedQuestionsMode && _questions!.isNotEmpty) ...[
+              OutlinedButton.icon(
+                onPressed: () async {
+                  final db = ref.read(dbProvider);
+                  final ids = _questions!.map((q) => q.id).toList();
+                  await db.progressDao.clearMistakesForQuestions(ids);
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('All practiced mistakes cleared!')),
+                    );
+                    Navigator.of(context).pop();
+                  }
+                },
+                icon: const Icon(Icons.check_circle_outline),
+                label: const Text('Clear All Practiced Mistakes'),
+              ),
+              const SizedBox(height: 12),
+            ],
             FilledButton.icon(
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(Icons.arrow_back),
-              label: const Text('Back to Drills'),
+              label: Text(widget.missedQuestionsMode ? 'Back to Home' : 'Back to Drills'),
             ),
           ],
         ),

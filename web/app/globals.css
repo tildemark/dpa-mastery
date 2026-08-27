@@ -133,6 +133,27 @@ body {
   border-color: var(--primary-light);
 }
 
+.nav-sponsor-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #fff !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  background: linear-gradient(135deg, #ff424d, #e0323c);
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 66, 77, 0.4);
+  box-shadow: 0 2px 10px rgba(255, 66, 77, 0.25);
+  transition: all 0.2s;
+}
+
+.nav-sponsor-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(255, 66, 77, 0.4);
+  color: #fff !important;
+}
+
 /* ─── Hero Section ─── */
 .hero-section {
   position: relative;
@@ -742,6 +763,180 @@ body {
   font-size: 0.75rem;
   color: var(--text-muted);
   text-align: center;
+}
+
+/* ─── Sponsor / Community Support Section ─── */
+.sponsor-section {
+  padding: 5rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sponsor-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(255, 66, 77, 0.3);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.sponsor-card-glow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255, 66, 77, 0.15) 0%, rgba(255, 221, 0, 0.05) 60%, transparent 80%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.sponsor-header h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.sponsor-header p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.sponsor-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  max-width: 820px;
+  margin: 0 auto 2.5rem;
+}
+
+.sponsor-item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.75rem 1.5rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.sponsor-item-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.sponsor-item-card.patreon {
+  border-color: rgba(255, 66, 77, 0.35);
+}
+
+.sponsor-item-card.patreon:hover {
+  border-color: #ff424d;
+  box-shadow: 0 8px 25px rgba(255, 66, 77, 0.2);
+}
+
+.sponsor-item-card.coffee {
+  border-color: rgba(255, 221, 0, 0.35);
+}
+
+.sponsor-item-card.coffee:hover {
+  border-color: #ffdd00;
+  box-shadow: 0 8px 25px rgba(255, 221, 0, 0.2);
+}
+
+.sponsor-item-card.github {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.sponsor-item-card.github:hover {
+  border-color: #fff;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+}
+
+.sponsor-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.sponsor-icon-wrap.patreon-bg {
+  background: rgba(255, 66, 77, 0.15);
+  color: #ff424d;
+}
+
+.sponsor-icon-wrap.coffee-bg {
+  background: rgba(255, 221, 0, 0.15);
+  color: #ffdd00;
+}
+
+.sponsor-icon-wrap.github-bg {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.sponsor-item-card h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.sponsor-item-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.sponsor-item-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-light);
+  transition: background 0.2s;
+}
+
+.sponsor-item-card:hover .sponsor-item-btn {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.sponsor-perks-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.sponsor-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 /* ─── Footer ─── */

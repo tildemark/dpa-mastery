@@ -1,0 +1,385 @@
+{
+    "version": 23,
+    "release_date": "2026-08-27",
+    "module": "Module 6: Penalties Basic Level 1 Set",
+    "items": [
+        {
+            "id": 403,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Criminal Penalties",
+                "Definitions"
+            ],
+            "lesson_concept": "The Data Privacy Act imposes severe criminal penalties for violations, which are decided by regular courts, not just administrative warnings.",
+            "question_text": "What type of severe penalties does the Data Privacy Act (DPA) impose on individuals who commit privacy crimes?",
+            "options": [
+                "Only written warnings",
+                "Mandatory imprisonment and monetary fines",
+                "Community service",
+                "Only the suspension of internet access"
+            ],
+            "correct_answer": "Mandatory imprisonment and monetary fines",
+            "explanation": "Chapter VIII of the DPA clearly establishes criminal penalties involving both imprisonment and substantial fines for various privacy offenses."
+        },
+        {
+            "id": 404,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Unauthorized Processing",
+                "Definitions"
+            ],
+            "lesson_concept": "Unauthorized Processing of personal information occurs when someone processes data without the consent of the data subject or without being authorized by the law.",
+            "question_text": "What criminal offense is committed when a person processes personal data without obtaining consent or without a lawful basis?",
+            "options": [
+                "Improper Disposal",
+                "Unauthorized Processing",
+                "Malicious Disclosure",
+                "Concealment of Breach"
+            ],
+            "correct_answer": "Unauthorized Processing",
+            "explanation": "Processing data without any legal authority or valid consent constitutes the crime of Unauthorized Processing."
+        },
+        {
+            "id": 405,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Negligence",
+                "Definitions"
+            ],
+            "lesson_concept": "Accessing personal information due to negligence is a crime. You do not need to have malicious intent to be imprisoned; failing to secure data properly is enough.",
+            "question_text": "Can an IT administrator face criminal charges simply for accidentally exposing personal data due to negligence, even without malicious intent?",
+            "options": [
+                "No, malicious intent is always required.",
+                "Yes, 'Accessing Due to Negligence' is a specific criminal offense under the DPA.",
+                "No, accidents are always forgiven under the law.",
+                "Yes, but they will only face a fine, never imprisonment."
+            ],
+            "correct_answer": "Yes, 'Accessing Due to Negligence' is a specific criminal offense under the DPA.",
+            "explanation": "Section 26 of the DPA penalizes individuals who, due to negligence, provide access to personal data."
+        },
+        {
+            "id": 406,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Improper Disposal",
+                "Definitions"
+            ],
+            "lesson_concept": "Improper Disposal occurs when an individual knowingly or negligently discards personal data (like throwing intact medical records into a public trash bin) without securing or destroying it.",
+            "question_text": "What DPA offense is committed when a clinic throws intact, readable patient records into a public dumpster?",
+            "options": [
+                "Malicious Disclosure",
+                "Improper Disposal",
+                "Unauthorized Processing",
+                "Concealment"
+            ],
+            "correct_answer": "Improper Disposal",
+            "explanation": "Discarding personal data without proper destruction (like shredding) constitutes the crime of Improper Disposal."
+        },
+        {
+            "id": 407,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Unauthorized Purpose",
+                "Definitions"
+            ],
+            "lesson_concept": "Processing for Unauthorized Purposes occurs when data is collected for one declared reason but is intentionally used for a completely different, unapproved reason.",
+            "question_text": "What offense is committed when a company uses data collected for product delivery to send political campaign messages without permission?",
+            "options": [
+                "Processing for Unauthorized Purposes",
+                "Accessing Due to Negligence",
+                "Improper Disposal",
+                "Concealment of Breach"
+            ],
+            "correct_answer": "Processing for Unauthorized Purposes",
+            "explanation": "Using data for a purpose other than what was originally declared and authorized is a criminal violation."
+        },
+        {
+            "id": 408,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Malicious Disclosure",
+                "Definitions"
+            ],
+            "lesson_concept": "Malicious Disclosure is the unjustified disclosure of personal data done specifically with malice or in bad faith.",
+            "question_text": "What criminal offense is committed when an employee intentionally leaks a coworker's sensitive data on social media to humiliate them?",
+            "options": [
+                "Malicious Disclosure",
+                "Improper Disposal",
+                "Accessing Due to Negligence",
+                "Data Portability Violation"
+            ],
+            "correct_answer": "Malicious Disclosure",
+            "explanation": "Disclosing personal data with the specific intent to cause harm or in bad faith falls under Malicious Disclosure."
+        },
+        {
+            "id": 409,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Concealment",
+                "Definitions"
+            ],
+            "lesson_concept": "Concealment of Security Breaches occurs when an organization intentionally hides a mandatory reportable data breach from the National Privacy Commission.",
+            "question_text": "What offense is committed when a company's leadership intentionally decides to hide a massive data breach from the NPC to avoid bad PR?",
+            "options": [
+                "Unauthorized Processing",
+                "Concealment of Security Breaches",
+                "Improper Disposal",
+                "Malicious Disclosure"
+            ],
+            "correct_answer": "Concealment of Security Breaches",
+            "explanation": "Intentionally failing to report a qualifying breach to the NPC is specifically penalized as Concealment of Security Breaches."
+        },
+        {
+            "id": 410,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Juridical Persons",
+                "Responsible Officers"
+            ],
+            "lesson_concept": "When a corporation (a juridical person) commits a DPA crime, the penalty of imprisonment is imposed on its responsible officers who participated in or allowed the crime.",
+            "question_text": "If a corporation is found guilty of a DPA crime, who specifically serves the penalty of imprisonment?",
+            "options": [
+                "All the rank-and-file employees",
+                "Only the legal counsel",
+                "The responsible officers who participated in or allowed the commission of the crime",
+                "No one, because you cannot imprison a corporation"
+            ],
+            "correct_answer": "The responsible officers who participated in or allowed the commission of the crime",
+            "explanation": "Section 34 of the DPA dictates that the responsible officers of a juridical person bear the criminal penalties."
+        },
+        {
+            "id": 411,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Public Officers",
+                "Disqualification"
+            ],
+            "lesson_concept": "If a public officer (government employee) commits a DPA crime, they face an additional accessory penalty: perpetual absolute disqualification from public office.",
+            "question_text": "What additional penalty applies to a government official who is convicted of a crime under the Data Privacy Act?",
+            "options": [
+                "A mandatory transfer to another department.",
+                "Perpetual absolute disqualification from public office.",
+                "A temporary suspension of one month.",
+                "A written warning from the President."
+            ],
+            "correct_answer": "Perpetual absolute disqualification from public office.",
+            "explanation": "Public officers convicted under the DPA are permanently barred from holding public office."
+        },
+        {
+            "id": 412,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "SPI vs PI",
+                "Penalty Weight"
+            ],
+            "lesson_concept": "Crimes involving Sensitive Personal Information (SPI) carry much heavier penalties (longer jail time and higher fines) compared to crimes involving standard Personal Information.",
+            "question_text": "How do the penalties differ if a privacy crime involves Sensitive Personal Information (SPI) instead of standard Personal Information?",
+            "options": [
+                "The penalties are exactly the same.",
+                "The penalties are lower for SPI.",
+                "The penalties are significantly higher (longer imprisonment and larger fines) for SPI.",
+                "SPI crimes are only punished with administrative warnings."
+            ],
+            "correct_answer": "The penalties are significantly higher (longer imprisonment and larger fines) for SPI.",
+            "explanation": "The DPA prescribes harsher penalties for offenses involving SPI because the risk of harm to the data subject is much greater."
+        },
+        {
+            "id": 413,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Large Scale",
+                "Threshold"
+            ],
+            "lesson_concept": "The maximum penalty for a DPA offense is applied when the violation is considered 'large-scale', which means it affects 100 or more persons.",
+            "question_text": "Under the DPA, a privacy crime is subject to the MAXIMUM allowable penalty if it is considered 'large-scale'. How many data subjects must be affected to meet this threshold?",
+            "options": [
+                "10 or more persons",
+                "100 or more persons",
+                "1,000 or more persons",
+                "1,000,000 or more persons"
+            ],
+            "correct_answer": "100 or more persons",
+            "explanation": "Section 35 states that maximum penalties apply when the offense involves the personal data of 100 or more persons."
+        },
+        {
+            "id": 414,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Administrative Fines",
+                "NPC Powers"
+            ],
+            "lesson_concept": "While courts impose criminal imprisonment, the National Privacy Commission (NPC) has the power to directly impose Administrative Fines for regulatory failures.",
+            "question_text": "What type of penalty can the National Privacy Commission (NPC) directly impose on an organization for failing to comply with administrative regulations (like failing to appoint a DPO)?",
+            "options": [
+                "Criminal Imprisonment",
+                "Administrative Fines",
+                "Deportation",
+                "Capital Punishment"
+            ],
+            "correct_answer": "Administrative Fines",
+            "explanation": "The NPC has quasi-judicial authority to levy administrative fines against organizations that violate DPA regulations."
+        },
+        {
+            "id": 415,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "NPC Powers",
+                "Limits"
+            ],
+            "lesson_concept": "The National Privacy Commission (NPC) cannot sentence anyone to prison. Only regular Philippine courts can impose the criminal penalty of imprisonment.",
+            "question_text": "Does the National Privacy Commission (NPC) have the legal authority to sentence a violator to prison?",
+            "options": [
+                "Yes, the NPC is a fully authorized criminal court.",
+                "No, the NPC can only issue administrative fines; only regular courts can impose imprisonment.",
+                "Yes, but only for terms under 6 months.",
+                "No, because nobody can be imprisoned for privacy violations."
+            ],
+            "correct_answer": "No, the NPC can only issue administrative fines; only regular courts can impose imprisonment.",
+            "explanation": "Criminal trials and sentencing (imprisonment) fall strictly under the jurisdiction of regular trial courts, not the NPC."
+        },
+        {
+            "id": 416,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Damages",
+                "Civil Liability"
+            ],
+            "lesson_concept": "Paying a fine or serving prison time does not erase civil liability. Data subjects can still sue the offender for financial damages caused by the breach.",
+            "question_text": "If a company executive goes to jail and pays a criminal fine for a data leak, are they immune from paying financial damages to the victims?",
+            "options": [
+                "Yes, criminal penalties erase all civil liabilities.",
+                "No, the data subjects can still claim civil restitution/damages for the harm caused.",
+                "Yes, because the fine goes directly to the victims.",
+                "No, but the victims must pay the NPC first."
+            ],
+            "correct_answer": "No, the data subjects can still claim civil restitution/damages for the harm caused.",
+            "explanation": "Criminal penalties are separate from civil liabilities. Data subjects retain the right to be indemnified for damages sustained."
+        },
+        {
+            "id": 417,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Alien Offenders",
+                "Deportation"
+            ],
+            "lesson_concept": "If an alien (foreigner) commits a crime under the Data Privacy Act in the Philippines, they face deportation after serving their prison sentence.",
+            "question_text": "What additional penalty applies if the offender of a DPA crime is an alien (a foreign national)?",
+            "options": [
+                "They are immune from Philippine laws.",
+                "They must be deported immediately without trial.",
+                "They face deportation after serving their penal sentence and paying the fines.",
+                "They must surrender their passport to the NPC."
+            ],
+            "correct_answer": "They face deportation after serving their penal sentence and paying the fines.",
+            "explanation": "Section 34 states that alien offenders shall be deported after serving their sentence and paying the associated fines."
+        },
+        {
+            "id": 418,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "PIP Liability",
+                "Roles"
+            ],
+            "lesson_concept": "Criminal penalties under the DPA apply to anyone who commits the offense. A Personal Information Processor (PIP) can be held criminally liable if they illegally process or leak data.",
+            "question_text": "Can an outsourced vendor acting as a Personal Information Processor (PIP) be held criminally liable if they intentionally steal and sell the data?",
+            "options": [
+                "No, only Personal Information Controllers (PICs) can be charged with crimes.",
+                "Yes, any entity or individual who commits a DPA crime is subject to criminal penalties.",
+                "No, the PIP is protected by corporate immunity.",
+                "Yes, but they only have to pay a fine."
+            ],
+            "correct_answer": "Yes, any entity or individual who commits a DPA crime is subject to criminal penalties.",
+            "explanation": "Criminal liability falls on the individual or responsible officers who commit the act, regardless of whether their organizational role was a PIC or PIP."
+        },
+        {
+            "id": 419,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Unauthorized Disclosure",
+                "Definitions"
+            ],
+            "lesson_concept": "Unauthorized Disclosure occurs when a person legitimately has access to personal data but shares or discloses it to a third party without proper authorization.",
+            "question_text": "What offense is committed when a database admin, who is authorized to see user data, secretly emails that data to a friend outside the company?",
+            "options": [
+                "Improper Disposal",
+                "Concealment",
+                "Unauthorized Disclosure",
+                "Accessing Due to Negligence"
+            ],
+            "correct_answer": "Unauthorized Disclosure",
+            "explanation": "Sharing personal data with a third party without consent or legal authority constitutes Unauthorized Disclosure."
+        },
+        {
+            "id": 420,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Combination of Offenses",
+                "Compounding"
+            ],
+            "lesson_concept": "If an offender commits multiple privacy crimes at the same time (e.g., unauthorized processing AND malicious disclosure), the penalties are compounded or increased.",
+            "question_text": "What happens if a person commits multiple privacy offenses from the DPA simultaneously during a single cyberattack?",
+            "options": [
+                "They only face the penalty for the least severe offense.",
+                "The offenses are combined, resulting in higher, compounded penalties.",
+                "The NPC forgives the lesser offenses.",
+                "They are given a choice of which penalty to serve."
+            ],
+            "correct_answer": "The offenses are combined, resulting in higher, compounded penalties.",
+            "explanation": "Section 33 dictates that when multiple offenses are committed, or when SPI is involved, the penalties are appropriately compounded."
+        },
+        {
+            "id": 421,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Ignorance of the Law"
+            ],
+            "lesson_concept": "Ignorance of the law excuses no one. Claiming you did not know the DPA existed is not a valid defense against criminal liability.",
+            "question_text": "Is 'I did not know the Data Privacy Act existed' a valid legal defense to avoid criminal imprisonment for leaking data?",
+            "options": [
+                "Yes, ignorance of the law is a valid defense.",
+                "No, ignorance of the law excuses no one from compliance.",
+                "Yes, but only for first-time offenders.",
+                "Yes, as long as no financial profit was made."
+            ],
+            "correct_answer": "No, ignorance of the law excuses no one from compliance.",
+            "explanation": "A fundamental principle of law is that ignorance of the law is not an excuse for non-compliance."
+        },
+        {
+            "id": 422,
+            "difficulty_level": 1,
+            "tags": [
+                "Module 6: Penalties",
+                "Chapter VIII"
+            ],
+            "lesson_concept": "Chapter VIII (8) of the Data Privacy Act is the specific section of the law that outlines all the criminal acts and their corresponding penalties.",
+            "question_text": "Which specific chapter of the Data Privacy Act of 2012 contains the list of privacy crimes and their corresponding penalties?",
+            "options": [
+                "Chapter I",
+                "Chapter III",
+                "Chapter V",
+                "Chapter VIII"
+            ],
+            "correct_answer": "Chapter VIII",
+            "explanation": "Chapter VIII (Sections 25 to 37) of the DPA details all the penal provisions and offenses."
+        }
+    ]
+}
