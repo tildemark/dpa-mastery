@@ -103,47 +103,82 @@ flutter create --platforms=windows .
 flutter run -d windows
 ```
 
-### 5. Build for Production / Release
+### 5. Build for Production & Code Signing
 
 #### 📦 Compiled Release Binary Locations (Local Workspace)
 
 | Platform | Target Output File | Local Workspace Path |
 | :--- | :--- | :--- |
-| **Android (APK)** | Direct Named Release APK | [`build/dpa_mastery_v1.3.0_android.apk`](file:///c:/code/dpa-mastery/build/dpa_mastery_v1.3.0_android.apk) |
-| **Windows (Portable ZIP)** | Standalone Portable ZIP | [`build/dpa_mastery_v1.3.0_windows_x64.zip`](file:///c:/code/dpa-mastery/build/dpa_mastery_v1.3.0_windows_x64.zip) |
-| **Windows (Raw Release)** | Release Executable & Bundle | [`build/windows/x64/runner/Release/dpa_mastery.exe`](file:///c:/code/dpa-mastery/build/windows/x64/runner/Release/dpa_mastery.exe) |
+| **Android (APK)** | Signed Release APK | [`build/app/outputs/flutter-apk/app-release.apk`](file:///c:/code/dpa-mastery/build/app/outputs/flutter-apk/app-release.apk) |
+| **Windows (Portable ZIP)** | Standalone Portable ZIP | [`build/dpa_mastery_windows_x64.zip`](file:///c:/code/dpa-mastery/build/dpa_mastery_windows_x64.zip) |
+| **Windows (Installer)** | Inno Setup Installer | [`build/dpa_mastery_windows_setup_v1.4.0.exe`](file:///c:/code/dpa-mastery/build) |
 
 ---
 
-### Step-by-Step Release Packaging Commands
+### Step-by-Step Release Packaging & Signing Guide
 
-#### 1. Android Release APK:
+#### 📱 1. Android Release APK (Signed Production Keystore)
 
-```bash
-# 1. Build universal APK:
-flutter build apk --release
+To avoid "Blocked by Play Protect" or "Unknown app" security warnings on Android, the APK is signed with a release keystore:
 
-# 2. Copy/Rename to release asset:
-cp build/app/outputs/flutter-apk/app-release.apk build/dpa_mastery_v1.3.0_android.apk
+1. **One-time Keystore Generation (if setting up on a new PC):**
 
-# Output binary location:
-# build/dpa_mastery_v1.3.0_android.apk
-```
+   ```powershell
+   keytool -genkey -v -keystore android\app\upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+   ```
 
-#### 2. Windows Portable ZIP (Recommended):
+2. **Local Keystore Properties Configuration:**
+   Create or verify `android/key.properties` (ignored by Git for security):
+
+   ```properties
+   storePassword=YOUR_KEYSTORE_PASSWORD
+   keyPassword=YOUR_KEYSTORE_PASSWORD
+   keyAlias=upload
+   storeFile=upload-keystore.jks
+   ```
+
+3. **Build Signed Release APK:**
+
+   ```bash
+   flutter build apk --release
+   ```
+
+   - **Output Location:** `build/app/outputs/flutter-apk/app-release.apk`
+   - *Note: If `android/key.properties` is absent, Gradle automatically falls back to debug signing.*
+
+---
+
+#### 🪟 2. Windows Desktop (Release & Code Signing)
+
+To eliminate Windows SmartScreen ("Windows protected your PC") warnings:
+
+##### Option A: Portable Standalone ZIP (No Admin Required)
 
 ```powershell
 # 1. Compile native 64-bit Windows release binary:
 flutter build windows --release
 
 # 2. Package release folder into a portable standalone .zip:
-Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build\dpa_mastery_v1.3.0_windows_x64.zip -Force
-
-# Output portable package location:
-# build/dpa_mastery_v1.3.0_windows_x64.zip
+Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build\dpa_mastery_windows_x64.zip -Force
 ```
 
-> **Why Portable ZIP for Windows?** Users simply extract the `.zip` anywhere and launch `dpa_mastery.exe` without requiring administrator privileges or installer setup wizards.
+##### Option B: Inno Setup Windows Installer
+
+```powershell
+# Compile installer (.exe):
+iscc installer.iss
+# Output: build/dpa_mastery_windows_setup_v1.4.1.exe
+```
+
+##### Option C: Automated Open-Source Code Signing via SignPath.io
+
+1. DPA Mastery uses **[SignPath Foundation](https://signpath.org/apply.html)** for free open-source OV code signing.
+2. In GitHub repository secrets, configure:
+   - `SIGNPATH_API_TOKEN`
+   - `SIGNPATH_ORGANIZATION_ID`
+   - `SIGNPATH_PROJECT_SLUG`
+   - `SIGNPATH_SIGNING_POLICY_SLUG`
+3. Pushing a tag (e.g. `git tag v1.4.0 && git push origin v1.4.0`) automatically builds, signs, and attaches both the signed Windows installer and portable zip to GitHub Releases via `.github/workflows/release-windows.yml`.
 
 ---
 

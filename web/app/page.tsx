@@ -586,10 +586,10 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database, DLC Expansion Hub, and DPO Mock Exam simulation.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.0/dpa_mastery_v1.4.0_android.apk" target="_blank" rel="noreferrer" className="btn-download">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.1/dpa_mastery_v1.4.1_android.apk" target="_blank" rel="noreferrer" className="btn-download">
                 Download APK (.apk) &rarr;
               </a>
-              <span className="meta-info">Android 8.0+ (Oreo or later) • v1.4.0</span>
+              <span className="meta-info">Android 8.0+ (Oreo or later) • v1.4.1</span>
             </div>
           </div>
 
@@ -608,10 +608,10 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Native standalone 64-bit desktop executable for intensive study sessions, timed mock exams, and expansion packs.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.0/dpa_mastery_v1.4.0_windows_x64.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.1/dpa_mastery_v1.4.1_windows_x64.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
                 Download for Windows (.zip) &rarr;
               </a>
-              <span className="meta-info">Windows 10 / 11 (64-bit) • v1.4.0</span>
+              <span className="meta-info">Windows 10 / 11 (64-bit) • v1.4.1</span>
             </div>
           </div>
 

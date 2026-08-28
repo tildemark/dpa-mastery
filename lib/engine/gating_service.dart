@@ -31,7 +31,8 @@ class GatingService {
     if (targetLevel <= 1) return true;
 
     // High-water mark check: If already unlocked in settings, never re-lock
-    if (_settings != null && _settings!.highestUnlockedLevel >= targetLevel) {
+    final settings = _settings;
+    if (settings != null && settings.highestUnlockedLevel >= targetLevel) {
       return true;
     }
 

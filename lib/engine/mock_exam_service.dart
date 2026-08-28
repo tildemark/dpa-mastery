@@ -49,11 +49,11 @@ class MockExamService {
 
   /// Generates a randomized, balanced 50-question mock exam pool.
   Future<List<Question>> generateMockExam({int count = standardExamQuestionCount}) async {
-    final allQuestions = await (this._db.select(this._db.questions)).get();
+    final allQuestions = await _db.select(_db.questions).get();
     if (allQuestions.isEmpty) return [];
 
-    final tagLinks = await (this._db.select(this._db.questionTags)).get();
-    final allTags = await (this._db.select(this._db.tags)).get();
+    final tagLinks = await _db.select(_db.questionTags).get();
+    final allTags = await _db.select(_db.tags).get();
     final tagMap = {for (final t in allTags) t.id: t.name};
 
     // Group questions by Module 1..7
@@ -109,8 +109,8 @@ class MockExamService {
     required Map<int, String> answers, // questionId -> selectedOption
     required int durationSeconds,
   }) async {
-    final tagLinks = await (this._db.select(this._db.questionTags)).get();
-    final allTags = await (this._db.select(this._db.tags)).get();
+    final tagLinks = await _db.select(_db.questionTags).get();
+    final allTags = await _db.select(_db.tags).get();
     final tagMap = {for (final t in allTags) t.id: t.name};
 
     int correct = 0;

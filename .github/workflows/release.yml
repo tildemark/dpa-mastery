@@ -1,0 +1,145 @@
+name: Build & Publish Multi-Platform Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version_tag:
+        description: 'Release version tag (e.g. v1.4.0)'
+        required: false
+        default: 'v1.4.0'
+
+permissions:
+  contents: write
+
+jobs:
+  # =========================================================================
+  # 1. Android Release Build
+  # =========================================================================
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      # Optional: Injects release keystore from secrets if configured
+      - name: Configure Keystore from Secrets (Optional)
+        if: env.ANDROID_KEYSTORE_BASE64 != ''
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
+          cat <<EOF > android/key.properties
+          storePassword=$KEYSTORE_PASSWORD
+          keyPassword=$KEYSTORE_PASSWORD
+          keyAlias=${KEY_ALIAS:-upload}
+          storeFile=upload-keystore.jks
+          EOF
+
+      - name: Build Android Release APK
+        run: flutter build apk --release
+
+      - name: Rename APK with Tag
+        run: |
+          TAG="${GITHUB_REF_NAME:-${{ github.event.inputs.version_tag }}}"
+          cp build/app/outputs/flutter-apk/app-release.apk "dpa_mastery_${TAG}_android.apk"
+
+      - name: Upload Android Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-release-apk
+          path: dpa_mastery_*_android.apk
+
+  # =========================================================================
+  # 2. Windows Release Build
+  # =========================================================================
+  build-windows:
+    name: Build Windows Desktop
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Build Windows Release
+        run: flutter build windows --release
+
+      - name: Package Portable Windows ZIP
+        shell: pwsh
+        run: |
+          $tag = if ($env:GITHUB_REF_NAME) { $env:GITHUB_REF_NAME } else { "${{ github.event.inputs.version_tag }}" }
+          Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath "dpa_mastery_${tag}_windows_x64.zip" -Force
+
+      - name: Build Inno Setup Installer
+        uses: Minithra/innosetup-action@v1.2.2
+        with:
+          filepath: installer.iss
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-release-binaries
+          path: |
+            dpa_mastery_*_windows_x64.zip
+            build/dpa_mastery_windows_setup_*.exe
+
+  # =========================================================================
+  # 3. Publish GitHub Release
+  # =========================================================================
+  publish-release:
+    name: Publish GitHub Release
+    needs: [build-android, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Download Android Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: android-release-apk
+          path: release_assets/
+
+      - name: Download Windows Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-release-binaries
+          path: release_assets/
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name || github.event.inputs.version_tag }}
+          name: DPA Mastery ${{ github.ref_name || github.event.inputs.version_tag }}
+          files: release_assets/*
+          draft: false
+          prerelease: false
+          generate_release_notes: true

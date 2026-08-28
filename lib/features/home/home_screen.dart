@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../engine/gating_service.dart';
 import '../../engine/rank_service.dart';
@@ -120,11 +121,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           IconButton(
             icon: const Icon(Icons.info_outline),
             tooltip: 'About & Credits',
-            onPressed: () {
+            onPressed: () async {
+              final packageInfo = await PackageInfo.fromPlatform();
+              final versionStr = 'v${packageInfo.version}+${packageInfo.buildNumber}';
+
+              if (!context.mounted) return;
+
               showAboutDialog(
                 context: context,
                 applicationName: 'DPA Mastery',
-                applicationVersion: '1.3.0',
+                applicationVersion: versionStr,
                 applicationIcon: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.asset(
