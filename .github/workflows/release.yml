@@ -99,9 +99,10 @@ jobs:
           Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath "dpa_mastery_${tag}_windows_x64.zip" -Force
 
       - name: Build Inno Setup Installer
-        uses: Minithra/innosetup-action@v1.2.2
-        with:
-          filepath: installer.iss
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /Q installer.iss
 
       - name: Upload Windows Artifacts
         uses: actions/upload-artifact@v4
