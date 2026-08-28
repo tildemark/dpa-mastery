@@ -3,7 +3,7 @@
 ; Compile via CLI: iscc installer.iss
 
 #define MyAppName "DPA Mastery"
-#define MyAppVersion "1.4.1"
+#define MyAppVersion "1.5.0"
 #define MyAppPublisher "Alfredo Sanchez Jr"
 #define MyAppURL "https://sanchez.ph"
 #define MyAppExeName "dpa_mastery.exe"
