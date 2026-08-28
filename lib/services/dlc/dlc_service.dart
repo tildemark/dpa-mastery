@@ -219,11 +219,34 @@ class DlcService {
     }
   }
 
-  /// Uninstalls / deactivates a DLC pack identifier.
+  /// Uninstalls / deactivates a DLC pack identifier and removes its questions from the database.
   Future<void> uninstallPack(String dlcId) async {
     final current = getInstalledIds();
     current.remove(dlcId);
     await _saveInstalledIds(current);
+
+    // Find pack definition to identify tag
+    final pack = _defaultCatalog.firstWhere(
+      (p) => p.id == dlcId,
+      orElse: () => DlcPack(
+        id: dlcId,
+        title: dlcId,
+        description: '',
+        category: '',
+        badge: '',
+        totalQuestions: 0,
+        estimatedSize: '',
+        version: 1,
+        tags: const [],
+      ),
+    );
+
+    final dlcTag = 'DLC: ${pack.title}';
+    final taggedQuestions = await _db.questionDao.getQuestionsByTag(dlcTag);
+    if (taggedQuestions.isNotEmpty) {
+      final ids = taggedQuestions.map((q) => q.id).toList();
+      await (_db.delete(_db.questions)..where((q) => q.id.isIn(ids))).go();
+    }
   }
 
   /// Helper to generate sample items if an offline asset file is not yet bundled.

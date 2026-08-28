@@ -22,7 +22,6 @@ class SeedLoader {
   Future<void> loadBundledSeeds() async {
     const seedFiles = [
       'assets/seeds/core_question_bank.json',
-      'assets/seeds/dlc_700_core_expansion.json',
     ];
 
     for (final file in seedFiles) {
