@@ -42,12 +42,14 @@ class DualTrackMetrics {
 }
 
 /// Live provider tracking individual progress for each installed DLC pack.
+/// Re-computes whenever questions or user progress change.
 final installedPacksProgressProvider =
     StreamProvider.autoDispose<List<(DlcPack, DlcPackProgress)>>((ref) {
   final db = ref.watch(dbProvider);
   final dlcService = ref.watch(dlcServiceProvider);
 
-  return db.select(db.userProgress).watch().asyncMap((_) async {
+  // Watch both questions (for install/uninstall) and progress (for learning stats)
+  return db.select(db.questions).watch().asyncMap((_) async {
     final installed = await dlcService.getInstalledPacks();
     final results = <(DlcPack, DlcPackProgress)>[];
     for (final pack in installed) {
@@ -79,8 +81,9 @@ final homeProfileStreamProvider =
   final readinessService = ReadinessService(db);
   final dlcService = ref.watch(dlcServiceProvider);
 
-  return db.select(db.userProgress).watch().asyncMap((allProgress) async {
-    final allQuestions = await db.select(db.questions).get();
+  // Watch db.questions so new DLC installs trigger live updates
+  return db.select(db.questions).watch().asyncMap((allQuestions) async {
+    final allProgress = await db.select(db.userProgress).get();
     final progressMap = {for (final p in allProgress) p.questionId: p.srsStage};
 
     // Calculate core (id <= 282) vs DLC (id > 282) in-memory
