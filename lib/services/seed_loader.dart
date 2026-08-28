@@ -22,6 +22,7 @@ class SeedLoader {
   Future<void> loadBundledSeeds() async {
     const seedFiles = [
       'assets/seeds/core_question_bank.json',
+      'assets/seeds/dlc_700_core_expansion.json',
     ];
 
     for (final file in seedFiles) {
@@ -36,15 +37,6 @@ class SeedLoader {
     // If all UserProgress rows are at stage 0 with zero real progress,
     // wipe them so lazy initialisation takes over (home shows "Available: 43").
     await _db.progressDao.migrateEagerProgressRows();
-
-    // Auto-clean any legacy orphaned questions from earlier versions
-    await _purgeOrphanedQuestions();
-  }
-
-  /// Removes any questions in the database with IDs beyond the core bank (unless registered as DLC)
-  Future<void> _purgeOrphanedQuestions() async {
-    // If the database has old questions beyond 282 from before consolidation, remove them
-    await _db.customStatement('DELETE FROM questions WHERE id > 282');
   }
 
   /// Completely wipes all questions, tags, and progress, then reloads the core question bank.
