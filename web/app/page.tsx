@@ -608,8 +608,11 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Native standalone 64-bit desktop executable for intensive study sessions, timed mock exams, and expansion packs.</p>
             <div className="download-actions">
+              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.1/dpa_mastery_windows_setup_v1.4.1.exe" target="_blank" rel="noreferrer" className="btn-download">
+                Download Installer (.exe) &rarr;
+              </a>
               <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.1/dpa_mastery_v1.4.1_windows_x64.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
-                Download for Windows (.zip) &rarr;
+                Portable Standalone (.zip)
               </a>
               <span className="meta-info">Windows 10 / 11 (64-bit) • v1.4.1</span>
             </div>
