@@ -1,23 +1,30 @@
 import 'dart:convert';
+import 'dart:math';
 
+import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../db/app_database.dart';
 import '../../db/daos/progress_dao.dart';
 import '../../engine/srs_engine.dart';
 import '../../main.dart';
+import '../../services/app_time.dart';
+import '../../services/settings_service.dart';
 
 // ─── Session item ─────────────────────────────────────────────────────────────
 
 /// Pairs a question with its current SRS progress for a review session.
 class ReviewItem {
-  const ReviewItem({required this.question, required this.progress});
+  ReviewItem({
+    required this.question,
+    required this.progress,
+    List<String>? options,
+  }) : options = options ??
+            (jsonDecode(question.optionsJson) as List).cast<String>();
 
   final Question question;
   final UserProgressData progress;
-
-  List<String> get options =>
-      (jsonDecode(question.optionsJson) as List).cast<String>();
+  final List<String> options;
 }
 
 // ─── Session state ────────────────────────────────────────────────────────────
@@ -158,8 +165,9 @@ class ReviewController extends StateNotifier<ReviewSessionState?> {
 final reviewQueueProvider =
     StreamProvider.autoDispose<List<ReviewItem>>((ref) {
   final db = ref.watch(dbProvider);
+  final settings = ref.watch(settingsServiceProvider);
   return db.select(db.userProgress).watch().asyncMap((all) async {
-    final now = DateTime.now();
+    final now = AppTime.now();
     final dueRows = all.where((p) =>
         p.isLessonCompleted &&
         p.nextReviewTime != null &&
@@ -169,7 +177,13 @@ final reviewQueueProvider =
     for (final p in dueRows) {
       final question = await db.questionDao.getQuestionById(p.questionId);
       if (question != null) {
-        items.add(ReviewItem(question: question, progress: p));
+        final raw = (jsonDecode(question.optionsJson) as List).cast<String>();
+        final opts = List<String>.from(raw);
+        if (settings.shuffleOptions) {
+          final random = Random(DateTime.now().microsecondsSinceEpoch + question.id);
+          opts.shuffle(random);
+        }
+        items.add(ReviewItem(question: question, progress: p, options: opts));
       }
     }
     return items;
@@ -182,11 +196,9 @@ final reviewControllerProvider = StateNotifierProvider.autoDispose<
 );
 
 /// Live stream provider for all SRS stage counts.
-/// With lazy progress initialisation, 'available' represents Tier-1 questions
-/// not yet started, computed by joining the Questions table.
+/// Re-computes whenever user progress changes.
 final srsStageCountsStreamProvider = StreamProvider.autoDispose<SrsStageCounts>((ref) {
   final db = ref.watch(dbProvider);
-  // Watch both tables so the stream re-fires when either changes
   return db.select(db.userProgress).watch().asyncMap((_) async {
     return db.progressDao.getSrsStageCounts();
   });
@@ -196,7 +208,7 @@ final srsStageCountsStreamProvider = StreamProvider.autoDispose<SrsStageCounts>(
 final reviewForecastStreamProvider = StreamProvider.autoDispose<ReviewForecast>((ref) {
   final db = ref.watch(dbProvider);
   return db.select(db.userProgress).watch().map((all) {
-    final now = DateTime.now();
+    final now = AppTime.now();
     final in1h = now.add(const Duration(hours: 1));
     final in4h = now.add(const Duration(hours: 4));
     final in24h = now.add(const Duration(hours: 24));
@@ -234,7 +246,7 @@ final reviewForecastStreamProvider = StreamProvider.autoDispose<ReviewForecast>(
 final nextReviewTimeStreamProvider = StreamProvider.autoDispose<DateTime?>((ref) {
   final db = ref.watch(dbProvider);
   return db.select(db.userProgress).watch().map((all) {
-    final now = DateTime.now();
+    final now = AppTime.now();
     DateTime? closest;
 
     for (final r in all) {

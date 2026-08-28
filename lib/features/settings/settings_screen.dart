@@ -5,8 +5,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../main.dart';
 import '../../services/settings_service.dart';
 import '../../services/seed_loader.dart';
+import '../../services/dlc/dlc_service.dart';
+import '../../services/app_time.dart';
+import '../reviews/review_provider.dart';
 import '../profile/profile_dialog.dart';
 import '../dlc/dlc_store_screen.dart';
+import '../home/home_providers.dart';
+import '../home/module_mastery_provider.dart';
+import '../../engine/gating_service.dart';
 
 /// Modal bottom sheet allowing users to configure daily lesson pace and learning preferences.
 class SettingsSheet extends ConsumerStatefulWidget {
@@ -235,76 +241,234 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(color: const Color(0xFF6366F1).withAlpha(80)),
               ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Row(
-                  children: [
-                    Icon(Icons.bolt_rounded, color: Color(0xFF818CF8), size: 18),
-                    SizedBox(width: 8),
-                    Text(
-                      'Dev & QA Fast-Forward Shortcuts',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF818CF8)),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 6),
-                const Text(
-                  'Skip realistic wait times (4h/24h/1w) to immediately test review sessions & tier gating.',
-                  style: TextStyle(fontSize: 11, color: Colors.grey),
-                ),
-                const SizedBox(height: 10),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    OutlinedButton.icon(
-                      onPressed: () async {
-                        final db = ref.read(dbProvider);
-                        final count = await db.progressDao.makeAllReviewsDueNow();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Fast-forwarded: $count reviews are due now!')),
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.timer_outlined, size: 16),
-                      label: const Text('Make Reviews Due Now', style: TextStyle(fontSize: 11)),
-                    ),
-                    OutlinedButton.icon(
-                      onPressed: () async {
-                        final db = ref.read(dbProvider);
-                        await db.progressDao.advanceAllSrsStages();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Advanced all learned items +1 Stage & made due!')),
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.fast_forward_rounded, size: 16),
-                      label: const Text('Advance +1 Stage', style: TextStyle(fontSize: 11)),
-                    ),
-                    OutlinedButton.icon(
-                      onPressed: () async {
-                        final db = ref.read(dbProvider);
-                        final settings = ref.read(settingsServiceProvider);
-                        await db.progressDao.promoteTier1ToGuru();
-                        await settings.setHighestUnlockedLevel(2);
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Promoted Tier 1 to Guru (Stage 5)! Tier 2 unlocked.')),
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.military_tech_rounded, size: 16),
-                      label: const Text('Promote Tier 1 to Guru', style: TextStyle(fontSize: 11)),
-                    ),
-                  ],
-                ),
-              ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(Icons.bolt_rounded, color: Color(0xFF818CF8), size: 18),
+                      SizedBox(width: 8),
+                      Text(
+                        'Dev & QA Fast-Forward Shortcuts',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF818CF8)),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  const Text(
+                    'Simulate natural time passage (+1h/+4h/+24h/+3d/+7d) across all SRS timers and daily lesson rollovers.',
+                    style: TextStyle(fontSize: 11, color: Colors.grey),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.schedule_rounded, size: 14, color: AppTime.isTimeShifted ? const Color(0xFF10B981) : const Color(0xFF818CF8)),
+                      const SizedBox(width: 6),
+                      Text(
+                        'Simulated Clock: ${AppTime.offsetLabel}',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: AppTime.isTimeShifted ? const Color(0xFF10B981) : const Color(0xFF818CF8),
+                        ),
+                      ),
+                      if (AppTime.isTimeShifted) ...[
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () async {
+                            final prefs = ref.read(sharedPrefsProvider);
+                            await AppTime.resetOffset(prefs);
+                            ref.invalidate(reviewQueueProvider);
+                            ref.invalidate(srsStageCountsStreamProvider);
+                            ref.invalidate(reviewForecastStreamProvider);
+                            ref.invalidate(nextReviewTimeStreamProvider);
+                            ref.invalidate(settingsServiceProvider);
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Simulated clock reset back to Real Time.'),
+                                  duration: Duration(seconds: 2),
+                                  behavior: SnackBarBehavior.floating,
+                                ),
+                              );
+                              setState(() {});
+                            }
+                          },
+                          child: const Text(
+                            'Reset to Real Time',
+                            style: TextStyle(fontSize: 11, color: Color(0xFFEF5350), fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 6,
+                    children: [
+                      _buildFastForwardChip(
+                        context: context,
+                        label: '+1 hr',
+                        duration: const Duration(hours: 1),
+                        description: '1 hour',
+                      ),
+                      _buildFastForwardChip(
+                        context: context,
+                        label: '+4 hrs',
+                        duration: const Duration(hours: 4),
+                        description: '4 hours',
+                      ),
+                      _buildFastForwardChip(
+                        context: context,
+                        label: '+24 hrs',
+                        duration: const Duration(hours: 24),
+                        description: '24 hours',
+                      ),
+                      _buildFastForwardChip(
+                        context: context,
+                        label: '+3 days',
+                        duration: const Duration(days: 3),
+                        description: '3 days',
+                      ),
+                      _buildFastForwardChip(
+                        context: context,
+                        label: '+7 days',
+                        duration: const Duration(days: 7),
+                        description: '7 days',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Simulate Study / Fast-Forward Progress:',
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF818CF8)),
+                  ),
+                  const SizedBox(height: 6),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      OutlinedButton.icon(
+                        onPressed: () async {
+                          final db = ref.read(dbProvider);
+                          final settings = ref.read(settingsServiceProvider);
+                          final gating = GatingService(db, settings);
+                          final unlocked = await gating.getUnlockedLevels();
+                          int promoted = 0;
+                          for (final lvl in unlocked) {
+                            promoted += await db.progressDao.promoteLevelToApprentice(lvl);
+                            if (promoted > 0) break;
+                          }
+
+                          ref.invalidate(reviewQueueProvider);
+                          ref.invalidate(srsStageCountsStreamProvider);
+                          ref.invalidate(reviewForecastStreamProvider);
+                          ref.invalidate(nextReviewTimeStreamProvider);
+                          ref.invalidate(homeProfileStreamProvider);
+                          ref.invalidate(tierProgressionStreamProvider);
+                          ref.invalidate(moduleMasteryStreamProvider);
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  promoted > 0
+                                      ? 'Completed lessons for $promoted question(s) → moved to Apprentice 1!'
+                                      : 'No unlearned questions in active unlocked levels.',
+                                ),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.school_rounded, size: 16),
+                        label: const Text('Pass Unlearned Lessons', style: TextStyle(fontSize: 11)),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () async {
+                          final db = ref.read(dbProvider);
+                          final count = await db.progressDao.answerAllDueReviewsCorrectly();
+
+                          ref.invalidate(reviewQueueProvider);
+                          ref.invalidate(srsStageCountsStreamProvider);
+                          ref.invalidate(reviewForecastStreamProvider);
+                          ref.invalidate(nextReviewTimeStreamProvider);
+                          ref.invalidate(homeProfileStreamProvider);
+                          ref.invalidate(tierProgressionStreamProvider);
+                          ref.invalidate(moduleMasteryStreamProvider);
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  count > 0
+                                      ? 'Answered $count review(s) correctly → advanced +1 SRS Stage!'
+                                      : 'No reviews are currently due.',
+                                ),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.check_circle_rounded, size: 16),
+                        label: const Text('Pass All Due Reviews', style: TextStyle(fontSize: 11)),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () async {
+                          final db = ref.read(dbProvider);
+                          final count = await db.progressDao.makeAllReviewsDueNow();
+
+                          ref.invalidate(reviewQueueProvider);
+                          ref.invalidate(srsStageCountsStreamProvider);
+                          ref.invalidate(reviewForecastStreamProvider);
+                          ref.invalidate(nextReviewTimeStreamProvider);
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Fast-forwarded: $count reviews are due right now!'),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.timer_outlined, size: 16),
+                        label: const Text('Make All Due Now', style: TextStyle(fontSize: 11)),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () async {
+                          final db = ref.read(dbProvider);
+                          final settings = ref.read(settingsServiceProvider);
+                          await db.progressDao.promoteTier1ToGuru();
+                          await settings.setHighestUnlockedLevel(2);
+
+                          ref.invalidate(reviewQueueProvider);
+                          ref.invalidate(srsStageCountsStreamProvider);
+                          ref.invalidate(reviewForecastStreamProvider);
+                          ref.invalidate(nextReviewTimeStreamProvider);
+                          ref.invalidate(homeProfileStreamProvider);
+                          ref.invalidate(tierProgressionStreamProvider);
+                          ref.invalidate(moduleMasteryStreamProvider);
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Promoted Tier 1 to Guru (Stage 5)! Tier 2 unlocked.'),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.military_tech_rounded, size: 16),
+                        label: const Text('Graduate Tier 1 to Guru', style: TextStyle(fontSize: 11)),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
+            const SizedBox(height: 16),
           ],
 
           // ── 3. Reset / New Profile Options ──
@@ -408,6 +572,48 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
     );
   }
 
+  Widget _buildFastForwardChip({
+    required BuildContext context,
+    required String label,
+    required Duration duration,
+    required String description,
+  }) {
+    return ActionChip(
+      avatar: const Icon(Icons.fast_forward_rounded, size: 14, color: Color(0xFF818CF8)),
+      label: Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
+      backgroundColor: const Color(0xFF6366F1).withAlpha(30),
+      side: const BorderSide(color: Color(0xFF6366F1), width: 0.8),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      onPressed: () async {
+        final prefs = ref.read(sharedPrefsProvider);
+        final db = ref.read(dbProvider);
+
+        // Advance the central simulated clock
+        await AppTime.addOffset(duration, prefs);
+
+        // Invalidate reactive providers to update all timers, queues, and quotas against the new time
+        ref.invalidate(reviewQueueProvider);
+        ref.invalidate(srsStageCountsStreamProvider);
+        ref.invalidate(reviewForecastStreamProvider);
+        ref.invalidate(nextReviewTimeStreamProvider);
+        ref.invalidate(settingsServiceProvider);
+
+        final count = await db.progressDao.countDueReviews();
+
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Simulated Clock: Advanced $description (${AppTime.offsetLabel}). $count review(s) due.'),
+              duration: const Duration(seconds: 2),
+              behavior: SnackBarBehavior.floating,
+            ),
+          );
+          setState(() {});
+        }
+      },
+    );
+  }
+
   Future<void> _confirmReset(BuildContext context, {required bool isNewProfile}) async {
     final confirmed = await showDialog<bool>(
       context: context,
@@ -438,10 +644,24 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
     if (confirmed == true && mounted) {
       final db = ref.read(dbProvider);
       final settings = ref.read(settingsServiceProvider);
+      final prefs = ref.read(sharedPrefsProvider);
       final seedLoader = SeedLoader(db);
 
-      await seedLoader.resetAndReseedCoreBank();
+      await seedLoader.resetAndReseedCoreBank(prefs: prefs);
+      await prefs.remove('installed_dlc_pack_ids');
+      await settings.resetUnlockedLevels();
       await settings.resetQuota();
+
+      ref.invalidate(availableDlcListProvider);
+      ref.invalidate(installedDlcListProvider);
+      ref.invalidate(reviewQueueProvider);
+      ref.invalidate(srsStageCountsStreamProvider);
+      ref.invalidate(reviewForecastStreamProvider);
+      ref.invalidate(nextReviewTimeStreamProvider);
+      ref.invalidate(homeProfileStreamProvider);
+      ref.invalidate(tierProgressionStreamProvider);
+      ref.invalidate(missedQuestionsCountProvider);
+      ref.invalidate(moduleMasteryStreamProvider);
 
       if (isNewProfile) {
         if (context.mounted) {

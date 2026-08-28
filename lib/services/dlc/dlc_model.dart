@@ -110,3 +110,23 @@ class DlcPack {
     );
   }
 }
+
+/// Learning progress statistics for a DLC expansion pack.
+class DlcPackProgress {
+  const DlcPackProgress({
+    required this.total,
+    required this.unlearned,
+    required this.apprentice,
+    required this.guruPlus,
+  });
+
+  final int total;
+  final int unlearned;
+  final int apprentice;
+  final int guruPlus;
+
+  int get started => apprentice + guruPlus;
+  double get guruRatio => total > 0 ? (guruPlus / total).clamp(0.0, 1.0) : 0.0;
+  double get apprenticeRatio => total > 0 ? (apprentice / total).clamp(0.0, 1.0) : 0.0;
+  String get percentageLabel => '${(guruRatio * 100).round()}%';
+}

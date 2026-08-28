@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:drift/drift.dart' show Value;
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../db/app_database.dart';
+import 'dlc/dlc_service.dart';
 
 /// Loads bundled seed JSON assets into the local Drift database.
 ///
@@ -19,7 +21,7 @@ class SeedLoader {
 
   /// Loads all bundled seed assets and upserts them into Drift.
   /// Safe to call on every launch (uses non-destructive upsert).
-  Future<void> loadBundledSeeds() async {
+  Future<void> loadBundledSeeds({SharedPreferences? prefs}) async {
     const seedFiles = [
       'assets/seeds/core_question_bank.json',
     ];
@@ -32,6 +34,12 @@ class SeedLoader {
       }
     }
 
+    // Ensure any DLC questions whose pack is not installed in SharedPreferences are purged
+    if (prefs != null) {
+      final dlcService = DlcService(_db, prefs);
+      await dlcService.purgeUninstalledDlcQuestions();
+    }
+
     // Migrate legacy eager-init rows from older app versions.
     // If all UserProgress rows are at stage 0 with zero real progress,
     // wipe them so lazy initialisation takes over (home shows "Available: 43").
@@ -39,23 +47,24 @@ class SeedLoader {
   }
 
   /// Completely wipes all questions, tags, and progress, then reloads the core question bank.
-  Future<void> resetAndReseedCoreBank() async {
+  Future<void> resetAndReseedCoreBank({SharedPreferences? prefs}) async {
     await _db.progressDao.clearAllProgress();
     await _db.questionDao.clearAllQuestionsAndTags();
-    await loadBundledSeeds();
+    await loadBundledSeeds(prefs: prefs);
   }
 
   /// Parses a seed JSON string and upserts all questions, tags, and
-  /// QuestionTag links. Never touches [UserProgress].
+  /// QuestionTag links in a single database transaction. Never touches [UserProgress].
   Future<void> applySeedJson(String jsonString) async {
     final Map<String, dynamic> payload = jsonDecode(jsonString);
     final items = payload['items'] as List<dynamic>;
 
+    final questionCompanions = <QuestionsCompanion>[];
+    final tagsToLink = <int, List<String>>{};
+
     for (final item in items) {
       final questionId = item['id'] as int;
-
-      // ── Upsert question row ─────────────────────────────────────────────
-      await _db.questionDao.upsertQuestions([
+      questionCompanions.add(
         QuestionsCompanion.insert(
           id: Value(questionId),
           difficultyLevel: Value(item['difficulty_level'] as int? ?? 1),
@@ -65,19 +74,27 @@ class SeedLoader {
           optionsJson: jsonEncode(item['options']),
           correctAnswer: item['correct_answer'] as String,
         ),
-      ]);
+      );
 
-      // ── Upsert tags and link them ───────────────────────────────────────
       final rawTags = item['tags'] as List<dynamic>? ?? [];
-      for (final tagName in rawTags.cast<String>()) {
-        final tagId = await _db.questionDao.upsertTag(tagName);
-        await _db.questionDao.linkQuestionTag(questionId, tagId);
+      if (rawTags.isNotEmpty) {
+        tagsToLink[questionId] = rawTags.cast<String>();
+      }
+    }
+
+    // Execute bulk upserts in a single transaction
+    await _db.transaction(() async {
+      if (questionCompanions.isNotEmpty) {
+        await _db.questionDao.upsertQuestions(questionCompanions);
       }
 
-      // NOTE: UserProgress rows are no longer pre-created here.
-      // Lazy initialisation: a progress row is only inserted the first time
-      // the user encounters this question in a Lesson session.
-    }
+      for (final entry in tagsToLink.entries) {
+        for (final tagName in entry.value) {
+          final tagId = await _db.questionDao.upsertTag(tagName);
+          await _db.questionDao.linkQuestionTag(entry.key, tagId);
+        }
+      }
+    });
   }
 
   // ─── Private ─────────────────────────────────────────────────────────────

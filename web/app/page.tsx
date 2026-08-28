@@ -260,18 +260,18 @@ export default function HomePage() {
           </div>
 
           {/* DPO Mock Exam DLC */}
-          <div className="feature-card">
-            <div className="feature-icon rose">
+          <div className="feature-card" style={{ border: '1.5px solid rgba(16, 185, 129, 0.5)', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.9))' }}>
+            <div className="feature-icon emerald">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
               </svg>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-              <span className="badge" style={{ background: '#10B981', color: '#fff', fontSize: '11px', padding: '2px 8px' }}>Essential Pack</span>
-              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>50 Questions &bull; 35 KB</span>
+              <span className="badge" style={{ background: '#10B981', color: '#fff', fontSize: '11px', padding: '2px 8px' }}>ACE Exam Suite</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>150 Scenarios &bull; 190 KB</span>
             </div>
-            <h3>DPO Certification Mock Exam Simulation</h3>
-            <p>High-stakes 50-question timed practice simulation modeled after the official NPC DPO ACE Examination. Unlocks once you reach 50 Guru items.</p>
+            <h3>DPO ACE Mock Exam Suite</h3>
+            <p>Comprehensive 150-scenario high-difficulty exam pool. Dynamically generates balanced 50-question randomized mock exams with a 60-min timer, full module diagnostics, and digital certification.</p>
           </div>
 
           {/* NPC IRR & Circulars DLC */}

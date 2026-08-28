@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../db/app_database.dart';
 import '../../main.dart';
+import '../../services/settings_service.dart';
 
 /// Pool mode for Cram/Self-Study session.
 enum CramPoolMode {
@@ -515,6 +516,7 @@ class CramScreen extends ConsumerStatefulWidget {
 
 class _CramScreenState extends ConsumerState<CramScreen> {
   List<Question>? _questions;
+  Map<int, List<String>> _questionOptions = {};
   int _currentIndex = 0;
   String? _selectedAnswer;
   int _correctCount = 0;
@@ -528,9 +530,23 @@ class _CramScreenState extends ConsumerState<CramScreen> {
   }
 
   Future<void> _loadQuestions() async {
+    final settings = ref.read(settingsServiceProvider);
+
     if (widget.overrideQuestions != null) {
+      final list = List<Question>.from(widget.overrideQuestions!);
+      final optionsMap = <int, List<String>>{};
+      for (final q in list) {
+        final raw = (jsonDecode(q.optionsJson) as List).cast<String>();
+        final opts = List<String>.from(raw);
+        if (settings.shuffleOptions) {
+          final random = Random(DateTime.now().microsecondsSinceEpoch + q.id);
+          opts.shuffle(random);
+        }
+        optionsMap[q.id] = opts;
+      }
       setState(() {
-        _questions = List.from(widget.overrideQuestions!);
+        _questions = list;
+        _questionOptions = optionsMap;
         _isLoading = false;
       });
       return;
@@ -584,8 +600,20 @@ class _CramScreenState extends ConsumerState<CramScreen> {
       list = list.take(widget.limit!).toList();
     }
 
+    final optionsMap = <int, List<String>>{};
+    for (final q in list) {
+      final raw = (jsonDecode(q.optionsJson) as List).cast<String>();
+      final opts = List<String>.from(raw);
+      if (settings.shuffleOptions) {
+        final random = Random(DateTime.now().microsecondsSinceEpoch + q.id);
+        opts.shuffle(random);
+      }
+      optionsMap[q.id] = opts;
+    }
+
     setState(() {
       _questions = list;
+      _questionOptions = optionsMap;
       _isLoading = false;
     });
   }
@@ -663,7 +691,7 @@ class _CramScreenState extends ConsumerState<CramScreen> {
 
   Widget _buildQuestionCard(BuildContext context) {
     final q = _questions![_currentIndex];
-    final options = (jsonDecode(q.optionsJson) as List).cast<String>();
+    final options = _questionOptions[q.id] ?? (jsonDecode(q.optionsJson) as List).cast<String>();
     final hasAnswered = _selectedAnswer != null;
     final isCorrect = _selectedAnswer == q.correctAnswer;
     final cs = Theme.of(context).colorScheme;

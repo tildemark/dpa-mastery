@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../features/reviews/review_provider.dart';
 import '../../services/dlc/dlc_model.dart';
 import '../../services/dlc/dlc_service.dart';
 
@@ -27,6 +28,8 @@ class _DlcStoreScreenState extends ConsumerState<DlcStoreScreen> {
       setState(() => _installingPackId = null);
       ref.invalidate(availableDlcListProvider);
       ref.invalidate(installedDlcListProvider);
+      ref.invalidate(srsStageCountsStreamProvider);
+      ref.invalidate(reviewQueueProvider);
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -46,6 +49,8 @@ class _DlcStoreScreenState extends ConsumerState<DlcStoreScreen> {
     await service.uninstallPack(pack.id);
     ref.invalidate(availableDlcListProvider);
     ref.invalidate(installedDlcListProvider);
+    ref.invalidate(srsStageCountsStreamProvider);
+    ref.invalidate(reviewQueueProvider);
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(

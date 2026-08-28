@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../db/app_database.dart';
 import '../../main.dart';
+import '../../services/settings_service.dart';
 
 /// Screen for freely drilling questions associated with a specific Tag or
 /// drilling questions where the user recorded mistakes (Troubled / Missed Items).
@@ -31,6 +33,7 @@ class TagDrillScreen extends ConsumerStatefulWidget {
 
 class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
   List<Question>? _questions;
+  Map<int, List<String>> _questionOptions = {};
   int _currentIndex = 0;
   String? _selectedAnswer;
   int _correctCount = 0;
@@ -44,14 +47,28 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
 
   Future<void> _loadQuestions() async {
     final db = ref.read(dbProvider);
+    final settings = ref.read(settingsServiceProvider);
     List<Question> list;
     if (widget.missedQuestionsMode) {
       list = await db.progressDao.getMissedQuestions();
     } else {
       list = await db.questionDao.getQuestionsByTag(widget.tagName!);
     }
+
+    final optionsMap = <int, List<String>>{};
+    for (final q in list) {
+      final raw = (jsonDecode(q.optionsJson) as List).cast<String>();
+      final opts = List<String>.from(raw);
+      if (settings.shuffleOptions) {
+        final random = Random(DateTime.now().microsecondsSinceEpoch + q.id);
+        opts.shuffle(random);
+      }
+      optionsMap[q.id] = opts;
+    }
+
     setState(() {
       _questions = list;
+      _questionOptions = optionsMap;
       _isLoading = false;
     });
   }
@@ -94,7 +111,7 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
 
   Widget _buildQuestionCard(BuildContext context) {
     final q = _questions![_currentIndex];
-    final options = (jsonDecode(q.optionsJson) as List).cast<String>();
+    final options = _questionOptions[q.id] ?? (jsonDecode(q.optionsJson) as List).cast<String>();
     final hasAnswered = _selectedAnswer != null;
     final isCorrect = _selectedAnswer == q.correctAnswer;
 

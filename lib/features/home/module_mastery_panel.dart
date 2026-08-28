@@ -24,14 +24,16 @@ class ModuleMasteryPanel extends ConsumerWidget {
       error: (_, _) => const SizedBox.shrink(),
       data: (modules) {
         if (modules.isEmpty) return const SizedBox.shrink();
-        return SizedBox(
-          height: 144,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.zero,
-            itemCount: modules.length,
-            separatorBuilder: (_, _) => const SizedBox(width: 10),
-            itemBuilder: (context, i) => _ModuleCard(data: modules[i]),
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
+          child: Row(
+            children: [
+              for (int i = 0; i < modules.length; i++) ...[
+                if (i > 0) const SizedBox(width: 10),
+                _ModuleCard(data: modules[i]),
+              ],
+            ],
           ),
         );
       },

@@ -1,0 +1,3059 @@
+{
+  "version": 1,
+  "release_date": "2026-08-29",
+  "module": "DPO ACE Comprehensive Mock Examination (150 Scenarios)",
+  "total_questions": 150,
+  "items": [
+    {
+      "id": 1001,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Scope",
+        "Extraterritoriality",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Section 6 Extraterritorial Application",
+      "question_text": "A tech company registered in the BVI with servers in Singapore processes the personal data of Filipino OFWs working in Dubai. The company does not use any equipment in the Philippines and has no local branches. Under Section 6 of the DPA, does the NPC have jurisdiction?",
+      "options": [
+        "Yes, because the data subjects are Philippine citizens.",
+        "No, because the OFWs are currently residing outside the Philippines.",
+        "Yes, provided the data is routed through Philippine telecom networks.",
+        "No, because the company uses no equipment within Philippine territory."
+      ],
+      "correct_answer": "Yes, because the data subjects are Philippine citizens.",
+      "explanation": "Section 6 explicitly applies to acts done outside the Philippines if it relates to personal information about a Philippine citizen or resident, regardless of the server's location or the citizen's temporary OFW status."
+    },
+    {
+      "id": 1002,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Scope",
+        "Statutory Exceptions",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Section 4 Exclusions (Journalism)",
+      "question_text": "A corporate intelligence firm sells deep-dive background checks to hedge funds. They uncover and publish a CEO's hidden medical records in a paid, proprietary newsletter for investors, claiming the 'journalistic exemption'. Are they exempt from the DPA?",
+      "options": [
+        "Yes, provided the information shared is factually accurate and verified.",
+        "No, because the processing is not intended for the general public's right to information.",
+        "Yes, financial newsletters are constitutionally protected press entities.",
+        "No, because medical records are SPI and can never be published."
+      ],
+      "correct_answer": "No, because the processing is not intended for the general public's right to information.",
+      "explanation": "The journalistic exemption applies to processing exclusively for journalistic purposes intended for public consumption. Selling data to a closed group of investors constitutes a commercial intelligence operation, voiding the exemption."
+    },
+    {
+      "id": 1003,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 2: Concepts",
+        "Roles",
+        "PIC vs PIP",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "PIP acting beyond instructions",
+      "question_text": "A payroll processor (PIP) discovers a more efficient algorithm to calculate taxes and unilaterally implements it without notifying the employer (PIC). The new algorithm uses the exact same data but stores temporary files on a different server. What is the legal implication?",
+      "options": [
+        "The PIP is commended for operational efficiency and remains a PIP.",
+        "The PIP breached its mandate and unlawfully assumed the role of a PIC.",
+        "The PIP and PIC automatically become Joint Controllers.",
+        "The PIP violated the DPA only if the new server is located offshore."
+      ],
+      "correct_answer": "The PIP breached its mandate and unlawfully assumed the role of a PIC.",
+      "explanation": "A PIP must strictly process personal data solely on the documented instructions of the PIC. Unilaterally changing the 'means' of processing (like storage locations and algorithms) transforms them into a PIC acting without authorization."
+    },
+    {
+      "id": 1004,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Roles",
+        "Joint Controllers",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Solidary Liability of Joint PICs",
+      "question_text": "Retailer A and Bank B are Joint PICs for a loyalty card. Bank B's server is breached due to gross negligence. A customer sues Retailer A for the breach. Can Retailer A legally dismiss the suit by proving Bank B was entirely at fault?",
+      "options": [
+        "Yes, liability is severed based on physical custody of the breached server.",
+        "No, Joint PICs share solidary liability and the subject can sue either party.",
+        "Yes, provided Retailer A has an NPC-approved Privacy Management Program.",
+        "No, but Retailer A only pays 50% of the assessed damages by default."
+      ],
+      "correct_answer": "No, Joint PICs share solidary liability and the subject can sue either party.",
+      "explanation": "Joint Controllers are solidarily liable to the data subject. The subject can enforce their rights against any of the joint controllers. Retailer A must indemnify the subject and then seek restitution from Bank B via private contract."
+    },
+    {
+      "id": 1005,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Principles",
+        "Transparency",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Notice for Indirect Collection",
+      "question_text": "A political party legally purchases an anonymized database but uses advanced analytics to successfully re-identify the individuals. Under the Transparency principle, what must the party do next?",
+      "options": [
+        "Nothing, since the data was legally purchased as an anonymized asset.",
+        "Notify the newly identified subjects about the processing and the data source.",
+        "Publish a general privacy notice in a newspaper of national circulation.",
+        "Submit the re-identification algorithm to the NPC for immediate auditing."
+      ],
+      "correct_answer": "Notify the newly identified subjects about the processing and the data source.",
+      "explanation": "Re-identification transforms the data back into Personal Information. Because the collection was indirect (via purchase and algorithm), Transparency requires the new PIC to notify the subjects about the processing and its source."
+    },
+    {
+      "id": 1006,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Principles",
+        "Legitimate Purpose",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Scope Creep and Secondary Use",
+      "question_text": "A hospital uses patient biometric data (SPI) strictly for identity verification during admission (authorized via consent). Can the hospital use this same biometric data to build a predictive health-risk AI model without obtaining new consent?",
+      "options": [
+        "Yes, AI development is protected under the DPA's research exemption.",
+        "No, building a predictive AI model is an incompatible secondary purpose.",
+        "Yes, as long as the AI model remains strictly within the hospital's network.",
+        "No, because biometrics cannot be processed by artificial intelligence."
+      ],
+      "correct_answer": "No, building a predictive AI model is an incompatible secondary purpose.",
+      "explanation": "Legitimate Purpose dictates that data cannot be processed for purposes incompatible with the originally declared purpose. Using verification biometrics to train predictive health AI is a severe scope creep requiring granular re-consent."
+    },
+    {
+      "id": 1007,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Data Subject Rights",
+        "Right to Object",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Direct Marketing Absolutism",
+      "question_text": "A subject objects to an airline sending them promotional emails. The airline claims 'Legitimate Interest' to override the objection because email marketing keeps ticket prices low for everyone. Is the airline's defense valid?",
+      "options": [
+        "Yes, economic survival constitutes a compelling legitimate interest.",
+        "No, the right to object to processing for direct marketing is absolute.",
+        "Yes, provided the airline offers an explicit opt-out in the next email.",
+        "No, but the airline can continue sending SMS promotions instead."
+      ],
+      "correct_answer": "No, the right to object to processing for direct marketing is absolute.",
+      "explanation": "While a PIC can usually attempt to prove 'compelling legitimate grounds' to override an objection, the Right to Object regarding direct marketing or profiling for direct marketing is absolute and must be honored immediately."
+    },
+    {
+      "id": 1008,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Data Subject Rights",
+        "Right to Erasure",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Erasure vs Legal Claims",
+      "question_text": "An employee caught embezzling demands the erasure of their corporate emails under the DPA. The company refuses, maintaining the logs to file a criminal complaint. Did the company violate the Right to Erasure?",
+      "options": [
+        "Yes, the Right to Erasure takes precedence over internal corporate disputes.",
+        "No, erasure can be denied if the data is necessary to establish a legal claim.",
+        "Yes, but the company can retain metadata regarding the email timestamps.",
+        "No, because corporate emails belong to the company, not the employee."
+      ],
+      "correct_answer": "No, erasure can be denied if the data is necessary to establish a legal claim.",
+      "explanation": "Data subject rights are not absolute. A PIC can lawfully refuse an erasure request if the personal data is necessary for the establishment, exercise, or defense of impending legal claims."
+    },
+    {
+      "id": 1009,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Classification",
+        "Privileged Information",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Rules of Court Dependency",
+      "question_text": "A CEO marks all their business strategy documents as 'Privileged Information' via an internal corporate NDA. When subpoenaed by the NPC, the CEO refuses to submit them. Will the NPC recognize this classification?",
+      "options": [
+        "Yes, a valid NDA legally upgrades corporate data to Privileged Information.",
+        "No, Privileged Information strictly refers to privileged communications under the Rules of Court.",
+        "Yes, provided the CEO signed the NDA before the NPC subpoena was issued.",
+        "No, because the NPC has absolute authority to override any Privileged Information."
+      ],
+      "correct_answer": "No, Privileged Information strictly refers to privileged communications under the Rules of Court.",
+      "explanation": "Corporate NDAs establish contractual confidentiality, but 'Privileged Information' under the DPA is strictly defined by the Rules of Court (e.g., attorney-client, doctor-patient). Corporate strategies do not automatically qualify."
+    },
+    {
+      "id": 1010,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Government Issued IDs vs Corporate",
+      "question_text": "A logbook requires visitors to record their full name, company ID number, and PRC (Professional Regulation Commission) License Number. Which specific piece of data definitively elevates the logbook to an SPI database?",
+      "options": [
+        "The full name combined with the company ID number.",
+        "The PRC License Number, as it is a government-issued license peculiar to an individual.",
+        "The Company ID number, as it directly ascertains the visitor's employer.",
+        "None; logbooks are strictly considered manual systems exempt from SPI classification."
+      ],
+      "correct_answer": "The PRC License Number, as it is a government-issued license peculiar to an individual.",
+      "explanation": "Under Section 3(l), Sensitive Personal Information specifically includes licenses or IDs issued by government agencies peculiar to an individual. A company ID does not meet this statutory definition."
+    },
+    {
+      "id": 1011,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Lifecycle",
+        "Acquisition",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Consent Mechanisms",
+      "question_text": "An e-commerce site assumes user consent for analytics tracking if the user navigates past the homepage without clicking the 'Decline' banner. Is this consent valid?",
+      "options": [
+        "Yes, implied consent is valid if the 'Decline' option was clearly visible.",
+        "No, consent must be an affirmative, explicit action; implied consent is invalid.",
+        "Yes, provided the analytics data is solely used to improve website loading speeds.",
+        "No, consent can only be collected via a physically signed document."
+      ],
+      "correct_answer": "No, consent must be an affirmative, explicit action; implied consent is invalid.",
+      "explanation": "The DPA explicitly requires consent to be a freely given, specific, and informed indication of will. Mere silence, inaction, or 'scrolling past' constitutes implied consent, which is legally invalid."
+    },
+    {
+      "id": 1012,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Lifecycle",
+        "Transfer",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "DSA vs Outsourcing Agreement",
+      "question_text": "Bank X securely shares its client list with Insurance Company Y so Company Y can sell policies. Company Y determines its own marketing strategy. What document must strictly govern this transfer?",
+      "options": [
+        "An Outsourcing/Data Processing Agreement.",
+        "A Data Sharing Agreement (DSA).",
+        "A Non-Disclosure Agreement (NDA).",
+        "A Service Level Agreement (SLA)."
+      ],
+      "correct_answer": "A Data Sharing Agreement (DSA).",
+      "explanation": "Because Bank X and Insurance Company Y are both acting as independent Personal Information Controllers (PICs) pursuing distinct purposes, the transfer must be governed by a Data Sharing Agreement, not an Outsourcing Agreement."
+    },
+    {
+      "id": 1013,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Penalties",
+        "Large Scale",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Section 35 Threshold",
+      "question_text": "A breach exposes the general personal information of 99 individuals and the sensitive personal information of 2 individuals. Does this trigger the maximum 'large-scale' penalty bracket?",
+      "options": [
+        "Yes, because the aggregate number of affected individuals is 100 or more.",
+        "No, because the SPI group and PI group are calculated separately.",
+        "Yes, because the involvement of SPI automatically triggers the large-scale provision.",
+        "No, because large-scale penalties require at least 1,000 affected data subjects."
+      ],
+      "correct_answer": "Yes, because the aggregate number of affected individuals is 100 or more.",
+      "explanation": "Section 35 defines a large-scale violation as affecting 100 or more persons. The law counts the total aggregate number of data subjects involved in the incident to reach this threshold."
+    },
+    {
+      "id": 1014,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Penalties",
+        "Concealment",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Intent to Hide Breach",
+      "question_text": "A CISO discovers a breach and privately pays the hackers to delete the data. The CISO intentionally omits the incident from the NPC report to avoid bad PR. What specific crime is committed?",
+      "options": [
+        "Improper Disposal of Personal Information.",
+        "Concealment of Security Breaches Involving Personal Information.",
+        "Malicious Disclosure of Personal Information.",
+        "Unauthorized Processing of Personal Information."
+      ],
+      "correct_answer": "Concealment of Security Breaches Involving Personal Information.",
+      "explanation": "Section 30 penalizes the intentional concealment or failure to disclose a qualifying security breach to the NPC. Resolving the threat privately does not extinguish the statutory duty to report."
+    },
+    {
+      "id": 1015,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "DPO Functions",
+        "Qualifications",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Conflict of Interest",
+      "question_text": "To save costs, a hospital appoints its Chief Medical Officer (CMO) as the Data Protection Officer (DPO). The CMO decides which patient data is required for clinical trials. Why is this appointment invalid?",
+      "options": [
+        "The CMO lacks formal IT certifications.",
+        "It creates a conflict of interest since the CMO determines the purposes of processing.",
+        "DPOs must be external consultants, not direct employees.",
+        "The CMO does not hold a legal degree."
+      ],
+      "correct_answer": "It creates a conflict of interest since the CMO determines the purposes of processing.",
+      "explanation": "A DPO must operate independently. An executive who determines the 'why' and 'how' of data processing (a PIC function) cannot objectively monitor their own compliance, creating a fatal conflict of interest."
+    },
+    {
+      "id": 1016,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "DPO Functions",
+        "Subcontracting",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Accountability of Outsourced DPO",
+      "question_text": "A corporation completely outsources the DPO function to an external law firm. The law firm misses a breach reporting deadline. Who is primarily accountable to the NPC for this compliance failure?",
+      "options": [
+        "The external law firm, as they assumed the DPO liabilities.",
+        "The corporation (PIC), as the DPO function operates under their ultimate accountability.",
+        "Both parties face equal criminal liability.",
+        "The National Privacy Commission for approving the outsourcing."
+      ],
+      "correct_answer": "The corporation (PIC), as the DPO function operates under their ultimate accountability.",
+      "explanation": "While a PIC may outsource the DPO role, the PIC cannot outsource its statutory accountability. The corporation remains ultimately responsible to the NPC for compliance failures."
+    },
+    {
+      "id": 1017,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 2: Concepts",
+        "Security Measures",
+        "Technical Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Encryption and Key Management",
+      "question_text": "An organization encrypts its database using AES-256 but stores the decryption key in plaintext in the same folder as the database. Has the organization achieved the 'Encryption Safe Harbor'?",
+      "options": [
+        "Yes, because AES-256 is an industry-standard encryption algorithm.",
+        "No, improper key management renders the encryption ineffective and voids the safe harbor.",
+        "Yes, provided the server itself is located in a physically secure facility.",
+        "No, because safe harbor requires the use of blockchain technology."
+      ],
+      "correct_answer": "No, improper key management renders the encryption ineffective and voids the safe harbor.",
+      "explanation": "Encryption only provides a safe harbor from notifying data subjects if the data remains truly unintelligible. Storing the key alongside the ciphertext compromises the data, voiding the safe harbor."
+    },
+    {
+      "id": 1018,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Security Measures",
+        "Organizational Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Data Processing Agreements",
+      "question_text": "A PIC utilizes a PIP for payroll. The PIC routinely updates its internal Privacy Management Program but never audits the PIP's security or updates the Outsourcing Agreement. Which security measure pillar is failing?",
+      "options": [
+        "Technical Security Measures.",
+        "Organizational Security Measures.",
+        "Physical Security Measures.",
+        "Jurisdictional Security Measures."
+      ],
+      "correct_answer": "Organizational Security Measures.",
+      "explanation": "Organizational measures include executing robust data processing agreements and continuously ensuring third-party processors comply with the DPA. Neglecting to audit a PIP is an organizational failure."
+    },
+    {
+      "id": 1019,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Compliance",
+        "Breach Reporting",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "72 Hours vs 5 Days",
+      "question_text": "A PIC submits a preliminary breach report within 72 hours. Due to complex forensics, they cannot complete the full investigation. What is the deadline to submit the Full Breach Report to the NPC?",
+      "options": [
+        "15 days from the discovery of the breach.",
+        "5 days from the submission of the preliminary report, unless an extension is granted.",
+        "10 business days from the submission of the preliminary report.",
+        "There is no deadline if the preliminary report was submitted on time."
+      ],
+      "correct_answer": "5 days from the submission of the preliminary report, unless an extension is granted.",
+      "explanation": "Under NPC Circular 16-03, following the preliminary notification, a comprehensive Full Breach Report must be submitted within five (5) days, unless a formal extension is explicitly requested and approved."
+    },
+    {
+      "id": 1020,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 2: Concepts",
+        "Compliance",
+        "Registration",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "NPC Circular 2022-04 Thresholds",
+      "question_text": "Under NPC Circular 2022-04, a company is mandatory required to register its Data Processing Systems if it meets certain criteria. Which of the following automatically triggers mandatory registration?",
+      "options": [
+        "Employing more than 50 regular employees.",
+        "Processing the sensitive personal information of 1,000 or more individuals.",
+        "Gross income exceeding PHP 10 Million.",
+        "Engaging in telecommunications, regardless of the number of subjects."
+      ],
+      "correct_answer": "Engaging in telecommunications, regardless of the number of subjects.",
+      "explanation": "Under Circular 2022-04, mandatory registration is triggered for entities operating in critical sectors (like telecommunications, banking, healthcare) regardless of the specific number of data subjects or employees they process."
+    },
+    {
+      "id": 1021,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Scope",
+        "Extraterritoriality",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Contract entered in the PH",
+      "question_text": "Two foreign executives meet in Manila and sign a contract to process the data of Australian citizens in a server located in Tokyo. The entity has no other links to the Philippines. Does the DPA apply?",
+      "options": [
+        "No, because neither the data subjects nor the servers are in the Philippines.",
+        "Yes, the DPA applies because the contract was entered into in the Philippines.",
+        "No, because the executives are foreign citizens.",
+        "Yes, but only if the contract is governed by Philippine civil law."
+      ],
+      "correct_answer": "Yes, the DPA applies because the contract was entered into in the Philippines.",
+      "explanation": "Section 6(b)(1) explicitly extends the extraterritorial application of the DPA to foreign entities if a contract relating to the processing is entered into in the Philippines."
+    },
+    {
+      "id": 1022,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Data Subject Rights",
+        "Transmissibility",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Limits of Assigns",
+      "question_text": "A deceased patient's estranged best friend (with no legal relationship or assigned trust) demands the patient's medical records under Section 17. Must the hospital comply?",
+      "options": [
+        "Yes, any individual with a close personal relationship can invoke transmissibility.",
+        "No, transmissibility strictly applies only to lawful heirs and authorized assigns.",
+        "Yes, provided the best friend pays an administrative discovery fee.",
+        "No, because medical records are permanently sealed upon death."
+      ],
+      "correct_answer": "No, transmissibility strictly applies only to lawful heirs and authorized assigns.",
+      "explanation": "Section 17 limits the invocation of a deceased subject's rights strictly to their 'lawful heirs and assigns' as defined by civil law. An unrelated best friend lacks legal standing."
+    },
+    {
+      "id": 1023,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Inferred Sensitive Data",
+      "question_text": "A grocery app tracks standard food purchases and creates a hidden profile tag labeling a customer as 'Diabetic'. Under the DPA, what is the classification of this specific tag?",
+      "options": [
+        "General Personal Information, since it is derived from grocery items.",
+        "Sensitive Personal Information, because it explicitly categorizes the subject's health condition.",
+        "Trade Secret, as it is a proprietary analytical inference.",
+        "Anonymized Data, if the tag is stored in a separate database."
+      ],
+      "correct_answer": "Sensitive Personal Information, because it explicitly categorizes the subject's health condition.",
+      "explanation": "Even if derived from non-sensitive data, an explicitly inferred tag regarding a medical condition constitutes health data, elevating its classification to Sensitive Personal Information."
+    },
+    {
+      "id": 1024,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Principles",
+        "Accountability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Privacy by Design",
+      "question_text": "A software team launches a medical app and plans to 'patch in' encryption six months later. Which component of the Accountability principle is explicitly violated?",
+      "options": [
+        "The Principle of Transparency.",
+        "Privacy by Design, which requires security to be embedded from the initial architecture phase.",
+        "The Right to Data Portability.",
+        "The Principle of Legitimate Purpose."
+      ],
+      "correct_answer": "Privacy by Design, which requires security to be embedded from the initial architecture phase.",
+      "explanation": "Accountability demands proactive engineering. 'Privacy by Design' requires data protection measures to be integrated into the IT architecture from the beginning, not as an afterthought."
+    },
+    {
+      "id": 1025,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Compliance",
+        "ASIR",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Zero Incident Reporting",
+      "question_text": "A corporation experiences absolutely zero security incidents or breaches throughout the calendar year. What are their reporting obligations regarding the ASIR?",
+      "options": [
+        "They are exempt from filing an ASIR for that year.",
+        "They must submit a formalized ASIR declaring zero incidents to the NPC.",
+        "They only need to notify the NPC via a standard email.",
+        "They must undergo a mandatory physical audit to prove the zero incidents."
+      ],
+      "correct_answer": "They must submit a formalized ASIR declaring zero incidents to the NPC.",
+      "explanation": "The submission of the Annual Security Incident Report is mandatory for registered entities, even if the report simply formalizes that zero security incidents occurred during the reporting period."
+    },
+    {
+      "id": 1026,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Roles",
+        "National Privacy Commission",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Limits of Quasi-Judicial Powers",
+      "question_text": "A data subject petitions the NPC to sentence a negligent CEO to 3 years in prison. Does the NPC have the jurisdiction to execute this sentence?",
+      "options": [
+        "Yes, the NPC possesses full judicial powers over privacy crimes.",
+        "No, the NPC can levy administrative fines, but criminal imprisonment requires a trial in a regular court.",
+        "Yes, but only if the Secretary of Justice co-signs the order.",
+        "No, because the maximum prison sentence the NPC can issue is 6 months."
+      ],
+      "correct_answer": "No, the NPC can levy administrative fines, but criminal imprisonment requires a trial in a regular court.",
+      "explanation": "The NPC is a quasi-judicial administrative body. It lacks the constitutional authority to try criminal cases or issue prison sentences; such cases must be referred to the DOJ and Regional Trial Courts."
+    },
+    {
+      "id": 1027,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Lifecycle",
+        "Retention",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Statutory Overlaps",
+      "question_text": "A client demands the absolute erasure of their tax invoices under the DPA. The business refuses, citing BIR regulations requiring a 10-year retention of financial books. Who is legally correct?",
+      "options": [
+        "The client, because the DPA supersedes the National Internal Revenue Code.",
+        "The business, because statutory retention mandates override the Right to Erasure.",
+        "The client, provided they pay an early deletion fee.",
+        "The business, but they must transfer the files to the NPC for storage."
+      ],
+      "correct_answer": "The business, because statutory retention mandates override the Right to Erasure.",
+      "explanation": "Data subject rights are not absolute. A PIC can lawfully refuse an erasure request if the retention is strictly mandated by existing statutory laws, such as BIR or AMLA regulations."
+    },
+    {
+      "id": 1028,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Data Subject Rights",
+        "Right to Access",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Vexatious Requests",
+      "question_text": "A disgruntled user submits a formal Right to Access request every single day for 60 days, demanding full data exports to drain the company's IT resources. How can the DPO lawfully respond?",
+      "options": [
+        "The DPO must comply with every request within 24 hours.",
+        "The DPO may lawfully refuse or charge a fee, as the requests are manifestly excessive and vexatious.",
+        "The DPO must block the user's IP address globally.",
+        "The DPO can only refuse after the 100th consecutive request."
+      ],
+      "correct_answer": "The DPO may lawfully refuse or charge a fee, as the requests are manifestly excessive and vexatious.",
+      "explanation": "While access is a fundamental right, the DPA protects PICs from abusive, vexatious, or manifestly excessive administrative burdens by allowing them to refuse or charge a reasonable fee."
+    },
+    {
+      "id": 1029,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Penalties",
+        "Unauthorized Processing",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Vitiated Consent",
+      "question_text": "An app tricks users into granting camera access by claiming it is needed for a 'calculator feature', then secretly sells the photos. In court, the developer claims they had 'consent'. What is the prosecution's strongest rebuttal?",
+      "options": [
+        "Calculators are not allowed to connect to the internet.",
+        "Consent obtained through deceit is vitiated and legally void, making the processing entirely unauthorized.",
+        "The consent was not notarized by a lawyer.",
+        "The developer failed to register the app with the DTI."
+      ],
+      "correct_answer": "Consent obtained through deceit is vitiated and legally void, making the processing entirely unauthorized.",
+      "explanation": "Consent must be informed. If a PIC lies about the purpose, the consent is legally void ab initio. Processing data on void consent constitutes the crime of Unauthorized Processing."
+    },
+    {
+      "id": 1030,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Principles",
+        "Proportionality",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Privacy by Default",
+      "question_text": "A new networking platform sets all user profiles to 'Public' by default, requiring users to navigate complex menus to hide their contact lists. Which DPA concept is explicitly violated?",
+      "options": [
+        "Privacy by Default, an extension of Proportionality requiring the most protective settings automatically.",
+        "The Right to Data Portability.",
+        "The Principle of Legitimate Interest.",
+        "The Encryption Safe Harbor."
+      ],
+      "correct_answer": "Privacy by Default, an extension of Proportionality requiring the most protective settings automatically.",
+      "explanation": "Privacy by Default mandates that systems must inherently default to data minimization without requiring manual user intervention to protect their basic privacy."
+    },
+    {
+      "id": 1031,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Security Measures",
+        "Physical Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Clean Desk Policy",
+      "question_text": "A hospital implements robust firewalls but allows nurses to leave patient charts openly on the cafeteria tables during breaks. Which specific security pillar is failing?",
+      "options": [
+        "Technical Security Measures.",
+        "Physical Security Measures.",
+        "Organizational Security Measures.",
+        "Environmental Security Measures."
+      ],
+      "correct_answer": "Physical Security Measures.",
+      "explanation": "Protecting manual filing systems and enforcing 'clean desk' policies to prevent unauthorized visual access to physical documents falls strictly under Physical Security Measures."
+    },
+    {
+      "id": 1032,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Compliance",
+        "PIA",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Mandatory Triggers",
+      "question_text": "A local government unit plans to deploy facial recognition cameras across all public squares. Under the 5 Pillars of Compliance, what proactive documented process must they execute before deployment?",
+      "options": [
+        "A Financial Cost-Benefit Analysis.",
+        "A Privacy Impact Assessment (PIA) to evaluate and manage the high-risk processing of biometric SPI.",
+        "A public town hall referendum.",
+        "An Annual Security Incident Report (ASIR)."
+      ],
+      "correct_answer": "A Privacy Impact Assessment (PIA) to evaluate and manage the high-risk processing of biometric SPI.",
+      "explanation": "Accountability requires demonstrating compliance. Deploying high-risk, large-scale processing involving SPI (biometrics) mandates a documented Privacy Impact Assessment prior to implementation."
+    },
+    {
+      "id": 1033,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 2: Concepts",
+        "DPO Functions",
+        "Reporting Lines",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Executive Independence",
+      "question_text": "A company requires its DPO to report directly to the Head of Marketing, who has the power to veto the DPO's compliance audits. Why does this violate NPC guidelines?",
+      "options": [
+        "Marketing departments are exempt from DPA audits.",
+        "The DPO must have independence and report directly to the highest management level, free from operational veto.",
+        "The DPO can only report directly to the National Privacy Commission.",
+        "The DPO must hold an equal equity share in the company."
+      ],
+      "correct_answer": "The DPO must have independence and report directly to the highest management level, free from operational veto.",
+      "explanation": "To ensure objective oversight, the DPO must operate with autonomy and report to top management (e.g., the Board or CEO), preventing operational heads from suppressing compliance findings."
+    },
+    {
+      "id": 1034,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Data Subject Rights",
+        "Right to Data Portability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Format Requirements",
+      "question_text": "A user invokes Data Portability. The platform sends a 500-page flattened PDF of their data. Has the platform complied with the legal requirement?",
+      "options": [
+        "Yes, a PDF is an electronic format.",
+        "No, portability requires a structured, commonly used, machine-readable format (like CSV or JSON).",
+        "Yes, provided the PDF is password-protected.",
+        "No, because data must be transmitted directly to the competitor's API."
+      ],
+      "correct_answer": "No, portability requires a structured, commonly used, machine-readable format (like CSV or JSON).",
+      "explanation": "Data Portability aims to prevent vendor lock-in. A flattened PDF actively defeats interoperability and violates the statutory requirement for a structured, machine-readable format."
+    },
+    {
+      "id": 1035,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Proceeding for Offense",
+      "question_text": "A newspaper publishes the court transcripts of a politician who was accused of graft but completely acquitted 10 years ago. Is this data classified as SPI?",
+      "options": [
+        "No, because the politician was proven innocent.",
+        "Yes, information about any proceeding for any offense alleged to have been committed is SPI, regardless of acquittal.",
+        "No, because the trial occurred over 5 years ago.",
+        "Yes, but only if the politician consents to the classification."
+      ],
+      "correct_answer": "Yes, information about any proceeding for any offense alleged to have been committed is SPI, regardless of acquittal.",
+      "explanation": "Section 3(l) protects individuals by classifying any data regarding a proceeding for an offense—whether committed or merely alleged—as Sensitive Personal Information."
+    },
+    {
+      "id": 1036,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Roles",
+        "Data Subject",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Corporate Entity Exclusion",
+      "question_text": "A B2B database leaks the corporate tax identification numbers (TIN) of 5,000 registered Corporations. Can these Corporations file a complaint claiming Data Subject rights?",
+      "options": [
+        "Yes, corporations have identical privacy rights to humans.",
+        "No, the term 'Data Subject' strictly applies to individuals (natural persons), not juridical entities.",
+        "Yes, provided the corporations are 100% Filipino-owned.",
+        "No, because TINs are public domain."
+      ],
+      "correct_answer": "No, the term 'Data Subject' strictly applies to individuals (natural persons), not juridical entities.",
+      "explanation": "The Data Privacy Act is a human rights framework protecting natural persons. Corporations, as juridical entities, do not possess personal privacy rights under the DPA."
+    },
+    {
+      "id": 1037,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Compliance",
+        "Breach Reporting",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Tripartite Test Application",
+      "question_text": "Hackers steal a database containing exclusively irreversibly anonymized demographic statistics. Applying the tripartite test, must this be reported to the NPC within 72 hours?",
+      "options": [
+        "Yes, because all external hacks trigger the 72-hour mandate.",
+        "No, irreversibly anonymized data is not Personal Information, posing zero real risk of serious harm.",
+        "Yes, but the company is allowed 5 days instead of 72 hours.",
+        "No, unless the hackers explicitly demand a ransom."
+      ],
+      "correct_answer": "No, irreversibly anonymized data is not Personal Information, posing zero real risk of serious harm.",
+      "explanation": "If data is truly anonymized, it falls outside the DPA. A breach involving solely non-personal data fails the tripartite test for mandatory reporting, though it should still be logged internally."
+    },
+    {
+      "id": 1038,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Penalties",
+        "Improper Disposal",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Scavenger Liability Break",
+      "question_text": "A bank places unencrypted hard drives in a public dumpster. Thieves break the bin and steal them. The bank claims the thieves' action severs their liability for Improper Disposal. Is the bank liable?",
+      "options": [
+        "No, the intervening criminal act of theft absolves the bank.",
+        "Yes, abandoning unencrypted data without secure destruction constitutes Improper Disposal, regardless of subsequent theft.",
+        "No, because a dumpster is considered secure temporary storage.",
+        "Yes, but only if the thieves successfully publish the data."
+      ],
+      "correct_answer": "Yes, abandoning unencrypted data without secure destruction constitutes Improper Disposal, regardless of subsequent theft.",
+      "explanation": "Leaving sensitive data in a public area without executing cryptographic wiping or physical shredding constitutes negligent disposal. The subsequent theft proves the negligence rather than excusing it."
+    },
+    {
+      "id": 1039,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Principles",
+        "Legitimate Purpose",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Lawfulness of Purpose",
+      "question_text": "A company builds a database to secretly blacklist union organizers, violating the Labor Code. They claim they have 'consent' from informants. Why does this fail DPA principles?",
+      "options": [
+        "Because databases must be registered with the DOLE.",
+        "Because Legitimate Purpose requires the objective of processing not to be contrary to law, morals, or public policy.",
+        "It is valid because consent overrides all other principles.",
+        "It is valid provided the database is highly encrypted."
+      ],
+      "correct_answer": "Because Legitimate Purpose requires the objective of processing not to be contrary to law, morals, or public policy.",
+      "explanation": "Processing data to facilitate an illegal act (like violating constitutional labor rights) fundamentally voids any legitimate purpose, rendering the processing inherently unlawful regardless of 'consent'."
+    },
+    {
+      "id": 1040,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Data Subject Rights",
+        "Right to Rectify",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Downstream Propagation",
+      "question_text": "A credit agency fixes an error in a user's file internally but fails to notify the banks they previously shared the bad data with. Did the agency fully comply with the Right to Rectify?",
+      "options": [
+        "Yes, their obligation is limited to their own internal servers.",
+        "No, they are legally obligated to ensure third parties who received the erroneous data are informed of the correction.",
+        "Yes, the user is responsible for updating their own banks.",
+        "No, they must also publish a public apology."
+      ],
+      "correct_answer": "No, they are legally obligated to ensure third parties who received the erroneous data are informed of the correction.",
+      "explanation": "To make Rectification meaningful, the PIC must propagate the correction to external parties to whom the inaccurate data was previously disclosed, protecting the subject from downstream harm."
+    },
+    {
+      "id": 1041,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Scope",
+        "Statutory Exceptions",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Government Contract Exclusivity",
+      "question_text": "An IT firm holds a government contract. They claim their separate, private commercial app is also exempt from the DPA because they are a 'government contractor'. Is this valid?",
+      "options": [
+        "Yes, the status grants blanket corporate immunity.",
+        "No, the exclusion only applies to information relating to the specific services performed for the government contract.",
+        "Yes, provided the servers share the same physical building.",
+        "No, because IT firms cannot act as government contractors."
+      ],
+      "correct_answer": "No, the exclusion only applies to information relating to the specific services performed for the government contract.",
+      "explanation": "Section 4 exclusions are narrowly construed. Possessing a government contract does not immunize a corporation's separate, private commercial operations from the DPA."
+    },
+    {
+      "id": 1042,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Roles",
+        "PIC Determination",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Statutory Mandate",
+      "question_text": "A statute mandates the DOH to collect citizen health data. The DOH hires a private firm to build and run the servers. Who is the Personal Information Controller (PIC)?",
+      "options": [
+        "Congress, for passing the statute.",
+        "The private tech firm, for designing the technical means.",
+        "The DOH, because they are statutorily mandated to control the collection.",
+        "The DOH and the firm are Joint Controllers."
+      ],
+      "correct_answer": "The DOH, because they are statutorily mandated to control the collection.",
+      "explanation": "The entity legally mandated to hold the data and determine the ultimate purpose is the PIC. The outsourced tech firm merely acts on those instructions as a PIP."
+    },
+    {
+      "id": 1043,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Lifecycle",
+        "Transfer",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Cross-Border Accountability",
+      "question_text": "A PH bank (PIC) uses a US cloud vendor (PIP). A US court subpoenas the vendor for a Filipino's data. Who must spearhead the legal response regarding DPA compliance?",
+      "options": [
+        "The US PIP must surrender the data unilaterally.",
+        "The PH bank (PIC), as they retain ultimate accountability and must determine the lawful basis for foreign disclosure.",
+        "The data must be destroyed immediately.",
+        "The Philippine Embassy in Washington D.C."
+      ],
+      "correct_answer": "The PH bank (PIC), as they retain ultimate accountability and must determine the lawful basis for foreign disclosure.",
+      "explanation": "Accountability remains with the PIC. A PIP cannot unilaterally disclose data to foreign courts; they must notify the PIC, who must navigate the legal conflict and establish a lawful basis."
+    },
+    {
+      "id": 1044,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Compliance",
+        "Privacy Notice",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Layered Notices",
+      "question_text": "A company uses a 'Layered Notice': a short bulleted summary upfront, linking to a 40-page comprehensive legal policy. Is this compliant with Transparency?",
+      "options": [
+        "No, the entire 40 pages must be on the first screen.",
+        "Yes, it balances clear, plain language with comprehensive legal disclosure.",
+        "No, hyperlinks invalidate informed consent.",
+        "Yes, but only if the user stays on the page for 5 minutes."
+      ],
+      "correct_answer": "Yes, it balances clear, plain language with comprehensive legal disclosure.",
+      "explanation": "Regulators encourage layered notices to combat 'consent fatigue'. It satisfies the need for immediate clarity while keeping comprehensive details accessible."
+    },
+    {
+      "id": 1045,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Security Measures",
+        "Organizational Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Clearance and Training",
+      "question_text": "A company installs biometric door locks (Physical) and AES-256 (Technical), but hires interns without background checks or DPA training to handle SPI. Which pillar failed?",
+      "options": [
+        "Technical Security Measures.",
+        "Physical Security Measures.",
+        "Organizational Security Measures.",
+        "Systemic Security Measures."
+      ],
+      "correct_answer": "Organizational Security Measures.",
+      "explanation": "Organizational measures include HR policies, security clearances, capacity building, and privacy training. Failing to vet staff handling SPI is an organizational failure."
+    },
+    {
+      "id": 1046,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Penalties",
+        "Double Jeopardy",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Concurrent Cybercrime Prosecution",
+      "question_text": "A hacker is charged with 'Illegal Access' under the Cybercrime Act and 'Unauthorized Processing' under the DPA. Does this violate Double Jeopardy?",
+      "options": [
+        "Yes, a person cannot be punished twice for one hack.",
+        "No, they penalize distinct legal elements and can be prosecuted concurrently.",
+        "Yes, the Cybercrime Act absorbs the DPA.",
+        "No, but the sentences must be served simultaneously."
+      ],
+      "correct_answer": "No, they penalize distinct legal elements and can be prosecuted concurrently.",
+      "explanation": "Double jeopardy does not apply when an act violates distinct statutes with different elements (system access vs data processing). The Cybercrime Act explicitly allows concurrent prosecution."
+    },
+    {
+      "id": 1047,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "DPO Functions",
+        "Duties",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "SIRT Obstruction",
+      "question_text": "A CEO orders the DPO to delete the term 'SPI' from a breach report to minimize PR damage. What governance principle is violated?",
+      "options": [
+        "Data Portability.",
+        "Accountability and SIRT Autonomy, constituting obstruction of compliance.",
+        "Encryption Safe Harbor.",
+        "The Right to Erasure."
+      ],
+      "correct_answer": "Accountability and SIRT Autonomy, constituting obstruction of compliance.",
+      "explanation": "Executive interference to falsify a DPO's technical assessment violates organizational accountability and exposes the officers to criminal Concealment charges."
+    },
+    {
+      "id": 1048,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Principles",
+        "Legitimate Purpose",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Blanket Consent",
+      "question_text": "A form states: 'I consent to the processing of my data for any future commercial purpose.' Why is this legally invalid?",
+      "options": [
+        "It provides maximum flexibility, making it perfectly valid.",
+        "It fails 'Purpose Specification', as open-ended blanket authorizations are neither specific nor informed.",
+        "It lacks a notarized signature.",
+        "It violates the requirement to use an English/Tagalog translation."
+      ],
+      "correct_answer": "It fails 'Purpose Specification', as open-ended blanket authorizations are neither specific nor informed.",
+      "explanation": "Valid consent must be specific to a declared purpose. Blanket, vague authorizations defeat the user's ability to give informed consent, violating Legitimate Purpose."
+    },
+    {
+      "id": 1049,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Data Subject Rights",
+        "Right to Damages",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Civil Action Independence",
+      "question_text": "A victim sues a PIC in a regular civil court for damages without waiting for the NPC to finish its administrative investigation. Can the civil lawsuit proceed?",
+      "options": [
+        "No, the NPC has exclusive original jurisdiction over all privacy cases.",
+        "Yes, the Right to Damages establishes independent civil liability that can proceed concurrently.",
+        "Yes, but the court can only award PHP 5,000 maximum.",
+        "No, civil courts are barred from referencing the DPA."
+      ],
+      "correct_answer": "Yes, the Right to Damages establishes independent civil liability that can proceed concurrently.",
+      "explanation": "Victims can file independent civil actions for damages in regular courts based on torts/negligence without waiting for a final administrative ruling from the NPC."
+    },
+    {
+      "id": 1050,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Compliance",
+        "Breach Reporting",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Law Enforcement Gag Orders",
+      "question_text": "The NBI verbally tells a DPO to delay notifying data subjects of a breach to protect a sting operation. Can the DPO lawfully delay?",
+      "options": [
+        "Yes, police orders automatically override NPC rules.",
+        "No, the PIC must formally petition the NPC, who holds exclusive statutory authority to grant postponements.",
+        "Yes, provided the DPO writes an internal memo.",
+        "No, the 72-hour rule can never be delayed under any circumstance."
+      ],
+      "correct_answer": "No, the PIC must formally petition the NPC, who holds exclusive statutory authority to grant postponements.",
+      "explanation": "A PIC cannot unilaterally delay notification based on a police request. They must petition the NPC, which is the only authority that can grant a legal exemption or postponement under Circular 16-03."
+    },
+    {
+      "id": 1051,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 1: Framework",
+        "Scope",
+        "Statutory Exceptions",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Data of Public Officers",
+      "question_text": "A journalist publishes the medical records of a city mayor to prove unfitness for office. The mayor sues under the DPA. The journalist claims exemption under Section 4 for government officials. Is the journalist's defense valid?",
+      "options": [
+        "Yes, all personal data of public officers is exempt from the DPA.",
+        "No, the exemption only applies to data relating to official functions.",
+        "Yes, the journalistic exemption covers all data of public figures.",
+        "No, medical records can only be published by court order."
+      ],
+      "correct_answer": "No, the exemption only applies to data relating to official functions.",
+      "explanation": "Section 4(a) exempts data regarding a public officer, but strictly limits this to information relating to their official position or functions. Purely private medical records remain fully protected."
+    },
+    {
+      "id": 1052,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 1: Framework",
+        "Statutory Overlaps",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "DPA vs Bank Secrecy",
+      "question_text": "A citizen uses the Right to Access to demand the unredacted bank deposit history of a business partner they are suing. How does the DPA interact with the Secrecy of Bank Deposits Act (RA 1405)?",
+      "options": [
+        "The DPA supersedes RA 1405, allowing access to the deposits.",
+        "The bank must provide the data to the NPC for closed review.",
+        "Section 4 explicitly prohibits the DPA from amending RA 1405.",
+        "The DPA allows access provided a civil lawsuit is currently active."
+      ],
+      "correct_answer": "Section 4 explicitly prohibits the DPA from amending RA 1405.",
+      "explanation": "The DPA explicitly states it shall not be construed as amending or repealing the Secrecy of Bank Deposits Act. Therefore, DPA rights cannot be used to bypass banking confidentiality."
+    },
+    {
+      "id": 1053,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 1: Framework",
+        "Extraterritoriality",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Foreign Entity Link",
+      "question_text": "An unregistered foreign gaming app has no servers in the Philippines but intentionally targets Filipino users by accepting GCash payments and using Tagalog ads. Does the NPC have jurisdiction over their processing?",
+      "options": [
+        "No, jurisdiction requires physical servers within the Philippines.",
+        "Yes, the app processes personal data relating to Philippine residents.",
+        "No, unregistered foreign apps are exclusively governed by INTERPOL.",
+        "Yes, but only if the app developer physically visits the country."
+      ],
+      "correct_answer": "Yes, the app processes personal data relating to Philippine residents.",
+      "explanation": "Section 6 establishes extraterritorial jurisdiction if the processing relates to personal information about a Philippine citizen or resident, regardless of the physical location of the servers."
+    },
+    {
+      "id": 1054,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 1: Framework",
+        "Scope",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Anonymized Data",
+      "question_text": "An agency heavily encrypts a dataset and permanently destroys the only decryption key. A theoretical quantum computer might reverse it in 50 years. Does the DPA apply to this dataset today?",
+      "options": [
+        "Yes, because theoretical future technology could reverse the encryption.",
+        "No, it is legally anonymized as re-identification is not reasonably possible.",
+        "Yes, because government datasets are permanently classified as public records.",
+        "No, because encrypted data is reclassified as Privileged Information."
+      ],
+      "correct_answer": "No, it is legally anonymized as re-identification is not reasonably possible.",
+      "explanation": "Anonymization relies on the legal standard of 'reasonable' ascertainability. If re-identification requires currently non-existent or completely disproportionate effort, the data is legally anonymized and outside the DPA's scope."
+    },
+    {
+      "id": 1055,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 2: Concepts",
+        "Topic 2: Roles",
+        "PIC vs PIP",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "PIP Repurposing",
+      "question_text": "An analytics vendor (PIP) is contracted to process payroll. The vendor realizes the data is valuable and uses it to train their own commercial AI model. What is the vendor's new legal role?",
+      "options": [
+        "They remain a PIP but violated their Service Level Agreement.",
+        "They unlawfully assumed the role of an independent Personal Information Controller.",
+        "They automatically become a Joint Controller with the original employer.",
+        "They become a statutorily exempt research organization under Section 4."
+      ],
+      "correct_answer": "They unlawfully assumed the role of an independent Personal Information Controller.",
+      "explanation": "By independently determining a new purpose and means for processing (training their own AI), the PIP exceeded their documented instructions and unlawfully acted as a PIC."
+    },
+    {
+      "id": 1056,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 2: Roles",
+        "Joint Controllers",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Solidary Liability",
+      "question_text": "Brand X and Agency Y are Joint PICs for a campaign. Agency Y's database is hacked due to poor security. A data subject files a claim exclusively against Brand X. Is Brand X liable to pay?",
+      "options": [
+        "No, the subject must sue the entity whose physical server failed.",
+        "Yes, Joint Controllers share solidary liability for the entire processing system.",
+        "No, the agency assumes full liability as the operational processor.",
+        "Yes, but Brand X is only liable for 50% of the total damages."
+      ],
+      "correct_answer": "Yes, Joint Controllers share solidary liability for the entire processing system.",
+      "explanation": "Joint Controllers share legal accountability. A data subject can exercise their rights and claim full damages against any of the joint controllers, regardless of whose specific infrastructure failed."
+    },
+    {
+      "id": 1057,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 2: Roles",
+        "National Privacy Commission",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Limits of Quasi-Judicial Power",
+      "question_text": "The NPC concludes an investigation finding a CEO grossly negligent. The victims petition the NPC to issue a search warrant for the CEO's house and sentence them to prison. Can the NPC comply?",
+      "options": [
+        "Yes, the NPC possesses supreme regulatory authority over privacy crimes.",
+        "No, the NPC lacks constitutional authority to issue warrants or prison sentences.",
+        "Yes, provided the Department of Justice explicitly co-signs the orders.",
+        "No, the NPC can issue the warrant but cannot impose the prison sentence."
+      ],
+      "correct_answer": "No, the NPC lacks constitutional authority to issue warrants or prison sentences.",
+      "explanation": "The NPC is an administrative body with quasi-judicial powers (like issuing fines and subpoenas). Only regular trial court judges can constitutionally issue search warrants or impose criminal prison sentences."
+    },
+    {
+      "id": 1058,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 2: Roles",
+        "Data Subject",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Corporate Entity Exclusion",
+      "question_text": "A massive data breach exposes the financial ledgers and tax identification numbers of 500 registered corporations. Can the corporations file a formal complaint claiming their Data Subject rights were violated?",
+      "options": [
+        "Yes, corporations enjoy the exact same statutory privacy rights as humans.",
+        "No, the term Data Subject strictly applies to natural persons, not corporations.",
+        "Yes, provided the corporations are entirely owned by Philippine citizens.",
+        "No, because financial ledgers are classified as Public Domain Information."
+      ],
+      "correct_answer": "No, the term Data Subject strictly applies to natural persons, not corporations.",
+      "explanation": "The Data Privacy Act protects human rights. A 'Data Subject' is explicitly defined as an individual whose personal information is processed. Juridical entities (corporations) have no standing as Data Subjects."
+    },
+    {
+      "id": 1059,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 2: Roles",
+        "PIP Limitations",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Subpoena Response",
+      "question_text": "An outsourced cloud provider (PIP) receives a police subpoena demanding the data of a client (PIC). There is no emergency. How must the PIP legally handle this demand?",
+      "options": [
+        "The PIP must immediately surrender the data to avoid obstruction charges.",
+        "The PIP must notify the PIC, as the PIC bears the accountability to respond.",
+        "The PIP must unilaterally file a motion to quash with the Supreme Court.",
+        "The PIP must permanently delete the data to prevent unauthorized disclosure."
+      ],
+      "correct_answer": "The PIP must notify the PIC, as the PIC bears the accountability to respond.",
+      "explanation": "A PIP lacks the authority to independently disclose data, even to law enforcement. They must immediately route the legal demand to the PIC, who holds the authority and accountability to navigate the disclosure."
+    },
+    {
+      "id": 1060,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 3: Principles",
+        "Legitimate Purpose",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Scope Creep",
+      "question_text": "A bank legally bypasses consent to collect data for Anti-Money Laundering (AMLA) compliance. Later, they use this AMLA data to target the client for premium credit cards. Is this secondary use lawful?",
+      "options": [
+        "Yes, data collected under a legal obligation can be used freely.",
+        "No, repurposing statutory data for commercial marketing violates Legitimate Purpose.",
+        "Yes, provided the client has a high credit score and benefits from the offer.",
+        "No, because credit card marketing is strictly regulated by the DTI."
+      ],
+      "correct_answer": "No, repurposing statutory data for commercial marketing violates Legitimate Purpose.",
+      "explanation": "Data collected under a statutory exception (AMLA) is limited to that specific purpose. Using it for an entirely incompatible secondary purpose (marketing) constitutes unauthorized processing and violates Legitimate Purpose."
+    },
+    {
+      "id": 1061,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 3: Principles",
+        "Transparency",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "NPC Circular 2023-04 Dark Patterns",
+      "question_text": "An app's consent screen features a massive green 'Accept All' button, while the 'Decline' option is a tiny, hidden gray text link. Under NPC Circular 2023-04, how is this UI evaluated?",
+      "options": [
+        "It is valid because the user still technically has the option to decline.",
+        "It is invalid because deceptive 'dark patterns' destroy the Fairness of consent.",
+        "It is valid provided the app is completely free to download and use.",
+        "It is invalid because buttons must be standardized in blue or red colors."
+      ],
+      "correct_answer": "It is invalid because deceptive 'dark patterns' destroy the Fairness of consent.",
+      "explanation": "NPC Circular 2023-04 integrates Fairness into consent. UI designs that manipulate or heavily pressure users ('dark patterns') prevent the consent from being freely given, rendering it legally invalid."
+    },
+    {
+      "id": 1062,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 3: Principles",
+        "Proportionality",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Just in Case Collection",
+      "question_text": "An employer requires all job applicants to submit their spouse's medical history during the initial resume screening, arguing they need it 'just in case' the applicant is hired for insurance purposes. Is this lawful?",
+      "options": [
+        "Yes, anticipating future corporate needs demonstrates excellent proactive planning.",
+        "No, collecting SPI prematurely for a hypothetical future use violates Proportionality.",
+        "Yes, provided the data is heavily encrypted upon receipt by the HR team.",
+        "No, employers are permanently banned from processing any medical data."
+      ],
+      "correct_answer": "No, collecting SPI prematurely for a hypothetical future use violates Proportionality.",
+      "explanation": "Proportionality mandates data minimization. Collecting highly sensitive data 'just in case' it might be needed for a future phase is excessive and not strictly necessary for the immediate purpose of evaluating a resume."
+    },
+    {
+      "id": 1063,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 3: Principles",
+        "Transparency",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Layered Notices",
+      "question_text": "To comply with Transparency, a company provides a short bulleted summary of key data uses upfront, containing a hyperlink to their 40-page comprehensive legal privacy policy. Is this legally acceptable?",
+      "options": [
+        "No, the entire 40-page legal document must be displayed on the first screen.",
+        "Yes, layered notices balance clear language with comprehensive legal disclosure.",
+        "No, hyperlinks are legally invalid mechanisms for establishing informed consent.",
+        "Yes, but only if the user is forced to remain on the page for five minutes."
+      ],
+      "correct_answer": "Yes, layered notices balance clear language with comprehensive legal disclosure.",
+      "explanation": "Regulators highly encourage layered privacy notices. They satisfy the requirement for 'clear and plain language' immediately while ensuring comprehensive legal details remain accessible without causing consent fatigue."
+    },
+    {
+      "id": 1064,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 3: Principles",
+        "Accountability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Privacy by Design",
+      "question_text": "A team builds an app rapidly without encryption, planning to 'patch security in' six months after launch. Which core concept of the Accountability principle did they explicitly fail?",
+      "options": [
+        "The Principle of Data Portability.",
+        "Privacy by Design, which requires security to be embedded from the start.",
+        "The Doctrine of Legitimate Interest.",
+        "The Principle of Transparency."
+      ],
+      "correct_answer": "Privacy by Design, which requires security to be embedded from the start.",
+      "explanation": "Accountability requires proactive engineering. Privacy by Design mandates that data protection measures are embedded into the architecture of IT systems from the initial design phase, not bolted on post-launch."
+    },
+    {
+      "id": 1065,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4: Data Subject Rights",
+        "Right to Object",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Automated Decision Making",
+      "question_text": "An applicant is automatically rejected by an AI resume scanner. They object and demand a human review. Is the corporation legally obligated to provide human intervention?",
+      "options": [
+        "No, companies have the absolute right to fully automate their hiring processes.",
+        "Yes, subjects can object to purely automated decisions with significant effects.",
+        "No, because the applicant had not yet signed a formal employment contract.",
+        "Yes, but the applicant must pay a mandatory administrative manual review fee."
+      ],
+      "correct_answer": "Yes, subjects can object to purely automated decisions with significant effects.",
+      "explanation": "The right to object extends to profiling and automated decision-making. If an AI makes a significant decision (like denying employment), the subject has the right to challenge it and demand meaningful human review."
+    },
+    {
+      "id": 1066,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4: Data Subject Rights",
+        "Right to Erasure",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Unlawfully Obtained Data",
+      "question_text": "An NGO buys a stolen database of emails to send vital disaster warnings. Citizens discover the hack and demand erasure. Can the NGO refuse, claiming 'Protection of Life' overrides the erasure request?",
+      "options": [
+        "Yes, protecting human life is the supreme legal priority of the state.",
+        "No, the Right to Erasure strictly applies to data that was unlawfully obtained.",
+        "Yes, non-profit organizations are exempt from mandatory erasure requests.",
+        "No, but they only need to delete the emails of the specific complainants."
+      ],
+      "correct_answer": "No, the Right to Erasure strictly applies to data that was unlawfully obtained.",
+      "explanation": "If data is acquired unlawfully (stolen), the PIC has no legal right to hold it. The noble intent of the current processing does not cure the illegal acquisition, and the data must be destroyed upon request."
+    },
+    {
+      "id": 1067,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4: Data Subject Rights",
+        "Right to Data Portability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Format Constraints",
+      "question_text": "A user invokes Data Portability. The provider sends their data as a 500-page flattened, non-searchable PDF document. Has the provider successfully fulfilled the Portability requirement?",
+      "options": [
+        "Yes, a PDF document legally qualifies as a standard electronic format.",
+        "No, the law requires a structured, commonly used, and machine-readable format.",
+        "Yes, provided the PDF file is securely encrypted and password-protected.",
+        "No, the provider must establish a direct API connection to a competitor."
+      ],
+      "correct_answer": "No, the law requires a structured, commonly used, and machine-readable format.",
+      "explanation": "Data Portability promotes interoperability. Providing a non-machine-readable format (like a flattened PDF image) defeats the purpose of the right and violates the requirement for a structured format like CSV or JSON."
+    },
+    {
+      "id": 1068,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4: Data Subject Rights",
+        "Right to Rectify",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Downstream Propagation",
+      "question_text": "A bank fixes a massive error on a customer's profile internally but forgets to notify the credit bureaus they previously shared it with. Is the bank liable for subsequent downstream damages?",
+      "options": [
+        "No, the bank's only statutory duty is to rectify its own internal database.",
+        "Yes, the Right to Rectify legally obligates the PIC to inform third-party recipients.",
+        "No, the customer is exclusively responsible for updating the credit bureaus.",
+        "Yes, but liability is strictly capped at the cost of the administrative correction."
+      ],
+      "correct_answer": "Yes, the Right to Rectify legally obligates the PIC to inform third-party recipients.",
+      "explanation": "To make rectification meaningful, the DPA requires the correction to propagate. If a PIC fails to inform third parties to whom they disclosed the erroneous data, they are liable for the resulting downstream harm."
+    },
+    {
+      "id": 1069,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4: Data Subject Rights",
+        "Transmissibility",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Standing of Ex-Spouses",
+      "question_text": "A legally annulled ex-spouse discovers a hospital leaked the medical records of their deceased former partner. Can the ex-spouse invoke Section 17 to exercise the Right to Damages?",
+      "options": [
+        "Yes, any former family member can invoke transmissibility for compensation.",
+        "No, Section 17 strictly limits transmissibility to lawful heirs and assigns.",
+        "Yes, provided the ex-spouse can prove they suffered emotional distress.",
+        "No, the Right to Damages permanently extinguishes upon the subject's death."
+      ],
+      "correct_answer": "No, Section 17 strictly limits transmissibility to lawful heirs and assigns.",
+      "explanation": "Transmissibility relies on strict civil law definitions. A legally annulled ex-spouse is not a 'lawful heir' and therefore lacks the legal standing to invoke the DPA rights of the deceased."
+    },
+    {
+      "id": 1070,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 4: Data Subject Rights",
+        "Right to Damages",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Civil Action Independence",
+      "question_text": "Victims of a data breach file a civil lawsuit for damages in a regular trial court. The defendant argues the court lacks jurisdiction because the NPC hasn't issued a ruling yet. Is the defense valid?",
+      "options": [
+        "Yes, the NPC holds exclusive original jurisdiction over all privacy damages.",
+        "No, victims can file an independent civil action for damages concurrently.",
+        "Yes, civil courts are permanently barred from interpreting the Data Privacy Act.",
+        "No, but the court must cap any financial award at exactly PHP 5 Million."
+      ],
+      "correct_answer": "No, victims can file an independent civil action for damages concurrently.",
+      "explanation": "The Right to Damages establishes independent civil liability. Victims can file lawsuits in regular courts based on torts or negligence without waiting for a final administrative ruling from the NPC."
+    },
+    {
+      "id": 1071,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4: Data Subject Rights",
+        "Right to Access",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Internal Investigative Privilege",
+      "question_text": "An employee suspended for harassment invokes the Right to Access, demanding the unredacted witness statements of their accusers. Must the HR DPO comply immediately?",
+      "options": [
+        "Yes, the Right to Access guarantees absolute visibility into all processed data.",
+        "No, access must be balanced against the privacy and safety of whistleblowers.",
+        "Yes, but only if the employee pays a mandatory corporate administrative fee.",
+        "No, because HR investigation files are classified as Public Domain Information."
+      ],
+      "correct_answer": "No, access must be balanced against the privacy and safety of whistleblowers.",
+      "explanation": "The Right to Access cannot be weaponized to expose vulnerable third parties or compromise confidential investigations. The DPO must balance rights, typically by withholding or heavily redacting whistleblower identities."
+    },
+    {
+      "id": 1072,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5: Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Biometric Processing",
+      "question_text": "A company requires standard JPEG photos for ID badges. Later, they feed these exact JPEGs into an AI to authenticate building access via facial geometry. How does the data classification change?",
+      "options": [
+        "It remains General Personal Information because a JPEG is just a photograph.",
+        "It transforms into Biometric SPI when processed specifically to uniquely identify.",
+        "It was SPI from the beginning because all photographs are inherently biometric.",
+        "It becomes Privileged Information due to its use in corporate physical security."
+      ],
+      "correct_answer": "It transforms into Biometric SPI when processed specifically to uniquely identify.",
+      "explanation": "A standard photo is PI. However, when subjected to technical processing (facial geometry mapping) specifically to authenticate or uniquely identify a natural person, it legally becomes Biometric SPI."
+    },
+    {
+      "id": 1073,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5: Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Government vs Corporate ID",
+      "question_text": "A security log requires a visitor's Corporate Employee Number and their Philippine Passport Number. Under Section 3(l), how are these two distinct numbers classified?",
+      "options": [
+        "Both numbers are classified as Sensitive Personal Information.",
+        "The Corporate Number is PI; the Passport Number is SPI.",
+        "Both numbers are classified as General Personal Information.",
+        "The Corporate Number is SPI; the Passport Number is Public Domain."
+      ],
+      "correct_answer": "The Corporate Number is PI; the Passport Number is SPI.",
+      "explanation": "SPI specifically includes numbers or licenses issued by government agencies peculiar to an individual (Passport). Private corporate IDs do not meet this strict statutory definition and remain General PI."
+    },
+    {
+      "id": 1074,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5: Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Proceeding for Offense Acquittal",
+      "question_text": "A news site archives the court transcripts of a mayor accused of embezzlement who was completely acquitted and proven innocent 15 years ago. How does the DPA classify these transcripts?",
+      "options": [
+        "General Personal Information, because the mayor was proven completely innocent.",
+        "Sensitive Personal Information, because it relates to a proceeding for an offense.",
+        "Public Domain Information, because the trial concluded over 10 years ago.",
+        "Privileged Information, because the documents originated from a trial court."
+      ],
+      "correct_answer": "Sensitive Personal Information, because it relates to a proceeding for an offense.",
+      "explanation": "Section 3(l) protects individuals by classifying any information regarding a proceeding for an offense—whether committed or merely alleged—as SPI, regardless of a subsequent acquittal or the passage of time."
+    },
+    {
+      "id": 1075,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5: Classification",
+        "Privileged Information",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Rules of Court Integration",
+      "question_text": "A wife is compelled to surrender confidential emails sent by her husband regarding his business. He invokes the DPA, calling them 'Privileged Information'. Is this classification legally correct?",
+      "options": [
+        "No, Privileged Information only covers licensed doctors and registered attorneys.",
+        "Yes, marital communications are protected under the Rules of Court.",
+        "No, digital emails cannot qualify for marital privilege under civil law.",
+        "Yes, but only if the emails explicitly contained Sensitive Personal Information."
+      ],
+      "correct_answer": "Yes, marital communications are protected under the Rules of Court.",
+      "explanation": "Section 3(k) defines Privileged Information strictly via the Rules of Court. Because the Rules of Court protect confidential marital communications, these emails are legally classified as Privileged Information under the DPA."
+    },
+    {
+      "id": 1076,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5: Classification",
+        "Personal Information",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "K-Anonymity Failure",
+      "question_text": "A health dataset strips names but leaves Age, Zip Code, and a rare Diagnosis. In one zip code, only a single 34-year-old exists. Under the DPA, what is the classification of this specific record?",
+      "options": [
+        "It is legally Anonymized Data because explicit direct identifiers were removed.",
+        "It is Sensitive Personal Information because the individual can be ascertained.",
+        "It is Privileged Information because it originated from a health diagnosis.",
+        "It is Public Domain Information because demographic statistics are public."
+      ],
+      "correct_answer": "It is Sensitive Personal Information because the individual can be ascertained.",
+      "explanation": "Anonymization fails if pseudo-identifiers (Age + Zip Code) are unique enough to single out a specific person. Because the identity can be reasonably ascertained, it remains PI (and SPI due to the diagnosis)."
+    },
+    {
+      "id": 1077,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 6: Lifecycle",
+        "Acquisition",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Granularity of Consent",
+      "question_text": "A telecom company forces users to sign a single contract combining essential cellular service with an agreement to sell location data to third parties. Why is the location data consent legally invalid?",
+      "options": [
+        "Because location data belongs exclusively to the national government.",
+        "Because bundling an essential service with unnecessary processing constitutes coercion.",
+        "Because the physical contract was not notarized by legal counsel.",
+        "It is valid because the user voluntarily chose to purchase the phone plan."
+      ],
+      "correct_answer": "Because bundling an essential service with unnecessary processing constitutes coercion.",
+      "explanation": "Consent must be granular and freely given. Tying an essential core service to the mandatory acceptance of an unrelated, highly intrusive data-sharing clause coerces the user, destroying the validity of the consent."
+    },
+    {
+      "id": 1078,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 6: Lifecycle",
+        "Storage",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Passive Processing",
+      "question_text": "A founder keeps an offline, disconnected hard drive in their attic containing old user profiles for 5 years without ever plugging it in. Under the DPA, is the founder currently 'processing' this data?",
+      "options": [
+        "No, processing legally requires the active manipulation or viewing of the data.",
+        "Yes, the statutory definition explicitly encompasses passive storage and holding.",
+        "No, data processing status legally expires after a three-year dormancy period.",
+        "Yes, but only if the hard drive is eventually connected to the internet."
+      ],
+      "correct_answer": "Yes, the statutory definition explicitly encompasses passive storage and holding.",
+      "explanation": "The DPA broadly defines processing to include any operation upon personal data, expressly including 'storage' and 'holding'. Passive, offline retention remains fully subject to DPA security and accountability rules."
+    },
+    {
+      "id": 1079,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 6: Lifecycle",
+        "Transfer",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Lawful Basis Switching",
+      "question_text": "A firm collects emails via 'Consent'. After a law passes, they realize the consent was invalid. To avoid deletion, they retroactively declare the collection was under 'Legitimate Interest'. Is this permissible?",
+      "options": [
+        "Yes, companies receive a 6-month grace period to correct their lawful basis.",
+        "No, retroactively switching the lawful basis to mask non-compliance is deceptive.",
+        "Yes, provided they pay an administrative correction fine to the NPC.",
+        "No, because marketing firms are permanently excluded from Legitimate Interest."
+      ],
+      "correct_answer": "No, retroactively switching the lawful basis to mask non-compliance is deceptive.",
+      "explanation": "A lawful basis must be established before processing begins. Dynamically swapping it retroactively because the original basis failed violates Fair Processing and Transparency principles."
+    },
+    {
+      "id": 1080,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 6: Lifecycle",
+        "Retention",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Statistical Retention",
+      "question_text": "An e-commerce site wants to keep 20 years of sales history for macroeconomic trend forecasting without violating Proportionality retention limits. What is the most compliant technical approach?",
+      "options": [
+        "Store all the raw data in plaintext but hide the database server.",
+        "Irreversibly anonymize the historical data to remove it from DPA scope.",
+        "Retain the personal data fully intact but charge customers a storage fee.",
+        "Ask the National Privacy Commission for a permanent retention exemption."
+      ],
+      "correct_answer": "Irreversibly anonymize the historical data to remove it from DPA scope.",
+      "explanation": "Irreversible anonymization strips the data of identifiers, effectively rendering it outside the scope of the DPA. This allows the business to retain the raw statistical insights infinitely without violating retention limits."
+    },
+    {
+      "id": 1081,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 6: Lifecycle",
+        "Destruction",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Crypto-Shredding",
+      "question_text": "A fintech company stores user data on a decentralized, immutable blockchain. A user invokes their Right to Erasure. How can the company practically and lawfully comply with this request?",
+      "options": [
+        "By simply ignoring the request, as blockchain is completely exempt from the law.",
+        "By permanently destroying the cryptographic keys required to decipher the data.",
+        "By paying the user a massive financial settlement in cryptocurrency.",
+        "By requesting the NPC to physically shut down the global blockchain nodes."
+      ],
+      "correct_answer": "By permanently destroying the cryptographic keys required to decipher the data.",
+      "explanation": "When physical erasure is technically impossible (immutable ledgers), 'crypto-shredding'—the permanent destruction of the decryption key—puts the data permanently 'beyond use', satisfying the erasure requirement."
+    },
+    {
+      "id": 1082,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 7: Penalties",
+        "Accessing Due to Negligence",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Board Liability",
+      "question_text": "A CISO submits three formal requests to patch a critical database vulnerability. The Board of Directors rejects them citing 'budget'. A breach occurs. How does Section 34 assign criminal liability?",
+      "options": [
+        "The CISO is solely liable because they are the designated security officer.",
+        "The Board faces criminal prosecution for gross negligence allowing the crime.",
+        "The corporation pays a fine, but no human is imprisoned due to business judgment.",
+        "The hackers are the exclusively liable parties under the Cybercrime Act."
+      ],
+      "correct_answer": "The Board faces criminal prosecution for gross negligence allowing the crime.",
+      "explanation": "Section 34 targets responsible officers. If the Board deliberately ignores documented critical security warnings to save money, their gross negligence directly allows the breach, making them criminally liable for imprisonment."
+    },
+    {
+      "id": 1083,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 7: Penalties",
+        "Malicious Disclosure",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Truth as a Defense",
+      "question_text": "An angry ex-employee posts the exact, highly accurate psychological evaluations of management on a revenge blog. In court for 'Malicious Disclosure', the defense argues the data is 100% true. Is this defense sound?",
+      "options": [
+        "Yes, the constitutional protection of free speech protects verifiable facts.",
+        "No, truth is not a defense; Malicious Disclosure penalizes the bad faith release.",
+        "Yes, Malicious Disclosure exclusively applies to fabricated personal data.",
+        "No, but the charge must be automatically downgraded to simple negligence."
+      ],
+      "correct_answer": "No, truth is not a defense; Malicious Disclosure penalizes the bad faith release.",
+      "explanation": "Unlike libel, where truth can sometimes be a defense, Malicious Disclosure penalizes the malicious exposure of personal data. The accuracy of the highly sensitive data actually makes the privacy violation more damaging."
+    },
+    {
+      "id": 1084,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 7: Penalties",
+        "Concealment",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Intent to Cover Up",
+      "question_text": "A hospital Board pays a PHP 10 Million ransom to hackers to delete stolen SPI and intentionally files no breach reports to the NPC to protect their reputation. What criminal offense have they committed?",
+      "options": [
+        "They are immune because paying the ransom mitigated the risk of serious harm.",
+        "Concealment of Security Breaches for intentionally suppressing the mandatory report.",
+        "Unauthorized Processing, because they communicated with external hackers.",
+        "Improper Disposal, because they permitted the hackers to delete the files."
+      ],
+      "correct_answer": "Concealment of Security Breaches for intentionally suppressing the mandatory report.",
+      "explanation": "Paying extortionists does not extinguish the statutory legal obligation to notify the NPC. Intentionally hiding a qualifying breach to avoid public disclosure is a severe felony under Section 30."
+    },
+    {
+      "id": 1085,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 7: Penalties",
+        "Large Scale Threshold",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Aggregate Mechanics",
+      "question_text": "A security incident exposes the basic contact details of 60 users, and the medical records of 45 different users (total 105). Does this legally trigger the 'large-scale' maximum penalty multiplier?",
+      "options": [
+        "No, because neither group independently reached the 100-person threshold.",
+        "Yes, the law counts the aggregate total of affected subjects in the incident.",
+        "No, large-scale penalties strictly require at least 1,000 affected persons.",
+        "Yes, but the judge must issue entirely separate sentences for the two groups."
+      ],
+      "correct_answer": "Yes, the law counts the aggregate total of affected subjects in the incident.",
+      "explanation": "Section 35 imposes maximum penalties when the violation involves 100 or more persons. The statute relies on the total aggregate number of affected data subjects, regardless of the PI/SPI mix."
+    },
+    {
+      "id": 1086,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 7: Penalties",
+        "Mala Prohibita",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Good Faith Defense",
+      "question_text": "A well-intentioned HR employee uses the corporate database to send personalized fundraising emails for a children's charity, with zero malicious intent. Can they be convicted of Processing for Unauthorized Purposes?",
+      "options": [
+        "No, the lack of criminal intent and charitable nature provide absolute immunity.",
+        "Yes, DPA offenses are mala prohibita; the unauthorized act itself is the crime.",
+        "No, because charities are permanently and completely exempt from the DPA.",
+        "Yes, but they can only be charged with Malicious Disclosure under Section 27."
+      ],
+      "correct_answer": "Yes, DPA offenses are mala prohibita; the unauthorized act itself is the crime.",
+      "explanation": "Violations of special penal laws are generally mala prohibita. Good faith or noble intentions do not erase the criminal liability for processing personal data for a completely unauthorized secondary purpose."
+    },
+    {
+      "id": 1087,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 8: DPO",
+        "Qualifications",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Conflict of Interest - IT",
+      "question_text": "A corporation designates its Head of IT Infrastructure, who designs all server architectures and data flows, as the Data Protection Officer (DPO). Why does this violate Accountability?",
+      "options": [
+        "The DPO must exclusively hold a background in legal compliance, not IT.",
+        "It creates a conflict of interest; they cannot audit systems they actively design.",
+        "The Head of IT lacks the necessary seniority to communicate with the Board.",
+        "The DPO function must always be outsourced to a third-party audit firm."
+      ],
+      "correct_answer": "It creates a conflict of interest; they cannot audit systems they actively design.",
+      "explanation": "A DPO must exercise independent oversight. An executive who controls the 'means' of processing (IT architecture) cannot objectively monitor and audit their own compliance, creating a fatal conflict of interest."
+    },
+    {
+      "id": 1088,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 8: DPO",
+        "Outsourcing",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "PIC Ultimate Accountability",
+      "question_text": "A firm outsources its DPO function to an agency. The agency fails to submit the Annual Security Incident Report (ASIR). Who faces the primary regulatory sanctions from the NPC?",
+      "options": [
+        "The outsourced agency, as they contractually assumed the DPO liabilities.",
+        "The hiring firm (PIC), because statutory accountability cannot be delegated.",
+        "Both entities are fined exactly equal amounts under shared liability.",
+        "The DTI, for failing to properly accredit the outsourced DPO agency."
+      ],
+      "correct_answer": "The hiring firm (PIC), because statutory accountability cannot be delegated.",
+      "explanation": "While the physical function of the DPO can be outsourced, the statutory accountability remains entirely with the PIC. The PIC is ultimately sanctioned by the NPC and must seek civil damages from the agency later."
+    },
+    {
+      "id": 1089,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 8: DPO",
+        "Reporting Lines",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Executive Independence",
+      "question_text": "A DPO investigates a marketing leak. The Chief Marketing Officer (CMO) orders the DPO to halt the audit. Under NPC guidelines, how should the DPO's reporting structure resolve this?",
+      "options": [
+        "The DPO must obey the CMO, as marketing holds operational supremacy.",
+        "The DPO must have a direct reporting line to top management (e.g., CEO/Board).",
+        "The DPO must immediately resign and report the CMO to the police.",
+        "The DPO can only report findings directly to the National Privacy Commission."
+      ],
+      "correct_answer": "The DPO must have a direct reporting line to top management (e.g., CEO/Board).",
+      "explanation": "To prevent suppression by operational heads, the DPO must be autonomous and report directly to the highest level of management, ensuring that compliance risks cannot be buried by middle management."
+    },
+    {
+      "id": 1090,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 8: DPO",
+        "Liability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Personal Liability of DPO",
+      "question_text": "A DPO provides correct legal advice to the Board regarding a critical patch. The Board ignores the advice to save money, resulting in a breach. Is the DPO criminally liable under Section 34?",
+      "options": [
+        "Yes, the DPO is strictly liable for any breach that occurs under their watch.",
+        "No, the Board assumes liability; the DPO is an advisor, not the decision-maker.",
+        "Yes, but the DPO's penalty is automatically reduced by fifty percent.",
+        "No, because DPOs possess absolute diplomatic immunity from prosecution."
+      ],
+      "correct_answer": "No, the Board assumes liability; the DPO is an advisor, not the decision-maker.",
+      "explanation": "The DPO acts as an independent advisor and auditor. If they execute their duties properly but executive management (the responsible officers) ignores their advice, criminal liability falls on the grossly negligent executives, not the DPO."
+    },
+    {
+      "id": 1091,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 9: Security",
+        "Technical Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Encryption Safe Harbor Fail",
+      "question_text": "A stolen corporate laptop contains an AES-256 encrypted database. However, the decryption key was saved in a plaintext cache file on the same hard drive. Does the encryption safe harbor apply?",
+      "options": [
+        "Yes, because AES-256 satisfies the highest technical standard for encryption.",
+        "No, poor key management compromises the data, voiding the safe harbor.",
+        "Yes, provided the laptop required a basic Windows login password.",
+        "No, safe harbor requires data to be stored on physical paper records."
+      ],
+      "correct_answer": "No, poor key management compromises the data, voiding the safe harbor.",
+      "explanation": "The encryption safe harbor strictly requires that the data remains unintelligible. Storing the cryptographic key insecurely alongside the ciphertext compromises the entire system, creating a real risk of harm and voiding the exemption."
+    },
+    {
+      "id": 1092,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 9: Security",
+        "Physical Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Clean Desk Policy",
+      "question_text": "An HR department uses state-of-the-art firewalls but allows staff to leave employee medical files openly on cafeteria tables during lunch. Which specific security pillar has catastrophically failed?",
+      "options": [
+        "Technical Security Measures.",
+        "Physical Security Measures.",
+        "Organizational Security Measures.",
+        "Environmental Security Measures."
+      ],
+      "correct_answer": "Physical Security Measures.",
+      "explanation": "Protecting manual filing systems, controlling physical access to workspaces, and enforcing 'clean desk' policies to prevent unauthorized visual access to documents falls squarely under Physical Security Measures."
+    },
+    {
+      "id": 1093,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 9: Security",
+        "Organizational Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Background Checks",
+      "question_text": "A bank installs biometric locks and advanced encryption but hires temporary contractors without conducting background checks to handle highly sensitive financial data. Which pillar failed?",
+      "options": [
+        "Technical Security Measures.",
+        "Physical Security Measures.",
+        "Organizational Security Measures.",
+        "Systemic Security Measures."
+      ],
+      "correct_answer": "Organizational Security Measures.",
+      "explanation": "Organizational measures involve human resource policies, privacy training, confidentiality agreements, and background vetting. Allowing unvetted personnel to handle SPI is a severe organizational security failure."
+    },
+    {
+      "id": 1094,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 9: Security",
+        "Technical Measures",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Access Logs and Auditing",
+      "question_text": "A hospital database is highly encrypted, but all 500 nurses share a single generic login ('nurse_admin') to access it. Why does this severely violate Technical Security Measures?",
+      "options": [
+        "Because passwords must be changed every 24 hours under the DPA.",
+        "Because it destroys access control and accountability; individual auditing is impossible.",
+        "Because hospital databases must be kept completely offline without logins.",
+        "It does not violate anything provided the password is highly complex."
+      ],
+      "correct_answer": "Because it destroys access control and accountability; individual auditing is impossible.",
+      "explanation": "Technical security requires robust access controls. Utilizing a shared generic login makes it technically impossible to track, audit, or hold specific individuals accountable for unauthorized access or data exfiltration."
+    },
+    {
+      "id": 1095,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 10: Compliance",
+        "PIA",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Mandatory Triggers",
+      "question_text": "A local government unit prepares to roll out a city-wide facial recognition CCTV network linked to citizen databases. Under the 5 Pillars, what MUST be executed before deployment?",
+      "options": [
+        "A comprehensive Financial Cost-Benefit Analysis.",
+        "A Privacy Impact Assessment (PIA) to evaluate the high-risk processing of SPI.",
+        "A mandatory public referendum voted on by all city residents.",
+        "An immediate submission of the Annual Security Incident Report (ASIR)."
+      ],
+      "correct_answer": "A Privacy Impact Assessment (PIA) to evaluate the high-risk processing of SPI.",
+      "explanation": "Deploying high-risk, large-scale processing systems involving Sensitive Personal Information (biometrics) mandates the proactive execution of a documented Privacy Impact Assessment to identify and mitigate risks prior to implementation."
+    },
+    {
+      "id": 1096,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 10: Compliance",
+        "PMP",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Scope of the Privacy Management Program",
+      "question_text": "A startup writes a 2-page Privacy Notice for its website and claims they have completed their Privacy Management Program (PMP). Why is this assertion fundamentally incorrect?",
+      "options": [
+        "A PMP must be at least 100 pages long to be legally valid.",
+        "A Privacy Notice is an external statement; a PMP is a comprehensive internal framework.",
+        "A PMP is only required for entities with over 1,000 employees.",
+        "The PMP must be physically signed by the National Privacy Commissioner."
+      ],
+      "correct_answer": "A Privacy Notice is an external statement; a PMP is a comprehensive internal framework.",
+      "explanation": "A Privacy Notice only fulfills Transparency. A PMP is the holistic, internal organizational framework encompassing policies, risk assessments, training, and continuous compliance monitoring that governs the entire enterprise."
+    },
+    {
+      "id": 1097,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 10: Compliance",
+        "5 Pillars",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Sequencing the Pillars",
+      "question_text": "A company wants to implement Data Protection Measures (Pillar 4) but hasn't conducted a Privacy Impact Assessment (Pillar 2). Why is this procedurally flawed?",
+      "options": [
+        "Because Pillar 4 requires a direct API link to the NPC servers.",
+        "Because without a PIA identifying specific risks, protection measures are blind guesses.",
+        "Because Pillar 2 involves paying the mandatory government compliance taxes.",
+        "It is not flawed; the pillars can be completed in any random order."
+      ],
+      "correct_answer": "Because without a PIA identifying specific risks, protection measures are blind guesses.",
+      "explanation": "The 5 Pillars are logically sequenced. A PIC cannot effectively implement technical or organizational security measures (Pillar 4) without first conducting a PIA (Pillar 2) to identify where the actual data risks lie."
+    },
+    {
+      "id": 1098,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 11: Requirements",
+        "Breach Reporting",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "DBNMS Exclusivity",
+      "question_text": "At hour 71, a DPO experiences an internet outage. They print the breach report and have a courier deliver it physically to the NPC lobby, receiving a timestamp. Is this compliant?",
+      "options": [
+        "Yes, physical delivery with a timestamp represents the highest compliance standard.",
+        "No, the NPC mandates exclusive use of the DBNMS portal for breach submissions.",
+        "Yes, provided they email a digital PDF copy the following business day.",
+        "No, because motorcycle couriers are not legally authorized officers of the court."
+      ],
+      "correct_answer": "No, the NPC mandates exclusive use of the DBNMS portal for breach submissions.",
+      "explanation": "To streamline oversight, the NPC established the Data Breach Notification Management System (DBNMS) as the exclusive, mandatory interface for submissions. Physical or ad-hoc email deliveries are procedurally non-compliant."
+    },
+    {
+      "id": 1099,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 11: Requirements",
+        "ASIR",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Zero Incident Mandate",
+      "question_text": "A registered corporation implements flawless security and experiences absolutely zero incidents, breaches, or blocked attacks all year. What must they file for their ASIR?",
+      "options": [
+        "They are entirely exempt from filing an ASIR for that calendar year.",
+        "They must formally submit an ASIR declaring zero incidents via the DBNMS.",
+        "They only need to send a brief email to the NPC compliance desk.",
+        "They must undergo an expensive physical audit to verify the zero incidents."
+      ],
+      "correct_answer": "They must formally submit an ASIR declaring zero incidents via the DBNMS.",
+      "explanation": "The Annual Security Incident Report (ASIR) is a mandatory compliance requirement for registered entities. Even if a company has a perfect record, they must formally file the report to declare zero incidents."
+    },
+    {
+      "id": 1100,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 11: Requirements",
+        "Breach Reporting",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "5-Day Full Report Extension",
+      "question_text": "A DPO submits the preliminary 72-hour report but realizes complex forensics will take 10 more days, exceeding the 5-day deadline for the Full Breach Report. What must they do?",
+      "options": [
+        "Wait silently until forensics complete, then submit the massive final report.",
+        "Proactively submit a formal written request for an extension before the 5 days expire.",
+        "Retract the preliminary notification and entirely restart the 72-hour clock.",
+        "Submit the report to the Department of Information and Communications Technology."
+      ],
+      "correct_answer": "Proactively submit a formal written request for an extension before the 5 days expire.",
+      "explanation": "NPC Circular 16-03 strictly requires the Full Breach Report within 5 days of the preliminary notice. If impossible, the PIC must formally request an extension from the NPC, detailing the forensic delays, before the deadline lapses."
+    },
+    {
+      "id": 1101,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 2: Concepts",
+        "Topic 1",
+        "Scope",
+        "Extraterritoriality",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Extraterritorial application based on data subject residency.",
+      "question_text": "An offshore company with no local branches processes the data of foreign nationals temporarily residing in Manila. Does the Philippine DPA apply to this processing?",
+      "options": [
+        "No, the DPA strictly protects only Philippine citizens.",
+        "Yes, the DPA applies to data relating to Philippine residents.",
+        "No, offshore companies are immune without local equipment.",
+        "Yes, but only if the data is processed on local servers."
+      ],
+      "correct_answer": "Yes, the DPA applies to data relating to Philippine residents.",
+      "explanation": "Section 6 extends jurisdiction to acts relating to personal information about Philippine citizens OR residents, regardless of the PIC's offshore status or lack of local equipment."
+    },
+    {
+      "id": 1102,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 1",
+        "Exceptions",
+        "Journalism",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Journalistic exemption limits.",
+      "question_text": "A corporate intelligence firm sells deep-dive background checks on politicians exclusively to paying subscribers. They claim the journalistic exemption under Section 4. Is this valid?",
+      "options": [
+        "Yes, politicians are public figures exempt from privacy.",
+        "No, the processing must be intended for the general public.",
+        "Yes, financial intelligence qualifies as protected journalism.",
+        "No, because political data is Sensitive Personal Information."
+      ],
+      "correct_answer": "No, the processing must be intended for the general public.",
+      "explanation": "The journalistic exemption only applies when processing is exclusively for journalistic purposes intended for the general public, not for private, paywalled commercial intelligence."
+    },
+    {
+      "id": 1103,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 1",
+        "Exceptions",
+        "Public Officers",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Discretionary vs mandatory benefits.",
+      "question_text": "A citizen files an FOI request for the addresses of all SSS pensioners, citing the DPA exemption for 'discretionary financial benefits'. Will the DPA protect the pensioners' data?",
+      "options": [
+        "No, all government disbursements are considered discretionary.",
+        "Yes, standard SSS pensions are not discretionary benefits.",
+        "No, FOI requests automatically override DPA protections.",
+        "Yes, but the agency must blur the pensioners' last names."
+      ],
+      "correct_answer": "Yes, standard SSS pensions are not discretionary benefits.",
+      "explanation": "Section 4(c) exempts discretionary benefits (like specific grants). Routine, legally mandated benefits like standard pensions remain fully protected by the DPA."
+    },
+    {
+      "id": 1104,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 2: Concepts",
+        "Topic 1",
+        "Exceptions",
+        "Research",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Voiding the research exemption.",
+      "question_text": "A university conducts exempt medical research. They secretly use the findings to expel students flagged with severe genetic risks. What happens to their DPA exemption?",
+      "options": [
+        "It is maintained because the research was originally lawful.",
+        "It is voided because the data directly affected the subjects.",
+        "It is maintained because universities hold academic freedom.",
+        "It is voided because genetic data cannot be used in research."
+      ],
+      "correct_answer": "It is voided because the data directly affected the subjects.",
+      "explanation": "The research exemption is instantly nullified if the processed data is subsequently used to make decisions that directly affect the specific data subjects."
+    },
+    {
+      "id": 1105,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 1",
+        "Exceptions",
+        "BPO Provision",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Processing foreign data under foreign laws.",
+      "question_text": "A Philippine BPO processes German citizens' data under GDPR rules. A German citizen sues the BPO before the NPC for administrative DPA fines. How will the NPC respond?",
+      "options": [
+        "The NPC will assert jurisdiction due to the BPO's location.",
+        "The NPC will dismiss it, as the data is excluded under Sec 4(g).",
+        "The NPC will fine the BPO jointly with EU regulators.",
+        "The NPC will apply GDPR standards in a local trial."
+      ],
+      "correct_answer": "The NPC will dismiss it, as the data is excluded under Sec 4(g).",
+      "explanation": "Section 4(g) explicitly excludes data originally collected from residents of foreign jurisdictions in accordance with foreign laws, protecting local BPOs from dual compliance."
+    },
+    {
+      "id": 1106,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 2",
+        "Roles",
+        "Joint Controllers",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Solidary liability between Joint PICs.",
+      "question_text": "Company A and B are Joint PICs. Company A's secure server is bypassed due to Company B's leaked admin credentials. A victim sues Company A. Is Company A liable?",
+      "options": [
+        "No, liability rests solely on the party that leaked credentials.",
+        "Yes, Joint PICs share solidary liability for the whole system.",
+        "No, Company A is protected by demonstrating technical security.",
+        "Yes, but Company A is only liable for exactly half the damages."
+      ],
+      "correct_answer": "Yes, Joint PICs share solidary liability for the whole system.",
+      "explanation": "Joint Controllers share legal accountability. Data subjects can claim full damages against any joint controller, regardless of whose specific failure caused the breach."
+    },
+    {
+      "id": 1107,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 2",
+        "Roles",
+        "PIP Restrictions",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Unlawful assumption of PIC role.",
+      "question_text": "A contracted PIP uses its client's encrypted database to train its own proprietary threat-detection AI without permission. What is the legal implication for the PIP?",
+      "options": [
+        "They remain a PIP but violate their Service Level Agreement.",
+        "They unlawfully assume the role of an independent PIC.",
+        "They automatically become a Joint Controller with the client.",
+        "They are legally exempt under the DPA research provision."
+      ],
+      "correct_answer": "They unlawfully assume the role of an independent PIC.",
+      "explanation": "By independently determining a new purpose (AI training) for the personal data, the vendor exceeds their PIP mandate and acts as an unauthorized PIC."
+    },
+    {
+      "id": 1108,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 2",
+        "Roles",
+        "Accountability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Subcontractor liability chains.",
+      "question_text": "A PIC authorizes its PIP to hire a Sub-PIP for database hosting. The Sub-PIP is hacked. Who is primarily accountable to the data subjects and the NPC?",
+      "options": [
+        "The Sub-PIP, because they committed the technical error.",
+        "The PIC, as they retain ultimate statutory accountability.",
+        "The primary PIP, because they executed the sub-contract.",
+        "All three entities share the exact same level of liability."
+      ],
+      "correct_answer": "The PIC, as they retain ultimate statutory accountability.",
+      "explanation": "The PIC is the custodian of the data. Accountability cannot be delegated away; the PIC remains primarily liable to the subjects and must seek civil restitution from the PIPs later."
+    },
+    {
+      "id": 1109,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 2",
+        "Roles",
+        "Data Subject",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Juridical entities vs Natural persons.",
+      "question_text": "A hacker leaks the financial ledgers of a registered One Person Corporation (OPC) and a Sole Proprietorship. Which entity can claim Data Subject rights under the DPA?",
+      "options": [
+        "Both entities, as they are owned by single individuals.",
+        "Only the Sole Proprietorship, as it is a natural person.",
+        "Only the OPC, as it is registered with the government.",
+        "Neither entity, as businesses lack personal privacy rights."
+      ],
+      "correct_answer": "Only the Sole Proprietorship, as it is a natural person.",
+      "explanation": "An OPC is a juridical entity and cannot be a Data Subject. A Sole Proprietorship is legally inseparable from its human owner, granting them standing as a natural person."
+    },
+    {
+      "id": 1110,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 2",
+        "Roles",
+        "NPC Powers",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Limits of quasi-judicial authority.",
+      "question_text": "Data subjects petition the NPC to issue an arrest warrant against a grossly negligent CEO after a major breach. Does the NPC have the authority to issue this warrant?",
+      "options": [
+        "Yes, the NPC holds supreme judicial power in privacy cases.",
+        "No, only regular trial courts can constitutionally issue warrants.",
+        "Yes, provided the Department of Justice explicitly co-signs it.",
+        "No, the NPC can only issue warrants for administrative fines."
+      ],
+      "correct_answer": "No, only regular trial courts can constitutionally issue warrants.",
+      "explanation": "The NPC is an administrative agency with quasi-judicial powers. The power to issue search or arrest warrants is constitutionally reserved exclusively for regular trial court judges."
+    },
+    {
+      "id": 1111,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 3",
+        "Principles",
+        "Legitimate Purpose",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Lawfulness of the objective.",
+      "question_text": "A corporation creates a database to track and blacklist union organizers, violating the Labor Code. They obtain signed consent forms from informants. Is this lawful?",
+      "options": [
+        "Yes, explicit consent overrides general processing principles.",
+        "No, the objective must not be contrary to law or public policy.",
+        "Yes, protecting corporate stability is a Legitimate Interest.",
+        "No, blacklists must be maintained strictly in manual files."
+      ],
+      "correct_answer": "No, the objective must not be contrary to law or public policy.",
+      "explanation": "Legitimate Purpose requires that the processing objective is lawful. Processing data to facilitate an illegal act (union busting) voids the purpose, rendering it unlawful despite consent."
+    },
+    {
+      "id": 1112,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 3",
+        "Principles",
+        "Transparency",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Dark patterns and UI manipulation.",
+      "question_text": "An app forces users to navigate three confusing sub-menus to decline tracking, while the 'Accept All' button is massive and green. Which principle is primarily violated?",
+      "options": [
+        "The Principle of Data Portability.",
+        "The Principle of Fairness and Transparency via dark patterns.",
+        "The Principle of Privacy by Default.",
+        "The Principle of Legitimate Interest."
+      ],
+      "correct_answer": "The Principle of Fairness and Transparency via dark patterns.",
+      "explanation": "NPC Circular 2023-04 mandates Fairness in consent. Using deceptive UI (dark patterns) to manipulate or exhaust a user destroys the 'freely given' requirement of consent."
+    },
+    {
+      "id": 1113,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 3",
+        "Principles",
+        "Proportionality",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Just-in-case data collection.",
+      "question_text": "An employer collects the full medical histories of job applicants' spouses during the initial resume screening 'just in case' they are hired and need insurance. Is this compliant?",
+      "options": [
+        "Yes, proactive corporate planning justifies the collection.",
+        "No, collecting SPI for hypothetical future use is disproportionate.",
+        "Yes, provided the data is encrypted upon HR receipt.",
+        "No, employers are completely banned from collecting medical data."
+      ],
+      "correct_answer": "No, collecting SPI for hypothetical future use is disproportionate.",
+      "explanation": "Proportionality demands data minimization. Collecting highly sensitive data prematurely for a scenario that may never happen is excessive and violates the principle."
+    },
+    {
+      "id": 1114,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 3",
+        "Principles",
+        "Accountability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Privacy by Design implementation.",
+      "question_text": "A development team launches a healthcare app without encryption, planning to implement security patches six months later. Which core accountability concept is violated?",
+      "options": [
+        "The Principle of Data Portability.",
+        "Privacy by Design, requiring embedded security from the start.",
+        "The Doctrine of Legitimate Interest.",
+        "The Principle of Active Transparency."
+      ],
+      "correct_answer": "Privacy by Design, requiring embedded security from the start.",
+      "explanation": "Accountability requires proactive engineering. Privacy by Design mandates that data protection measures be integrated into the system architecture from day one, not bolted on later."
+    },
+    {
+      "id": 1115,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 3",
+        "Principles",
+        "Fairness",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Consent coercion via service withholding.",
+      "question_text": "A telecom provider forces subscribers to agree to a third-party marketing data-sharing clause; otherwise, they cannot activate their cellular service. Why is this consent invalid?",
+      "options": [
+        "Marketing data belongs exclusively to the national government.",
+        "Bundling essential services with unnecessary processing is coercive.",
+        "The service contract was not notarized by a legal officer.",
+        "It is valid because the user voluntarily purchased the SIM card."
+      ],
+      "correct_answer": "Bundling essential services with unnecessary processing is coercive.",
+      "explanation": "Consent must be granular and freely given. Tying the provision of an essential service to the mandatory acceptance of unrelated, intrusive processing destroys genuine choice."
+    },
+    {
+      "id": 1116,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4",
+        "Rights",
+        "Erasure vs Legal Obligation",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Statutory retention overrides.",
+      "question_text": "A former customer demands the absolute erasure of their tax invoices under the DPA. The business refuses, citing BIR rules requiring a 10-year retention. Who is legally correct?",
+      "options": [
+        "The customer, because the DPA supersedes the internal Tax Code.",
+        "The business, because statutory mandates override the Right to Erasure.",
+        "The customer, provided they pay an early deletion penalty fee.",
+        "The business, but they must transfer the invoices to the NPC."
+      ],
+      "correct_answer": "The business, because statutory mandates override the Right to Erasure.",
+      "explanation": "Data subject rights are not absolute. A PIC must lawfully refuse an erasure request if the retention is strictly required to comply with other statutory laws, like BIR regulations."
+    },
+    {
+      "id": 1117,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4",
+        "Rights",
+        "Access vs Third Party",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Protecting whistleblower identities.",
+      "question_text": "An executive suspended for harassment invokes the Right to Access to demand the unredacted witness statements of their accusers. Must the DPO comply immediately?",
+      "options": [
+        "Yes, the Right to Access guarantees full visibility into all data.",
+        "No, access must be balanced against the safety of whistleblowers.",
+        "Yes, but only if the executive pays a corporate administrative fee.",
+        "No, HR investigation files are classified as Public Domain data."
+      ],
+      "correct_answer": "No, access must be balanced against the safety of whistleblowers.",
+      "explanation": "The Right to Access cannot be weaponized to expose vulnerable third parties. The DPO must balance rights, typically by withholding or heavily redacting whistleblower identities."
+    },
+    {
+      "id": 1118,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 4",
+        "Rights",
+        "Object vs Direct Marketing",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Absolutism of direct marketing objection.",
+      "question_text": "A user objects to a bank's promotional emails. The bank claims 'Legitimate Interest' overrides the objection because marketing sustains the business. Is the defense valid?",
+      "options": [
+        "Yes, corporate financial survival is a compelling legitimate ground.",
+        "No, the right to object to direct marketing is completely absolute.",
+        "Yes, provided the bank offers an opt-out link in the next email.",
+        "No, but the bank can legally switch to targeted SMS promotions."
+      ],
+      "correct_answer": "No, the right to object to direct marketing is completely absolute.",
+      "explanation": "Unlike standard processing where a balancing test applies, objection to direct marketing (and profiling for it) is absolute. The PIC must cease processing immediately."
+    },
+    {
+      "id": 1119,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4",
+        "Rights",
+        "Transmissibility",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Strict civil law definitions of heirs.",
+      "question_text": "A legally annulled ex-spouse discovers a hospital leaked their deceased former partner's records. Can the ex-spouse invoke Section 17 to claim damages?",
+      "options": [
+        "Yes, any former immediate family member can invoke transmissibility.",
+        "No, Section 17 strictly limits standing to lawful heirs and assigns.",
+        "Yes, provided the ex-spouse proves severe emotional distress.",
+        "No, the Right to Damages permanently expires upon physical death."
+      ],
+      "correct_answer": "No, Section 17 strictly limits standing to lawful heirs and assigns.",
+      "explanation": "Transmissibility relies on strict civil law. A legally annulled ex-spouse is not a 'lawful heir' and therefore lacks the locus standi to invoke the DPA rights of the deceased."
+    },
+    {
+      "id": 1120,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 4",
+        "Rights",
+        "Portability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Machine-readable format requirement.",
+      "question_text": "A platform complies with a Data Portability request by sending a 500-page flattened, image-based PDF of the user's data. Has the platform fulfilled the legal requirement?",
+      "options": [
+        "Yes, a PDF document legally qualifies as an electronic format.",
+        "No, the law requires a structured, machine-readable format like CSV.",
+        "Yes, provided the PDF file is securely encrypted with a password.",
+        "No, they must establish a direct API connection to a competitor."
+      ],
+      "correct_answer": "No, the law requires a structured, machine-readable format like CSV.",
+      "explanation": "Data Portability aims to prevent vendor lock-in. A flattened PDF actively defeats interoperability and violates the requirement for a structured, commonly used, machine-readable format."
+    },
+    {
+      "id": 1121,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5",
+        "Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Proceeding for an offense.",
+      "question_text": "A blog publishes court transcripts of a politician who was accused of graft but completely acquitted 10 years ago. How does the DPA classify this data?",
+      "options": [
+        "General Personal Information, as the individual was proven innocent.",
+        "Sensitive Personal Information, as it relates to an alleged offense.",
+        "Public Domain Information, because the trial ended over 5 years ago.",
+        "Privileged Information, because the documents came from a court."
+      ],
+      "correct_answer": "Sensitive Personal Information, as it relates to an alleged offense.",
+      "explanation": "Section 3(l) protects individuals by classifying any data regarding a proceeding for an offense—whether committed or merely alleged—as SPI, regardless of an eventual acquittal."
+    },
+    {
+      "id": 1122,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5",
+        "Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Government ID vs Corporate ID.",
+      "question_text": "A security log requires a Corporate Employee ID Number and a Philippine Passport Number. Under Section 3(l), how are these strictly classified?",
+      "options": [
+        "Both numbers are classified as Sensitive Personal Information.",
+        "The Corporate ID is PI; the Passport Number is SPI.",
+        "Both numbers are classified as General Personal Information.",
+        "The Corporate ID is SPI; the Passport Number is Public Domain."
+      ],
+      "correct_answer": "The Corporate ID is PI; the Passport Number is SPI.",
+      "explanation": "SPI specifically includes numbers or licenses issued by government agencies peculiar to an individual. A private company ID does not meet this statutory definition and is PI."
+    },
+    {
+      "id": 1123,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5",
+        "Classification",
+        "Privileged Information",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Rules of Court definitions.",
+      "question_text": "A husband attempts to block a subpoena for confidential emails he sent his wife, claiming they are 'Privileged Information' under the DPA. Is this correct?",
+      "options": [
+        "No, Privileged Information only applies to lawyers and doctors.",
+        "Yes, marital communications are protected under the Rules of Court.",
+        "No, digital emails cannot qualify for marital privilege under law.",
+        "Yes, but only if the emails contained highly sensitive financial data."
+      ],
+      "correct_answer": "Yes, marital communications are protected under the Rules of Court.",
+      "explanation": "Section 3(k) defines Privileged Information strictly via the Rules of Court. Because the Rules protect confidential marital communications, they are legally Privileged Information."
+    },
+    {
+      "id": 1124,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5",
+        "Classification",
+        "Personal Information",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "K-Anonymity and ascertainability.",
+      "question_text": "A dataset strips names but leaves Age, Zip Code, and a rare Diagnosis. Only one 34-year-old lives in that specific zip code. What is the classification?",
+      "options": [
+        "It is legally Anonymized Data because explicit names were removed.",
+        "It is Sensitive Personal Information because the person is ascertainable.",
+        "It is Privileged Information because it originated from a diagnosis.",
+        "It is Public Domain Information because demographic stats are public."
+      ],
+      "correct_answer": "It is Sensitive Personal Information because the person is ascertainable.",
+      "explanation": "Anonymization fails if pseudo-identifiers are unique enough to single out a person. Because the identity can be reasonably ascertained, it remains Personal Information (and SPI)."
+    },
+    {
+      "id": 1125,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 5",
+        "Classification",
+        "SPI",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Inferred Sensitive Data.",
+      "question_text": "A grocery app tracks standard food purchases and creates a hidden profile tag labeling a customer as 'Diabetic'. What is the classification of this tag?",
+      "options": [
+        "General Personal Information, as it derives from grocery items.",
+        "Sensitive Personal Information, as it categorizes health conditions.",
+        "Trade Secret, as it is a proprietary corporate analytical inference.",
+        "Anonymized Data, provided the tag is stored in a separate database."
+      ],
+      "correct_answer": "Sensitive Personal Information, as it categorizes health conditions.",
+      "explanation": "Even if derived from non-sensitive data, an explicitly inferred tag regarding a specific medical condition constitutes health data, elevating it to Sensitive Personal Information."
+    },
+    {
+      "id": 1126,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 6",
+        "Lifecycle",
+        "Acquisition",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Implied consent invalidity.",
+      "question_text": "A website's banner states: 'By continuing to scroll, you consent to data tracking.' A user scrolls to read an article. Is this valid consent?",
+      "options": [
+        "Yes, the banner explicitly stated the specific conditions of navigation.",
+        "No, consent requires an affirmative act; implied consent is invalid.",
+        "Yes, but only for the first 24 hours of the user's browsing session.",
+        "No, because banners must be written in Tagalog to be legally binding."
+      ],
+      "correct_answer": "No, consent requires an affirmative act; implied consent is invalid.",
+      "explanation": "The DPA rejects 'implied consent' derived from silence or inaction. Scrolling is not a specific, affirmative indication of will, making the consent legally void."
+    },
+    {
+      "id": 1127,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 6",
+        "Lifecycle",
+        "Use",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Incompatible secondary use.",
+      "question_text": "A hospital collects biometrics solely for identity verification during admission. They later use this data to train a commercial AI. Is this lawful?",
+      "options": [
+        "Yes, AI development is protected under the DPA research exemption.",
+        "No, training AI is an incompatible secondary purpose requiring consent.",
+        "Yes, provided the AI model remains strictly on hospital servers.",
+        "No, because biometrics can never be processed by machine learning."
+      ],
+      "correct_answer": "No, training AI is an incompatible secondary purpose requiring consent.",
+      "explanation": "Scope creep violates Legitimate Purpose. Repurposing verification biometrics to train a commercial AI model is fundamentally incompatible with the original declared purpose."
+    },
+    {
+      "id": 1128,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 6",
+        "Lifecycle",
+        "Storage",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Passive processing.",
+      "question_text": "An executive keeps a disconnected hard drive containing old employee files in a vault for five years without plugging it in. Is this 'processing'?",
+      "options": [
+        "No, processing legally requires active manipulation or viewing.",
+        "Yes, the statutory definition includes passive storage and holding.",
+        "No, data processing status expires after a three-year dormancy.",
+        "Yes, but only if the hard drive is eventually reconnected to power."
+      ],
+      "correct_answer": "Yes, the statutory definition includes passive storage and holding.",
+      "explanation": "The DPA defines processing exhaustively. Passive storage and holding of personal data, even offline, constitutes processing and is subject to security and retention rules."
+    },
+    {
+      "id": 1129,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 6",
+        "Lifecycle",
+        "Transfer",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "DSA vs Outsourcing.",
+      "question_text": "A university shares its alumni list with an independent partner bank to offer credit cards. Both determine their own purposes. What document governs this?",
+      "options": [
+        "A standard Outsourcing/Data Processing Agreement.",
+        "A formal Data Sharing Agreement (DSA) between independent PICs.",
+        "A unilateral Non-Disclosure Agreement (NDA) signed by the bank.",
+        "A Service Level Agreement (SLA) approved by the local government."
+      ],
+      "correct_answer": "A formal Data Sharing Agreement (DSA) between independent PICs.",
+      "explanation": "When two independent Personal Information Controllers share data for a new purpose, they must execute a Data Sharing Agreement, not an Outsourcing Agreement."
+    },
+    {
+      "id": 1130,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 5: Data Subject Rights",
+        "Topic 6",
+        "Lifecycle",
+        "Destruction",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Crypto-shredding for immutable systems.",
+      "question_text": "How can a company fulfill an erasure request for data stored on an immutable blockchain ledger where physical deletion is technically impossible?",
+      "options": [
+        "By permanently destroying the cryptographic keys (crypto-shredding).",
+        "By simply ignoring the request, as blockchain is completely exempt.",
+        "By paying the user a financial settlement in digital cryptocurrency.",
+        "By requesting the NPC to physically shut down the local network nodes."
+      ],
+      "correct_answer": "By permanently destroying the cryptographic keys (crypto-shredding).",
+      "explanation": "When erasure is technologically impossible, regulators accept crypto-shredding. Destroying the decryption key renders the data permanently inaccessible, satisfying the erasure principle."
+    },
+    {
+      "id": 1131,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 7",
+        "Penalties",
+        "Large Scale Threshold",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Aggregate calculation of subjects.",
+      "question_text": "A breach exposes the basic PI of 70 individuals and the SPI of 35 different individuals (105 total). Does this trigger the 'large-scale' penalty?",
+      "options": [
+        "No, because neither group independently reached the 100 threshold.",
+        "Yes, the law counts the aggregate total of affected data subjects.",
+        "No, large-scale penalties strictly require at least 1,000 subjects.",
+        "Yes, but the judge must issue separate sentences for the two groups."
+      ],
+      "correct_answer": "Yes, the law counts the aggregate total of affected data subjects.",
+      "explanation": "Section 35 dictates that a violation is large-scale if it affects 100 or more persons. The threshold is based on the aggregate total, regardless of the PI/SPI mix."
+    },
+    {
+      "id": 1132,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 7",
+        "Penalties",
+        "Concealment",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Intentional suppression of reports.",
+      "question_text": "A corporate board pays a ransom to hackers to delete stolen SPI and intentionally files no breach reports to protect their stock price. What is the crime?",
+      "options": [
+        "They are immune because paying the ransom mitigated the risk of harm.",
+        "Concealment of Security Breaches for suppressing the mandatory report.",
+        "Unauthorized Processing, because they communicated with hackers.",
+        "Improper Disposal, because they permitted hackers to delete the files."
+      ],
+      "correct_answer": "Concealment of Security Breaches for suppressing the mandatory report.",
+      "explanation": "Paying a ransom does not extinguish the statutory duty to report a qualifying breach. Intentionally hiding it from the NPC to avoid bad PR is a felony under Section 30."
+    },
+    {
+      "id": 1133,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 7",
+        "Penalties",
+        "Mala Prohibita",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Good faith defense invalidity.",
+      "question_text": "An HR clerk uses the corporate database to send personalized fundraising emails for an orphanage, with zero malicious intent. Can they be criminally convicted?",
+      "options": [
+        "No, the lack of criminal intent and charitable nature provide immunity.",
+        "Yes, DPA offenses are mala prohibita; the unauthorized act is the crime.",
+        "No, because registered charities are permanently exempt from the DPA.",
+        "Yes, but they can only be charged with Malicious Disclosure."
+      ],
+      "correct_answer": "Yes, DPA offenses are mala prohibita; the unauthorized act is the crime.",
+      "explanation": "Most DPA violations are mala prohibita. The intent behind the act is irrelevant; processing data for a completely unauthorized secondary purpose is a crime regardless of good faith."
+    },
+    {
+      "id": 1134,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 7",
+        "Penalties",
+        "Malicious Disclosure",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Truth is not a defense.",
+      "question_text": "An ex-employee posts highly accurate psychological evaluations of management on a revenge blog. In court, they argue the data is 100% true. Is this defense sound?",
+      "options": [
+        "Yes, the constitutional protection of free speech covers verifiable facts.",
+        "No, truth is not a defense; Malicious Disclosure penalizes bad faith release.",
+        "Yes, Malicious Disclosure exclusively applies to fabricated personal data.",
+        "No, but the charge must be automatically downgraded to simple negligence."
+      ],
+      "correct_answer": "No, truth is not a defense; Malicious Disclosure penalizes bad faith release.",
+      "explanation": "Unlike libel, where truth can be a defense, Section 27 penalizes the malicious exposure of personal data. The accuracy of the data makes the privacy violation more damaging."
+    },
+    {
+      "id": 1135,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 6: Penalties",
+        "Topic 7",
+        "Penalties",
+        "Double Jeopardy",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Concurrent prosecution with Cybercrime Act.",
+      "question_text": "A hacker is charged with 'Illegal Access' under the Cybercrime Act and 'Unauthorized Processing' under the DPA. Does this violate Double Jeopardy?",
+      "options": [
+        "Yes, an individual cannot be punished twice for one physical hack.",
+        "No, they penalize distinct legal elements and can proceed concurrently.",
+        "Yes, the Cybercrime Prevention Act automatically absorbs the DPA.",
+        "No, but the sentences must be served simultaneously in the same facility."
+      ],
+      "correct_answer": "No, they penalize distinct legal elements and can proceed concurrently.",
+      "explanation": "Double jeopardy does not apply when an act violates distinct statutes with different elements. The Cybercrime Act explicitly allows concurrent prosecution with other special laws."
+    },
+    {
+      "id": 1136,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 8",
+        "DPO",
+        "Reporting Lines",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Executive independence.",
+      "question_text": "A company requires the DPO to report to the Head of Marketing, who has the power to veto compliance audits. Why does this violate NPC guidelines?",
+      "options": [
+        "Marketing departments are statutorily exempt from all DPA audits.",
+        "The DPO must have independence and report directly to top management.",
+        "The DPO can only report directly to the National Privacy Commission.",
+        "The DPO must hold an equal equity share in the corporate structure."
+      ],
+      "correct_answer": "The DPO must have independence and report directly to top management.",
+      "explanation": "To ensure objective oversight, the DPO must operate autonomously and report to the highest level of management (CEO/Board), preventing operational heads from suppressing findings."
+    },
+    {
+      "id": 1137,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 8",
+        "DPO",
+        "Outsourcing",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Ultimate PIC accountability.",
+      "question_text": "A corporation outsources its DPO function to an external law firm. The firm misses a critical breach reporting deadline. Who is primarily accountable to the NPC?",
+      "options": [
+        "The external law firm, as they contractually assumed all DPO liabilities.",
+        "The corporation (PIC), because statutory accountability cannot be delegated.",
+        "Both entities are fined exactly equal amounts under shared liability.",
+        "The DTI, for failing to properly accredit the outsourced DPO agency."
+      ],
+      "correct_answer": "The corporation (PIC), because statutory accountability cannot be delegated.",
+      "explanation": "While the physical duties of a DPO can be outsourced, the statutory accountability remains entirely with the PIC. The PIC is ultimately sanctioned by the NPC."
+    },
+    {
+      "id": 1138,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 8",
+        "DPO",
+        "Liability",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "DPO as an advisory role.",
+      "question_text": "A DPO provides correct written advice to the Board regarding a patch. The Board ignores it to save money, resulting in a breach. Is the DPO criminally liable?",
+      "options": [
+        "Yes, the DPO is strictly liable for any breach occurring under their watch.",
+        "No, the Board assumes liability; the DPO is an advisor, not the decision-maker.",
+        "Yes, but the DPO's penalty is automatically reduced by fifty percent.",
+        "No, because DPOs possess absolute diplomatic immunity from prosecution."
+      ],
+      "correct_answer": "No, the Board assumes liability; the DPO is an advisor, not the decision-maker.",
+      "explanation": "The DPO is an independent advisor. If they execute their duties properly but executive management (the responsible officers) ignores their advice, criminal liability falls on the executives."
+    },
+    {
+      "id": 1139,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 8",
+        "DPO",
+        "Qualifications",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Conflict of Interest - IT",
+      "question_text": "A company designates its Head of IT Infrastructure, who designs all data flows, as the Data Protection Officer (DPO). Why does this violate Accountability?",
+      "options": [
+        "The DPO must exclusively hold a background in legal compliance, not IT.",
+        "It creates a conflict of interest; they cannot objectively audit their own designs.",
+        "The Head of IT lacks the necessary seniority to communicate with the Board.",
+        "The DPO function must always be outsourced to a third-party audit firm."
+      ],
+      "correct_answer": "It creates a conflict of interest; they cannot objectively audit their own designs.",
+      "explanation": "An executive who controls the 'means' of processing (IT architecture) cannot objectively monitor and audit their own compliance, creating a fatal conflict of interest."
+    },
+    {
+      "id": 1140,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 9",
+        "Security Measures",
+        "Technical",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Encryption safe harbor key management.",
+      "question_text": "An organization encrypts its database using AES-256 but stores the decryption key in plaintext on the same server. Has the organization achieved the 'Encryption Safe Harbor'?",
+      "options": [
+        "Yes, because AES-256 satisfies the highest technical standard for encryption.",
+        "No, improper key management renders the encryption ineffective, voiding the harbor.",
+        "Yes, provided the server itself is located in a physically secure facility.",
+        "No, safe harbor strictly requires the use of decentralized blockchain technology."
+      ],
+      "correct_answer": "No, improper key management renders the encryption ineffective, voiding the harbor.",
+      "explanation": "Encryption only provides a safe harbor if the data remains truly unintelligible. Storing the key alongside the ciphertext compromises the system, voiding the safe harbor."
+    },
+    {
+      "id": 1141,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 9",
+        "Security Measures",
+        "Physical",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Clean desk policies.",
+      "question_text": "A hospital uses advanced firewalls but allows nurses to leave patient charts openly on cafeteria tables. Which specific security pillar is failing?",
+      "options": [
+        "Technical Security Measures.",
+        "Physical Security Measures.",
+        "Organizational Security Measures.",
+        "Environmental Security Measures."
+      ],
+      "correct_answer": "Physical Security Measures.",
+      "explanation": "Protecting manual filing systems and enforcing 'clean desk' policies to prevent unauthorized visual access to physical documents falls strictly under Physical Security Measures."
+    },
+    {
+      "id": 1142,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 9",
+        "Security Measures",
+        "Organizational",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Background checks for SPI handlers.",
+      "question_text": "A bank installs biometric locks and advanced encryption but hires temporary contractors without conducting background checks to handle SPI. Which pillar failed?",
+      "options": [
+        "Technical Security Measures.",
+        "Physical Security Measures.",
+        "Organizational Security Measures.",
+        "Systemic Security Measures."
+      ],
+      "correct_answer": "Organizational Security Measures.",
+      "explanation": "Organizational measures involve HR policies, privacy training, and background vetting. Allowing unvetted personnel to handle SPI is a severe organizational security failure."
+    },
+    {
+      "id": 1143,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 9",
+        "Security Measures",
+        "Technical",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Access control and accountability.",
+      "question_text": "A hospital database is highly encrypted, but all 500 nurses share a single generic login ('nurse_admin') to access it. Why does this violate Technical Security Measures?",
+      "options": [
+        "Because passwords must be changed every 24 hours under DPA guidelines.",
+        "Because it destroys access control and accountability; individual auditing is impossible.",
+        "Because hospital databases must be kept completely offline without any logins.",
+        "It does not violate anything provided the password is highly complex and long."
+      ],
+      "correct_answer": "Because it destroys access control and accountability; individual auditing is impossible.",
+      "explanation": "Technical security requires robust access controls. Utilizing a shared generic login makes it technically impossible to track, audit, or hold specific individuals accountable."
+    },
+    {
+      "id": 1144,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 4: Lawful Criteria",
+        "Topic 10",
+        "Compliance",
+        "PIA",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Mandatory triggers for PIA.",
+      "question_text": "An LGU plans to deploy a city-wide facial recognition CCTV network. Under the 5 Pillars of Compliance, what MUST be executed before deployment?",
+      "options": [
+        "A comprehensive Financial Cost-Benefit Analysis.",
+        "A Privacy Impact Assessment (PIA) to evaluate the high-risk processing of SPI.",
+        "A mandatory public referendum voted on by all city residents.",
+        "An immediate submission of the Annual Security Incident Report (ASIR)."
+      ],
+      "correct_answer": "A Privacy Impact Assessment (PIA) to evaluate the high-risk processing of SPI.",
+      "explanation": "Deploying high-risk, large-scale processing systems involving Sensitive Personal Information (biometrics) mandates the proactive execution of a documented Privacy Impact Assessment."
+    },
+    {
+      "id": 1145,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 3: Principles",
+        "Topic 10",
+        "Compliance",
+        "PMP",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Scope of Privacy Management Program.",
+      "question_text": "A startup writes a 2-page Privacy Notice for its website and claims they have completed their Privacy Management Program (PMP). Why is this incorrect?",
+      "options": [
+        "A PMP must be at least 100 pages long to be legally valid in court.",
+        "A Privacy Notice is an external statement; a PMP is a comprehensive internal framework.",
+        "A PMP is only required for entities with over 1,000 employees.",
+        "The PMP must be physically signed by the National Privacy Commissioner."
+      ],
+      "correct_answer": "A Privacy Notice is an external statement; a PMP is a comprehensive internal framework.",
+      "explanation": "A Privacy Notice fulfills Transparency. A PMP is the holistic, internal organizational framework encompassing policies, risk assessments, and training that governs the enterprise."
+    },
+    {
+      "id": 1146,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 11",
+        "Requirements",
+        "DBNMS Exclusivity",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Submission protocols for breaches.",
+      "question_text": "At hour 71, a DPO experiences an internet outage. They print the breach report and have a courier deliver it physically to the NPC lobby. Is this compliant?",
+      "options": [
+        "Yes, physical delivery with a timestamp represents the highest compliance standard.",
+        "No, the NPC mandates exclusive use of the DBNMS portal for breach submissions.",
+        "Yes, provided they email a digital PDF copy the following business day.",
+        "No, because motorcycle couriers are not legally authorized officers."
+      ],
+      "correct_answer": "No, the NPC mandates exclusive use of the DBNMS portal for breach submissions.",
+      "explanation": "The NPC established the Data Breach Notification Management System (DBNMS) as the exclusive, mandatory interface for submissions. Physical deliveries are procedurally non-compliant."
+    },
+    {
+      "id": 1147,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 11",
+        "Requirements",
+        "ASIR",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Zero Incident Mandate.",
+      "question_text": "A registered corporation implements flawless security and experiences absolutely zero incidents or breaches all year. What must they file for their ASIR?",
+      "options": [
+        "They are entirely exempt from filing an ASIR for that calendar year.",
+        "They must formally submit an ASIR declaring zero incidents via the DBNMS.",
+        "They only need to send a brief email to the NPC compliance desk.",
+        "They must undergo an expensive physical audit to verify the zero incidents."
+      ],
+      "correct_answer": "They must formally submit an ASIR declaring zero incidents via the DBNMS.",
+      "explanation": "The Annual Security Incident Report (ASIR) is a mandatory compliance requirement for registered entities. Even with a perfect record, they must formally file to declare zero incidents."
+    },
+    {
+      "id": 1148,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 11",
+        "Requirements",
+        "Full Breach Report",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "5-Day extension mechanism.",
+      "question_text": "A DPO submits the preliminary report but realizes complex forensics will exceed the 5-day deadline for the Full Breach Report. What must they do?",
+      "options": [
+        "Wait silently until forensics complete, then submit the massive final report.",
+        "Proactively submit a formal written request for an extension before the 5 days expire.",
+        "Retract the preliminary notification and entirely restart the 72-hour clock.",
+        "Submit the report to the Department of Information and Communications Technology."
+      ],
+      "correct_answer": "Proactively submit a formal written request for an extension before the 5 days expire.",
+      "explanation": "NPC Circular 16-03 strictly requires the Full Breach Report within 5 days. If impossible, the PIC must formally request an extension from the NPC before the deadline lapses."
+    },
+    {
+      "id": 1149,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 1: Framework",
+        "Topic 11",
+        "Requirements",
+        "Registration",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "Mandatory Registration Triggers.",
+      "question_text": "Under NPC Circular 2022-04, which of the following automatically triggers mandatory registration of Data Processing Systems regardless of employee count?",
+      "options": [
+        "Employing exactly 50 regular employees.",
+        "Processing the general personal information of 1,000 or more individuals.",
+        "Gross income exceeding PHP 10 Million.",
+        "Engaging in telecommunications, banking, or healthcare sectors."
+      ],
+      "correct_answer": "Engaging in telecommunications, banking, or healthcare sectors.",
+      "explanation": "Under Circular 2022-04, mandatory registration is triggered for entities operating in critical sectors (like telecommunications, banking, healthcare) regardless of their size."
+    },
+    {
+      "id": 1150,
+      "difficulty_level": 5,
+      "tags": [
+        "Module 7: Data Breach Management",
+        "Topic 11",
+        "Requirements",
+        "Law Enforcement Delay",
+        "DPO ACE Exam"
+      ],
+      "lesson_concept": "NPC exclusive authority for postponements.",
+      "question_text": "The NBI verbally tells a DPO to delay notifying data subjects of a breach to protect a sting operation. Can the DPO lawfully delay notification based on this?",
+      "options": [
+        "Yes, law enforcement orders automatically override NPC procedural rules.",
+        "No, the PIC must formally petition the NPC, who holds exclusive statutory authority.",
+        "Yes, provided the DPO writes an internal memo documenting the verbal request.",
+        "No, the 72-hour rule can never be delayed under any circumstance."
+      ],
+      "correct_answer": "No, the PIC must formally petition the NPC, who holds exclusive statutory authority.",
+      "explanation": "A PIC cannot unilaterally delay notification based on a police request. They must petition the NPC, which is the only authority that can grant a legal exemption or postponement."
+    }
+  ]
+}

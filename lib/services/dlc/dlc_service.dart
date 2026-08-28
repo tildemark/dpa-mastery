@@ -56,19 +56,20 @@ class DlcService {
     ),
     DlcPack(
       id: 'dlc_mock_exam_simulation',
-      title: 'DPO Certification Mock Exam Simulation',
+      title: 'DPO ACE Certification Mock Exam Suite',
       description:
-          'High-stakes 50-question timed practice simulation modeled after the official NPC DPO ACE / Certification Examination. Tests comprehensive scenarios across all 7 modules.',
+          'Comprehensive 150-scenario high-difficulty exam pool modeled after the official NPC DPO ACE Exam. Generates balanced 50-question randomized mock exams with full competency diagnostics and digital certification.',
       category: 'Exam Simulation',
-      badge: 'Essential',
-      totalQuestions: 50,
-      estimatedSize: '35 KB',
+      badge: 'ACE Certification',
+      totalQuestions: 150,
+      estimatedSize: '190 KB',
       version: 1,
-      isAvailable: false,
-      statusNote: 'Simulation Pack in Preparation',
-      tags: ['Mock Exam', 'DPO Certification', 'ACE Exam Simulation'],
-      assetPath: 'docs/seeds/module7-l2.json',
-      author: 'NPC Certification Taskforce',
+      isAvailable: true,
+      statusNote: 'Ready to Install',
+      tags: ['DPO ACE', '150 Scenarios', 'Mock Exam', 'DPO Certification', 'ACE Exam Simulation'],
+      assetPath: 'assets/seeds/dlc_dpo_ace_mock_exam.json',
+      remoteUrl: 'https://dpa-mastery.sanchez.ph/seeds/dlc_dpo_ace_mock_exam.json',
+      author: 'NPC Certification Taskforce & Advisory Board',
     ),
     DlcPack(
       id: 'dlc_irr_circulars_deepdive',
@@ -109,6 +110,34 @@ class DlcService {
 
   Future<void> _saveInstalledIds(Set<String> ids) async {
     await _prefs.setStringList(_keyInstalledDlcIds, ids.toList());
+  }
+
+  /// Ensures that any DLC questions in SQLite whose pack is NOT marked as installed
+  /// in [SharedPreferences] are purged from the database.
+  Future<void> purgeUninstalledDlcQuestions() async {
+    final installed = getInstalledIds();
+
+    for (final pack in _defaultCatalog) {
+      if (!installed.contains(pack.id)) {
+        final dlcTag = 'DLC: ${pack.title}';
+        final taggedQuestions = await _db.questionDao.getQuestionsByTag(dlcTag);
+        final ids = taggedQuestions.map((q) => q.id).toSet();
+
+        if (pack.id == 'dlc_core_expansion_700') {
+          final extra = await (_db.select(_db.questions)
+                ..where((q) => q.id.isBiggerOrEqualValue(283)))
+              .get();
+          ids.addAll(extra.map((q) => q.id));
+        }
+
+        if (ids.isNotEmpty) {
+          final idList = ids.toList();
+          await (_db.delete(_db.userProgress)..where((p) => p.questionId.isIn(idList))).go();
+          await (_db.delete(_db.questionTags)..where((qt) => qt.questionId.isIn(idList))).go();
+          await (_db.delete(_db.questions)..where((q) => q.id.isIn(idList))).go();
+        }
+      }
+    }
   }
 
   /// Checks if a specific DLC is installed.
@@ -219,6 +248,57 @@ class DlcService {
     }
   }
 
+  /// Calculates the live learning progress statistics for a given DLC pack.
+  Future<DlcPackProgress> getPackProgressStats(DlcPack pack) async {
+    final dlcTag = 'DLC: ${pack.title}';
+    final taggedQuestions = await _db.questionDao.getQuestionsByTag(dlcTag);
+    final questionIds = taggedQuestions.map((q) => q.id).toSet();
+
+    if (pack.id == 'dlc_core_expansion_700') {
+      final extra = await (_db.select(_db.questions)
+            ..where((q) => q.id.isBiggerOrEqualValue(283)))
+          .get();
+      questionIds.addAll(extra.map((q) => q.id));
+    }
+
+    if (questionIds.isEmpty) {
+      return DlcPackProgress(
+        total: pack.totalQuestions,
+        unlearned: pack.totalQuestions,
+        apprentice: 0,
+        guruPlus: 0,
+      );
+    }
+
+    final idList = questionIds.toList();
+    final progressRows = await (_db.select(_db.userProgress)
+          ..where((p) => p.questionId.isIn(idList)))
+        .get();
+
+    final progressMap = {for (final p in progressRows) p.questionId: p.srsStage};
+    int apprentice = 0;
+    int guruPlus = 0;
+    int unlearned = 0;
+
+    for (final qId in questionIds) {
+      final stage = progressMap[qId] ?? 0;
+      if (stage == 0) {
+        unlearned++;
+      } else if (stage >= 1 && stage <= 4) {
+        apprentice++;
+      } else if (stage >= 5) {
+        guruPlus++;
+      }
+    }
+
+    return DlcPackProgress(
+      total: questionIds.length,
+      unlearned: unlearned,
+      apprentice: apprentice,
+      guruPlus: guruPlus,
+    );
+  }
+
   /// Uninstalls / deactivates a DLC pack identifier and removes its questions from the database.
   Future<void> uninstallPack(String dlcId) async {
     final current = getInstalledIds();
@@ -243,9 +323,20 @@ class DlcService {
 
     final dlcTag = 'DLC: ${pack.title}';
     final taggedQuestions = await _db.questionDao.getQuestionsByTag(dlcTag);
-    if (taggedQuestions.isNotEmpty) {
-      final ids = taggedQuestions.map((q) => q.id).toList();
-      await (_db.delete(_db.questions)..where((q) => q.id.isIn(ids))).go();
+    final ids = taggedQuestions.map((q) => q.id).toSet();
+
+    if (dlcId == 'dlc_core_expansion_700') {
+      final extra = await (_db.select(_db.questions)
+            ..where((q) => q.id.isBiggerOrEqualValue(283)))
+          .get();
+      ids.addAll(extra.map((q) => q.id));
+    }
+
+    if (ids.isNotEmpty) {
+      final idList = ids.toList();
+      await (_db.delete(_db.userProgress)..where((p) => p.questionId.isIn(idList))).go();
+      await (_db.delete(_db.questionTags)..where((qt) => qt.questionId.isIn(idList))).go();
+      await (_db.delete(_db.questions)..where((q) => q.id.isIn(idList))).go();
     }
   }
 

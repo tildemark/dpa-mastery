@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../db/app_database.dart';
 import '../../engine/mock_exam_service.dart';
 import '../../main.dart';
+import '../../services/settings_service.dart';
 import '../cram/cram_screen.dart';
 
 class MockExamScreen extends ConsumerStatefulWidget {
@@ -21,6 +23,7 @@ class MockExamScreen extends ConsumerStatefulWidget {
 
 class _MockExamScreenState extends ConsumerState<MockExamScreen> {
   List<Question>? _questions;
+  Map<int, List<String>> _questionOptions = {};
   int _currentIndex = 0;
   final Map<int, String> _answers = {}; // questionId -> selectedOption
   final Set<int> _flaggedQuestionIds = {};
@@ -47,12 +50,25 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
 
   Future<void> _loadExam() async {
     final db = ref.read(dbProvider);
+    final settings = ref.read(settingsServiceProvider);
     final service = MockExamService(db);
     final list = await service.generateMockExam(count: 50);
+
+    final optionsMap = <int, List<String>>{};
+    for (final q in list) {
+      final raw = (jsonDecode(q.optionsJson) as List).cast<String>();
+      final opts = List<String>.from(raw);
+      if (settings.shuffleOptions) {
+        final random = Random(DateTime.now().microsecondsSinceEpoch + q.id);
+        opts.shuffle(random);
+      }
+      optionsMap[q.id] = opts;
+    }
 
     if (mounted) {
       setState(() {
         _questions = list;
+        _questionOptions = optionsMap;
         _isLoading = false;
       });
       _startTimer();
@@ -168,7 +184,7 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
     }
 
     final q = _questions![_currentIndex];
-    final options = (jsonDecode(q.optionsJson) as List).cast<String>();
+    final options = _questionOptions[q.id] ?? (jsonDecode(q.optionsJson) as List).cast<String>();
     final selectedOption = _answers[q.id];
     final isFlagged = _flaggedQuestionIds.contains(q.id);
 
@@ -562,6 +578,71 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
             }),
             const SizedBox(height: 24),
 
+            // Badges & Certificate of Achievement (if passed)
+            if (passed) ...[
+              Container(
+                padding: const EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFD97706), Color(0xFFB45309)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFFD97706).withAlpha(60),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 28),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                res.scorePercentage >= 90.0 ? 'Honors Distinction Earned!' : 'Official Simulation Credential',
+                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+                              ),
+                              Text(
+                                res.scorePercentage >= 90.0
+                                    ? 'Scored ≥90% — Verified High-Honor Competency'
+                                    : 'Validated DPO ACE Mock Exam Competency',
+                                style: const TextStyle(fontSize: 11.5, color: Colors.white70),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 14),
+                    FilledButton.icon(
+                      onPressed: () => _showCertificateDialog(context, res),
+                      icon: const Icon(Icons.card_membership_rounded, color: Color(0xFF78350F)),
+                      label: const Text(
+                        'View DPO ACE Simulation Certificate',
+                        style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF78350F)),
+                      ),
+                      style: FilledButton.styleFrom(
+                        backgroundColor: const Color(0xFFFEF3C7),
+                        minimumSize: const Size.fromHeight(44),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
+
             // Drill Weak Modules Button
             if (res.missedQuestions.isNotEmpty) ...[
               FilledButton.icon(
@@ -593,6 +674,103 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  void _showCertificateDialog(BuildContext context, MockExamResult res) {
+    final settings = ref.read(settingsServiceProvider);
+    final isHonors = res.scorePercentage >= 90.0;
+    final dateStr = DateTime.now().toLocal().toString().split(' ')[0];
+
+    showDialog(
+      context: context,
+      builder: (ctx) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: const Color(0xFF0F172A),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: const Color(0xFFF59E0B), width: 3),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.verified_user_rounded, color: Color(0xFFF59E0B), size: 48),
+              const SizedBox(height: 8),
+              const Text(
+                'CERTIFICATE OF MASTERY',
+                style: TextStyle(
+                  color: Color(0xFFF59E0B),
+                  fontWeight: FontWeight.w900,
+                  fontSize: 16,
+                  letterSpacing: 2.0,
+                ),
+              ),
+              const Text(
+                'DPO ACE CERTIFICATION SIMULATION',
+                style: TextStyle(color: Colors.white70, fontSize: 11, fontWeight: FontWeight.bold, letterSpacing: 1.0),
+              ),
+              const Divider(color: Color(0xFFF59E0B), height: 24, thickness: 1),
+              const Text(
+                'This is to certify that',
+                style: TextStyle(color: Colors.white60, fontSize: 12, fontStyle: FontStyle.italic),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                settings.userName,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'has successfully passed the comprehensive 50-question simulation with a verified score of ${res.scorePercentage.toStringAsFixed(1)}% (${res.correctCount}/${res.totalQuestions})${isHonors ? " • WITH HONORS DISTINCTION" : ""}.',
+                style: const TextStyle(color: Colors.white70, fontSize: 12, height: 1.4),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1E293B),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Date: $dateStr', style: const TextStyle(fontSize: 11, color: Colors.white60)),
+                    Text(
+                      'ID: ACE-${DateTime.now().millisecondsSinceEpoch.toString().substring(5)}',
+                      style: const TextStyle(fontSize: 11, color: Color(0xFFF59E0B), fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 14),
+              const Text(
+                'Educational Simulation Record • Philippine Data Privacy Act (RA 10173) Framework\n*Diagnostic training credential only. Not an official government license issued by the NPC.',
+                style: TextStyle(fontSize: 9, color: Colors.white38, height: 1.3),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 18),
+              FilledButton(
+                onPressed: () => Navigator.of(ctx).pop(),
+                style: FilledButton.styleFrom(
+                  backgroundColor: const Color(0xFFF59E0B),
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                ),
+                child: const Text('Close Certificate', style: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
         ),
       ),
     );

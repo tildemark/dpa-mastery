@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../main.dart';
+import 'home_providers.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Model
@@ -69,12 +70,13 @@ const _kModules = [
 // Provider
 // ─────────────────────────────────────────────────────────────────────────────
 
-/// Live stream of [ModuleMasteryData] for all 7 modules.
+/// Live stream of [ModuleMasteryData] for all 7 modules, respecting the active [DashboardScope].
 ///
-/// Re-fires whenever [UserProgress] changes (after lessons or reviews).
+/// Re-fires whenever [UserProgress] or active [DashboardScope] changes.
 final moduleMasteryStreamProvider =
     StreamProvider.autoDispose<List<ModuleMasteryData>>((ref) {
   final db = ref.watch(dbProvider);
+  final scope = ref.watch(dashboardScopeProvider);
 
   return db.select(db.userProgress).watch().asyncMap((_) async {
     // Snapshot all tables once per change event.
@@ -82,6 +84,13 @@ final moduleMasteryStreamProvider =
     final allQuestions = await db.select(db.questions).get();
     final allQuestionTags = await db.select(db.questionTags).get();
     final allTags = await db.select(db.tags).get();
+
+    // Filter questions based on scope
+    final filteredQuestions = switch (scope) {
+      DashboardScope.core => allQuestions.where((q) => q.id <= 282).toList(),
+      DashboardScope.dlc => allQuestions.where((q) => q.id > 282).toList(),
+      DashboardScope.all => allQuestions,
+    };
 
     // Build lookups.
     final tagNameById = {for (final t in allTags) t.id: t.name};
@@ -105,7 +114,7 @@ final moduleMasteryStreamProvider =
     final apprenticeCounts = <int, int>{for (final (n, _, _) in _kModules) n: 0};
     final guruCounts = <int, int>{for (final (n, _, _) in _kModules) n: 0};
 
-    for (final q in allQuestions) {
+    for (final q in filteredQuestions) {
       final stage = progressByQid[q.id] ?? 0;
       final mods = modulesForQuestion[q.id];
       if (mods == null || mods.isEmpty) continue;

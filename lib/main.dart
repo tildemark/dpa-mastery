@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'db/app_database.dart';
+import 'services/app_time.dart';
 import 'services/seed_loader.dart';
 import 'services/ota_sync_service.dart';
 import 'services/settings_service.dart';
@@ -16,14 +17,15 @@ Future<void> main() async {
 
   final db = AppDatabase();
   final prefs = await SharedPreferences.getInstance();
+  AppTime.init(prefs);
   final seedLoader = SeedLoader(db);
   final otaSync = OtaSyncService(
     seedLoader: seedLoader,
     manifestUrl: _manifestUrl,
   );
 
-  // Load bundled seed assets on cold launch (upsert — safe to repeat).
-  await seedLoader.loadBundledSeeds();
+  // Load bundled seed assets on cold launch (upsert — safe to repeat) and purge uninstalled DLC.
+  await seedLoader.loadBundledSeeds(prefs: prefs);
 
   // Attempt OTA sync in the background.
   otaSync.checkAndSync().then((result) {

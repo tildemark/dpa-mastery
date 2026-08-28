@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' show Value;
 
 import '../db/app_database.dart';
+import '../services/app_time.dart';
 
 /// WaniKani-style SRS engine for DPA Mastery.
 ///
@@ -68,7 +69,7 @@ class SrsEngine {
   static DateTime? calcNextReviewTime(int newStage) {
     final interval = intervalForStage(newStage);
     if (interval == null) return null;
-    return DateTime.now().add(interval);
+    return AppTime.now().add(interval);
   }
 
   // ─── Full answer processing ───────────────────────────────────────────────
@@ -107,7 +108,7 @@ class SrsEngine {
       questionId: Value(questionId),
       srsStage: const Value(1),
       mistakeCount: const Value(0),
-      nextReviewTime: Value(DateTime.now().add(const Duration(hours: 4))),
+      nextReviewTime: Value(AppTime.now().add(const Duration(hours: 4))),
       isLessonCompleted: const Value(true),
       isCustom: const Value(false),
     );

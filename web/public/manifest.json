@@ -1,9 +1,10 @@
 {
-  "version": 2,
-  "release_date": "2026-08-28",
+  "version": 3,
+  "release_date": "2026-08-29",
   "modules": [
     { "module": "core_bank", "url": "/seeds/core_question_bank.json", "version": 1 },
-    { "module": "dlc_core_expansion_700", "url": "/seeds/dlc_700_core_expansion.json", "version": 1 }
+    { "module": "dlc_core_expansion_700", "url": "/seeds/dlc_700_core_expansion.json", "version": 1 },
+    { "module": "dlc_mock_exam_simulation", "url": "/seeds/dlc_dpo_ace_mock_exam.json", "version": 1 }
   ]
 }
 

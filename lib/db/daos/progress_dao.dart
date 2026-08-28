@@ -1,6 +1,8 @@
 import 'package:drift/drift.dart';
 
 import '../app_database.dart';
+import '../../services/app_time.dart';
+import '../../engine/gating_service.dart';
 
 part 'progress_dao.g.dart';
 
@@ -15,7 +17,7 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
   /// - Lesson has been completed (srsStage >= 1)
   /// - nextReviewTime is in the past
   Stream<List<UserProgressData>> watchReviewQueue() {
-    final now = DateTime.now();
+    final now = AppTime.now();
     return (select(userProgress)
           ..where((p) =>
               p.isLessonCompleted.equals(true) &
@@ -24,7 +26,7 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
   }
 
   Future<List<UserProgressData>> getReviewQueue() {
-    final now = DateTime.now();
+    final now = AppTime.now();
     return (select(userProgress)
           ..where((p) =>
               p.isLessonCompleted.equals(true) &
@@ -60,7 +62,17 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
     await into(userProgress).insertOnConflictUpdate(companion);
   }
 
-  /// ─── Developer & Testing Fast-Forward Shortcuts ──────────────────────────
+  /// Counts all active reviews currently due according to [AppTime.now()].
+  Future<int> countDueReviews() async {
+    final now = AppTime.now();
+    final due = await (select(userProgress)
+          ..where((p) =>
+              p.isLessonCompleted.equals(true) &
+              p.nextReviewTime.isNotNull() &
+              p.nextReviewTime.isSmallerOrEqualValue(now)))
+        .get();
+    return due.length;
+  }
 
   /// Makes all active SRS review items due immediately (sets nextReviewTime to past).
   Future<int> makeAllReviewsDueNow() async {
@@ -68,7 +80,7 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
           ..where((p) => p.isLessonCompleted.equals(true)))
         .write(
       UserProgressCompanion(
-        nextReviewTime: Value(DateTime.now().subtract(const Duration(minutes: 1))),
+        nextReviewTime: Value(AppTime.now().subtract(const Duration(minutes: 1))),
       ),
     );
   }
@@ -81,27 +93,86 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
       await (update(userProgress)..where((row) => row.questionId.equals(p.questionId))).write(
         UserProgressCompanion(
           srsStage: Value(nextStage),
-          nextReviewTime: Value(DateTime.now().subtract(const Duration(minutes: 1))),
+          nextReviewTime: Value(AppTime.now().subtract(const Duration(minutes: 1))),
         ),
       );
     }
   }
 
-  /// Unlocks and promotes items directly to Guru (Stage 5) to test higher difficulty tiers.
-  Future<void> promoteTier1ToGuru() async {
-    final t1Questions = await (select(db.questions)..where((q) => q.difficultyLevel.equals(1))).get();
-    for (final q in t1Questions) {
+  /// Promotes all unlearned questions in a given level to Apprentice 1 (simulates passing lessons).
+  Future<int> promoteLevelToApprentice(int level) async {
+    final questions = await (select(db.questions)..where((q) => q.difficultyLevel.equals(level))).get();
+    int promoted = 0;
+    for (final q in questions) {
+      final existing = await getProgressForQuestion(q.id);
+      if (existing == null || existing.srsStage == 0) {
+        await into(userProgress).insertOnConflictUpdate(
+          UserProgressCompanion(
+            questionId: Value(q.id),
+            srsStage: const Value(1),
+            isLessonCompleted: const Value(true),
+            mistakeCount: const Value(0),
+            nextReviewTime: Value(AppTime.now().add(const Duration(hours: 4))),
+          ),
+        );
+        promoted++;
+      }
+    }
+    return promoted;
+  }
+
+  /// Promotes all questions in a given level to Guru (Stage 5) and marks next reviews.
+  Future<int> promoteLevelToGuru(int level) async {
+    final questions = await (select(db.questions)..where((q) => q.difficultyLevel.equals(level))).get();
+    for (final q in questions) {
       await into(userProgress).insertOnConflictUpdate(
         UserProgressCompanion(
           questionId: Value(q.id),
           srsStage: const Value(5),
           isLessonCompleted: const Value(true),
           mistakeCount: const Value(0),
-          nextReviewTime: Value(DateTime.now().subtract(const Duration(minutes: 1))),
+          nextReviewTime: Value(AppTime.now().add(const Duration(days: 7))),
         ),
       );
     }
+    return questions.length;
   }
+
+  /// Answers all currently due reviews correctly (+1 Stage advance for each due review item).
+  Future<int> answerAllDueReviewsCorrectly() async {
+    final now = AppTime.now();
+    final due = await (select(userProgress)
+          ..where((p) =>
+              p.isLessonCompleted.equals(true) &
+              p.nextReviewTime.isNotNull() &
+              p.nextReviewTime.isSmallerOrEqualValue(now)))
+        .get();
+
+    for (final p in due) {
+      final nextStage = (p.srsStage + 1).clamp(1, 8);
+      final nextInterval = switch (nextStage) {
+        2 => const Duration(hours: 8),
+        3 => const Duration(hours: 24),
+        4 => const Duration(hours: 48),
+        5 => const Duration(days: 7),
+        6 => const Duration(days: 14),
+        7 => const Duration(days: 30),
+        8 => null, // Burned
+        _ => const Duration(hours: 4),
+      };
+
+      await (update(userProgress)..where((row) => row.questionId.equals(p.questionId))).write(
+        UserProgressCompanion(
+          srsStage: Value(nextStage),
+          nextReviewTime: Value(nextInterval != null ? now.add(nextInterval) : null),
+        ),
+      );
+    }
+    return due.length;
+  }
+
+  /// Unlocks and promotes items directly to Guru (Stage 5) to test higher difficulty tiers.
+  Future<void> promoteTier1ToGuru() => promoteLevelToGuru(1);
 
   /// Resets all user progress records back to Stage 0 (Locked).
   Future<void> resetAllProgress() async {
@@ -215,11 +286,13 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
     int guru = 0;
     int master = 0;
     int burned = 0;
+    final progressMap = <int, int>{};
 
     for (final p in allProgress) {
+      progressMap[p.questionId] = p.srsStage;
       switch (p.srsStage) {
         case 0:
-          break; // stage-0 rows are "in-progress but not yet learned" — counted in available below
+          break;
         case 1 || 2 || 3 || 4:
           apprentice++;
           break;
@@ -235,19 +308,52 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
       }
     }
 
-    // Available = Tier-1 questions that have not been promoted to Apprentice yet.
-    // This uses the Questions table directly so it works with lazy init.
-    final tier1Total = await countTotalAtLevel(1);
-    // Count progress rows that belong to tier 1 and have been lesson-completed
-    final tier1ProgressRows = await (select(userProgress).join([
-      innerJoin(db.questions, db.questions.id.equalsExp(userProgress.questionId)),
-    ])
-          ..where(db.questions.difficultyLevel.equals(1)))
-        .get();
-    final tier1InProgress = tier1ProgressRows
-        .where((r) => r.readTable(userProgress).isLessonCompleted || r.readTable(userProgress).srsStage > 0)
-        .length;
-    final available = (tier1Total - tier1InProgress).clamp(0, tier1Total);
+    // Determine unlocked levels without calling getSrsStageCounts recursively
+    final allQuestions = await select(db.questions).get();
+    final totalByLevel = <int, int>{for (int l = 1; l <= 5; l++) l: 0};
+    final guruByLevel = <int, int>{for (int l = 1; l <= 5; l++) l: 0};
+
+    for (final q in allQuestions) {
+      final lvl = q.difficultyLevel;
+      if (lvl >= 1 && lvl <= 5) {
+        totalByLevel[lvl] = (totalByLevel[lvl] ?? 0) + 1;
+        if ((progressMap[q.id] ?? 0) >= 5) {
+          guruByLevel[lvl] = (guruByLevel[lvl] ?? 0) + 1;
+        }
+      }
+    }
+
+    final totalMastered = guru + master + burned;
+    final unlockedLevels = <int>[1];
+    for (int l = 2; l <= 5; l++) {
+      final reqGurus = switch (l) {
+        2 => 35,
+        3 => 75,
+        4 => 150,
+        5 => 250,
+        _ => 35,
+      };
+      if (totalMastered >= reqGurus) {
+        unlockedLevels.add(l);
+        continue;
+      }
+      final prevTot = totalByLevel[l - 1] ?? 0;
+      if (prevTot > 0 && ((guruByLevel[l - 1] ?? 0) / prevTot) >= 0.85) {
+        unlockedLevels.add(l);
+      } else {
+        break;
+      }
+    }
+
+    int available = 0;
+    for (final q in allQuestions) {
+      if (unlockedLevels.contains(q.difficultyLevel)) {
+        final stage = progressMap[q.id] ?? 0;
+        if (stage == 0) {
+          available++;
+        }
+      }
+    }
 
     return SrsStageCounts(
       available: available,
@@ -264,7 +370,7 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
       ..where((p) =>
           p.isLessonCompleted.equals(true) &
           p.nextReviewTime.isNotNull() &
-          p.nextReviewTime.isBiggerThanValue(DateTime.now()))
+          p.nextReviewTime.isBiggerThanValue(AppTime.now()))
       ..orderBy([(p) => OrderingTerm(expression: p.nextReviewTime)]))
       ..limit(1);
 
@@ -274,7 +380,7 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
 
   /// Returns number of items becoming reviewable in given hour intervals.
   Future<ReviewForecast> getReviewForecast() async {
-    final now = DateTime.now();
+    final now = AppTime.now();
     final in1h = now.add(const Duration(hours: 1));
     final in4h = now.add(const Duration(hours: 4));
     final in24h = now.add(const Duration(hours: 24));

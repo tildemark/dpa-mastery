@@ -44,6 +44,8 @@ final stageBreakdownProvider =
 
   bool matchesStage(int stage) {
     switch (stageName.toLowerCase()) {
+      case 'available':
+      case 'unlearned':
       case 'locked':
         return stage == 0;
       case 'apprentice':
@@ -414,6 +416,8 @@ class SrsBreakdownSheet extends ConsumerWidget {
 
   String _getStageDescription(String stage) {
     switch (stage.toLowerCase()) {
+      case 'available':
+      case 'unlearned':
       case 'locked':
         return 'Questions awaiting their first lesson (Stage 0).';
       case 'apprentice':
