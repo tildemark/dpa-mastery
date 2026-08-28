@@ -60,6 +60,49 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
     await into(userProgress).insertOnConflictUpdate(companion);
   }
 
+  /// ─── Developer & Testing Fast-Forward Shortcuts ──────────────────────────
+
+  /// Makes all active SRS review items due immediately (sets nextReviewTime to past).
+  Future<int> makeAllReviewsDueNow() async {
+    return (update(userProgress)
+          ..where((p) => p.isLessonCompleted.equals(true)))
+        .write(
+      UserProgressCompanion(
+        nextReviewTime: Value(DateTime.now().subtract(const Duration(minutes: 1))),
+      ),
+    );
+  }
+
+  /// Advances all active items to the next SRS stage and makes them due now.
+  Future<void> advanceAllSrsStages() async {
+    final all = await (select(userProgress)..where((p) => p.isLessonCompleted.equals(true))).get();
+    for (final p in all) {
+      final nextStage = (p.srsStage + 1).clamp(1, 8);
+      await (update(userProgress)..where((row) => row.questionId.equals(p.questionId))).write(
+        UserProgressCompanion(
+          srsStage: Value(nextStage),
+          nextReviewTime: Value(DateTime.now().subtract(const Duration(minutes: 1))),
+        ),
+      );
+    }
+  }
+
+  /// Unlocks and promotes items directly to Guru (Stage 5) to test higher difficulty tiers.
+  Future<void> promoteTier1ToGuru() async {
+    final t1Questions = await (select(db.questions)..where((q) => q.difficultyLevel.equals(1))).get();
+    for (final q in t1Questions) {
+      await into(userProgress).insertOnConflictUpdate(
+        UserProgressCompanion(
+          questionId: Value(q.id),
+          srsStage: const Value(5),
+          isLessonCompleted: const Value(true),
+          mistakeCount: const Value(0),
+          nextReviewTime: Value(DateTime.now().subtract(const Duration(minutes: 1))),
+        ),
+      );
+    }
+  }
+
   /// Resets all user progress records back to Stage 0 (Locked).
   Future<void> resetAllProgress() async {
     await update(userProgress).write(

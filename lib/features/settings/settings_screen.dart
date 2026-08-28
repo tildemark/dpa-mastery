@@ -223,7 +223,86 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
               },
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
+
+          // ── 2c. Developer & Testing Shortcuts ──
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: const Color(0xFF6366F1).withAlpha(20),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: const Color(0xFF6366F1).withAlpha(80)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Row(
+                  children: [
+                    Icon(Icons.bolt_rounded, color: Color(0xFF818CF8), size: 18),
+                    SizedBox(width: 8),
+                    Text(
+                      'Dev & QA Fast-Forward Shortcuts',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF818CF8)),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                const Text(
+                  'Skip realistic wait times (4h/24h/1w) to immediately test review sessions & tier gating.',
+                  style: TextStyle(fontSize: 11, color: Colors.grey),
+                ),
+                const SizedBox(height: 10),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    OutlinedButton.icon(
+                      onPressed: () async {
+                        final db = ref.read(dbProvider);
+                        final count = await db.progressDao.makeAllReviewsDueNow();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Fast-forwarded: $count reviews are due now!')),
+                          );
+                        }
+                      },
+                      icon: const Icon(Icons.timer_outlined, size: 16),
+                      label: const Text('Make Reviews Due Now', style: TextStyle(fontSize: 11)),
+                    ),
+                    OutlinedButton.icon(
+                      onPressed: () async {
+                        final db = ref.read(dbProvider);
+                        await db.progressDao.advanceAllSrsStages();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Advanced all learned items +1 Stage & made due!')),
+                          );
+                        }
+                      },
+                      icon: const Icon(Icons.fast_forward_rounded, size: 16),
+                      label: const Text('Advance +1 Stage', style: TextStyle(fontSize: 11)),
+                    ),
+                    OutlinedButton.icon(
+                      onPressed: () async {
+                        final db = ref.read(dbProvider);
+                        final settings = ref.read(settingsServiceProvider);
+                        await db.progressDao.promoteTier1ToGuru();
+                        await settings.setHighestUnlockedLevel(2);
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Promoted Tier 1 to Guru (Stage 5)! Tier 2 unlocked.')),
+                          );
+                        }
+                      },
+                      icon: const Icon(Icons.military_tech_rounded, size: 16),
+                      label: const Text('Promote Tier 1 to Guru', style: TextStyle(fontSize: 11)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
 
           // ── 3. Reset / New Profile Options ──
           Container(
