@@ -102,8 +102,24 @@ export default function HomePage() {
               <span className="dot yellow"></span>
               <span className="dot green"></span>
             </div>
-            <span className="mockup-title">DPA Mastery Dashboard — SRS Progress, Tier Gating, Mock Exam &amp; DLC Hub</span>
+            <span className="mockup-title">DPA Mastery Suite — Spaced Repetition, Tier Gating, DPO ACE Mock Exam &amp; DLC Hub</span>
           </div>
+
+          <div style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+            <img
+              src="/feature_graphic.png"
+              alt="DPA Mastery Feature Graphic"
+              width={1024}
+              height={500}
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                objectFit: 'cover',
+              }}
+            />
+          </div>
+
           <div className="mockup-body">
             <div className="mockup-stat-grid">
               <div className="mockup-stat-card apprentice">
