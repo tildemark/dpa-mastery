@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { APP_CONFIG } from './config';
 
 export default function HomePage() {
   return (
@@ -11,7 +12,7 @@ export default function HomePage() {
               <img src="/logo-512.png" alt="DPA Mastery Logo" width={36} height={36} />
             </div>
             <span className="logo-text">DPA Mastery</span>
-            <span className="version-pill">v1.4</span>
+            <span className="version-pill">{APP_CONFIG.versionPill}</span>
           </div>
 
           <div className="nav-links">
@@ -55,7 +56,7 @@ export default function HomePage() {
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Download App Free (v1.4.0)
+              Download App Free (v{APP_CONFIG.version})
             </a>
             <a href="#dlc" className="btn-secondary">
               Explore DLCs &amp; 700+ Expansion
@@ -560,7 +561,7 @@ export default function HomePage() {
       <section id="downloads" className="downloads-section">
         <div className="section-header">
           <span className="badge">Get Started</span>
-          <h2>Download DPA Mastery v1.4.0</h2>
+          <h2>Download DPA Mastery v{APP_CONFIG.version}</h2>
           <p>Available for Android and Windows Desktop. 100% offline, zero ads, zero subscriptions, 282 core questions included with expandable DLC catalog.</p>
         </div>
 
@@ -586,10 +587,10 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database, DLC Expansion Hub, and DPO Mock Exam simulation.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.1/dpa_mastery_v1.4.1_android.apk" target="_blank" rel="noreferrer" className="btn-download">
+              <a href={APP_CONFIG.downloads.androidApk} target="_blank" rel="noreferrer" className="btn-download">
                 Download APK (.apk) &rarr;
               </a>
-              <span className="meta-info">Android 8.0+ (Oreo or later) • v1.4.1</span>
+              <span className="meta-info">Android 8.0+ (Oreo or later) • v{APP_CONFIG.version}</span>
             </div>
           </div>
 
@@ -608,13 +609,13 @@ export default function HomePage() {
             </div>
             <p className="platform-desc">Native standalone 64-bit desktop executable for intensive study sessions, timed mock exams, and expansion packs.</p>
             <div className="download-actions">
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.1/dpa_mastery_windows_setup_v1.4.1.exe" target="_blank" rel="noreferrer" className="btn-download">
+              <a href={APP_CONFIG.downloads.windowsInstaller} target="_blank" rel="noreferrer" className="btn-download">
                 Download Installer (.exe) &rarr;
               </a>
-              <a href="https://github.com/tildemark/dpa-mastery/releases/download/v1.4.1/dpa_mastery_v1.4.1_windows_x64.zip" target="_blank" rel="noreferrer" className="btn-download secondary">
+              <a href={APP_CONFIG.downloads.windowsZip} target="_blank" rel="noreferrer" className="btn-download secondary">
                 Portable Standalone (.zip)
               </a>
-              <span className="meta-info">Windows 10 / 11 (64-bit) • v1.4.1</span>
+              <span className="meta-info">Windows 10 / 11 (64-bit) • v{APP_CONFIG.version}</span>
             </div>
           </div>
 
