@@ -9,6 +9,7 @@ import '../../engine/mock_exam_service.dart';
 import '../../main.dart';
 import '../../services/settings_service.dart';
 import '../cram/cram_screen.dart';
+import '../home/home_providers.dart';
 
 class MockExamScreen extends ConsumerStatefulWidget {
   const MockExamScreen({super.key});
@@ -107,6 +108,21 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
         _result = result;
         _isSubmitted = true;
       });
+
+      // Save best mock exam score & passing status in SharedPreferences
+      final prefs = ref.read(sharedPrefsProvider);
+      final prevBest = prefs.getDouble('dpo_ace_mock_best_score') ?? 0.0;
+      if (result.scorePercentage > prevBest) {
+        await prefs.setDouble('dpo_ace_mock_best_score', result.scorePercentage);
+      }
+      if (result.isPassed) {
+        await prefs.setBool('dpo_ace_mock_has_passed', true);
+      }
+      await prefs.setString('dpo_ace_mock_last_taken', DateTime.now().toIso8601String());
+      await prefs.setInt('dpo_ace_mock_attempts_count', (prefs.getInt('dpo_ace_mock_attempts_count') ?? 0) + 1);
+
+      // Invalidate providers so dashboard cards reflect passing status
+      ref.invalidate(installedPacksProgressProvider);
     }
   }
 

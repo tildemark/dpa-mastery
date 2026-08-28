@@ -1343,64 +1343,98 @@ class _ExpansionPacksSection extends ConsumerWidget {
               ],
             ),
             const SizedBox(height: 8),
-            for (final (pack, progress) in installedPacks)
-              Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: cs.surfaceContainerHigh,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: const Color(0xFF6366F1).withAlpha(60)),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            for (final (pack, progress) in installedPacks) ...[
+              Builder(
+                builder: (context) {
+                  final isSimulationPack = pack.id == 'dlc_mock_exam_simulation' || pack.category == 'Exam Simulation';
+                  final prefs = ref.watch(sharedPrefsProvider);
+                  final hasPassed = prefs.getBool('dpo_ace_mock_has_passed') ?? false;
+                  final bestScore = prefs.getDouble('dpo_ace_mock_best_score') ?? 0.0;
+                  final attempts = prefs.getInt('dpo_ace_mock_attempts_count') ?? 0;
+
+                  final badgeColor = isSimulationPack
+                      ? (hasPassed ? const Color(0xFF10B981) : (attempts > 0 ? const Color(0xFFF59E0B) : const Color(0xFF6366F1)))
+                      : const Color(0xFF6366F1);
+
+                  final badgeLabel = isSimulationPack
+                      ? (hasPassed
+                          ? 'PASSED (${bestScore.toStringAsFixed(0)}%)'
+                          : (attempts > 0 ? 'Diagnostic: ${bestScore.toStringAsFixed(0)}%' : 'Ready for Simulation'))
+                      : '${progress.percentageLabel} Mastered';
+
+                  final subLabel = isSimulationPack
+                      ? (hasPassed
+                          ? '🏆 Certified Simulation Credential Earned • $attempts Attempt(s)'
+                          : (attempts > 0
+                              ? 'Best: ${bestScore.toStringAsFixed(1)}% (Pass threshold: 75%) • $attempts Attempt(s)'
+                              : '150 Scenarios Pool • Timed 50-Question Simulation'))
+                      : '${progress.guruPlus} Guru+ • ${progress.apprentice} Learning • ${progress.unlearned} Available';
+
+                  final progressRatio = isSimulationPack
+                      ? (bestScore / 100.0).clamp(0.0, 1.0)
+                      : progress.guruRatio;
+
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: cs.surfaceContainerHigh,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: badgeColor.withAlpha(80)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Text(
-                            pack.title,
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF6366F1).withAlpha(30),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            '${progress.percentageLabel} Mastered',
-                            style: const TextStyle(
-                              fontSize: 10.5,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF818CF8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                pack.title,
+                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: badgeColor.withAlpha(30),
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: badgeColor.withAlpha(100)),
+                              ),
+                              child: Text(
+                                badgeLabel,
+                                style: TextStyle(
+                                  fontSize: 10.5,
+                                  fontWeight: FontWeight.bold,
+                                  color: badgeColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          subLabel,
+                          style: TextStyle(fontSize: 11, color: cs.onSurfaceVariant),
+                        ),
+                        const SizedBox(height: 8),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: LinearProgressIndicator(
+                            value: progressRatio,
+                            minHeight: 5,
+                            backgroundColor: cs.surfaceContainerHighest,
+                            valueColor: AlwaysStoppedAnimation<Color>(badgeColor),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      '${progress.guruPlus} Guru+ • ${progress.apprentice} Learning • ${progress.unlearned} Available',
-                      style: TextStyle(fontSize: 11, color: cs.onSurfaceVariant),
-                    ),
-                    const SizedBox(height: 8),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: LinearProgressIndicator(
-                        value: progress.guruRatio,
-                        minHeight: 5,
-                        backgroundColor: cs.surfaceContainerHighest,
-                        valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF818CF8)),
-                      ),
-                    ),
-                  ],
-                ),
+                  );
+                },
               ),
+            ],
           ],
         );
       },
