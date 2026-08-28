@@ -225,14 +225,15 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
           ),
           const SizedBox(height: 16),
 
-          // ── 2c. Developer & Testing Shortcuts ──
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: const Color(0xFF6366F1).withAlpha(20),
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: const Color(0xFF6366F1).withAlpha(80)),
-            ),
+          // ── 2c. Developer & Testing Shortcuts (Debug Mode Only) ──
+          if (kDebugMode) ...[
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color(0xFF6366F1).withAlpha(20),
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(color: const Color(0xFF6366F1).withAlpha(80)),
+              ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -303,6 +304,7 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
             ),
           ),
           const SizedBox(height: 16),
+          ],
 
           // ── 3. Reset / New Profile Options ──
           Container(
