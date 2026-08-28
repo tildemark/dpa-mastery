@@ -1,4 +1,4 @@
-package com.tildeapp.dpa_mastery
+package ph.sanchez.dpamastery
 
 import io.flutter.embedding.android.FlutterActivity
 
