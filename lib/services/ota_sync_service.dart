@@ -48,7 +48,8 @@ class OtaSyncService {
         final url = entry['url'] as String;
 
         // Skip legacy separate module downloads since all core modules (1-7) are bundled in the core question bank.
-        if (moduleName.startsWith('module')) {
+        // Also skip DLC packs so they are installed on-demand by the user in the Expansion Hub.
+        if (moduleName.startsWith('module') || moduleName.startsWith('dlc_')) {
           continue;
         }
 
