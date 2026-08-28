@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:drift/drift.dart';
 
@@ -42,13 +43,15 @@ class DlcService {
       description:
           'Massive curriculum expansion adding ~700 deep-dive scenario questions across all 7 Modules (Framework, Concepts, Principles, Lawful Criteria, Subject Rights, Penalties, and Breach Management).',
       category: 'Core Curriculum',
-      badge: 'Upcoming Core',
+      badge: 'Core Expansion',
       totalQuestions: 700,
-      estimatedSize: '320 KB',
+      estimatedSize: '990 KB',
       version: 1,
-      isAvailable: false,
-      statusNote: 'Authoring in Progress (~700 items)',
+      isAvailable: true,
+      statusNote: 'Ready to Install',
       tags: ['700 Core', 'Comprehensive', 'Full Curriculum', 'All Modules'],
+      assetPath: 'assets/seeds/dlc_700_core_expansion.json',
+      remoteUrl: 'https://dpa-mastery.sanchez.ph/seeds/dlc_700_core_expansion.json',
       author: 'DPA Mastery Curriculum Team',
     ),
     DlcPack(
@@ -130,22 +133,32 @@ class DlcService {
         .toList();
   }
 
-  /// Installs a DLC pack from local asset or payload and updates SQLite via QuestionDao.
+  /// Installs a DLC pack from local asset, OTA remote URL, or payload and updates SQLite.
   Future<bool> installPack(DlcPack pack, {String? jsonPayload}) async {
     try {
-      String data;
+      String? data;
       if (jsonPayload != null && jsonPayload.isNotEmpty) {
         data = jsonPayload;
       } else if (pack.assetPath != null) {
         try {
           data = await rootBundle.loadString(pack.assetPath!);
         } catch (_) {
-          // If asset path is a placeholder or not in assets bundle, create placeholder expansion questions
-          data = _generateSyntheticPackJson(pack);
+          // If not in bundled assets, fallback to remoteUrl if provided
+          if (pack.remoteUrl != null) {
+            final res = await http.get(Uri.parse(pack.remoteUrl!));
+            if (res.statusCode == 200) {
+              data = utf8.decode(res.bodyBytes);
+            }
+          }
         }
-      } else {
-        data = _generateSyntheticPackJson(pack);
+      } else if (pack.remoteUrl != null) {
+        final res = await http.get(Uri.parse(pack.remoteUrl!));
+        if (res.statusCode == 200) {
+          data = utf8.decode(res.bodyBytes);
+        }
       }
+
+      data ??= _generateSyntheticPackJson(pack);
 
       final parsed = jsonDecode(data) as Map<String, dynamic>;
       final items = (parsed['items'] as List?)?.cast<Map<String, dynamic>>() ?? [];

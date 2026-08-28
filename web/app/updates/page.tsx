@@ -4,6 +4,7 @@ export default function UpdatesPage() {
   const seedFiles = [
     { name: 'OTA Manifest Registry', path: '/manifest.json', desc: 'OTA seed versions and distribution registry.' },
     { name: 'Core Question Bank (Master 282 Qs)', path: '/seeds/core_question_bank.json', desc: 'Consolidated master question bank across all 7 DPA modules, scenarios, and foundation sets.' },
+    { name: '700+ Core Curriculum Expansion Pack', path: '/seeds/dlc_700_core_expansion.json', desc: 'Comprehensive 700-question DLC expansion covering deep-dive scenarios and compliance rules.' },
   ];
 
   return (
