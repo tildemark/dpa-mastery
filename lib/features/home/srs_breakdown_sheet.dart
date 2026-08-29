@@ -3,22 +3,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../main.dart';
 
-/// Represents SRS breakdown statistics grouped by Level and Module.
+/// Represents SRS breakdown statistics grouped by Sub-stage, Level and Module.
 class StageBreakdownData {
   const StageBreakdownData({
     required this.stageName,
     required this.totalCount,
+    required this.subStageCounts,
     required this.levelCounts,
     required this.moduleCounts,
   });
 
   final String stageName;
   final int totalCount;
+  final Map<int, int> subStageCounts; // Sub-stage number -> count
   final Map<int, int> levelCounts;
   final Map<String, int> moduleCounts;
 }
 
-/// Provider for detailed stage breakdown statistics (by Level and Module).
+/// Provider for detailed stage breakdown statistics (by Sub-stage, Level and Module).
 final stageBreakdownProvider =
     FutureProvider.family<StageBreakdownData, String>((ref, stageName) async {
   final db = ref.watch(dbProvider);
@@ -61,6 +63,17 @@ final stageBreakdownProvider =
     }
   }
 
+  final subStageCounts = <int, int>{};
+  if (stageName.toLowerCase() == 'apprentice') {
+    subStageCounts[1] = 0;
+    subStageCounts[2] = 0;
+    subStageCounts[3] = 0;
+    subStageCounts[4] = 0;
+  } else if (stageName.toLowerCase() == 'guru') {
+    subStageCounts[5] = 0;
+    subStageCounts[6] = 0;
+  }
+
   final levelCounts = <int, int>{1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
   final moduleCounts = <String, int>{
     'Module 1: Framework': 0,
@@ -97,6 +110,9 @@ final stageBreakdownProvider =
     final stage = progressMap[q.id] ?? 0;
     if (matchesStage(stage)) {
       total++;
+      if (subStageCounts.containsKey(stage)) {
+        subStageCounts[stage] = (subStageCounts[stage] ?? 0) + 1;
+      }
       levelCounts[q.difficultyLevel] = (levelCounts[q.difficultyLevel] ?? 0) + 1;
 
       final modules = questionModules[q.id];
@@ -119,6 +135,7 @@ final stageBreakdownProvider =
   return StageBreakdownData(
     stageName: stageName,
     totalCount: total,
+    subStageCounts: subStageCounts,
     levelCounts: levelCounts,
     moduleCounts: moduleCounts,
   );
@@ -269,7 +286,71 @@ class SrsBreakdownSheet extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 18),
+
+                      // Section 0: Sub-Stages (for Apprentice & Guru)
+                      if (data.subStageCounts.isNotEmpty) ...[
+                        Text(
+                          '$stageName Sub-Stages Progression',
+                          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: data.subStageCounts.entries.map((e) {
+                            final stageNum = e.key;
+                            final count = e.value;
+                            final label = _subStageLabel(stageNum);
+                            final interval = _subStageInterval(stageNum);
+
+                            return Expanded(
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 3),
+                                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
+                                decoration: BoxDecoration(
+                                  color: count > 0 ? stageColor.withAlpha(25) : cs.surfaceContainerHigh,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: count > 0 ? stageColor.withAlpha(80) : cs.outlineVariant.withAlpha(50),
+                                  ),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      label,
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold,
+                                        color: count > 0 ? stageColor : cs.onSurfaceVariant,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      '$count',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w900,
+                                        color: count > 0 ? cs.onSurface : cs.outline,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      interval,
+                                      style: TextStyle(
+                                        fontSize: 9,
+                                        color: cs.onSurfaceVariant,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                        const SizedBox(height: 20),
+                      ],
 
                       // Section 1: By Difficulty Level
                       Text(
@@ -432,6 +513,30 @@ class SrsBreakdownSheet extends ConsumerWidget {
         return '';
     }
   }
+
+  String _subStageLabel(int stage) => switch (stage) {
+        1 => 'Apprentice 1',
+        2 => 'Apprentice 2',
+        3 => 'Apprentice 3',
+        4 => 'Apprentice 4',
+        5 => 'Guru 1',
+        6 => 'Guru 2',
+        7 => 'Master',
+        8 => 'Burned',
+        _ => 'Stage $stage',
+      };
+
+  String _subStageInterval(int stage) => switch (stage) {
+        1 => '4h interval',
+        2 => '8h interval',
+        3 => '24h interval',
+        4 => '48h interval',
+        5 => '1 wk interval',
+        6 => '2 wk interval',
+        7 => '1 mo interval',
+        8 => 'Permanent',
+        _ => '',
+      };
 
   String _levelLabel(int l) => switch (l) {
         1 => 'Foundations',
