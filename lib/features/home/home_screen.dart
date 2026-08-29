@@ -741,17 +741,9 @@ class _MockExamCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final cs = Theme.of(context).colorScheme;
     final dlcService = ref.watch(dlcServiceProvider);
-    final metrics = ref.watch(homeProfileStreamProvider).valueOrNull;
-    final counts = ref.watch(srsStageCountsStreamProvider).valueOrNull;
 
     final isMockDlcInstalled = dlcService.isDlcInstalled('dlc_mock_exam_simulation');
-    final guruCount = counts?.masteredTotal ?? 0;
-    final rankLevel = metrics?.rank?.level ?? 1;
-    final readinessScore = metrics?.readiness.score ?? 0;
-
-    // Qualified if: Tier >= 2 OR >= 30 Gurus OR >= 60% Readiness
-    final isQualified = rankLevel >= 2 || guruCount >= 30 || readinessScore >= 60;
-    final isReadyToLaunch = isMockDlcInstalled && isQualified;
+    final isReadyToLaunch = isMockDlcInstalled;
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -759,9 +751,7 @@ class _MockExamCard extends ConsumerWidget {
         gradient: LinearGradient(
           colors: isReadyToLaunch
               ? [const Color(0xFF10B981).withAlpha(45), const Color(0xFF059669).withAlpha(20)]
-              : isQualified
-                  ? [const Color(0xFFF59E0B).withAlpha(45), const Color(0xFFD97706).withAlpha(20)]
-                  : [cs.surfaceContainerHigh, cs.surfaceContainer],
+              : [const Color(0xFFF59E0B).withAlpha(45), const Color(0xFFD97706).withAlpha(20)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -769,10 +759,8 @@ class _MockExamCard extends ConsumerWidget {
         border: Border.all(
           color: isReadyToLaunch
               ? const Color(0xFF10B981).withAlpha(140)
-              : isQualified
-                  ? const Color(0xFFF59E0B).withAlpha(140)
-                  : cs.outlineVariant.withAlpha(80),
-          width: isQualified ? 1.8 : 1.0,
+              : const Color(0xFFF59E0B).withAlpha(140),
+          width: 1.8,
         ),
       ),
       child: Row(
@@ -782,22 +770,16 @@ class _MockExamCard extends ConsumerWidget {
             decoration: BoxDecoration(
               color: isReadyToLaunch
                   ? const Color(0xFF10B981).withAlpha(40)
-                  : isQualified
-                      ? const Color(0xFFF59E0B).withAlpha(40)
-                      : cs.surfaceContainerHighest,
+                  : const Color(0xFFF59E0B).withAlpha(40),
               shape: BoxShape.circle,
             ),
             child: Icon(
               isReadyToLaunch
                   ? Icons.verified_rounded
-                  : isQualified
-                      ? Icons.workspace_premium_rounded
-                      : Icons.lock_outline_rounded,
+                  : Icons.workspace_premium_rounded,
               color: isReadyToLaunch
                   ? const Color(0xFF10B981)
-                  : isQualified
-                      ? const Color(0xFFF59E0B)
-                      : cs.outline,
+                  : const Color(0xFFF59E0B),
               size: 22,
             ),
           ),
@@ -814,13 +796,13 @@ class _MockExamCard extends ConsumerWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14.5,
-                          color: isQualified ? cs.onSurface : cs.outline,
+                          color: cs.onSurface,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    if (isQualified && !isMockDlcInstalled) ...[
+                    if (!isMockDlcInstalled) ...[
                       const SizedBox(width: 6),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -830,7 +812,7 @@ class _MockExamCard extends ConsumerWidget {
                           border: Border.all(color: const Color(0xFFF59E0B)),
                         ),
                         child: const Text(
-                          'QUALIFIED',
+                          'DLC PACK',
                           style: TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.bold,
@@ -845,17 +827,13 @@ class _MockExamCard extends ConsumerWidget {
                 Text(
                   isReadyToLaunch
                       ? '50 Random Scenario Qs • 60-min timer • 75% Passing mark'
-                      : isQualified && !isMockDlcInstalled
-                          ? '🎉 You qualify! Install the 150-scenario ACE Suite'
-                          : 'Requires Tier 2+ or 30 Gurus (Current: $guruCount/30)',
+                      : 'Install the 150-scenario ACE Suite to start testing',
                   style: TextStyle(
                     fontSize: 11.5,
                     color: isReadyToLaunch
                         ? const Color(0xFF10B981)
-                        : isQualified
-                            ? const Color(0xFFF59E0B)
-                            : cs.outline,
-                    fontWeight: isQualified ? FontWeight.w600 : FontWeight.normal,
+                        : const Color(0xFFF59E0B),
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
@@ -870,9 +848,9 @@ class _MockExamCard extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 visualDensity: VisualDensity.compact,
               ),
-              child: const Text('Start Exam', style: TextStyle(fontSize: 12)),
+              child: const Text('Start Exam', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
             )
-          else if (isQualified && !isMockDlcInstalled)
+          else
             FilledButton(
               onPressed: () => Navigator.of(context).push(DlcStoreScreen.route()),
               style: FilledButton.styleFrom(
@@ -882,15 +860,6 @@ class _MockExamCard extends ConsumerWidget {
                 visualDensity: VisualDensity.compact,
               ),
               child: const Text('Get DLC', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-            )
-          else
-            OutlinedButton(
-              onPressed: () => Navigator.of(context).push(DlcStoreScreen.route()),
-              style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                visualDensity: VisualDensity.compact,
-              ),
-              child: const Text('Locked', style: TextStyle(fontSize: 11)),
             ),
         ],
       ),
