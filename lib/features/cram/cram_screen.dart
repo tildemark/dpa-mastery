@@ -398,66 +398,69 @@ class _CramSetupSheetState extends ConsumerState<CramSetupSheet> {
               ),
 
               // ── Sticky Bottom Action Bar with Live Counter ──
-              Container(
-                padding: const EdgeInsets.fromLTRB(24, 12, 24, 20),
-                decoration: BoxDecoration(
-                  color: cs.surface,
-                  border: Border(top: BorderSide(color: cs.outlineVariant.withAlpha(80))),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Matching Questions:',
-                          style: TextStyle(fontSize: 13, color: cs.onSurfaceVariant, fontWeight: FontWeight.w500),
-                        ),
-                        _isCounting
-                            ? const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
-                            : Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                decoration: BoxDecoration(
-                                  color: _matchingCount > 0 ? cs.primaryContainer : cs.errorContainer,
-                                  borderRadius: BorderRadius.circular(6),
-                                ),
-                                child: Text(
-                                  '$_matchingCount available',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: _matchingCount > 0 ? cs.onPrimaryContainer : cs.onErrorContainer,
+              SafeArea(
+                top: false,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(24, 12, 24, 16),
+                  decoration: BoxDecoration(
+                    color: cs.surface,
+                    border: Border(top: BorderSide(color: cs.outlineVariant.withAlpha(80))),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Matching Questions:',
+                            style: TextStyle(fontSize: 13, color: cs.onSurfaceVariant, fontWeight: FontWeight.w500),
+                          ),
+                          _isCounting
+                              ? const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
+                              : Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color: _matchingCount > 0 ? cs.primaryContainer : cs.errorContainer,
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: Text(
+                                    '$_matchingCount available',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: _matchingCount > 0 ? cs.onPrimaryContainer : cs.onErrorContainer,
+                                    ),
                                   ),
                                 ),
-                              ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    FilledButton.icon(
-                      onPressed: _matchingCount == 0
-                          ? null
-                          : () {
-                              Navigator.of(context).pop();
-                              Navigator.of(context).push(
-                                CramScreen.route(
-                                  poolMode: _poolMode,
-                                  moduleNumber: _selectedModule,
-                                  difficultyLevel: _selectedLevel,
-                                  mistakesOnly: _troubledOnly,
-                                  limit: _questionCount > 0 ? _questionCount : null,
-                                  tagName: _selectedDlcTag ?? _selectedTag,
-                                ),
-                              );
-                            },
-                      icon: const Icon(Icons.flash_on_rounded),
-                      label: Text(_matchingCount == 0 ? 'No Matching Questions' : 'Start Self-Study Session'),
-                      style: FilledButton.styleFrom(
-                        minimumSize: const Size.fromHeight(52),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                        ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 10),
+                      FilledButton.icon(
+                        onPressed: _matchingCount == 0
+                            ? null
+                            : () {
+                                Navigator.of(context).pop();
+                                Navigator.of(context).push(
+                                  CramScreen.route(
+                                    poolMode: _poolMode,
+                                    moduleNumber: _selectedModule,
+                                    difficultyLevel: _selectedLevel,
+                                    mistakesOnly: _troubledOnly,
+                                    limit: _questionCount > 0 ? _questionCount : null,
+                                    tagName: _selectedDlcTag ?? _selectedTag,
+                                  ),
+                                );
+                              },
+                        icon: const Icon(Icons.flash_on_rounded),
+                        label: Text(_matchingCount == 0 ? 'No Matching Questions' : 'Start Self-Study Session'),
+                        style: FilledButton.styleFrom(
+                          minimumSize: const Size.fromHeight(52),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -697,7 +700,7 @@ class _CramScreenState extends ConsumerState<CramScreen> {
     final cs = Theme.of(context).colorScheme;
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 36),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

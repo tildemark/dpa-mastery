@@ -116,7 +116,7 @@ class _TagDrillScreenState extends ConsumerState<TagDrillScreen> {
     final isCorrect = _selectedAnswer == q.correctAnswer;
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 36),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

@@ -395,9 +395,10 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
       isScrollControlled: true,
       builder: (ctx) {
         final cs = Theme.of(context).colorScheme;
-        return Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -473,7 +474,8 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
               ),
             ],
           ),
-        );
+        ),
+      );
       },
     );
   }
