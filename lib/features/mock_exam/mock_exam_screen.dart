@@ -245,144 +245,146 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          // Progress bar
-          LinearProgressIndicator(
-            value: (_currentIndex + 1) / _questions!.length,
-            backgroundColor: cs.surfaceContainerHigh,
-          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Progress bar
+            LinearProgressIndicator(
+              value: (_currentIndex + 1) / _questions!.length,
+              backgroundColor: cs.surfaceContainerHigh,
+            ),
 
-          // Main Question View
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Question ${_currentIndex + 1} of ${_questions!.length}',
-                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: cs.primary),
-                      ),
-                      if (isFlagged)
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF59E0B).withAlpha(40),
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.flag_rounded, size: 12, color: Color(0xFFF59E0B)),
-                              SizedBox(width: 4),
-                              Text('Flagged', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFFF59E0B))),
-                            ],
-                          ),
+            // Main Question View
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Question ${_currentIndex + 1} of ${_questions!.length}',
+                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: cs.primary),
                         ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-
-                  // Question Card
-                  Container(
-                    padding: const EdgeInsets.all(18),
-                    decoration: BoxDecoration(
-                      color: cs.surfaceContainerHigh,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: cs.outlineVariant.withAlpha(80)),
-                    ),
-                    child: Text(
-                      q.questionText,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(height: 1.45),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Options
-                  ...options.map((opt) {
-                    final isSelected = selectedOption == opt;
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _answers[q.id] = opt;
-                          });
-                        },
-                        borderRadius: BorderRadius.circular(14),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                          decoration: BoxDecoration(
-                            color: isSelected ? cs.primaryContainer.withAlpha(160) : cs.surfaceContainerLow,
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(
-                              color: isSelected ? cs.primary : cs.outlineVariant.withAlpha(60),
-                              width: isSelected ? 2 : 1,
+                        if (isFlagged)
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF59E0B).withAlpha(40),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.flag_rounded, size: 12, color: Color(0xFFF59E0B)),
+                                SizedBox(width: 4),
+                                Text('Flagged', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFFF59E0B))),
+                              ],
                             ),
                           ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
-                                color: isSelected ? cs.primary : cs.outline,
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+
+                    // Question Card
+                    Container(
+                      padding: const EdgeInsets.all(18),
+                      decoration: BoxDecoration(
+                        color: cs.surfaceContainerHigh,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: cs.outlineVariant.withAlpha(80)),
+                      ),
+                      child: Text(
+                        q.questionText,
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(height: 1.45),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Options
+                    ...options.map((opt) {
+                      final isSelected = selectedOption == opt;
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              _answers[q.id] = opt;
+                            });
+                          },
+                          borderRadius: BorderRadius.circular(14),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                            decoration: BoxDecoration(
+                              color: isSelected ? cs.primaryContainer.withAlpha(160) : cs.surfaceContainerLow,
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(
+                                color: isSelected ? cs.primary : cs.outlineVariant.withAlpha(60),
+                                width: isSelected ? 2 : 1,
                               ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  opt,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                                    color: isSelected ? cs.onPrimaryContainer : cs.onSurface,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
+                                  color: isSelected ? cs.primary : cs.outline,
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    opt,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                                      color: isSelected ? cs.onPrimaryContainer : cs.onSurface,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
+                  ],
+                ),
+              ),
+            ),
+
+            // Bottom Bar
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+              decoration: BoxDecoration(
+                color: cs.surface,
+                border: Border(top: BorderSide(color: cs.outlineVariant.withAlpha(80))),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OutlinedButton.icon(
+                    onPressed: _currentIndex > 0 ? () => setState(() => _currentIndex--) : null,
+                    icon: const Icon(Icons.arrow_back),
+                    label: const Text('Prev'),
+                  ),
+                  if (_currentIndex == _questions!.length - 1)
+                    FilledButton.icon(
+                      onPressed: _confirmSubmit,
+                      icon: const Icon(Icons.check_circle_outline),
+                      label: const Text('Finish Exam'),
+                      style: FilledButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
+                    )
+                  else
+                    FilledButton.icon(
+                      onPressed: () => setState(() => _currentIndex++),
+                      icon: const Icon(Icons.arrow_forward),
+                      label: const Text('Next'),
+                    ),
                 ],
               ),
             ),
-          ),
-
-          // Bottom Bar
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            decoration: BoxDecoration(
-              color: cs.surface,
-              border: Border(top: BorderSide(color: cs.outlineVariant.withAlpha(80))),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                OutlinedButton.icon(
-                  onPressed: _currentIndex > 0 ? () => setState(() => _currentIndex--) : null,
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Prev'),
-                ),
-                if (_currentIndex == _questions!.length - 1)
-                  FilledButton.icon(
-                    onPressed: _confirmSubmit,
-                    icon: const Icon(Icons.check_circle_outline),
-                    label: const Text('Finish Exam'),
-                    style: FilledButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
-                  )
-                else
-                  FilledButton.icon(
-                    onPressed: () => setState(() => _currentIndex++),
-                    icon: const Icon(Icons.arrow_forward),
-                    label: const Text('Next'),
-                  ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
