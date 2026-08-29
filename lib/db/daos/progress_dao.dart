@@ -99,11 +99,13 @@ class ProgressDao extends DatabaseAccessor<AppDatabase>
     }
   }
 
-  /// Promotes all unlearned questions in a given level to Apprentice 1 (simulates passing lessons).
-  Future<int> promoteLevelToApprentice(int level) async {
+  /// Promotes unlearned questions in a given level to Apprentice 1 (simulates passing lessons),
+  /// with an optional [limit] count (e.g. 5, 10, or all if null).
+  Future<int> promoteLevelToApprentice(int level, {int? limit}) async {
     final questions = await (select(db.questions)..where((q) => q.difficultyLevel.equals(level))).get();
     int promoted = 0;
     for (final q in questions) {
+      if (limit != null && limit > 0 && promoted >= limit) break;
       final existing = await getProgressForQuestion(q.id);
       if (existing == null || existing.srsStage == 0) {
         await into(userProgress).insertOnConflictUpdate(

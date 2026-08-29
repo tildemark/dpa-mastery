@@ -357,8 +357,46 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
                           final unlocked = await gating.getUnlockedLevels();
                           int promoted = 0;
                           for (final lvl in unlocked) {
-                            promoted += await db.progressDao.promoteLevelToApprentice(lvl);
-                            if (promoted > 0) break;
+                            final needed = 5 - promoted;
+                            if (needed <= 0) break;
+                            promoted += await db.progressDao.promoteLevelToApprentice(lvl, limit: needed);
+                          }
+
+                          ref.invalidate(reviewQueueProvider);
+                          ref.invalidate(srsStageCountsStreamProvider);
+                          ref.invalidate(reviewForecastStreamProvider);
+                          ref.invalidate(nextReviewTimeStreamProvider);
+                          ref.invalidate(homeProfileStreamProvider);
+                          ref.invalidate(tierProgressionStreamProvider);
+                          ref.invalidate(moduleMasteryStreamProvider);
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  promoted > 0
+                                      ? 'Completed lessons for $promoted question(s) → moved to Apprentice 1!'
+                                      : 'No unlearned questions in active unlocked levels.',
+                                ),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.school_outlined, size: 16),
+                        label: const Text('Pass 5 Lessons', style: TextStyle(fontSize: 11)),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () async {
+                          final db = ref.read(dbProvider);
+                          final settings = ref.read(settingsServiceProvider);
+                          final gating = GatingService(db, settings);
+                          final unlocked = await gating.getUnlockedLevels();
+                          int promoted = 0;
+                          for (final lvl in unlocked) {
+                            final needed = 10 - promoted;
+                            if (needed <= 0) break;
+                            promoted += await db.progressDao.promoteLevelToApprentice(lvl, limit: needed);
                           }
 
                           ref.invalidate(reviewQueueProvider);
@@ -383,7 +421,42 @@ class _SettingsSheetState extends ConsumerState<SettingsSheet> {
                           }
                         },
                         icon: const Icon(Icons.school_rounded, size: 16),
-                        label: const Text('Pass Unlearned Lessons', style: TextStyle(fontSize: 11)),
+                        label: const Text('Pass 10 Lessons', style: TextStyle(fontSize: 11)),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () async {
+                          final db = ref.read(dbProvider);
+                          final settings = ref.read(settingsServiceProvider);
+                          final gating = GatingService(db, settings);
+                          final unlocked = await gating.getUnlockedLevels();
+                          int promoted = 0;
+                          for (final lvl in unlocked) {
+                            promoted += await db.progressDao.promoteLevelToApprentice(lvl);
+                          }
+
+                          ref.invalidate(reviewQueueProvider);
+                          ref.invalidate(srsStageCountsStreamProvider);
+                          ref.invalidate(reviewForecastStreamProvider);
+                          ref.invalidate(nextReviewTimeStreamProvider);
+                          ref.invalidate(homeProfileStreamProvider);
+                          ref.invalidate(tierProgressionStreamProvider);
+                          ref.invalidate(moduleMasteryStreamProvider);
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  promoted > 0
+                                      ? 'Completed all unlearned lessons ($promoted questions) → moved to Apprentice 1!'
+                                      : 'No unlearned questions in active unlocked levels.',
+                                ),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.auto_stories_rounded, size: 16),
+                        label: const Text('Pass All Lessons', style: TextStyle(fontSize: 11)),
                       ),
                       OutlinedButton.icon(
                         onPressed: () async {
