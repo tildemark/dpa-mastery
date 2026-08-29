@@ -126,6 +126,118 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
     }
   }
 
+  void _autoFillExam({bool pass = true}) {
+    if (_questions == null || _questions!.isEmpty) return;
+    setState(() {
+      for (int i = 0; i < _questions!.length; i++) {
+        final q = _questions![i];
+        final opts = _questionOptions[q.id] ?? (jsonDecode(q.optionsJson) as List).cast<String>();
+        if (pass) {
+          // 90% score (distinction pass)
+          if (i < (_questions!.length * 0.90).floor()) {
+            _answers[q.id] = q.correctAnswer;
+          } else {
+            _answers[q.id] = opts.firstWhere((o) => o != q.correctAnswer, orElse: () => opts.first);
+          }
+        } else {
+          // 60% score (fail)
+          if (i < (_questions!.length * 0.60).floor()) {
+            _answers[q.id] = q.correctAnswer;
+          } else {
+            _answers[q.id] = opts.firstWhere((o) => o != q.correctAnswer, orElse: () => opts.first);
+          }
+        }
+      }
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          pass
+            ? '⚡ Fast Forward: Auto-filled all questions with ~90% Passing answers!'
+            : '⚡ Fast Forward: Auto-filled all questions with ~60% Failing answers!',
+        ),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  void _showFastForwardDialog() {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.fast_forward_rounded, color: Color(0xFFF59E0B)),
+            SizedBox(width: 8),
+            Text('Fast Forward / Testing'),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Text(
+              'Quick testing utilities to auto-populate answers and immediately test diagnostics, grading, or certificates:',
+              style: TextStyle(fontSize: 13),
+            ),
+            const SizedBox(height: 16),
+            FilledButton.icon(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _autoFillExam(pass: true);
+                _submitExam();
+              },
+              icon: const Icon(Icons.verified_rounded),
+              label: const Text('Auto-Fill (Pass 90%) & Submit'),
+              style: FilledButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
+            ),
+            const SizedBox(height: 8),
+            FilledButton.icon(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _autoFillExam(pass: false);
+                _submitExam();
+              },
+              icon: const Icon(Icons.cancel_outlined),
+              label: const Text('Auto-Fill (Fail 60%) & Submit'),
+              style: FilledButton.styleFrom(backgroundColor: const Color(0xFFEF4444)),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _autoFillExam(pass: true);
+              },
+              icon: const Icon(Icons.edit_note_rounded),
+              label: const Text('Fill All (Pass) Without Submitting'),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                setState(() {
+                  _remainingSeconds = 10;
+                });
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('⏱️ Timer fast-forwarded to 10 seconds remaining!')),
+                );
+              },
+              icon: const Icon(Icons.timer_outlined),
+              label: const Text('Fast-Forward Timer to 10s'),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _confirmSubmit() {
     final answeredCount = _answers.length;
     final total = _questions?.length ?? 0;
@@ -222,6 +334,11 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
         ),
         centerTitle: true,
         actions: [
+          IconButton(
+            tooltip: 'Fast Forward / Test Tools',
+            icon: const Icon(Icons.fast_forward_rounded, color: Color(0xFFF59E0B)),
+            onPressed: _showFastForwardDialog,
+          ),
           IconButton(
             tooltip: 'Question Navigator Grid',
             icon: const Icon(Icons.grid_view_rounded),
