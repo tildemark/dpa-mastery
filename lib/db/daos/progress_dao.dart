@@ -2,7 +2,6 @@ import 'package:drift/drift.dart';
 
 import '../app_database.dart';
 import '../../services/app_time.dart';
-import '../../engine/gating_service.dart';
 
 part 'progress_dao.g.dart';
 
