@@ -907,7 +907,7 @@ class _MockExamCard extends ConsumerWidget {
         gradient: LinearGradient(
           colors: isMockDlcInstalled
               ? [const Color(0xFF10B981).withAlpha(45), const Color(0xFF059669).withAlpha(20)]
-              : [const Color(0xFF0284C7).withAlpha(45), const Color(0xFF0369A1).withAlpha(20)],
+              : [const Color(0xFFF59E0B).withAlpha(45), const Color(0xFFD97706).withAlpha(20)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -915,7 +915,7 @@ class _MockExamCard extends ConsumerWidget {
         border: Border.all(
           color: isMockDlcInstalled
               ? const Color(0xFF10B981).withAlpha(140)
-              : const Color(0xFF0284C7).withAlpha(140),
+              : const Color(0xFFF59E0B).withAlpha(140),
           width: 1.8,
         ),
       ),
@@ -926,7 +926,7 @@ class _MockExamCard extends ConsumerWidget {
             decoration: BoxDecoration(
               color: isMockDlcInstalled
                   ? const Color(0xFF10B981).withAlpha(40)
-                  : const Color(0xFF0284C7).withAlpha(40),
+                  : const Color(0xFFF59E0B).withAlpha(40),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -935,7 +935,7 @@ class _MockExamCard extends ConsumerWidget {
                   : Icons.workspace_premium_rounded,
               color: isMockDlcInstalled
                   ? const Color(0xFF10B981)
-                  : const Color(0xFF38BDF8),
+                  : const Color(0xFFF59E0B),
               size: 22,
             ),
           ),
@@ -964,22 +964,22 @@ class _MockExamCard extends ConsumerWidget {
                       decoration: BoxDecoration(
                         color: isMockDlcInstalled
                             ? const Color(0xFF10B981).withAlpha(30)
-                            : const Color(0xFF0284C7).withAlpha(30),
+                            : const Color(0xFFF59E0B).withAlpha(30),
                         borderRadius: BorderRadius.circular(6),
                         border: Border.all(
                           color: isMockDlcInstalled
                               ? const Color(0xFF10B981)
-                              : const Color(0xFF0284C7),
+                              : const Color(0xFFF59E0B),
                         ),
                       ),
                       child: Text(
-                        isMockDlcInstalled ? '150-Q POOL' : 'CORE POOL',
+                        isMockDlcInstalled ? '150-Q POOL' : 'DLC EXPANSION',
                         style: TextStyle(
                           fontSize: 9,
                           fontWeight: FontWeight.bold,
                           color: isMockDlcInstalled
                               ? const Color(0xFF10B981)
-                              : const Color(0xFF38BDF8),
+                              : const Color(0xFFF59E0B),
                         ),
                       ),
                     ),
@@ -989,12 +989,12 @@ class _MockExamCard extends ConsumerWidget {
                 Text(
                   isMockDlcInstalled
                       ? '50 Random Scenario Qs • 60-min timer • 75% Passing mark'
-                      : '50-Question Timed Simulation • Verified Certification',
+                      : 'Install the 150-scenario ACE Suite to enable the exam',
                   style: TextStyle(
                     fontSize: 11.5,
                     color: isMockDlcInstalled
                         ? const Color(0xFF10B981)
-                        : const Color(0xFF38BDF8),
+                        : const Color(0xFFF59E0B),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -1002,16 +1002,29 @@ class _MockExamCard extends ConsumerWidget {
             ),
           ),
           const SizedBox(width: 8),
-          FilledButton(
-            onPressed: () => Navigator.of(context).push(MockExamScreen.route()),
-            style: FilledButton.styleFrom(
-              backgroundColor: isMockDlcInstalled ? const Color(0xFF10B981) : const Color(0xFF0284C7),
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              visualDensity: VisualDensity.compact,
+          if (isMockDlcInstalled)
+            FilledButton(
+              onPressed: () => Navigator.of(context).push(MockExamScreen.route()),
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF10B981),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                visualDensity: VisualDensity.compact,
+              ),
+              child: const Text('Start Exam', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+            )
+          else
+            FilledButton.tonal(
+              onPressed: () => Navigator.of(context).push(DlcStoreScreen.route()),
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFFF59E0B).withAlpha(40),
+                foregroundColor: const Color(0xFFF59E0B),
+                side: const BorderSide(color: Color(0xFFF59E0B), width: 1.2),
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                visualDensity: VisualDensity.compact,
+              ),
+              child: const Text('Get DLC', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
             ),
-            child: const Text('Start Exam', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-          ),
         ],
       ),
     );
