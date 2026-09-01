@@ -21,12 +21,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 1. Setup Java & Flutter to build Flutter Web App
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Flutter Dependencies
+        run: flutter pub get
+
+      - name: Build Flutter Web App (/app/)
+        run: flutter build web --release --base-href "/app/"
+
+      # 2. Setup Node.js to build Next.js Static Landing Page
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22"
 
-      - name: Install dependencies
+      - name: Install Next.js Dependencies
         working-directory: ./web
         run: npm ci
 
@@ -34,6 +54,13 @@ jobs:
         working-directory: ./web
         run: npm run build
 
+      # 3. Merge Flutter Web build into Next.js export at ./web/out/app
+      - name: Merge Flutter Web into Static Output
+        run: |
+          mkdir -p ./web/out/app
+          cp -r build/web/* ./web/out/app/
+
+      # 4. Upload Complete Pages Artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -16,6 +16,12 @@ export default function HomePage() {
           </div>
 
           <div className="nav-links">
+            <a href="/app/" className="nav-sponsor-btn" style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', borderColor: '#0284C7', color: '#fff' }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Launch Web App
+            </a>
             <a href="#features">Features</a>
             <a href="#certificates">Certificates</a>
             <a href="#mock-exam">Mock Exam</a>
@@ -51,16 +57,22 @@ export default function HomePage() {
           </p>
 
           <div className="hero-cta-group">
-            <a href="#downloads" className="btn-primary">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <a href="/app/" className="btn-primary" style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', borderColor: '#0284C7' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Launch Web App (Instant Practice)
+            </a>
+            <a href="#downloads" className="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Download App Free (v{APP_CONFIG.version})
+              Download Native App (v{APP_CONFIG.version})
             </a>
             <a href="#dlc" className="btn-secondary">
-              Explore DLCs &amp; 700+ Expansion
+              Explore DLCs
             </a>
           </div>
 
@@ -657,8 +669,32 @@ export default function HomePage() {
         </div>
 
         <div className="downloads-grid">
+          {/* Interactive Web App Card */}
+          <div className="download-card primary-platform" style={{ borderColor: 'rgba(2, 132, 199, 0.6)', background: 'linear-gradient(180deg, rgba(2, 132, 199, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%)' }}>
+            <div className="platform-header">
+              <div className="platform-icon" style={{ background: 'rgba(2, 132, 199, 0.15)', color: '#38BDF8' }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Web App</h3>
+                <span className="platform-tag" style={{ color: '#38BDF8' }}>Instant Play • No Install</span>
+              </div>
+            </div>
+            <p className="platform-desc">Run the complete SRS learning engine, timed mock exams, and tag drills directly in any modern desktop or mobile browser.</p>
+            <div className="download-actions">
+              <a href="/app/" className="btn-download" style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)' }}>
+                Launch Web App &rarr;
+              </a>
+              <span className="meta-info">Chrome, Safari, Firefox, Edge • IndexedDB SQLite</span>
+            </div>
+          </div>
+
           {/* Android Card */}
-          <div className="download-card primary-platform">
+          <div className="download-card">
             <div className="platform-header">
               <div className="platform-icon android">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
