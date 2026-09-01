@@ -14,6 +14,8 @@ import '../../services/certificate_service.dart';
 import '../cram/cram_screen.dart';
 import '../home/home_providers.dart';
 
+enum AutoFillMode { pass, fail, perfect }
+
 class MockExamScreen extends ConsumerStatefulWidget {
   const MockExamScreen({super.key});
 
@@ -129,37 +131,53 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
     }
   }
 
-  void _autoFillExam({bool pass = true}) {
+  void _autoFillExam(AutoFillMode mode) {
     if (_questions == null || _questions!.isEmpty) return;
     setState(() {
       for (int i = 0; i < _questions!.length; i++) {
         final q = _questions![i];
         final opts = _questionOptions[q.id] ?? (jsonDecode(q.optionsJson) as List).cast<String>();
-        if (pass) {
-          // 90% score (distinction pass)
-          if (i < (_questions!.length * 0.90).floor()) {
+        switch (mode) {
+          case AutoFillMode.perfect:
+            // 100% score
             _answers[q.id] = q.correctAnswer;
-          } else {
-            _answers[q.id] = opts.firstWhere((o) => o != q.correctAnswer, orElse: () => opts.first);
-          }
-        } else {
-          // 60% score (fail)
-          if (i < (_questions!.length * 0.60).floor()) {
-            _answers[q.id] = q.correctAnswer;
-          } else {
-            _answers[q.id] = opts.firstWhere((o) => o != q.correctAnswer, orElse: () => opts.first);
-          }
+            break;
+          case AutoFillMode.pass:
+            // ~90% score (Honors distinction pass)
+            if (i < (_questions!.length * 0.90).floor()) {
+              _answers[q.id] = q.correctAnswer;
+            } else {
+              _answers[q.id] = opts.firstWhere((o) => o != q.correctAnswer, orElse: () => opts.first);
+            }
+            break;
+          case AutoFillMode.fail:
+            // ~60% score (fail)
+            if (i < (_questions!.length * 0.60).floor()) {
+              _answers[q.id] = q.correctAnswer;
+            } else {
+              _answers[q.id] = opts.firstWhere((o) => o != q.correctAnswer, orElse: () => opts.first);
+            }
+            break;
         }
       }
     });
 
+    String msg;
+    switch (mode) {
+      case AutoFillMode.perfect:
+        msg = '⚡ Fast Forward: Auto-filled all questions with 100% Perfect answers!';
+        break;
+      case AutoFillMode.pass:
+        msg = '⚡ Fast Forward: Auto-filled all questions with ~90% Passing answers!';
+        break;
+      case AutoFillMode.fail:
+        msg = '⚡ Fast Forward: Auto-filled all questions with ~60% Failing answers!';
+        break;
+    }
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
-          pass
-            ? '⚡ Fast Forward: Auto-filled all questions with ~90% Passing answers!'
-            : '⚡ Fast Forward: Auto-filled all questions with ~60% Failing answers!',
-        ),
+        content: Text(msg),
         duration: const Duration(seconds: 2),
       ),
     );
@@ -188,29 +206,40 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
             FilledButton.icon(
               onPressed: () {
                 Navigator.of(ctx).pop();
-                _autoFillExam(pass: true);
+                _autoFillExam(AutoFillMode.perfect);
+                _submitExam();
+              },
+              icon: const Icon(Icons.star_rounded),
+              label: const Text('Auto-Fill Perfect Score (100%) & Submit'),
+              style: FilledButton.styleFrom(backgroundColor: const Color(0xFF0284C7)),
+            ),
+            const SizedBox(height: 8),
+            FilledButton.icon(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _autoFillExam(AutoFillMode.pass);
                 _submitExam();
               },
               icon: const Icon(Icons.verified_rounded),
-              label: const Text('Auto-Fill (Pass 90%) & Submit'),
+              label: const Text('Auto-Fill Pass (90%) & Submit'),
               style: FilledButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
             ),
             const SizedBox(height: 8),
             FilledButton.icon(
               onPressed: () {
                 Navigator.of(ctx).pop();
-                _autoFillExam(pass: false);
+                _autoFillExam(AutoFillMode.fail);
                 _submitExam();
               },
               icon: const Icon(Icons.cancel_outlined),
-              label: const Text('Auto-Fill (Fail 60%) & Submit'),
+              label: const Text('Auto-Fill Fail (60%) & Submit'),
               style: FilledButton.styleFrom(backgroundColor: const Color(0xFFEF4444)),
             ),
             const SizedBox(height: 8),
             OutlinedButton.icon(
               onPressed: () {
                 Navigator.of(ctx).pop();
-                _autoFillExam(pass: true);
+                _autoFillExam(AutoFillMode.pass);
               },
               icon: const Icon(Icons.edit_note_rounded),
               label: const Text('Fill All (Pass) Without Submitting'),
@@ -220,14 +249,14 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
               onPressed: () {
                 Navigator.of(ctx).pop();
                 setState(() {
-                  _remainingSeconds = 10;
+                  _remainingSeconds = 30;
                 });
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('⏱️ Timer fast-forwarded to 10 seconds remaining!')),
+                  const SnackBar(content: Text('⏱️ Timer fast-forwarded to 30 seconds remaining!')),
                 );
               },
               icon: const Icon(Icons.timer_outlined),
-              label: const Text('Fast-Forward Timer to 10s'),
+              label: const Text('Fast-Forward Timer to 30s Left'),
             ),
           ],
         ),
