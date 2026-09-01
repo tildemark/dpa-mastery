@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -10,7 +11,7 @@ import '../../main.dart';
 import '../../services/settings_service.dart';
 import 'dlc_model.dart';
 
-final dlcServiceProvider = Provider<DlcService>((ref) {
+final dlcServiceProvider = ChangeNotifierProvider<DlcService>((ref) {
   final db = ref.watch(dbProvider);
   final prefs = ref.watch(sharedPrefsProvider);
   return DlcService(db, prefs);
@@ -27,7 +28,7 @@ final availableDlcListProvider = FutureProvider<List<DlcPack>>((ref) async {
 });
 
 /// Service responsible for managing DLC expansion packs.
-class DlcService {
+class DlcService extends ChangeNotifier {
   DlcService(this._db, this._prefs);
 
   final AppDatabase _db;
@@ -241,6 +242,7 @@ class DlcService {
       final currentInstalled = getInstalledIds();
       currentInstalled.add(pack.id);
       await _saveInstalledIds(currentInstalled);
+      notifyListeners();
 
       return true;
     } catch (e) {
@@ -304,6 +306,7 @@ class DlcService {
     final current = getInstalledIds();
     current.remove(dlcId);
     await _saveInstalledIds(current);
+    notifyListeners();
 
     // Find pack definition to identify tag
     final pack = _defaultCatalog.firstWhere(

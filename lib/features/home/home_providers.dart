@@ -79,7 +79,6 @@ final homeProfileStreamProvider =
     StreamProvider.autoDispose<HomeProfileMetrics>((ref) {
   final db = ref.watch(dbProvider);
   final readinessService = ReadinessService(db);
-  final dlcService = ref.watch(dlcServiceProvider);
 
   // Watch db.questions so new DLC installs trigger live updates
   return db.select(db.questions).watch().asyncMap((allQuestions) async {

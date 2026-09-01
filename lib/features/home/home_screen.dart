@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../engine/gating_service.dart';
 import '../../main.dart';
 import '../lessons/lessons_screen.dart';
@@ -13,6 +15,7 @@ import '../dlc/dlc_store_screen.dart';
 import '../mock_exam/mock_exam_screen.dart';
 import '../../services/dlc/dlc_service.dart';
 import '../../services/settings_service.dart';
+import '../../services/certificate_service.dart';
 import '../../services/app_time.dart';
 import '../settings/settings_screen.dart';
 import '../profile/profile_dialog.dart';
@@ -503,6 +506,57 @@ class _ProfileMetricsCard extends ConsumerWidget {
               ),
             ],
           ),
+
+          // ── Verifiable Certificate Quick Access ──
+          if (ref.watch(sharedPrefsProvider).getBool('dpo_ace_mock_has_passed') == true) ...[
+            const SizedBox(height: 14),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              decoration: BoxDecoration(
+                color: const Color(0xFF0284C7).withAlpha(30),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: const Color(0xFF0284C7).withAlpha(100)),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.workspace_premium_rounded, color: Color(0xFF38BDF8), size: 22),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'DPO ACE Credential Verified',
+                          style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.bold, color: Color(0xFFF8FAFC)),
+                        ),
+                        Text(
+                          CertificateService.generateSerial(name: settings.userName),
+                          style: const TextStyle(fontSize: 10.5, fontWeight: FontWeight.bold, color: Color(0xFF38BDF8)),
+                        ),
+                      ],
+                    ),
+                  ),
+                  TextButton.icon(
+                    onPressed: () async {
+                      final serial = CertificateService.generateSerial(name: settings.userName);
+                      final url = CertificateService.buildCertificateUrl(name: settings.userName, serial: serial);
+                      final uri = Uri.parse(url);
+                      if (await canLaunchUrl(uri)) {
+                        await launchUrl(uri, mode: LaunchMode.externalApplication);
+                      }
+                    },
+                    icon: const Icon(Icons.open_in_new_rounded, size: 14, color: Color(0xFF38BDF8)),
+                    label: const Text('Certificate', style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.bold, color: Color(0xFF38BDF8))),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      backgroundColor: const Color(0xFF0284C7).withAlpha(50),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -743,23 +797,22 @@ class _MockExamCard extends ConsumerWidget {
     final dlcService = ref.watch(dlcServiceProvider);
 
     final isMockDlcInstalled = dlcService.isDlcInstalled('dlc_mock_exam_simulation');
-    final isReadyToLaunch = isMockDlcInstalled;
 
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: isReadyToLaunch
+          colors: isMockDlcInstalled
               ? [const Color(0xFF10B981).withAlpha(45), const Color(0xFF059669).withAlpha(20)]
-              : [const Color(0xFFF59E0B).withAlpha(45), const Color(0xFFD97706).withAlpha(20)],
+              : [const Color(0xFF0284C7).withAlpha(45), const Color(0xFF0369A1).withAlpha(20)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isReadyToLaunch
+          color: isMockDlcInstalled
               ? const Color(0xFF10B981).withAlpha(140)
-              : const Color(0xFFF59E0B).withAlpha(140),
+              : const Color(0xFF0284C7).withAlpha(140),
           width: 1.8,
         ),
       ),
@@ -768,18 +821,18 @@ class _MockExamCard extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: isReadyToLaunch
+              color: isMockDlcInstalled
                   ? const Color(0xFF10B981).withAlpha(40)
-                  : const Color(0xFFF59E0B).withAlpha(40),
+                  : const Color(0xFF0284C7).withAlpha(40),
               shape: BoxShape.circle,
             ),
             child: Icon(
-              isReadyToLaunch
+              isMockDlcInstalled
                   ? Icons.verified_rounded
                   : Icons.workspace_premium_rounded,
-              color: isReadyToLaunch
+              color: isMockDlcInstalled
                   ? const Color(0xFF10B981)
-                  : const Color(0xFFF59E0B),
+                  : const Color(0xFF38BDF8),
               size: 22,
             ),
           ),
@@ -802,37 +855,43 @@ class _MockExamCard extends ConsumerWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    if (!isMockDlcInstalled) ...[
-                      const SizedBox(width: 6),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF59E0B).withAlpha(30),
-                          borderRadius: BorderRadius.circular(6),
-                          border: Border.all(color: const Color(0xFFF59E0B)),
-                        ),
-                        child: const Text(
-                          'DLC PACK',
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFF59E0B),
-                          ),
+                    const SizedBox(width: 6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: isMockDlcInstalled
+                            ? const Color(0xFF10B981).withAlpha(30)
+                            : const Color(0xFF0284C7).withAlpha(30),
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(
+                          color: isMockDlcInstalled
+                              ? const Color(0xFF10B981)
+                              : const Color(0xFF0284C7),
                         ),
                       ),
-                    ],
+                      child: Text(
+                        isMockDlcInstalled ? '150-Q POOL' : 'CORE POOL',
+                        style: TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold,
+                          color: isMockDlcInstalled
+                              ? const Color(0xFF10B981)
+                              : const Color(0xFF38BDF8),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  isReadyToLaunch
+                  isMockDlcInstalled
                       ? '50 Random Scenario Qs • 60-min timer • 75% Passing mark'
-                      : 'Install the 150-scenario ACE Suite to start testing',
+                      : '50-Question Timed Simulation • Verified Certification',
                   style: TextStyle(
                     fontSize: 11.5,
-                    color: isReadyToLaunch
+                    color: isMockDlcInstalled
                         ? const Color(0xFF10B981)
-                        : const Color(0xFFF59E0B),
+                        : const Color(0xFF38BDF8),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -840,27 +899,16 @@ class _MockExamCard extends ConsumerWidget {
             ),
           ),
           const SizedBox(width: 8),
-          if (isReadyToLaunch)
-            FilledButton(
-              onPressed: () => Navigator.of(context).push(MockExamScreen.route()),
-              style: FilledButton.styleFrom(
-                backgroundColor: const Color(0xFF10B981),
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                visualDensity: VisualDensity.compact,
-              ),
-              child: const Text('Start Exam', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-            )
-          else
-            FilledButton(
-              onPressed: () => Navigator.of(context).push(DlcStoreScreen.route()),
-              style: FilledButton.styleFrom(
-                backgroundColor: const Color(0xFFF59E0B),
-                foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                visualDensity: VisualDensity.compact,
-              ),
-              child: const Text('Get DLC', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+          FilledButton(
+            onPressed: () => Navigator.of(context).push(MockExamScreen.route()),
+            style: FilledButton.styleFrom(
+              backgroundColor: isMockDlcInstalled ? const Color(0xFF10B981) : const Color(0xFF0284C7),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              visualDensity: VisualDensity.compact,
             ),
+            child: const Text('Start Exam', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+          ),
         ],
       ),
     );

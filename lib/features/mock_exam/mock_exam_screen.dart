@@ -4,10 +4,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../db/app_database.dart';
 import '../../engine/mock_exam_service.dart';
 import '../../main.dart';
 import '../../services/settings_service.dart';
+import '../../services/certificate_service.dart';
 import '../cram/cram_screen.dart';
 import '../home/home_providers.dart';
 
@@ -820,6 +823,9 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
     final settings = ref.read(settingsServiceProvider);
     final isHonors = res.scorePercentage >= 90.0;
     final dateStr = DateTime.now().toLocal().toString().split(' ')[0];
+    final certSerial = CertificateService.generateSerial(name: settings.userName);
+    final certUrl = CertificateService.buildCertificateUrl(name: settings.userName, serial: certSerial);
+    final linkedInUrl = CertificateService.buildLinkedInAddUrl(name: settings.userName, serial: certSerial);
 
     showDialog(
       context: context,
@@ -829,39 +835,56 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
         child: Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: const Color(0xFF0F172A),
+            color: const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: const Color(0xFFF59E0B), width: 3),
+            border: Border.all(color: const Color(0xFF0284C7), width: 2),
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0x20000000),
+                blurRadius: 20,
+                offset: Offset(0, 10),
+              ),
+            ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.verified_user_rounded, color: Color(0xFFF59E0B), size: 48),
-              const SizedBox(height: 8),
+              Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFEFF6FF),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: const Color(0xFFBFDBFE)),
+                ),
+                child: const Icon(Icons.workspace_premium_rounded, color: Color(0xFF0284C7), size: 34),
+              ),
+              const SizedBox(height: 12),
               const Text(
                 'CERTIFICATE OF MASTERY',
                 style: TextStyle(
-                  color: Color(0xFFF59E0B),
+                  color: Color(0xFF0284C7),
                   fontWeight: FontWeight.w900,
                   fontSize: 16,
-                  letterSpacing: 2.0,
+                  letterSpacing: 1.5,
                 ),
               ),
               const Text(
-                'DPO ACE CERTIFICATION SIMULATION',
-                style: TextStyle(color: Colors.white70, fontSize: 11, fontWeight: FontWeight.bold, letterSpacing: 1.0),
+                'PHILIPPINE DATA PRIVACY COMMISSION (DPA) MASTERY',
+                style: TextStyle(color: Color(0xFF64748B), fontSize: 10.5, fontWeight: FontWeight.bold, letterSpacing: 0.5),
+                textAlign: TextAlign.center,
               ),
-              const Divider(color: Color(0xFFF59E0B), height: 24, thickness: 1),
+              const Divider(color: Color(0xFFE2E8F0), height: 24, thickness: 1),
               const Text(
-                'This is to certify that',
-                style: TextStyle(color: Colors.white60, fontSize: 12, fontStyle: FontStyle.italic),
+                'This officially certifies that',
+                style: TextStyle(color: Color(0xFF64748B), fontSize: 12, fontStyle: FontStyle.italic),
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               Text(
                 settings.userName,
                 style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0F172A),
+                  fontWeight: FontWeight.w900,
                   fontSize: 22,
                 ),
                 textAlign: TextAlign.center,
@@ -869,42 +892,71 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
               const SizedBox(height: 6),
               Text(
                 'has successfully passed the comprehensive 50-question simulation with a verified score of ${res.scorePercentage.toStringAsFixed(1)}% (${res.correctCount}/${res.totalQuestions})${isHonors ? " • WITH HONORS DISTINCTION" : ""}.',
-                style: const TextStyle(color: Colors.white70, fontSize: 12, height: 1.4),
+                style: const TextStyle(color: Color(0xFF334155), fontSize: 12, height: 1.4),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 14),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1E293B),
-                  borderRadius: BorderRadius.circular(8),
+                  color: const Color(0xFFF8FAFC),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0xFFE2E8F0)),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Date: $dateStr', style: const TextStyle(fontSize: 11, color: Colors.white60)),
+                    Text('Conferred: $dateStr', style: const TextStyle(fontSize: 11.5, color: Color(0xFF64748B), fontWeight: FontWeight.w600)),
                     Text(
-                      'ID: ACE-${DateTime.now().millisecondsSinceEpoch.toString().substring(5)}',
-                      style: const TextStyle(fontSize: 11, color: Color(0xFFF59E0B), fontWeight: FontWeight.bold),
+                      certSerial,
+                      style: const TextStyle(fontSize: 11.5, color: Color(0xFF0284C7), fontWeight: FontWeight.w800),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 12),
               const Text(
-                'Educational Simulation Record • Philippine Data Privacy Act (RA 10173) Framework\n*Diagnostic training credential only. Not an official government license issued by the NPC.',
-                style: TextStyle(fontSize: 9, color: Colors.white38, height: 1.3),
+                'Philippine Data Privacy Act (RA 10173) Framework & NPC DPO Standards\n*Cryptographically authenticated zero-knowledge verifiable credential.',
+                style: TextStyle(fontSize: 9.5, color: Color(0xFF94A3B8), height: 1.3),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 18),
-              FilledButton(
-                onPressed: () => Navigator.of(ctx).pop(),
+              FilledButton.icon(
+                onPressed: () async {
+                  final uri = Uri.parse(certUrl);
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri, mode: LaunchMode.externalApplication);
+                  }
+                },
+                icon: const Icon(Icons.open_in_browser_rounded, size: 18),
+                label: const Text('View Official Web Certificate & QR'),
                 style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFFF59E0B),
-                  foregroundColor: Colors.black,
+                  backgroundColor: const Color(0xFF0284C7),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size.fromHeight(44),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
-                child: const Text('Close Certificate', style: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              const SizedBox(height: 8),
+              OutlinedButton.icon(
+                onPressed: () async {
+                  final uri = Uri.parse(linkedInUrl);
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri, mode: LaunchMode.externalApplication);
+                  }
+                },
+                icon: const Icon(Icons.verified_rounded, size: 18, color: Color(0xFF0A66C2)),
+                label: const Text('1-Tap Add to LinkedIn Certifications', style: TextStyle(color: Color(0xFF0A66C2), fontWeight: FontWeight.w700)),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(42),
+                  side: const BorderSide(color: Color(0xFF0A66C2)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                ),
+              ),
+              const SizedBox(height: 8),
+              TextButton(
+                onPressed: () => Navigator.of(ctx).pop(),
+                child: const Text('Done', style: TextStyle(color: Color(0xFF64748B), fontWeight: FontWeight.bold)),
               ),
             ],
           ),
