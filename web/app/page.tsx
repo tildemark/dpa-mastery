@@ -17,8 +17,9 @@ export default function HomePage() {
 
           <div className="nav-links">
             <a href="#features">Features</a>
+            <a href="#certificates">Certificates</a>
             <a href="#mock-exam">Mock Exam</a>
-            <a href="#dlc">DLC Expansion Hub</a>
+            <a href="#dlc">DLC Hub</a>
             <a href="#tiers">Tiers</a>
             <a href="#curriculum">Curriculum</a>
             <a href="#downloads">Downloads</a>
@@ -201,6 +202,80 @@ export default function HomePage() {
               <span className="step-desc">Permanent memory</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Verifiable Certificate Spotlight Section */}
+      <section id="certificates" className="curriculum-section" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="section-header">
+          <span className="badge" style={{ borderColor: 'rgba(2, 132, 199, 0.4)', color: '#38bdf8', background: 'rgba(2, 132, 199, 0.12)' }}>New in v{APP_CONFIG.version}</span>
+          <h2>Verifiable Digital Certificates of Mastery</h2>
+          <p>Earn cryptographically authenticated, zero-knowledge certificates when you pass the 50-question DPO simulation. Seamlessly showcase your credentials on LinkedIn, Facebook, and X (Twitter).</p>
+        </div>
+
+        <div className="features-grid">
+          <div className="feature-card" style={{ border: '1.5px solid rgba(10, 102, 194, 0.4)', background: 'linear-gradient(135deg, rgba(10, 102, 194, 0.08), rgba(15, 23, 42, 0.9))' }}>
+            <div className="feature-icon" style={{ background: 'rgba(10, 102, 194, 0.15)', color: '#0A66C2' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 1 0 0-3.36 1.68 1.68 0 0 0 0 3.36m1.39 9.74V9.93H5.07v8.57h2.78z"/>
+              </svg>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span className="badge" style={{ background: '#0A66C2', color: '#fff', fontSize: '11px', padding: '2px 8px' }}>1-Tap Sync</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Official LinkedIn Org ID: 144796321</span>
+            </div>
+            <h3>Add to LinkedIn Profile &amp; Feed</h3>
+            <p>Direct 1-tap integration pre-populates your official credential name, issuance date, organization ID, and unique cryptographic verification link directly into your LinkedIn profile licenses.</p>
+          </div>
+
+          <div className="feature-card" style={{ border: '1.5px solid rgba(24, 119, 242, 0.4)', background: 'linear-gradient(135deg, rgba(24, 119, 242, 0.08), rgba(15, 23, 42, 0.9))' }}>
+            <div className="feature-icon" style={{ background: 'rgba(24, 119, 242, 0.15)', color: '#1877F2' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span className="badge" style={{ background: '#1877F2', color: '#fff', fontSize: '11px', padding: '2px 8px' }}>Dynamic OG Previews</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>1200 &times; 630 High-DPI Cards</span>
+            </div>
+            <h3>Share to Facebook &amp; X (Twitter)</h3>
+            <p>Edge-rendered OpenGraph metadata dynamically renders crisp, professional social preview cards displaying your conferral name, honors distinction, and unique serial code whenever shared.</p>
+          </div>
+
+          <div className="feature-card" style={{ border: '1.5px solid rgba(16, 185, 129, 0.4)', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.9))' }}>
+            <div className="feature-icon emerald">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span className="badge" style={{ background: '#10B981', color: '#fff', fontSize: '11px', padding: '2px 8px' }}>Live QR Verification</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Zero-Knowledge Ledger</span>
+            </div>
+            <h3>QR Code &amp; Public Ledger Registry</h3>
+            <p>Every certificate contains a live scannable QR code directing employers and compliance auditors to the public cryptographic verification ledger without requiring any account or login.</p>
+          </div>
+        </div>
+
+        {/* Action Buttons to Sample Web Certificate & Verify Ledger */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', marginTop: '28px', flexWrap: 'wrap' }}>
+          <Link href="/certificate" className="btn-primary" style={{ padding: '10px 20px', fontSize: '13.5px', background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', borderColor: '#0284C7' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="8" r="7"/>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+            </svg>
+            Preview Live Digital Certificate
+          </Link>
+          <Link href="/verify" className="btn-secondary" style={{ padding: '10px 20px', fontSize: '13.5px' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="9" y1="9" x2="9" y2="9.01"/>
+              <line x1="15" y1="9" x2="15" y2="9.01"/>
+              <line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+            Public Verification Ledger
+          </Link>
         </div>
       </section>
 
