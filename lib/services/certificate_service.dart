@@ -31,7 +31,7 @@ class CertificateService {
   static String buildCertificateUrl({
     required String name,
     required String serial,
-    String packTitle = 'DPO ACE Competency Examination',
+    String packTitle = 'Philippine DPO Competency Assessment',
   }) {
     final uri = Uri.parse('$webBaseUrl/certificate').replace(queryParameters: {
       'id': serial,
@@ -45,7 +45,7 @@ class CertificateService {
   static String buildVerificationUrl({
     required String name,
     required String serial,
-    String packTitle = 'DPO ACE Competency Examination',
+    String packTitle = 'Philippine DPO Competency Assessment',
   }) {
     final uri = Uri.parse('$webBaseUrl/verify').replace(queryParameters: {
       'id': serial,
@@ -59,7 +59,7 @@ class CertificateService {
   static String buildLinkedInAddUrl({
     required String name,
     required String serial,
-    String packTitle = 'DPO ACE Competency Examination',
+    String packTitle = 'Philippine DPO Competency Assessment',
   }) {
     final certUrl = buildVerificationUrl(name: name, serial: serial, packTitle: packTitle);
     final now = DateTime.now();
@@ -81,7 +81,7 @@ class CertificateService {
   static String buildLinkedInShareUrl({
     required String name,
     required String serial,
-    String packTitle = 'DPO ACE Competency Examination',
+    String packTitle = 'Philippine DPO Competency Assessment',
   }) {
     final certUrl = buildVerificationUrl(name: name, serial: serial, packTitle: packTitle);
     return 'https://www.linkedin.com/sharing/share-offsite/?url=${Uri.encodeComponent(certUrl)}';
@@ -91,7 +91,7 @@ class CertificateService {
   static String buildFacebookShareUrl({
     required String name,
     required String serial,
-    String packTitle = 'DPO ACE Competency Examination',
+    String packTitle = 'Philippine DPO Competency Assessment',
   }) {
     final certUrl = buildVerificationUrl(name: name, serial: serial, packTitle: packTitle);
     return 'https://www.facebook.com/sharer/sharer.php?u=${Uri.encodeComponent(certUrl)}';

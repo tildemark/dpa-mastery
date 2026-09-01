@@ -27,14 +27,14 @@ import { APP_CONFIG } from '../config';
 const PACK_REGISTRY: Record<string, { code: string; name: string; packId: string; questions: number; color: string }> = {
   DPOACE: {
     code: 'DPOACE',
-    name: 'DPO ACE Competency Examination',
+    name: 'Philippine DPO Competency Assessment',
     packId: 'dpo_ace',
     questions: 450,
     color: '#0284C7',
   },
   NPCDPO: {
     code: 'NPCDPO',
-    name: 'NPC DPO Certification Standard',
+    name: 'Data Privacy Compliance Curriculum',
     packId: 'npc_dpo_core',
     questions: 300,
     color: '#059669',
@@ -64,8 +64,8 @@ function VerifyContent() {
   const rawName = searchParams.get('name') || '';
   const rawPack = searchParams.get('pack') || '';
 
-  const [inputSerial, setInputSerial] = useState(rawId || 'DPA-DPOACE-B02E-VERIFIED');
-  const [inputName, setInputName] = useState(rawName || 'Alfredo Sanchez Jr.');
+  const [inputSerial, setInputSerial] = useState(rawId);
+  const [inputName, setInputName] = useState(rawName);
   const [copied, setCopied] = useState(false);
 
   const verificationResult = useMemo(() => {
@@ -89,7 +89,7 @@ function VerifyContent() {
     const checksum = parts[2];
     const matchedPack = PACK_REGISTRY[packCode] || {
       code: packCode,
-      name: rawPack || 'DPO ACE Competency Examination',
+      name: rawPack || 'Philippine DPO Competency Assessment',
       packId: packCode.toLowerCase(),
       questions: 450,
       color: '#0284C7',
@@ -144,13 +144,24 @@ function VerifyContent() {
             </div>
           </div>
 
-          <Link
-            href={`/certificate?name=${encodeURIComponent(inputName)}&id=${encodeURIComponent(inputSerial)}`}
-            className="btn btn-primary"
-            style={{ padding: '8px 16px', fontSize: '13px', background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', borderColor: '#0284C7' }}
-          >
-            <Award size={16} /> View Certificate Canvas
-          </Link>
+          {verificationResult.status === 'valid' ? (
+            <Link
+              href={`/certificate?name=${encodeURIComponent(inputName)}&id=${encodeURIComponent(inputSerial)}`}
+              className="btn btn-primary"
+              style={{ padding: '8px 16px', fontSize: '13px', background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', borderColor: '#0284C7' }}
+            >
+              <Award size={16} /> View Certificate Canvas
+            </Link>
+          ) : (
+            <button
+              disabled
+              className="btn btn-secondary"
+              style={{ padding: '8px 16px', fontSize: '13px', opacity: 0.5, cursor: 'not-allowed' }}
+              title="Verification must pass to view certificate"
+            >
+              <Award size={16} /> View Certificate Canvas
+            </button>
+          )}
         </div>
 
         {/* Verification Status Banner */}

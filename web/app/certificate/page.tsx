@@ -26,7 +26,7 @@ import { APP_CONFIG } from '../config';
 const OFFICIAL_PACKS = [
   {
     id: 'dpo_ace',
-    title: 'DPO ACE Competency Examination',
+    title: 'Philippine DPO Competency Assessment & RA 10173 Simulation',
     code: 'DPOACE',
     domain: 'Data Privacy & Governance',
     questionsCount: 450,
@@ -34,7 +34,7 @@ const OFFICIAL_PACKS = [
   },
   {
     id: 'npc_dpo_core',
-    title: 'NPC DPO Certification Standard',
+    title: 'Data Privacy Compliance & IRR Curriculum',
     code: 'NPCDPO',
     domain: 'Compliance & Regulation',
     questionsCount: 300,
@@ -42,7 +42,7 @@ const OFFICIAL_PACKS = [
   },
   {
     id: 'cs_privacy_security',
-    title: 'Cybersecurity & Privacy Engineering',
+    title: 'Cybersecurity & Privacy Engineering Standards',
     code: 'CSPrivacy',
     domain: 'Technical Safeguards',
     questionsCount: 220,
@@ -253,13 +253,13 @@ function CertificateContent() {
 
             <div style={{ maxWidth: '680px', margin: '0 auto' }}>
               <div className="cert-badge">
-                <Award size={15} /> Official Verified Credential
+                <Award size={15} /> Verified Achievement Credential
               </div>
               <h2 className="cert-title" style={{ textAlign: 'center', margin: '4px 0 6px' }}>
-                PHILIPPINE DATA PRIVACY COMMISSION (DPA) MASTERY
+                PHILIPPINE DATA PRIVACY ACT (RA 10173) MASTERY
               </h2>
               <p className="cert-subtitle" style={{ textAlign: 'center' }}>
-                RA 10173 Compliance &amp; DPO Competency Assessment Registry &bull; Platform v{APP_CONFIG.version}
+                Data Privacy Governance &amp; DPO Competency Assessment Registry &bull; Platform v{APP_CONFIG.version}
               </p>
             </div>
           </div>
@@ -273,13 +273,13 @@ function CertificateContent() {
               {studentName || 'Distinguished DPO Candidate'}
             </div>
             <p className="cert-body-text">
-              has satisfied all rigorous knowledge requirements and demonstrated verified competency and mastery in Philippine Data Privacy Law (Republic Act No. 10173), its Implementing Rules and Regulations (IRR), and NPC Advisory Circulars in:
+              has satisfied all rigorous knowledge requirements and demonstrated verified competency and mastery in Philippine Data Privacy Law (Republic Act No. 10173), its Implementing Rules and Regulations (IRR), and NPC Landmark Advisory Circulars in:
             </p>
             <div className="cert-course-name" style={{ color: '#0369A1' }}>
               {pack.title}
             </div>
             <p className="cert-body-subtext">
-              Validated through the official comprehensive 50-question DPO ACE Simulation Examination (Passing Score &ge; 75%) and Active Recall SRS standards across all {pack.questionsCount} syllabus questions.
+              Validated through the comprehensive 50-question Timed Simulation Examination (Passing Score &ge; 75%) and Spaced Repetition (SRS) Active Recall standards across all {pack.questionsCount} syllabus questions.
             </p>
           </div>
 

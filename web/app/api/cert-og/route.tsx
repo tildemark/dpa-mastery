@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const name = searchParams.get('name') || 'Distinguished DPO Candidate';
-    const course = searchParams.get('course') || 'DPO ACE Competency Examination';
+    const course = searchParams.get('course') || 'Philippine DPO Competency Assessment';
     const id = searchParams.get('id') || 'DPA-DPOACE-VERIFIED';
     const date = searchParams.get('date') || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
@@ -51,10 +51,10 @@ export async function GET(request: NextRequest) {
                   alignItems: 'center',
                 }}
               >
-                ★ OFFICIAL VERIFIED PRIVACY CREDENTIAL
+                ★ VERIFIED ACHIEVEMENT PRIVACY CREDENTIAL
               </div>
               <div style={{ fontSize: 26, fontWeight: 900, color: '#0F172A', marginTop: 4 }}>
-                PHILIPPINE DATA PRIVACY COMMISSION (DPA) MASTERY
+                PHILIPPINE DATA PRIVACY ACT (RA 10173) MASTERY
               </div>
             </div>
             

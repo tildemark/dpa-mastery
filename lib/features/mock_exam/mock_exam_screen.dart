@@ -912,7 +912,7 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
                 ),
               ),
               const Text(
-                'PHILIPPINE DATA PRIVACY COMMISSION (DPA) MASTERY',
+                'PHILIPPINE DATA PRIVACY ACT (RA 10173) MASTERY',
                 style: TextStyle(color: Color(0xFF64748B), fontSize: 10.5, fontWeight: FontWeight.bold, letterSpacing: 0.5),
                 textAlign: TextAlign.center,
               ),
