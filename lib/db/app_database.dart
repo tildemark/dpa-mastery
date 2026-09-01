@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,8 +34,13 @@ class AppDatabase extends _$AppDatabase {
       );
 }
 
-/// Opens (or creates) the SQLite database file in the app documents directory.
+/// Opens (or creates) the SQLite database file in the app documents directory,
+/// or uses IndexedDB / WebAssembly when running on the web.
 QueryExecutor _openConnection() {
+  if (kIsWeb) {
+    return driftDatabase(name: 'dpa_mastery');
+  }
+
   return driftDatabase(
     name: 'dpa_mastery',
     native: DriftNativeOptions(
