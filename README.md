@@ -178,11 +178,7 @@ iscc installer.iss
    - `SIGNPATH_ORGANIZATION_ID`
    - `SIGNPATH_PROJECT_SLUG`
    - `SIGNPATH_SIGNING_POLICY_SLUG`
-3. Pushing a tag (e.g. `git tag v1.4.0 && git push origin v1.4.0`) automatically builds, signs, and attaches both the signed Windows installer and portable zip to GitHub Releases via `.github/workflows/release-windows.yml`.
-
----
-
-> **Note on iOS Builds:** Apple requires macOS and Xcode to compile iOS bundles (`.ipa`). On Windows, Android and Windows binaries compile natively. To compile for iOS, run `flutter build ipa --no-codesign` on a Mac or use a macOS GitHub Actions workflow.
+3. Pushing a tag (e.g. `git tag v1.7.0 && git push origin v1.7.0`) automatically builds, signs, and attaches both the signed Windows installer and portable zip to GitHub Releases via `.github/workflows/release.yml`.
 
 ---
 

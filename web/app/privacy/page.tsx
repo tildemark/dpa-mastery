@@ -49,7 +49,7 @@ export default function PrivacyPage() {
           <section className="legal-section">
             <h2>3. Local Device Storage (SQLite)</h2>
             <p>
-              All study data generated during your usage—including your spaced repetition stages (Apprentice, Guru, Master, Burned), question tags, daily lesson quotas, and profile settings—is stored locally in an encrypted/private SQLite database managed directly by your operating system (Android, Windows, or iOS).
+              All study data generated during your usage—including your spaced repetition stages (Apprentice, Guru, Master, Burned), question tags, daily lesson quotas, and profile settings—is stored locally in a private SQLite database managed directly by your platform environment (Android, Windows Desktop, or Web IndexedDB).
             </p>
             <p>
               Uninstalling the application or clearing application data via your device operating system permanently deletes all local records.

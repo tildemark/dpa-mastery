@@ -29,7 +29,7 @@ export default function TermsPage() {
           <section className="legal-section">
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By downloading, installing, accessing, or using the <strong>DPA Mastery</strong> application (across Android, Windows, iOS, or web platforms), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not install or use the application.
+              By downloading, installing, accessing, or using the <strong>DPA Mastery</strong> application (across Android, Windows, or Web platforms), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not install or use the application.
             </p>
           </section>
 
