@@ -399,12 +399,29 @@ class _ProfileMetricsCard extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Text(
-            '${settings.userName} • ${rank?.title ?? "Privacy Cadet"}',
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.3,
+          InkWell(
+            onTap: () => _showEditNameDialog(context, ref, settings.userName),
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Text(
+                      '${settings.userName} • ${rank?.title ?? "Privacy Cadet"}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.3,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  const Icon(Icons.edit_outlined, size: 16, color: Color(0xFF818CF8)),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 12),
@@ -541,8 +558,13 @@ class _ProfileMetricsCard extends ConsumerWidget {
                       final serial = CertificateService.generateSerial(name: settings.userName);
                       final url = CertificateService.buildCertificateUrl(name: settings.userName, serial: serial);
                       final uri = Uri.parse(url);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri, mode: LaunchMode.externalApplication);
+                      try {
+                        final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+                        if (!launched) {
+                          await launchUrl(uri, mode: LaunchMode.platformDefault);
+                        }
+                      } catch (e) {
+                        await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
                       }
                     },
                     icon: const Icon(Icons.open_in_new_rounded, size: 14, color: Color(0xFF38BDF8)),
@@ -557,6 +579,61 @@ class _ProfileMetricsCard extends ConsumerWidget {
               ),
             ),
           ],
+        ],
+      ),
+    );
+  }
+
+  void _showEditNameDialog(BuildContext context, WidgetRef ref, String currentName) {
+    final controller = TextEditingController(text: currentName == 'Guest' ? '' : currentName);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.badge_rounded, color: Color(0xFF0284C7)),
+            SizedBox(width: 8),
+            Text('Official Scholar Name', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Enter your official full name as you would like it to appear on your Philippine Data Privacy Certificate of Mastery and LinkedIn credentials:',
+              style: TextStyle(fontSize: 13, height: 1.4),
+            ),
+            const SizedBox(height: 14),
+            TextField(
+              controller: controller,
+              autofocus: true,
+              textCapitalization: TextCapitalization.words,
+              decoration: InputDecoration(
+                labelText: 'Full Name',
+                hintText: 'e.g. Atty. Juan Dela Cruz, CIPM',
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                prefixIcon: const Icon(Icons.person_outline_rounded),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              final newName = controller.text.trim();
+              if (newName.isNotEmpty) {
+                ref.read(settingsServiceProvider).setUserName(newName);
+              }
+              Navigator.of(ctx).pop();
+            },
+            style: FilledButton.styleFrom(backgroundColor: const Color(0xFF0284C7)),
+            child: const Text('Save Name'),
+          ),
         ],
       ),
     );

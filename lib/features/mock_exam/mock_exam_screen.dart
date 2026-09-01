@@ -879,14 +879,27 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 56,
-                height: 56,
+                width: 68,
+                height: 68,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFEFF6FF),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: const Color(0xFFBFDBFE)),
+                  borderRadius: BorderRadius.circular(18),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x330284C7),
+                      blurRadius: 16,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
                 ),
-                child: const Icon(Icons.workspace_premium_rounded, color: Color(0xFF0284C7), size: 34),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 68,
+                    height: 68,
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
               const SizedBox(height: 12),
               const Text(
@@ -953,8 +966,13 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
               FilledButton.icon(
                 onPressed: () async {
                   final uri = Uri.parse(certUrl);
-                  if (await canLaunchUrl(uri)) {
-                    await launchUrl(uri, mode: LaunchMode.externalApplication);
+                  try {
+                    final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+                    if (!launched) {
+                      await launchUrl(uri, mode: LaunchMode.platformDefault);
+                    }
+                  } catch (e) {
+                    await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
                   }
                 },
                 icon: const Icon(Icons.open_in_browser_rounded, size: 18),
@@ -970,8 +988,13 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
               OutlinedButton.icon(
                 onPressed: () async {
                   final uri = Uri.parse(linkedInUrl);
-                  if (await canLaunchUrl(uri)) {
-                    await launchUrl(uri, mode: LaunchMode.externalApplication);
+                  try {
+                    final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+                    if (!launched) {
+                      await launchUrl(uri, mode: LaunchMode.platformDefault);
+                    }
+                  } catch (e) {
+                    await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
                   }
                 },
                 icon: const Icon(Icons.verified_rounded, size: 18, color: Color(0xFF0A66C2)),
