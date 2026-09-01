@@ -116,7 +116,33 @@ class _ProfileDialogState extends ConsumerState<ProfileDialog> {
               ),
               onSubmitted: _submit,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 14),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color(0xFF10B981).withAlpha(25),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: const Color(0xFF10B981).withAlpha(80)),
+              ),
+              child: const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(Icons.shield_outlined, size: 18, color: Color(0xFF10B981)),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Zero-Knowledge Privacy Guarantee: Your name is strictly stored on your own device and never transmitted to or collected by any remote server. Only public cryptographic URL parameters are used when you choose to open, share, or verify your certificate.',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFFE2E8F0),
+                        height: 1.35,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
             Wrap(
               alignment: WrapAlignment.end,
               crossAxisAlignment: WrapCrossAlignment.center,
