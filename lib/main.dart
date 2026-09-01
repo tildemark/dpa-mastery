@@ -15,28 +15,42 @@ const _manifestUrl = 'https://dpa-mastery.sanchez.ph/manifest.json';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final db = AppDatabase();
-  final prefs = await SharedPreferences.getInstance();
-  AppTime.init(prefs);
-  final seedLoader = SeedLoader(db);
-  final otaSync = OtaSyncService(
-    seedLoader: seedLoader,
-    manifestUrl: _manifestUrl,
-  );
+  AppDatabase? db;
+  SharedPreferences? prefs;
 
-  // Load bundled seed assets on cold launch (upsert — safe to repeat) and purge uninstalled DLC.
-  await seedLoader.loadBundledSeeds(prefs: prefs);
+  try {
+    db = AppDatabase();
+    prefs = await SharedPreferences.getInstance();
+    AppTime.init(prefs);
 
-  // Attempt OTA sync in the background.
-  otaSync.checkAndSync().then((result) {
-    debugPrint(result.toString());
-  });
+    final seedLoader = SeedLoader(db);
+    final otaSync = OtaSyncService(
+      seedLoader: seedLoader,
+      manifestUrl: _manifestUrl,
+    );
+
+    // Load bundled seed assets on cold launch
+    await seedLoader.loadBundledSeeds(prefs: prefs);
+
+    // Attempt OTA sync in background
+    otaSync.checkAndSync().then((result) {
+      debugPrint(result.toString());
+    }).catchError((e) {
+      debugPrint('OTA sync error: $e');
+    });
+  } catch (e, stack) {
+    debugPrint('Initialization error during startup: $e\n$stack');
+  }
+
+  // Fallback defaults if initialization encountered issues
+  final safeDb = db ?? AppDatabase();
+  final safePrefs = prefs ?? await SharedPreferences.getInstance();
 
   runApp(
     ProviderScope(
       overrides: [
-        dbProvider.overrideWithValue(db),
-        sharedPrefsProvider.overrideWithValue(prefs),
+        dbProvider.overrideWithValue(safeDb),
+        sharedPrefsProvider.overrideWithValue(safePrefs),
       ],
       child: const DpaMasteryApp(),
     ),
