@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -366,11 +367,12 @@ class _MockExamScreenState extends ConsumerState<MockExamScreen> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-            tooltip: 'Fast Forward / Test Tools',
-            icon: const Icon(Icons.fast_forward_rounded, color: Color(0xFFF59E0B)),
-            onPressed: _showFastForwardDialog,
-          ),
+          if (kDebugMode)
+            IconButton(
+              tooltip: 'Fast Forward / Test Tools (Dev Only)',
+              icon: const Icon(Icons.fast_forward_rounded, color: Color(0xFFF59E0B)),
+              onPressed: _showFastForwardDialog,
+            ),
           IconButton(
             tooltip: 'Question Navigator Grid',
             icon: const Icon(Icons.grid_view_rounded),
