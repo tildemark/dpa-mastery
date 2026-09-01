@@ -99,7 +99,7 @@ function CertificateContent() {
   const checksum = computeChecksum(studentName, selectedPackId);
   const certSerial = `DPA-${pack.code}-${checksum}-VERIFIED`;
 
-  const verificationUrl = `https://dpa.sanchez.ph/verify?id=${encodeURIComponent(certSerial)}&name=${encodeURIComponent(
+  const verificationUrl = `https://dpa-mastery.sanchez.ph/verify?id=${encodeURIComponent(certSerial)}&name=${encodeURIComponent(
     studentName
   )}&pack=${encodeURIComponent(pack.title)}`;
 

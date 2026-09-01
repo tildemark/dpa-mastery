@@ -1,6 +1,6 @@
 /// Zero-knowledge deterministic cryptographic certificate hash and URL generation engine.
 class CertificateService {
-  static const String webBaseUrl = 'https://dpa.sanchez.ph';
+  static const String webBaseUrl = 'https://dpa-mastery.sanchez.ph';
   static const String linkedInOrgId = '144796321';
   static const String linkedInOrgName = 'DPA Mastery';
 
