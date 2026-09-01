@@ -665,36 +665,12 @@ export default function HomePage() {
         <div className="section-header">
           <span className="badge">Get Started</span>
           <h2>Download DPA Mastery v{APP_CONFIG.version}</h2>
-          <p>Available for Android and Windows Desktop. 100% offline, zero ads, zero subscriptions, 282 core questions included with expandable DLC catalog.</p>
+          <p>Available for Android, Windows Desktop, and Modern Web Browsers. 100% offline, zero ads, zero subscriptions, 282 core questions included with expandable DLC catalog.</p>
         </div>
 
         <div className="downloads-grid">
-          {/* Interactive Web App Card */}
-          <div className="download-card primary-platform" style={{ borderColor: 'rgba(2, 132, 199, 0.6)', background: 'linear-gradient(180deg, rgba(2, 132, 199, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%)' }}>
-            <div className="platform-header">
-              <div className="platform-icon" style={{ background: 'rgba(2, 132, 199, 0.15)', color: '#38BDF8' }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-              </div>
-              <div>
-                <h3>Web App</h3>
-                <span className="platform-tag" style={{ color: '#38BDF8' }}>Instant Play • No Install</span>
-              </div>
-            </div>
-            <p className="platform-desc">Run the complete SRS learning engine, timed mock exams, and tag drills directly in any modern desktop or mobile browser.</p>
-            <div className="download-actions">
-              <a href="/app/" className="btn-download" style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)' }}>
-                Launch Web App &rarr;
-              </a>
-              <span className="meta-info">Chrome, Safari, Firefox, Edge • IndexedDB SQLite</span>
-            </div>
-          </div>
-
           {/* Android Card */}
-          <div className="download-card">
+          <div className="download-card primary-platform">
             <div className="platform-header">
               <div className="platform-icon android">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -746,26 +722,27 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* iOS Card (Coming Soon) */}
-          <div className="download-card coming-soon">
+          {/* Interactive Web App Card */}
+          <div className="download-card" style={{ borderColor: 'rgba(2, 132, 199, 0.4)', background: 'linear-gradient(180deg, rgba(2, 132, 199, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%)' }}>
             <div className="platform-header">
-              <div className="platform-icon apple">
+              <div className="platform-icon" style={{ background: 'rgba(2, 132, 199, 0.15)', color: '#38BDF8' }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 1.28 0 2.37-1.06 4-1.06 1.83 0 3.72 1.34 3.72 1.34s-2.89-1.63-2.89-4.8c0-3.32 2.73-4.8 2.73-4.8-1.57-2.33-4-2.42-4.88-2.42-2.12 0-3.4 1.25-4.48 1.25-1.12 0-2.65-1.25-4.48-1.25C7.2 10.22 4 12.44 4 16.73c0 4.16 2.57 9.27 5.72 9.27 1.43 0 2.58-.94 4-.94z"/>
-                  <path d="M15.5 2c0 1.94-1.39 3.5-3 3.5-.22 0-.44-.02-.65-.08.15-1.78 1.58-3.42 3.65-3.42z"/>
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                 </svg>
               </div>
               <div>
-                <h3>iOS / iPadOS</h3>
-                <span className="platform-tag" style={{ color: '#94a3b8' }}>Coming Soon</span>
+                <h3>Web App</h3>
+                <span className="platform-tag" style={{ color: '#38BDF8' }}>Instant Play • No Install</span>
               </div>
             </div>
-            <p className="platform-desc">iOS package and TestFlight beta invitations are currently in preparation.</p>
+            <p className="platform-desc">Run the full SRS learning engine, timed mock exams, and tag drills directly in any modern desktop or mobile browser.</p>
             <div className="download-actions">
-              <button disabled className="btn-download secondary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
-                iOS Build Coming Soon
-              </button>
-              <span className="meta-info">Requires iOS 15.0 or later</span>
+              <a href="/app/" className="btn-download" style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)' }}>
+                Launch Web App &rarr;
+              </a>
+              <span className="meta-info">Chrome, Safari, Firefox, Edge • IndexedDB SQLite</span>
             </div>
           </div>
         </div>
