@@ -663,16 +663,16 @@ export default function HomePage() {
       {/* Downloads Section */}
       <section id="downloads" className="downloads-section">
         <div className="section-header">
-          <span className="badge">Get Started</span>
+          <span className="badge" style={{ borderColor: 'rgba(16, 185, 129, 0.4)', color: '#34D399', background: 'rgba(16, 185, 129, 0.1)' }}>100% Offline Study Companion</span>
           <h2>Download DPA Mastery v{APP_CONFIG.version}</h2>
-          <p>Available for Android, Windows Desktop, and Modern Web Browsers. 100% offline, zero ads, zero subscriptions, 282 core questions included with expandable DLC catalog.</p>
+          <p>Study anywhere, anytime with zero internet required. <strong>Install the native Android app to run DPA Mastery completely offline</strong> with full local SQLite persistence, zero ads, and zero subscriptions.</p>
         </div>
 
         <div className="downloads-grid">
           {/* Android Card */}
-          <div className="download-card primary-platform">
+          <div className="download-card primary-platform" style={{ borderColor: 'rgba(16, 185, 129, 0.5)', background: 'linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.9) 100%)', boxShadow: '0 10px 30px rgba(16, 185, 129, 0.15)' }}>
             <div className="platform-header">
-              <div className="platform-icon android">
+              <div className="platform-icon android" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#34D399' }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4 10l0 6" />
                   <path d="M20 10l0 6" />
@@ -684,16 +684,23 @@ export default function HomePage() {
                 </svg>
               </div>
               <div>
-                <h3>Android</h3>
-                <span className="platform-tag">Recommended • APK Direct</span>
+                <h3>Android APK</h3>
+                <span className="platform-tag" style={{ color: '#34D399' }}>★ Runs 100% Offline • No Internet Needed</span>
               </div>
             </div>
-            <p className="platform-desc">Universal ARM64 / x86_64 APK with offline SQLite database, DLC Expansion Hub, and DPO Mock Exam simulation.</p>
+            <p className="platform-desc">
+              <strong>Run DPA Mastery anywhere without Wi-Fi or mobile data.</strong> Features offline SQLite database, instant review sessions, spaced repetition scheduling, and full timed DPO Mock Exam simulation.
+            </p>
             <div className="download-actions">
-              <a href={APP_CONFIG.downloads.androidApk} target="_blank" rel="noreferrer" className="btn-download">
-                Download APK (.apk) &rarr;
+              <a href={APP_CONFIG.downloads.androidApk} target="_blank" rel="noreferrer" className="btn-download" style={{ background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download Offline APK (.apk) &rarr;
               </a>
-              <span className="meta-info">Android 8.0+ (Oreo or later) • v{APP_CONFIG.version}</span>
+              <span className="meta-info">Android 8.0+ (Oreo or later) • Guaranteed 100% Offline • v{APP_CONFIG.version}</span>
             </div>
           </div>
 
