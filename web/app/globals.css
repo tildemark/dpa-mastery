@@ -1526,23 +1526,139 @@ body {
   color: #64748b;
 }
 
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
 @media print {
-  body {
+  html, body {
+    width: 297mm;
+    height: 210mm;
+    margin: 0 !important;
+    padding: 0 !important;
     background: #ffffff !important;
     color: #0f172a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
+
   .no-print,
   .navbar,
   footer {
     display: none !important;
   }
+
+  .cert-page-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    min-height: auto !important;
+  }
+
   .cert-page-container {
     max-width: 100% !important;
-    padding: 0 !important;
+    width: 297mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    padding: 10mm !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
+
   .cert-frame {
     box-shadow: none !important;
-    border: 1px solid #cbd5e1 !important;
-    page-break-inside: avoid;
+    border: 2px solid #0284c7 !important;
+    border-radius: 12px !important;
+    padding: 24px 36px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .cert-corner-decor {
+    width: 28px !important;
+    height: 28px !important;
+    border-width: 2px !important;
+  }
+
+  .cert-tl { top: 10px !important; left: 10px !important; }
+  .cert-tr { top: 10px !important; right: 10px !important; }
+  .cert-bl { bottom: 10px !important; left: 10px !important; }
+  .cert-br { bottom: 10px !important; right: 10px !important; }
+
+  .cert-crest-img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .cert-title {
+    font-size: 22px !important;
+  }
+
+  .cert-subtitle {
+    font-size: 11px !important;
+  }
+
+  .cert-badge {
+    padding: 3px 10px !important;
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cert-recipient-section {
+    margin: 12px 0 10px !important;
+  }
+
+  .cert-body-intro {
+    font-size: 13px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .cert-student-name {
+    font-size: 28px !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 3px !important;
+  }
+
+  .cert-body-text {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 6px !important;
+    max-width: 780px !important;
+  }
+
+  .cert-course-name {
+    font-size: 18px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cert-body-subtext {
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
+    max-width: 750px !important;
+  }
+
+  .cert-verify-bar {
+    margin-top: 10px !important;
+    padding: 10px 16px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .cert-serial {
+    font-size: 12px !important;
+  }
+
+  .cert-signatures-footer {
+    margin-top: 12px !important;
+    padding-top: 8px !important;
   }
 }

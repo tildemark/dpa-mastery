@@ -247,6 +247,7 @@ function CertificateContent() {
                 alt="DPA Mastery Crest"
                 width={120}
                 height={120}
+                className="cert-crest-img"
                 style={{ filter: 'drop-shadow(0 6px 16px rgba(2, 132, 199, 0.2))' }}
               />
             </div>
@@ -294,44 +295,101 @@ function CertificateContent() {
 
             {/* Center Professional Rosette / Ribbon Seal */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg viewBox="0 0 100 120" width="84" height="100">
-                {/* Ribbon Tails */}
-                <path d="M 32 80 L 22 115 L 38 108 L 48 115 L 44 80 Z" fill="#0369A1" stroke="#075985" strokeWidth="1" />
-                <path d="M 68 80 L 56 115 L 62 108 L 78 115 L 68 80 Z" fill="#0284C7" stroke="#075985" strokeWidth="1" />
-                {/* 36-Point Starburst Rosette */}
-                <path
-                  d="M 50 10 
-                     L 57 14 L 64 12 L 69 18 L 76 19 L 79 26 L 86 30 L 87 37 L 91 43 L 89 50 L 91 57 L 87 63 L 86 70 L 79 74 L 76 81 L 69 82 L 64 88 L 57 86 L 50 90 
-                     L 43 86 L 36 88 L 31 82 L 24 81 L 21 74 L 14 70 L 13 63 L 9 57 L 11 50 L 9 43 L 13 37 L 14 30 L 21 26 L 24 19 L 31 18 L 36 12 L 43 14 Z"
-                  fill="url(#sealGrad)"
-                  stroke="#075985"
-                  strokeWidth="1.5"
-                />
-                {/* Inner Disc */}
-                <circle cx="50" cy="50" r="30" fill="url(#sealInner)" stroke="#0369A1" strokeWidth="1.5" />
-                {/* Star border / Beaded ring */}
-                <circle cx="50" cy="50" r="26" fill="none" stroke="#BAE6FD" strokeWidth="1" strokeDasharray="2,2" />
-                {/* Verified Checkmark in Center */}
-                <path
-                  d="M 38 49 L 46 57 L 63 39"
-                  fill="none"
-                  stroke="#FFFFFF"
-                  strokeWidth="4.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+              <svg viewBox="0 0 100 120" width="86" height="104" style={{ overflow: 'visible' }}>
                 <defs>
-                  <linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#38BDF8" />
-                    <stop offset="50%" stopColor="#0284C7" />
+                  {/* Ribbon Gradient */}
+                  <linearGradient id="ribbonLeftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#0369A1" />
+                    <stop offset="100%" stopColor="#075985" />
+                  </linearGradient>
+                  <linearGradient id="ribbonRightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#0284C7" />
                     <stop offset="100%" stopColor="#0369A1" />
                   </linearGradient>
+                  {/* Rosette Outer Starburst Gradient */}
+                  <linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#38BDF8" />
+                    <stop offset="45%" stopColor="#0284C7" />
+                    <stop offset="100%" stopColor="#075985" />
+                  </linearGradient>
+                  {/* Inner Medallion Gradient */}
                   <linearGradient id="sealInner" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#0284C7" />
                     <stop offset="60%" stopColor="#0369A1" />
-                    <stop offset="100%" stopColor="#075985" />
+                    <stop offset="100%" stopColor="#082F49" />
                   </linearGradient>
+                  {/* Golden / Cyan Highlights */}
+                  <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FDE047" />
+                    <stop offset="50%" stopColor="#F59E0B" />
+                    <stop offset="100%" stopColor="#D97706" />
+                  </linearGradient>
+                  <filter id="sealShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#000" floodOpacity="0.2" />
+                  </filter>
                 </defs>
+
+                {/* Symmetrical Left Ribbon Tail */}
+                <path
+                  d="M 38 68 L 22 114 L 35 106 L 46 114 L 44 68 Z"
+                  fill="url(#ribbonLeftGrad)"
+                  stroke="#075985"
+                  strokeWidth="1.2"
+                  strokeLinejoin="round"
+                />
+                {/* Symmetrical Right Ribbon Tail */}
+                <path
+                  d="M 56 68 L 54 114 L 65 106 L 78 114 L 62 68 Z"
+                  fill="url(#ribbonRightGrad)"
+                  stroke="#075985"
+                  strokeWidth="1.2"
+                  strokeLinejoin="round"
+                />
+
+                {/* 24-Point Mathematical Starburst Rosette */}
+                {(() => {
+                  const points = [];
+                  const cx = 50;
+                  const cy = 48;
+                  const rOuter = 38;
+                  const rInner = 34;
+                  const total = 24;
+                  for (let i = 0; i < total * 2; i++) {
+                    const angle = (i * Math.PI) / total - Math.PI / 2;
+                    const r = i % 2 === 0 ? rOuter : rInner;
+                    const x = cx + r * Math.cos(angle);
+                    const y = cy + r * Math.sin(angle);
+                    points.push(`${i === 0 ? 'M' : 'L'} ${x.toFixed(2)} ${y.toFixed(2)}`);
+                  }
+                  points.push('Z');
+                  return (
+                    <path
+                      d={points.join(' ')}
+                      fill="url(#sealGrad)"
+                      stroke="#075985"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                      filter="url(#sealShadow)"
+                    />
+                  );
+                })()}
+
+                {/* Outer Medallion Border */}
+                <circle cx="50" cy="48" r="30" fill="url(#sealInner)" stroke="#38BDF8" strokeWidth="1.5" />
+                {/* Gold Beaded / Dashed Ring */}
+                <circle cx="50" cy="48" r="26" fill="none" stroke="url(#goldRing)" strokeWidth="1.5" strokeDasharray="3 2" />
+                {/* Inner Accent Ring */}
+                <circle cx="50" cy="48" r="22" fill="none" stroke="#BAE6FD" strokeWidth="0.75" opacity="0.6" />
+
+                {/* Centered Crisp Verified Checkmark */}
+                <path
+                  d="M 39 48 L 47 56 L 63 38"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
 
