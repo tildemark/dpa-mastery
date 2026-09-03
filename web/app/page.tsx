@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { APP_CONFIG } from './config';
+import SampleQuestionDemo from './SampleQuestionDemo';
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
           </div>
 
           <div className="nav-links">
+            <a href="#demo" className="nav-demo-highlight">Try Demo</a>
             <a href="#features">Features</a>
             <a href="#certificates">Certificates</a>
             <a href="#mock-exam">Mock Exam</a>
@@ -59,7 +61,10 @@ export default function HomePage() {
               </svg>
               Download Native App (v{APP_CONFIG.version})
             </a>
-            <a href="#dlc" className="btn-secondary">
+            <a href="#demo" className="btn-secondary">
+              ⚡ Try Question Demo
+            </a>
+            <a href="#dlc" className="btn-secondary" style={{ opacity: 0.85 }}>
               Explore DLCs
             </a>
           </div>
@@ -147,6 +152,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Interactive Sample Question Demo Section */}
+      <SampleQuestionDemo />
 
       {/* What is SRS Explainer Section */}
       <section className="srs-explainer-section">
