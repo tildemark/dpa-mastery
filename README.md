@@ -4,7 +4,12 @@
 
 Built using **Flutter**, **Drift (SQLite)**, and **Riverpod**, the app integrates an **8-Stage Spaced Repetition System (SRS)** with a **Difficulty Tier Gating Engine** to ensure comprehensive understanding and long-term retention of Republic Act No. 10173 (The Data Privacy Act of 2012), its IRR, and NPC issuances.
 
+[![Get it on Google Play](https://img.shields.io/badge/Google_Play-Get_it_on_Play_Store-34A853?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=ph.sanchez.dpamastery)
+[![Download on GitHub](https://img.shields.io/badge/GitHub_Release-Download_APK_&_Windows-24292e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tildemark/dpa-mastery/releases/latest)
+[![Web Landing Page](https://img.shields.io/badge/Web_Landing-dpa--mastery.sanchez.ph-blue?style=for-the-badge)](https://dpa-mastery.sanchez.ph)
+
 ---
+
 
 ## 🚀 Key Features
 
@@ -109,17 +114,18 @@ flutter run -d windows
 
 | Platform | Target Output File | Local Workspace Path |
 | :--- | :--- | :--- |
-| **Android (APK)** | Signed Release APK | [`build/app/outputs/flutter-apk/app-release.apk`](file:///c:/code/dpa-mastery/build/app/outputs/flutter-apk/app-release.apk) |
+| **Android (Play Store Bundle)** | Signed App Bundle (.aab) | [`build/app/outputs/bundle/release/app-release.aab`](file:///c:/code/dpa-mastery/build/app/outputs/bundle/release/app-release.aab) |
+| **Android (Direct APK)** | Signed Release APK (.apk) | [`build/app/outputs/flutter-apk/app-release.apk`](file:///c:/code/dpa-mastery/build/app/outputs/flutter-apk/app-release.apk) |
 | **Windows (Portable ZIP)** | Standalone Portable ZIP | [`build/dpa_mastery_windows_x64.zip`](file:///c:/code/dpa-mastery/build/dpa_mastery_windows_x64.zip) |
-| **Windows (Installer)** | Inno Setup Installer | [`build/dpa_mastery_windows_setup_v1.4.0.exe`](file:///c:/code/dpa-mastery/build) |
+| **Windows (Installer)** | Inno Setup Installer | [`build/dpa_mastery_windows_setup_v1.7.0.exe`](file:///c:/code/dpa-mastery/build) |
 
 ---
 
 ### Step-by-Step Release Packaging & Signing Guide
 
-#### 📱 1. Android Release APK (Signed Production Keystore)
+#### 📱 1. Android Release Builds (App Bundle & Direct APK)
 
-To avoid "Blocked by Play Protect" or "Unknown app" security warnings on Android, the APK is signed with a release keystore:
+To publish to Google Play Store or distribute offline APKs without "Blocked by Play Protect" security warnings, builds are signed with the release keystore:
 
 1. **One-time Keystore Generation (if setting up on a new PC):**
 
@@ -137,7 +143,16 @@ To avoid "Blocked by Play Protect" or "Unknown app" security warnings on Android
    storeFile=upload-keystore.jks
    ```
 
-3. **Build Signed Release APK:**
+3. **Build Android App Bundle (.aab) for Google Play Store:**
+
+   ```bash
+   flutter build appbundle --release
+   ```
+
+   - **Output Location:** `build/app/outputs/bundle/release/app-release.aab`
+   - Upload this `.aab` file directly to the **Google Play Console** under **Production / Testing > Create new release**.
+
+4. **Build Standalone Offline APK (.apk) for GitHub / Sideloading:**
 
    ```bash
    flutter build apk --release
@@ -147,6 +162,7 @@ To avoid "Blocked by Play Protect" or "Unknown app" security warnings on Android
    - *Note: If `android/key.properties` is absent, Gradle automatically falls back to debug signing.*
 
 ---
+
 
 #### 🪟 2. Windows Desktop (Release & Code Signing)
 

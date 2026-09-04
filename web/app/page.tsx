@@ -680,23 +680,29 @@ export default function HomePage() {
                 </svg>
               </div>
               <div>
-                <h3>Android APK</h3>
-                <span className="platform-tag" style={{ color: '#34D399' }}>★ Runs 100% Offline • No Internet Needed</span>
+                <h3>Android</h3>
+                <span className="platform-tag" style={{ color: '#34D399' }}>★ Runs 100% Offline • Google Play &amp; Direct APK</span>
               </div>
             </div>
             <p className="platform-desc">
               <strong>Run DPA Mastery anywhere without Wi-Fi or mobile data.</strong> Features offline SQLite database, instant review sessions, spaced repetition scheduling, and full timed DPO Mock Exam simulation.
             </p>
             <div className="download-actions">
-              <a href={APP_CONFIG.downloads.androidApk} target="_blank" rel="noreferrer" className="btn-download" style={{ background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <a href={APP_CONFIG.downloads.googlePlay} target="_blank" rel="noreferrer" className="btn-download" style={{ background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186c-.365-.325-.61-.798-.61-1.345V3.159c0-.547.245-1.02.609-1.345zm11.238 11.241L17.5 15.7l-12.016 6.89 9.363-9.535zm0-2.11L4.874 1.41 17.5 8.3 14.847 10.945zm1.472.955l3.242 1.859c.772.443.772 1.164 0 1.607l-3.242 1.859-2.072-2.072 2.072-2.253z"/>
+                </svg>
+                Get it on Google Play &rarr;
+              </a>
+              <a href={APP_CONFIG.downloads.androidApk} target="_blank" rel="noreferrer" className="btn-download secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="7 10 12 15 17 10"/>
                   <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                Download Offline APK (.apk) &rarr;
+                Direct APK via GitHub (.apk)
               </a>
-              <span className="meta-info">Android 8.0+ (Oreo or later) • Guaranteed 100% Offline • v{APP_CONFIG.version}</span>
+              <span className="meta-info">Play Store (Verified &amp; Auto-Updating) or GitHub Direct APK • Android 8.0+ • v{APP_CONFIG.version}</span>
             </div>
           </div>
 
