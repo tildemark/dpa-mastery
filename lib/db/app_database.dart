@@ -38,7 +38,13 @@ class AppDatabase extends _$AppDatabase {
 /// or uses IndexedDB / WebAssembly when running on the web.
 QueryExecutor _openConnection() {
   if (kIsWeb) {
-    return driftDatabase(name: 'dpa_mastery');
+    return driftDatabase(
+      name: 'dpa_mastery',
+      web: DriftWebOptions(
+        sqlite3Wasm: Uri.parse('sqlite3.wasm'),
+        driftWorker: Uri.parse('drift_worker.js'),
+      ),
+    );
   }
 
   return driftDatabase(
@@ -51,3 +57,4 @@ QueryExecutor _openConnection() {
     ),
   );
 }
+
