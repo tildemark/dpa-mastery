@@ -732,9 +732,9 @@ export default function HomePage() {
           </div>
 
           {/* Web App Card */}
-          <div className="download-card" style={{ opacity: 0.8 }}>
+          <div className="download-card">
             <div className="platform-header">
-              <div className="platform-icon" style={{ background: 'rgba(255, 255, 255, 0.05)', color: '#94a3b8' }}>
+              <div className="platform-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8' }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10"/>
                   <line x1="2" y1="12" x2="22" y2="12"/>
@@ -742,16 +742,21 @@ export default function HomePage() {
                 </svg>
               </div>
               <div>
-                <h3>Web App</h3>
-                <span className="platform-tag" style={{ color: '#94a3b8' }}>In Active Development</span>
+                <h3>Web Edition</h3>
+                <span className="platform-tag" style={{ color: '#38BDF8' }}>Interactive In-Browser</span>
               </div>
             </div>
-            <p className="platform-desc">Browser edition for online practice and review is currently undergoing optimization for web runtime compatibility.</p>
+            <p className="platform-desc">Instant online review, Spaced Repetition drills, and full DPO Mock Exam simulation directly in any modern desktop or mobile browser.</p>
             <div className="download-actions">
-              <button disabled className="btn-download" style={{ background: 'rgba(255, 255, 255, 0.08)', color: '#94a3b8', cursor: 'not-allowed', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                Web Version Coming Soon
-              </button>
-              <span className="meta-info">Native Android APK &amp; Windows recommended</span>
+              <a href="/app/" target="_blank" rel="noreferrer" className="btn-download" style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+                Launch Web App (/app/) &rarr;
+              </a>
+              <span className="meta-info">Runs on Chrome, Edge, Safari, Firefox • IndexedDB local storage</span>
             </div>
           </div>
         </div>
