@@ -167,9 +167,7 @@ To publish to Google Play Store or distribute offline APKs without "Blocked by P
 ---
 
 
-#### 🪟 2. Windows Desktop (Release & Code Signing)
-
-To eliminate Windows SmartScreen ("Windows protected your PC") warnings:
+#### 🪟 2. Windows Desktop Builds
 
 ##### Option A: Portable Standalone ZIP (No Admin Required)
 
@@ -186,32 +184,23 @@ Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build
 ```powershell
 # Compile installer (.exe):
 iscc installer.iss
-# Output: build/dpa_mastery_windows_setup_v1.4.1.exe
+# Output: build/dpa_mastery_windows_setup_v1.7.0.exe
 ```
-
-##### Option C: Automated Open-Source Code Signing via SignPath.io
-
-1. DPA Mastery uses **[SignPath Foundation](https://signpath.org/apply.html)** for free open-source OV code signing.
-2. In GitHub repository secrets, configure:
-   - `SIGNPATH_API_TOKEN`
-   - `SIGNPATH_ORGANIZATION_ID`
-   - `SIGNPATH_PROJECT_SLUG`
-   - `SIGNPATH_SIGNING_POLICY_SLUG`
-3. Pushing a tag (e.g. `git tag v1.7.0 && git push origin v1.7.0`) automatically builds, signs, and attaches both the signed Windows installer and portable zip to GitHub Releases via `.github/workflows/release.yml`.
 
 ---
 
-## 🌐 Static Seed API (Next.js Hub)
+## 🌐 Static Landing Page & Certificate Hub
 
-To test and build the static OTA repository:
+To test and build the static Next.js marketing and certificate verification site:
 
 ```bash
-cd web
+cd landing
 npm install
-npm run build # Exports static site to /web/out
+npm run build # Exports static site to /landing/out
 ```
 
 GitHub Actions automatically builds and deploys changes on the `main` branch to **GitHub Pages** via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+
 
 ---
 
