@@ -17,19 +17,59 @@ export default function HomePage() {
           </div>
 
           <div className="nav-links">
-            <a href="#demo" className="nav-demo-highlight">Try Demo</a>
-            <a href="#features">Features</a>
-            <a href="#certificates">Certificates</a>
-            <a href="#mock-exam">Mock Exam</a>
-            <a href="#dlc">DLC Hub</a>
-            <a href="#tiers">Tiers</a>
-            <a href="#curriculum">Curriculum</a>
-            <a href="#downloads">Downloads</a>
-            <a href="#sponsor" className="nav-sponsor-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <a href="#demo" className="nav-icon-link nav-demo-highlight" aria-label="Interactive Demo" data-tooltip="Interactive Demo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </a>
+            <a href="#features" className="nav-icon-link" aria-label="Core Features" data-tooltip="Core Features">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </a>
+            <a href="#certificates" className="nav-icon-link" aria-label="Certificates & Badges" data-tooltip="Certificates & Badges">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="8" r="6" />
+                <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+              </svg>
+            </a>
+            <a href="#mock-exam" className="nav-icon-link" aria-label="Mock Exam Simulator" data-tooltip="Mock Exam Simulator">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </a>
+            <a href="#dlc" className="nav-icon-link" aria-label="DLC Expansion Hub" data-tooltip="DLC Expansion Hub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </a>
+            <a href="#tiers" className="nav-icon-link" aria-label="Mastery Tiers" data-tooltip="Mastery Tiers">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </a>
+            <a href="#curriculum" className="nav-icon-link" aria-label="Curriculum & NPC Scope" data-tooltip="Curriculum & NPC Scope">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            </a>
+            <a href="#downloads" className="nav-icon-link" aria-label="Downloads & Web App" data-tooltip="Downloads & Web App">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </a>
+            <a href="#sponsor" className="nav-sponsor-btn nav-icon-link" aria-label="Sponsor Project" data-tooltip="Sponsor Project">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
-              Sponsor
             </a>
           </div>
         </div>
