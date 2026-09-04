@@ -56,7 +56,10 @@ dpa-mastery/
 │   └── main.dart               # Bootstrap & Riverpod ProviderScope setup
 ├── assets/seeds/               # Bundled canonical JSON seeds for instant offline launch
 ├── docs/seeds/                 # Seed backup registry
-├── web/                        # Next.js static marketing landing page & OTA seed API
+├── landing/                    # Next.js static marketing landing page & verifiable certs
+├── web/                        # Flutter Web platform host (index.html, manifest, icons)
+├── windows/                    # Windows desktop runner & Inno Setup installer script
+├── android/                    # Android native project & release keystore configs
 └── test/                       # Unit & widget test suites (25 tests passing)
 ```
 

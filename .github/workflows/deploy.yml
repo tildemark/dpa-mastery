@@ -47,24 +47,24 @@ jobs:
           node-version: "22"
 
       - name: Install Next.js Dependencies
-        working-directory: ./web
+        working-directory: ./landing
         run: npm ci
 
       - name: Build Next.js Static Export
-        working-directory: ./web
+        working-directory: ./landing
         run: npm run build
 
-      # 3. Merge Flutter Web build into Next.js export at ./web/out/app
+      # 3. Merge Flutter Web build into Next.js export at ./landing/out/app
       - name: Merge Flutter Web into Static Output
         run: |
-          mkdir -p ./web/out/app
-          cp -r build/web/* ./web/out/app/
+          mkdir -p ./landing/out/app
+          cp -r build/web/* ./landing/out/app/
 
       # 4. Upload Complete Pages Artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./web/out
+          path: ./landing/out
 
   deploy:
     environment:
